@@ -3,7 +3,7 @@ layout: default
 description: I'm Bhanu Prakash Vangala, a PhD student specializing in NLP and efficient machine learning models.
 ---
 
-![My Photo](./img/Bobby%20Passphoto.png){: style="float: right; margin: 0px 20px; width: 250px; border-radius: 50%" name="photo"}
+![My Photo](Bobby Passphoto.png){: style="float: right; margin: 0px 20px; width: 250px; border-radius: 50%" name="photo"}
 
 # Bhanu Prakash Vangala
 
