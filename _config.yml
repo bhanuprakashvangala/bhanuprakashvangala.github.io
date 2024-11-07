@@ -1,27 +1,20 @@
 # Site settings
-exclude: [README.md,example1.md,example2.md]
-title: Lena Voita
-email: lena-voita@hotmail.com
-github: lena-voita
-twitter: lena_voita
-scholar_id: EcN9o7kAAAAJ
-description: > # this symbol means ignore newlines until "baseurl:"
-    Hi! I'm Lena and here you will find what I do.
+exclude: [README.md, example1.md, example2.md]
+title: Bhanu Prakash Vangala
+email: bv3hz@umsystem.edu
+github: bhanuprakashvangala
+twitter: # leave blank if you don’t use Twitter
+scholar_id: # Google Scholar ID if available
+description: > 
+    Hi! I'm Bhanu, a PhD student interested in NLP and efficient machine learning. Here you will find my research, publications, and projects.
+
 baseurl: "" # keep blank unless you're using sub-paths
-url: "http://lena-voita.github.io" # the base hostname & protocol for your site
-#paginate: 3
+url: "https://bhanuprakashvangala.github.io" # the base hostname & protocol for your site
 
-# you can also declare arbitrary key-value data here
-uva_url_lena: "https://msclogic.illc.uva.nl/people/students/"
-uva_url_main: "https://www.illc.uva.nl"
-edn_nlp_people: "https://edinburghnlp.inf.ed.ac.uk/index.php/people/"
-edn_nlp_main: "http://edinburghnlp.inf.ed.ac.uk"
-school_of_informatics: "https://www.ed.ac.uk/informatics"
-yandex_research_people: "https://research.yandex.com/people/"
-yandex_research_main: "https://research.yandex.com"
-
-ivan_page: "http://ivan-titov.org"
-rico_page: "http://homepages.inf.ed.ac.uk/rsennric/"
+# Optional URLs for institutions or projects you’re associated with
+# Replace or remove these if not relevant
+university_url: "https://www.missouri.edu" # Example: University of Missouri
+lab_url: "https://scottgs.mufaculty.umsystem.edu/" # Replace with your lab’s website if applicable
 
 
 # Build settings
