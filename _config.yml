@@ -1,0 +1,8 @@
+# _config.yml
+
+title: "Bhanu Prakash Vangala"
+description: "My personal website and portfolio powered by Jekyll"
+# The 'baseurl' or other options can be added if needed.
+# For GitHub Pages, you generally don't need to set baseurl if your repo is <username>.github.io
+baseurl: "/<repository-name>"
+url: "https://github.com/bhanuprakashvangala/bhanuprakashvangala.github.io.git"
