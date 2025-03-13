@@ -1,8 +1,31 @@
-# _config.yml
+title: "My Superb Portfolio"
+description: "Portfolio of Bhanu Prakash Vangala"
+# Minimal Mistakes Remote Theme
+remote_theme: "mmistakes/minimal-mistakes"
 
-title: "Bhanu Prakash Vangala"
-description: "My personal website and portfolio powered by Jekyll"
-# The 'baseurl' or other options can be added if needed.
-# For GitHub Pages, you generally don't need to set baseurl if your repo is <username>.github.io
+# Important: GitHub Pages defaults to safe mode, so disable theme gems if you see build warnings
+plugins:
+  - jekyll-remote-theme
+
+# Minimal Mistakes Settings
+# (These are optional. You can add them gradually as you explore the docs.)
+minimal_mistakes_skin: "default"   # or choose a different skin, e.g. "air", "dark", etc.
+
+# Site Author Info
+author:
+  name: "Bhanu Prakash Vangala"
+  avatar: "/assets/images/avatar.jpg"
+  bio: "PhD candidate in Computer Science, focusing on NLP and ML."
+
+# Defaults for pages or posts
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: true
 baseurl: "/<repository-name>"
 url: "https://github.com/bhanuprakashvangala/bhanuprakashvangala.github.io.git"
