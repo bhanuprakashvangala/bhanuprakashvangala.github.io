@@ -1,23 +1,19 @@
 title: "My Superb Portfolio"
 description: "Portfolio of Bhanu Prakash Vangala"
+
 # Minimal Mistakes Remote Theme
 remote_theme: "mmistakes/minimal-mistakes"
 
-# Important: GitHub Pages defaults to safe mode, so disable theme gems if you see build warnings
 plugins:
   - jekyll-remote-theme
 
-# Minimal Mistakes Settings
-# (These are optional. You can add them gradually as you explore the docs.)
-minimal_mistakes_skin: "default"   # or choose a different skin, e.g. "air", "dark", etc.
+minimal_mistakes_skin: "default"  # or choose "air", "dark", etc.
 
-# Site Author Info
 author:
   name: "Bhanu Prakash Vangala"
   avatar: "/assets/images/avatar.jpg"
   bio: "PhD candidate in Computer Science, focusing on NLP and ML."
 
-# Defaults for pages or posts
 defaults:
   - scope:
       path: ""
@@ -27,5 +23,8 @@ defaults:
       author_profile: true
       read_time: true
       comments: true
-baseurl: "/<repository-name>"
-url: "https://github.com/bhanuprakashvangala/bhanuprakashvangala.github.io.git"
+
+# For a user site, baseurl should be empty
+baseurl: ""
+# The URL is your live website
+url: "https://bhanuprakashvangala.github.io"
