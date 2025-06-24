@@ -164,6 +164,17 @@ h1:before, .anchor:before {
   border-radius: 4px;
 }
 
+.fakelink {
+  cursor: pointer;
+  color: $color-secondary;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s;
+  &:hover {
+    border-color: $color-accent;
+  }
+}
+
 /* 9) Utility Classes */
 .text-accent     { color: $color-accent !important; }
 .text-secondary  { color: $color-secondary !important; }
