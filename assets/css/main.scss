@@ -179,3 +179,28 @@ h1:before, .anchor:before {
 .text-accent     { color: $color-accent !important; }
 .text-secondary  { color: $color-secondary !important; }
 .bg-primary      { background-color: $color-primary !important; color: #fff !important; }
+
+/* Honors and Awards Section */
+.honors-section {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  list-style-position: outside;
+  margin-left: 1em;
+}
+
+.honors-section li {
+  margin-bottom: 1rem;
+}
+
+.honor-images {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.honor-images img {
+  width: 220px;
+  height: auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}

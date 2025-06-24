@@ -248,19 +248,19 @@ Thanks for stopping by—feel free to explore my work on [GitHub](https://bhanup
 </ul>
 
 # Honors and Awards
-<ul>
+<ul class="honors-section">
   <li>
     <strong>2025.05:</strong> <strong>Outstanding Master’s Student Award</strong>, College of Engineering, University of Missouri  
-    <div style="margin-top: 10px;">
-      <img src="images/image%20with%20dean.jpg" alt="Outstanding Master’s Student Award with Dean" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px;">
-      <img src="images/Outstanding%20Student.jpeg" alt="Outstanding Student Certificate" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px;">
+    <div class="honor-images">
+      <img src="images/image%20with%20dean.jpg" alt="Outstanding Master’s Student Award with Dean">
+      <img src="images/Outstanding%20Student.jpeg" alt="Outstanding Student Certificate">
     </div>
   </li>
   <li>
     <strong>2025.03:</strong> <strong>Runner-Up – MUIDSI Hackathon</strong> for <em>VisionAI: AI-Powered Assistance for the Visually Impaired</em>, awarded $1,000  
-    <div style="margin-top: 10px;">
-      <img src="images/Hackathon%20Winner.jpeg" alt="MUIDSI Hackathon Award" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px;">
-      <img src="images/Hackathon%20Winner%202.jpg" alt="MUIDSI Hackathon Award" style="max-width: 100%; border: 1px solid #ccc; border-radius: 8px;">
+    <div class="honor-images">
+      <img src="images/Hackathon%20Winner.jpeg" alt="MUIDSI Hackathon Award">
+      <img src="images/Hackathon%20Winner%202.jpg" alt="MUIDSI Hackathon Award">
     </div>
   </li>
   <li><strong>2025.04:</strong> Selected for <strong>Google PhD Fellowship Nomination</strong>, one of three University of Missouri nominees in NLP</li>
