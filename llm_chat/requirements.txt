@@ -2,3 +2,4 @@ transformers
 sentence-transformers
 faiss-cpu
 torch
+flask
