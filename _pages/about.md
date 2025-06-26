@@ -18,15 +18,21 @@ redirect_from:
 <span class='anchor' id='about-me'></span>
 
 
-Hi there! 
-
-Welcome to **Bhanu Prakash Vangala**’s website!
 
 # About Me
 
-<div class="about-me">
+<div class="about-container">
+  <img src="images/Bobby Passphoto.png" alt="Bhanu Prakash Vangala" class="about-image">
+  <div class="about-text">
+    Hi there! I'm **Bhanu Prakash Vangala**, a Ph.D. candidate in Computer Science at the University of Missouri.
+    My work explores trustworthy AI, efficient language models and their applications to scientific discovery.
+    Before starting my doctorate I completed an M.S. at Mizzou, where I focused on deploying LLMs in distributed
+    computing environments. I enjoy mentoring students, writing about graduate life abroad and building tools that
+    make AI systems more transparent and reliable.
+  </div>
+</div>
 
-I’m currently a Ph.D. candidate in Computer Science at the University of Missouri, Columbia (Aug 2023 – Jun 2027), co-advised by [Dr. Jianlin Cheng](https://calla.rnet.missouri.edu/cheng/) and [Dr. Tanu Malik](https://engineering.missouri.edu/faculty/tanu-malik/). I earned my M.S. in Computer Science from the University of Missouri (GPA: 4.0/4.0), where I worked on deploying Large Language Models (LLMs) in distributed computing environments advised by [Dr. Grant J Scott](https://scottgs.mufaculty.umsystem.edu/). I completed my B.Tech in Computer Science and Engineering (Data Analytics) at Vellore Institute of Technology, India, where I explored multilingual NLP and large-scale social media analysis.
+<div class="about-me">
 
 My current **core research interests** are funded by the **Department of Defense (U.S. Army ERDC), NSF, and NASA**, highlighting their relevance to critical scientific and technological challenges.
 
