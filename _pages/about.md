@@ -72,7 +72,7 @@ Thanks for stopping by—feel free to explore my work on [GitHub](https://bhanup
   <div class='paper-box-image'>
     <div>
       <div class="badge">AAAI 2025</div>
-      <img src='images/papers/publication-placeholder.png' alt="sym" width="100%">
+      <img src='images/HalluMat-Portfolio%20Image.png' alt="sym" width="100%">
     </div>
   </div>
   <div class='paper-box-text'>
@@ -96,7 +96,7 @@ Thanks for stopping by—feel free to explore my work on [GitHub](https://bhanup
   <div class='paper-box-image'>
     <div>
       <div class="badge">AAAI 2025</div>
-      <img src='images/papers/publication-placeholder.png' alt="sym" width="100%">
+      <img src='images/HalluFormer-Portfolio%20Image.png' alt="sym" width="100%">
     </div>
   </div>
   <div class='paper-box-text'>
@@ -142,7 +142,7 @@ Thanks for stopping by—feel free to explore my work on [GitHub](https://bhanup
   <div class='paper-box-image'>
     <div>
         <div class="badge">Project</div>
-      <img src='images/papers/publication-placeholder.png' alt="sym" width="100%">
+      <img src='images/Brain%20Tumor-Portfolio%20Image.png' alt="sym" width="100%">
     </div>
   </div>
   <div class='paper-box-text'>
@@ -166,7 +166,7 @@ Thanks for stopping by—feel free to explore my work on [GitHub](https://bhanup
   <div class='paper-box-image'>
     <div>
       <div class="badge">MICCAI</div>
-      <img src='images/papers/publication-placeholder.png' alt="sym" width="100%">
+      <img src='images/Pneumonia-Portfolio%20Image.png' alt="sym" width="100%">
     </div>
   </div>
   <div class='paper-box-text'>
@@ -190,7 +190,7 @@ Thanks for stopping by—feel free to explore my work on [GitHub](https://bhanup
   <div class='paper-box-image'>
     <div>
       <div class="badge">IJARESM</div>
-      <img src='images/papers/publication-placeholder.png' alt="sym" width="100%">
+      <img src='images/image%20colorization-portfolio%20image.jpg' alt="sym" width="100%">
     </div>
   </div>
   <div class='paper-box-text'>
@@ -214,7 +214,7 @@ Thanks for stopping by—feel free to explore my work on [GitHub](https://bhanup
   <div class='paper-box-image'>
     <div>
       <div class="badge">Project</div>
-      <img src='images/papers/publication-placeholder.png' alt="sym" width="100%">
+      <img src='images/KOO-Portfolio%20Image.png' alt="sym" width="100%">
     </div>
   </div>
   <div class='paper-box-text'>
