@@ -82,6 +82,14 @@ You can experiment with a simple retrieval-augmented chat bot that answers quest
    python llm_chat/chat.py
    ```
 
+To use the chat widget on the website, start the lightweight API server:
+
+```bash
+python llm_chat/server.py
+```
+
+This server exposes a `/chat` endpoint that the site widget calls to answer questions using the content of this repository.
+
    The script uses the `distilgpt2` model by default. Set the `LLM_MODEL` environment variable if you want to use a different Hugging Face model path.
 
 # Acknowledges

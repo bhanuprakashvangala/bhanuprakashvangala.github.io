@@ -23,25 +23,23 @@ Hi there!
 Welcome to **Bhanu Prakash Vangala**’s website!
 
 # About Me
+
+<div class="about-me">
+
 I’m currently a Ph.D. candidate in Computer Science at the University of Missouri, Columbia (Aug 2023 – Jun 2027), co-advised by [Dr. Jianlin Cheng](https://calla.rnet.missouri.edu/cheng/) and [Dr. Tanu Malik](https://engineering.missouri.edu/faculty/tanu-malik/). I earned my M.S. in Computer Science from the University of Missouri (GPA: 4.0/4.0), where I worked on deploying Large Language Models (LLMs) in distributed computing environments advised by [Dr. Grant J Scott](https://scottgs.mufaculty.umsystem.edu/). I completed my B.Tech in Computer Science and Engineering (Data Analytics) at Vellore Institute of Technology, India, where I explored multilingual NLP and large-scale social media analysis.
 
 My current **core research interests** are funded by the **Department of Defense (U.S. Army ERDC), NSF, and NASA**, highlighting their relevance to critical scientific and technological challenges.
 
-**Trustworthy and Interpretable AI**  
-Developing systems that can reason transparently, self-reflect, and correct their own outputs—improving reliability and reducing harmful or misleading responses.
-
-**Efficient and Scalable Language Models**  
-Focusing on model compression, memory optimization, and large-scale deployment of LLMs for real-time inference in resource-constrained and HPC environments.
-
-**Factuality and Evaluation in Language Models**  
-Designing evaluation benchmarks and hybrid techniques to assess consistency, factual accuracy, and context-grounded reasoning in LLMs.
-
-**AI for Scientific Discovery**  
-Applying LLMs in scientific domains such as materials science, biomedical research, and policy modeling—empowering AI to support researchers in hypothesis generation and knowledge synthesis.
+- **Trustworthy and Interpretable AI**: Developing systems that can reason transparently, self-reflect, and correct their own outputs—improving reliability and reducing harmful or misleading responses.
+- **Efficient and Scalable Language Models**: Focusing on model compression, memory optimization, and large-scale deployment of LLMs for real-time inference in resource-constrained and HPC environments.
+- **Factuality and Evaluation in Language Models**: Designing evaluation benchmarks and hybrid techniques to assess consistency, factual accuracy, and context-grounded reasoning in LLMs.
+- **AI for Scientific Discovery**: Applying LLMs in scientific domains such as materials science, biomedical research, and policy modeling—empowering AI to support researchers in hypothesis generation and knowledge synthesis.
 
 Beyond research, I enjoy mentoring students as a Teaching Assistant for full-stack web development courses, helping them connect theoretical concepts with real-world applications. I’m also passionate about guiding international students through blogging and sharing insights on pursuing higher education abroad.
 
 Thanks for stopping by—feel free to explore my work on [GitHub](https://bhanuprakashvangala.github.io) or connect with me on [LinkedIn](https://www.linkedin.com/in/vangalabhanuprakash/)!
+
+</div>
 
 [//]: <> <span style="color:blue"> </span>
 
