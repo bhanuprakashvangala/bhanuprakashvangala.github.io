@@ -66,6 +66,24 @@ Some examples:
 1. If you change the source code of the website, the livereload server will automatically refresh.
 1. When you finish the modification of your homepage, `commit` your changings and `push` to your remote REPO using `git` command.
 
+## Local Q&A Chat
+
+You can experiment with a simple retrieval-augmented chat bot that answers questions using only the content of this website.
+
+1. Install the dependencies:
+
+   ```bash
+   pip install -r llm_chat/requirements.txt
+   ```
+
+2. Run the chat interface:
+
+   ```bash
+   python llm_chat/chat.py
+   ```
+
+   The script uses the `distilgpt2` model by default. Set the `LLM_MODEL` environment variable if you want to use a different Hugging Face model path.
+
 # Acknowledges
 
 - AcadHomepage incorporates Font Awesome, which is distributed under the terms of the SIL OFL 1.1 and MIT License.
