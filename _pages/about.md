@@ -71,7 +71,7 @@ Thanks for stopping by—feel free to explore my work on [GitHub](https://bhanup
 <div class='paper-box'>
   <div class='paper-box-image'>
     <div>
-      <div class="badge">Preprint</div>
+      <div class="badge">AAAI 2025</div>
       <img src='images/papers/publication-placeholder.png' alt="sym" width="100%">
     </div>
   </div>
@@ -95,7 +95,7 @@ Thanks for stopping by—feel free to explore my work on [GitHub](https://bhanup
 <div class='paper-box'>
   <div class='paper-box-image'>
     <div>
-      <div class="badge">Preprint</div>
+      <div class="badge">AAAI 2025</div>
       <img src='images/papers/publication-placeholder.png' alt="sym" width="100%">
     </div>
   </div>
@@ -141,7 +141,7 @@ Thanks for stopping by—feel free to explore my work on [GitHub](https://bhanup
 <div class='paper-box'>
   <div class='paper-box-image'>
     <div>
-      <div class="badge">Project</div>
+        <div class="badge">Project</div>
       <img src='images/papers/publication-placeholder.png' alt="sym" width="100%">
     </div>
   </div>
@@ -165,7 +165,7 @@ Thanks for stopping by—feel free to explore my work on [GitHub](https://bhanup
 <div class='paper-box'>
   <div class='paper-box-image'>
     <div>
-      <div class="badge">Project</div>
+      <div class="badge">MICCAI</div>
       <img src='images/papers/publication-placeholder.png' alt="sym" width="100%">
     </div>
   </div>
@@ -189,7 +189,7 @@ Thanks for stopping by—feel free to explore my work on [GitHub](https://bhanup
 <div class='paper-box'>
   <div class='paper-box-image'>
     <div>
-      <div class="badge">Project</div>
+      <div class="badge">IJARESM</div>
       <img src='images/papers/publication-placeholder.png' alt="sym" width="100%">
     </div>
   </div>
@@ -206,6 +206,30 @@ Thanks for stopping by—feel free to explore my work on [GitHub](https://bhanup
     <details class="abstract">
       <summary>[abstract]</summary>
       <p>Colourization is a PC helped procedure of adding shading to a monochrome picture or film. The procedure involves typically segmenting pictures into areas and following these regions across picture sequences. Neither of these undertakings can be performed dependably by and by; thus, colourization requires extensive user mediation and remains a monotonous, tedious, and costly assignment. Colourization is a term presented by Wilson Markle in 1970 to describe the PC helped process he developed for including shading. Colourizing black and white movies is an old idea going back to 1902. For a considerable length of time, numerous filmmakers restricted colourizing their black and white motion pictures and considered it vandalism of their craft. Today it is acknowledged as an upgrade to the artistic expression. The innovation itself has moved from meticulous hand colourization to the present largely automated strategy. In India, the film Mughal-e-Azam, a blockbuster released in 1960 was remastered in color in 2004. People from different ages crowded the theatres to see it in color, and the movie was a huge hit for the second time!</p>
+    </details>
+  </div>
+</div>
+
+<div class='paper-box'>
+  <div class='paper-box-image'>
+    <div>
+      <div class="badge">Project</div>
+      <img src='images/papers/publication-placeholder.png' alt="sym" width="100%">
+    </div>
+  </div>
+  <div class='paper-box-text'>
+    <p><strong><a href="https://drive.google.com/file/d/1a2Xan4sDdC7ib7Hj5HODcjPyztmTee4k/view?usp=sharing">KOO: Uncovering User Sentiments and Trends!</a></strong></p>
+    <p><strong>Bhanu Prakash Vangala</strong></p>
+    <ul>
+      <li>Developed a multilingual sentiment analysis system for KOO, leveraging NLP and machine learning to analyze user sentiment across various languages.</li>
+      <li>Provided real-time sentiment insights for improved user experience and content moderation on the social networking platform.</li>
+    </ul>
+    <div style="display: inline">
+      <a href="https://drive.google.com/file/d/1a2Xan4sDdC7ib7Hj5HODcjPyztmTee4k/view?usp=sharing"><strong>[project]</strong></a>
+    </div>
+    <details class="abstract">
+      <summary>[abstract]</summary>
+      <p>A multilingual sentiment analysis pipeline delivering real-time user sentiment trends on KOO to aid content moderation and enhance engagement.</p>
     </details>
   </div>
 </div>
