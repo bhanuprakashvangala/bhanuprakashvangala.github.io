@@ -123,7 +123,7 @@ Thanks for stopping by—feel free to explore my work on [GitHub](https://bhanup
   <div class='paper-box-image'>
     <div>
       <div class="badge">Master's Thesis</div>
-      <img src='{{ "/images/LLM-as-Service-portfolio-image.png" | relative_url }}' alt="LLM-as-Service portfolio image" width="100%">
+      <img src='images/LLM-as-Service-portfolio-image.png' alt="LLM-as-Service portfolio image" width="100%">
     </div>
   </div>
   <div class='paper-box-text'>
