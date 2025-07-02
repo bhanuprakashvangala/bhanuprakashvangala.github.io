@@ -22,7 +22,6 @@ redirect_from:
 # About Me
 
 <div class="about-box">
-  <div class="about-box-icon"><i class="fas fa-user"></i></div>
   <div class="about-box-content">
     <p>Hello! I’m <strong>Bhanu Prakash Vangala</strong>, a Ph.D. researcher in Computer Science at <a href="https://engineering.missouri.edu/departments/eecs/eecs-research/" target="_blank">the University of Missouri</a>.</p>
     <p>My research focuses on advancing trustworthy and reliable AI, with an emphasis on large language models (LLMs), scalable systems, and scientific discovery. I began my graduate journey at Mizzou, completing my M.S. in Computer Science here while designing robust frameworks for deploying LLMs on distributed and high-performance computing environments — work that naturally evolved into my doctoral research.</p>
