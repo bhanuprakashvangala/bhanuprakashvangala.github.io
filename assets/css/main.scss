@@ -39,7 +39,6 @@
 @import "vendor/font-awesome/brands";
 @import "vendor/magnific-popup/magnific-popup";
 @import "print";
-@import "custom";
 
 /* 1) Import Web Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@700&display=swap');
@@ -53,6 +52,7 @@ $color-accent:    #d69e2e !default;
 $color-bg:        #f7fafc !default;
 $color-text:      #2d3748 !default;
 
+@import "custom";
 /* 3) Global Base Styles */
 body {
   font-family: $font-sans;
