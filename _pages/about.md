@@ -296,33 +296,71 @@ Thanks for stopping by—feel free to explore my work on [GitHub](https://bhanup
 </ul>
 
 
+
 # Educations
 
-- *2023.08 – 2027.06 (expected)*, **Ph.D. in Computer Science**, University of Missouri, Columbia  
-  Co-advised by Dr. Jianlin Cheng and Dr. Tanu Malik  
-  - **Research focus:** Trustworthy and Efficient LLMs, Self-Correcting and Evolving Language Models, Evaluation in LLMs  
-  - Google PhD Fellowship nominee (NLP), Outstanding Student Award recipient  
-  - Supported by NASA, National Science Foundation, and Department of Defense grants for research in scientific LLMs and scalable AI infrastructure  
+<div class="edu-box">
+  <div class="edu-box-icon"><i class="fas fa-user-graduate"></i></div>
+  <div class="edu-box-content">
+    <h3><span class="badge bg-primary">Ph.D.</span> Computer Science, University of Missouri, Columbia</h3>
+    <p class="text-secondary">2023.08 – 2027.06 (expected)</p>
+    <ul>
+      <li>Co-advised by Dr. Jianlin Cheng and Dr. Tanu Malik</li>
+      <li><strong>Research focus:</strong> Trustworthy and Efficient LLMs, Self-Correcting and Evolving Language Models, Evaluation in LLMs</li>
+      <li>Google PhD Fellowship nominee (NLP), Outstanding Student Award recipient</li>
+      <li>Supported by NASA, National Science Foundation, and Department of Defense grants for research in scientific LLMs and scalable AI infrastructure</li>
+    </ul>
+  </div>
+</div>
 
-- *2023.08 – 2025.05*, **M.S. in Computer Science**, University of Missouri, Columbia  
-  **Thesis:** *Deploying LLM-as-a-Service in Kubernetes HPC Clusters*  
-  **Advisors:** Dr. Grant Scott and Dr. Jianlin Cheng  
-  - **GPA:** 4.0/4.0  
-  - Built Helm/Kubernetes-based LLM inference pipelines in HPC environments  
-  - TA for Full-Stack MERN Development (mentored 100+ students)  
+<div class="edu-box">
+  <div class="edu-box-icon"><i class="fas fa-user-graduate"></i></div>
+  <div class="edu-box-content">
+    <h3><span class="badge bg-secondary">M.S.</span> Computer Science, University of Missouri, Columbia</h3>
+    <p class="text-secondary">2023.08 – 2025.05</p>
+    <ul>
+      <li><strong>Thesis:</strong> <em>Deploying LLM-as-a-Service in Kubernetes HPC Clusters</em></li>
+      <li><strong>Advisors:</strong> Dr. Grant Scott and Dr. Jianlin Cheng</li>
+      <li><strong>GPA:</strong> 4.0/4.0</li>
+      <li>Built Helm/Kubernetes-based LLM inference pipelines in HPC environments</li>
+      <li>TA for Full-Stack MERN Development (mentored 100+ students)</li>
+    </ul>
+  </div>
+</div>
 
-- *2019.05 – 2023.05*, **B.Tech in Computer Science and Engineering (Data Analytics)**, Vellore Institute of Technology, India  
-  - Excellence in Research and Best Department Thesis  
-  - **Thesis:** *Multilingual Sentiment Analysis of Social Media Posts on KOO platform*  
-  - Core member of Synergy Team, Internshala Student Partner and Student Ambassador, Runner-up in VIT AI Tech-Thon  
-  - Internship/volunteer work: Adobe (AI Evangelist), Brandiverse (Data Analyst)  
+<div class="edu-box">
+  <div class="edu-box-icon"><i class="fas fa-user-graduate"></i></div>
+  <div class="edu-box-content">
+    <h3><span class="badge bg-accent">B.Tech</span> Computer Science and Engineering (Data Analytics), Vellore Institute of Technology, India</h3>
+    <p class="text-secondary">2019.05 – 2023.05</p>
+    <ul>
+      <li>Excellence in Research and Best Department Thesis</li>
+      <li><strong>Thesis:</strong> <em>Multilingual Sentiment Analysis of Social Media Posts on KOO platform</em></li>
+      <li>Core member of Synergy Team, Internshala Student Partner and Student Ambassador, Runner-up in VIT AI Tech-Thon</li>
+      <li>Internship/volunteer work: Adobe (AI Evangelist), Brandiverse (Data Analyst)</li>
+    </ul>
+  </div>
+</div>
 
-- *2017.06 – 2019.04*, **Intermediate (+2) – MPC**, Altitude College, Hyderabad, India  
-  - Engineering & analytical skill development through JEE prep  
-  - 1554 in MIT Entrance Test, secured 88% in JEE Mains, qualified for JEE Advanced  
+<div class="edu-box">
+  <div class="edu-box-icon"><i class="fas fa-book-reader"></i></div>
+  <div class="edu-box-content">
+    <h3>Intermediate (+2) – MPC, Altitude College, Hyderabad, India</h3>
+    <p class="text-secondary">2017.06 – 2019.04</p>
+    <ul>
+      <li>Engineering & analytical skill development through JEE prep</li>
+      <li>1554 in MIT Entrance Test, secured 88% in JEE Mains, qualified for JEE Advanced</li>
+    </ul>
+  </div>
+</div>
 
-- *2017.03*, **10th Standard – SSC**, City Central School, India  
-
+<div class="edu-box">
+  <div class="edu-box-icon"><i class="fas fa-school"></i></div>
+  <div class="edu-box-content">
+    <h3>10th Standard – SSC, City Central School, India</h3>
+    <p class="text-secondary">2017.03</p>
+  </div>
+</div>
 # Academic Service
 
 - Conference Volunteer Reviewer: ICML (25, 24, 23), ACL (25, 24, 23), ICCV (25), CVPR (25), ICLR (25), AAAI (25), ICASSP (25), NeurIPS (24), EMNLP (24), ECCV (25), IJCAI (25), NAACL (25)  

@@ -205,3 +205,40 @@ h1:before, .anchor:before {
   border: 1px solid #ccc;
   border-radius: 8px;
 }
+
+/* Education Cards */
+.edu-box {
+  display: flex;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-left: 5px solid $color-secondary;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.edu-box-icon {
+  flex: 0 0 40px;
+  max-width: 40px;
+  font-size: 1.8rem;
+  color: $color-accent;
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edu-box-content {
+  flex: 1;
+}
+
+.edu-box-content ul {
+  margin-top: 0.25rem;
+  margin-bottom: 0;
+}
+
+.bg-secondary { background-color: $color-secondary !important; color: #fff !important; }
+.bg-accent    { background-color: $color-accent !important; color: #fff !important; }
