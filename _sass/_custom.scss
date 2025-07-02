@@ -135,7 +135,6 @@
   font-size: 1rem;
 }
 
-
 /* Vertical tabs for Areas of Focus */
 .focus-tabs {
   display: flex;
@@ -167,9 +166,11 @@
   transition: background 0.2s ease, border-color 0.2s ease;
 }
 
-.focus-tabs .tab-labels li:hover {
-  background: #f0f5ff;
+/* Focus section blocks */
+.focus-section {
+  margin-bottom: 1rem;
 }
+
 
 .focus-tabs .tab-labels li.active {
   background: #e6f0ff;
@@ -183,8 +184,13 @@
 
 .focus-tabs .tab-pane {
   display: none;
+
+.focus-section h3 {
+  margin-top: 0;
+  color: $color-secondary;
 }
 
-.focus-tabs .tab-pane.active {
-  display: block;
+.focus-section p {
+  margin-bottom: 0.5rem;
+  text-align: justify;
 }
