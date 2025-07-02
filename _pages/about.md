@@ -24,35 +24,32 @@ redirect_from:
 <div class="about-box">
   <div class="about-box-icon"><i class="fas fa-user"></i></div>
   <div class="about-box-content">
-    <p>Hello! I'm <strong>Bhanu Prakash Vangala</strong>, currently pursuing a Ph.D. in Computer Science at <a href="https://engineering.missouri.edu/departments/eecs/eecs-research/" target="_blank">the University of Missouri</a>.</p>
-    <p>My research explores trustworthy AI, efficient language models and their application to scientific discovery. Before starting my doctorate, I earned an M.S. from Mizzou where I focused on deploying LLMs in distributed environments.</p>
-    <p>I enjoy mentoring students, writing about graduate life abroad and building tools that make AI systems more transparent and reliable. My work is supported by the Department of Defense, NSF and NASA.</p>
-    <ul class="about-highlights">
-      <li>
-        <details>
-          <summary><strong>Trustworthy and Interpretable AI</strong></summary>
-          Developing systems that can reason transparently and correct their own outputs.
-        </details>
-      </li>
-      <li>
-        <details>
-          <summary><strong>Efficient and Scalable Language Models</strong></summary>
-          Model compression, memory optimization and large-scale deployments.
-        </details>
-      </li>
-      <li>
-        <details>
-          <summary><strong>Factuality and Evaluation</strong></summary>
-          Benchmarks and techniques to assess consistency and accuracy of LLMs.
-        </details>
-      </li>
-      <li>
-        <details>
-          <summary><strong>AI for Scientific Discovery</strong></summary>
-          Applying LLMs in materials science, biomedical research and policy modeling.
-        </details>
-      </li>
-    </ul>
+    <p>Hello! I’m <strong>Bhanu Prakash Vangala</strong>, a Ph.D. researcher in Computer Science at <a href="https://engineering.missouri.edu/departments/eecs/eecs-research/" target="_blank">the University of Missouri</a>.</p>
+    <p>My research focuses on advancing trustworthy and reliable AI, with an emphasis on large language models (LLMs), scalable systems, and scientific discovery. I began my graduate journey at Mizzou, completing my M.S. in Computer Science here while designing robust frameworks for deploying LLMs on distributed and high-performance computing environments — work that naturally evolved into my doctoral research.</p>
+    <p>Supported by the Department of Defense, NSF, and NASA, my work addresses one of the most critical questions in AI today: How can we build systems that not only generate knowledge but also justify and verify their outputs?</p>
+    <p>I am passionate about mentoring students, writing about graduate life abroad, and building tools that make AI systems more interpretable, reproducible, and aligned with human values — a vision that guides every aspect of my research.</p>
+    <div class="focus-tabs">
+      <ul class="tab-labels">
+        <li class="active" data-tab="trustworthy">Trustworthy and Interpretable AI</li>
+        <li data-tab="scalable">Efficient and Scalable Language Models</li>
+        <li data-tab="factuality">Factuality and Evaluation</li>
+        <li data-tab="discovery">AI for Scientific Discovery</li>
+      </ul>
+      <div class="tab-content">
+        <div id="trustworthy" class="tab-pane active">
+          Building systems that reason transparently, detect inconsistencies, and self-correct their outputs.
+        </div>
+        <div id="scalable" class="tab-pane">
+          Advancing model compression, memory optimization, and large-scale deployments to make AI accessible and robust.
+        </div>
+        <div id="factuality" class="tab-pane">
+          Designing benchmarks and evaluation pipelines to rigorously assess LLM consistency, accuracy, and reliability.
+        </div>
+        <div id="discovery" class="tab-pane">
+          Applying LLMs to materials science, biomedical research, and policy modeling to empower critical scientific advancements.
+        </div>
+      </div>
+    </div>
     <p>Thanks for stopping by—feel free to explore my work on <a href="https://bhanuprakashvangala.github.io">GitHub</a> or connect with me on <a href="https://www.linkedin.com/in/vangalabhanuprakash/">LinkedIn</a>!</p>
   </div>
 </div>
