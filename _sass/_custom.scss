@@ -119,6 +119,11 @@
 .about-box-content {
   flex: 1;
   text-align: justify;
+  p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 0.6rem;
+  }
 }
 
 .edu-box .badge {
@@ -130,11 +135,55 @@
   font-size: 1rem;
 }
 
+/* Vertical tabs for Areas of Focus */
+.focus-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 1em;
+  background: $color-bg;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.focus-tabs .tab-labels {
+  list-style: none;
+  margin: 0;
+  padding: 1rem;
+  flex: 0 0 180px;
+  max-width: 180px;
+  border-right: 1px solid #e2e8f0;
+}
+
+.focus-tabs .tab-labels li {
+  cursor: pointer;
+  font-weight: 500;
+  padding: 0.5em;
+  margin-bottom: 0.25em;
+  background: #fff;
+  border-radius: 0.25rem;
+  border-left: 3px solid transparent;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
 
 /* Focus section blocks */
 .focus-section {
   margin-bottom: 1rem;
 }
+
+
+.focus-tabs .tab-labels li.active {
+  background: #e6f0ff;
+  border-color: $color-accent;
+}
+
+.focus-tabs .tab-content {
+  flex: 1;
+  padding: 1rem;
+}
+
+.focus-tabs .tab-pane {
+  display: none;
 
 .focus-section h3 {
   margin-top: 0;
