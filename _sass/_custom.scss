@@ -130,54 +130,18 @@
   font-size: 1rem;
 }
 
-/* Vertical tabs for Areas of Focus */
-.focus-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 1em;
+
+/* Focus section blocks */
+.focus-section {
+  margin-bottom: 1rem;
 }
 
-.focus-tabs .tab-labels {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  flex: 0 0 140px;
-  max-width: 140px;
-  margin-right: 0.5rem;
-  border-right: 1px solid #e2e8f0;
+.focus-section h3 {
+  margin-top: 0;
+  color: $color-secondary;
 }
 
-.focus-tabs .tab-labels li {
-  cursor: pointer;
-  padding: 0.35em 0.6em;
-  margin-bottom: 0.3em;
-  background: #fafafa;
-  border-radius: 0.25rem;
-  border-left: 3px solid transparent;
-  transition: background 0.2s ease, border-color 0.2s ease;
-}
-
-.focus-tabs .tab-labels li:hover {
-  background: #f0f5ff;
-}
-
-.focus-tabs .tab-labels li.active {
-  background: #e6f0ff;
-  border-color: $color-accent;
-  font-weight: bold;
-}
-
-.focus-tabs .tab-content {
-  flex: 1;
-  padding: 0.6em 1em;
-  background: #fff;
-  border-radius: 0.25rem;
-}
-
-.focus-tabs .tab-pane {
-  display: none;
-}
-
-.focus-tabs .tab-pane.active {
-  display: block;
+.focus-section p {
+  margin-bottom: 0.5rem;
+  text-align: justify;
 }
