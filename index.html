@@ -246,25 +246,48 @@
     <p>My research focuses on advancing trustworthy and reliable AI, with an emphasis on large language models (LLMs), scalable systems, and scientific discovery. I began my graduate journey at Mizzou, completing my M.S. in Computer Science here while designing robust frameworks for deploying LLMs on distributed and high-performance computing environments — work that naturally evolved into my doctoral research.</p>
     <p>Supported by the Department of Defense, NSF, and NASA, my work addresses one of the most critical questions in AI today: How can we build systems that not only generate knowledge but also justify and verify their outputs?</p>
     <p>I am passionate about mentoring students, writing about graduate life abroad, and building tools that make AI systems more interpretable, reproducible, and aligned with human values — a vision that guides every aspect of my research.</p>
-    <div class="focus-section">
-      <h3>Trustworthy and Interpretable AI</h3>
-      <p>Developing AI systems that do more than generate fluent outputs — they can reason transparently, explain their decision processes, detect inconsistencies, and actively self-correct. My work focuses on designing architectures and evaluation frameworks that empower models to justify their responses, ultimately fostering greater trust and adoption of AI in critical domains like science, healthcare, and law.</p>
-    </div>
-    <div class="focus-section">
-      <h3>Efficient and Scalable Language Models</h3>
-      <p>Pushing the boundaries of large-scale AI deployment through model compression, distributed training optimization, and advanced memory management. I design scalable architectures and Helm-based deployment pipelines that make state-of-the-art language models accessible to researchers and practitioners without requiring massive infrastructure investments, enabling equitable and practical use of cutting-edge AI technologies.</p>
-    </div>
-    <div class="focus-section">
-      <h3>Factuality and Evaluation</h3>
-      <p>Creating robust benchmarks and advanced evaluation pipelines to rigorously measure the factual consistency, reliability, and safety of language model outputs. By integrating contradiction detection graphs, retrieval-augmented checks, and semantic consistency metrics, I ensure that AI systems can be trusted in settings where accuracy is paramount and errors carry significant real-world consequences.</p>
-    </div>
-    <div class="focus-section">
-      <h3>AI for Scientific Discovery</h3>
-      <p>Leveraging the power of LLMs and multimodal AI to accelerate research in materials science, biomedical innovation, and policy modeling. My work enables domain scientists to harness AI as a collaborative partner — not only to analyze and generate data, but to form hypotheses, validate findings, and drive scientific breakthroughs with greater efficiency and confidence.</p>
+    <div class="focus-tabs">
+      <ul class="tab-labels">
+        <li class="active" data-tab="focus1">Trustworthy and Interpretable AI</li>
+        <li data-tab="focus2">Efficient and Scalable Language Models</li>
+        <li data-tab="focus3">Factuality and Evaluation</li>
+        <li data-tab="focus4">AI for Scientific Discovery</li>
+      </ul>
+      <div class="tab-content">
+        <div id="focus1" class="tab-pane active">
+          <p>Developing AI systems that do more than generate fluent outputs — they can reason transparently, explain their decision processes, detect inconsistencies, and actively self-correct. My work focuses on designing architectures and evaluation frameworks that empower models to justify their responses, ultimately fostering greater trust and adoption of AI in critical domains like science, healthcare, and law.</p>
+        </div>
+        <div id="focus2" class="tab-pane">
+          <p>Pushing the boundaries of large-scale AI deployment through model compression, distributed training optimization, and advanced memory management. I design scalable architectures and Helm-based deployment pipelines that make state-of-the-art language models accessible to researchers and practitioners without requiring massive infrastructure investments, enabling equitable and practical use of cutting-edge AI technologies.</p>
+        </div>
+        <div id="focus3" class="tab-pane">
+          <p>Creating robust benchmarks and advanced evaluation pipelines to rigorously measure the factual consistency, reliability, and safety of language model outputs. By integrating contradiction detection graphs, retrieval-augmented checks, and semantic consistency metrics, I ensure that AI systems can be trusted in settings where accuracy is paramount and errors carry significant real-world consequences.</p>
+        </div>
+        <div id="focus4" class="tab-pane">
+          <p>Leveraging the power of LLMs and multimodal AI to accelerate research in materials science, biomedical innovation, and policy modeling. My work enables domain scientists to harness AI as a collaborative partner — not only to analyze and generate data, but to form hypotheses, validate findings, and drive scientific breakthroughs with greater efficiency and confidence.</p>
+        </div>
+      </div>
     </div>
     <p>Thanks for stopping by—feel free to explore my work on <a href="https://bhanuprakashvangala.github.io">GitHub</a> or connect with me on <a href="https://www.linkedin.com/in/vangalabhanuprakash/">LinkedIn</a>!</p>
   </div>
 </div>
+
+<script>
+$(function(){
+  function activate(tabId){
+    $('.focus-tabs .tab-labels li').removeClass('active');
+    $('.focus-tabs .tab-labels li[data-tab="'+tabId+'"]').addClass('active');
+    $('.focus-tabs .tab-pane').removeClass('active');
+    $('#'+tabId).addClass('active');
+  }
+  $('.focus-tabs .tab-labels li').click(function(){
+    activate($(this).data('tab'));
+  });
+  if($('.focus-tabs .tab-labels li').length){
+    activate($('.focus-tabs .tab-labels li').first().data('tab'));
+  }
+});
+</script>
 
 <h1 id="-news">🔥 News</h1>
 
