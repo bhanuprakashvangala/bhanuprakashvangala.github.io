@@ -184,6 +184,11 @@
 
 .focus-tabs .tab-pane {
   display: none;
+}
+
+.focus-tabs .tab-pane.active {
+  display: block;
+}
 
 .focus-section h3 {
   margin-top: 0;
