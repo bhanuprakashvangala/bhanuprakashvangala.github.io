@@ -24,10 +24,10 @@ redirect_from:
 <div class="about-box">
   <div class="about-box-icon"><i class="fas fa-user"></i></div>
   <div class="about-box-content">
-    <p>Hello! I’m <strong>Bhanu Prakash Vangala</strong>, a Ph.D. researcher in Computer Science at <a href="https://engineering.missouri.edu/departments/eecs/eecs-research/" target="_blank">the University of Missouri</a>.</p>
-    <p>My research focuses on advancing trustworthy and reliable AI, with an emphasis on large language models (LLMs), scalable systems, and scientific discovery. I began my graduate journey at Mizzou, completing my M.S. in Computer Science here while designing robust frameworks for deploying LLMs on distributed and high-performance computing environments — work that naturally evolved into my doctoral research.</p>
-    <p>Supported by the Department of Defense, NSF, and NASA, my work addresses one of the most critical questions in AI today: How can we build systems that not only generate knowledge but also justify and verify their outputs?</p>
-    <p>I am passionate about mentoring students, writing about graduate life abroad, and building tools that make AI systems more interpretable, reproducible, and aligned with human values — a vision that guides every aspect of my research.</p>
+    <p>Hello! I’m <strong>Bhanu Prakash Vangala</strong>, a Ph.D. student at <a href="https://engineering.missouri.edu/departments/eecs/eecs-research/" target="_blank">the University of Missouri</a>.</p>
+    <p>My work centers on trustworthy AI and large language models. I study how to scale these systems and apply them in scientific discovery.</p>
+    <p>During my M.S. at Mizzou I created frameworks for running language models on distributed high-performance systems. That experience now shapes my doctoral research.</p>
+    <p>Supported by the Department of Defense, NSF, and NASA, I aim to build models that justify and verify their outputs. I also enjoy mentoring students and sharing insights about graduate life abroad.</p>
     <div class="focus-tabs">
       <ul class="tab-labels">
         <li class="active" data-tab="trustworthy">Trustworthy and Interpretable AI</li>
