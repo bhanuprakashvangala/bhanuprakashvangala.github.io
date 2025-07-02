@@ -273,18 +273,30 @@
 </div>
 
 <script>
-$(function(){
+document.addEventListener('DOMContentLoaded', function(){
   function activate(tabId){
-    $('.focus-tabs .tab-labels li').removeClass('active');
-    $('.focus-tabs .tab-labels li[data-tab="'+tabId+'"]').addClass('active');
-    $('.focus-tabs .tab-pane').removeClass('active');
-    $('#'+tabId).addClass('active');
+    document.querySelectorAll('.focus-tabs .tab-labels li').forEach(function(el){
+      el.classList.remove('active');
+    });
+    document.querySelectorAll('.focus-tabs .tab-labels li[data-tab="'+tabId+'"]').forEach(function(el){
+      el.classList.add('active');
+    });
+    document.querySelectorAll('.focus-tabs .tab-pane').forEach(function(el){
+      el.classList.remove('active');
+    });
+    var pane = document.getElementById(tabId);
+    if(pane){
+      pane.classList.add('active');
+    }
   }
-  $('.focus-tabs .tab-labels li').click(function(){
-    activate($(this).data('tab'));
+  document.querySelectorAll('.focus-tabs .tab-labels li').forEach(function(el){
+    el.addEventListener('click', function(){
+      activate(el.getAttribute('data-tab'));
+    });
   });
-  if($('.focus-tabs .tab-labels li').length){
-    activate($('.focus-tabs .tab-labels li').first().data('tab'));
+  var first = document.querySelector('.focus-tabs .tab-labels li');
+  if(first){
+    activate(first.getAttribute('data-tab'));
   }
 });
 </script>
