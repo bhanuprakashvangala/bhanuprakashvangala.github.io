@@ -297,34 +297,32 @@ redirect_from:
 <span class='anchor' id='honors-and-awards'></span>
 # Honors and Awards
 <ul class="honors-section">
-  <li>
-    <strong>2025.05:</strong> <strong>Outstanding Master’s Student Award</strong>, College of Engineering, [University of Missouri](https://engineering.missouri.edu/departments/eecs/eecs-research/)  
-    <div class="honor-images">
-      <img src="images/image%20with%20dean.jpg" alt="Outstanding Master’s Student Award with Dean">
-      <img src="images/Outstanding%20Student.jpeg" alt="Outstanding Student Certificate">
+  <li class="honor-item">
+    <div class="honor-date">2025.05</div>
+    <div class="honor-content">
+      <strong>Outstanding Master’s Student Award</strong>, College of Engineering, [University of Missouri](https://engineering.missouri.edu/departments/eecs/eecs-research/)
+      <div class="honor-images">
+        <img src="images/image%20with%20dean.jpg" alt="Outstanding Master’s Student Award with Dean">
+        <img src="images/Outstanding%20Student.jpeg" alt="Outstanding Student Certificate">
+      </div>
     </div>
   </li>
-  <li>
-    <strong>2025.03:</strong> <strong>Runner-Up – MUIDSI Hackathon</strong> for <em>VisionAI: AI-Powered Assistance for the Visually Impaired</em>, awarded $1,000  
-    <div class="honor-images">
-      <img src="images/Hackathon%20Winner.jpeg" alt="MUIDSI Hackathon Award">
-      <img src="images/Hackathon%20Winner%202.jpg" alt="MUIDSI Hackathon Award">
+  <li class="honor-item">
+    <div class="honor-date">2025.03</div>
+    <div class="honor-content">
+      <strong>Runner-Up – MUIDSI Hackathon</strong> for <em>VisionAI: AI-Powered Assistance for the Visually Impaired</em>, awarded $1,000
+      <div class="honor-images">
+        <img src="images/Hackathon%20Winner.jpeg" alt="MUIDSI Hackathon Award">
+        <img src="images/Hackathon%20Winner%202.jpg" alt="MUIDSI Hackathon Award">
+      </div>
     </div>
   </li>
-  <li><strong>2025.04:</strong> Selected for <strong>Google PhD Fellowship Nomination</strong>, one of three [University of Missouri](https://engineering.missouri.edu/departments/eecs/eecs-research/) nominees</li>
-  <li><strong>2023:</strong> <strong>Dean’s Research Excellence Award</strong>, [Vellore Institute of Technology](https://vit.ac.in/schools/school-of-computer-science-and-engineering-for-ug-courses) (VIT)</li>
-  <li><strong>2023:</strong> <strong>Best Department Thesis Award</strong>, VIT for B.Tech thesis on multilingual sentiment analysis</li>
-  <li><strong>2022:</strong> <strong>Runner-Up</strong>, VIT AI Tech-Thon</li>
-  <li><strong>2020:</strong> <strong>Certificate of Outstanding Achievement</strong>, Data Analyst Intern at Brandiverse</li>
-  <li><strong>2019–2023:</strong> Multiple <strong>Academic Merit Scholarships</strong> and recognitions as <strong>Internshala Student Partner (ISP)</strong> and <strong>Synergy Team Lead</strong>, VIT</li>
-  <li>
-    <p><em>"Vertical tabbed interface"</em>, also known as <em>"vertical tabs"</em>.</p>
-    <p><strong>Tabs component:</strong> divides content into panels navigated by tab labels.</p>
-    <p><strong>Vertical tabs:</strong> labels are arranged on the side rather than across the top.</p>
-    <p><strong>Active tab content area:</strong> displays the details of the selected tab.</p>
-    <p><strong>Alternative names:</strong> Side navigation tabs, Sidebar tabbed content, Tab navigation with vertical alignment.</p>
-    <p><strong>Summary:</strong> Each tab represents a job experience; selecting it shows the corresponding information.</p>
-  </li>
+  <li class="honor-item"><div class="honor-date">2025.04</div><div class="honor-content">Selected for <strong>Google PhD Fellowship Nomination</strong>, one of three [University of Missouri](https://engineering.missouri.edu/departments/eecs/eecs-research/) nominees</div></li>
+  <li class="honor-item"><div class="honor-date">2023</div><div class="honor-content"><strong>Dean’s Research Excellence Award</strong>, [Vellore Institute of Technology](https://vit.ac.in/schools/school-of-computer-science-and-engineering-for-ug-courses) (VIT)</div></li>
+  <li class="honor-item"><div class="honor-date">2023</div><div class="honor-content"><strong>Best Department Thesis Award</strong>, VIT for B.Tech thesis on multilingual sentiment analysis</div></li>
+  <li class="honor-item"><div class="honor-date">2022</div><div class="honor-content"><strong>Runner-Up</strong>, VIT AI Tech-Thon</div></li>
+  <li class="honor-item"><div class="honor-date">2020</div><div class="honor-content"><strong>Certificate of Outstanding Achievement</strong>, Data Analyst Intern at Brandiverse</div></li>
+  <li class="honor-item"><div class="honor-date">2019–2023</div><div class="honor-content">Multiple <strong>Academic Merit Scholarships</strong> and recognitions as <strong>Internshala Student Partner (ISP)</strong> and <strong>Synergy Team Lead</strong>, VIT</div></li>
 </ul>
 
 
