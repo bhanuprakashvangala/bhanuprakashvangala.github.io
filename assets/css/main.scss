@@ -182,25 +182,49 @@ h1:before, .anchor:before {
 .bg-primary      { background-color: $color-primary !important; color: #fff !important; }
 
 /* Honors and Awards Section */
+
+/* Honors and Awards Section */
 .honors-section {
   font-size: 0.95rem;
   line-height: 1.5;
-  list-style-position: outside;
-  margin-left: 0; padding-left: 1.2em;
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
 }
 
-.honors-section li {
+.honor-item {
+  display: flex;
+  align-items: flex-start;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-left: 5px solid $color-accent;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  padding: 1rem 1.25rem;
   margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.honor-date {
+  flex: 0 0 80px;
+  font-weight: 600;
+  color: $color-secondary;
+  margin-right: 1rem;
+}
+
+.honor-content {
+  flex: 1 1 auto;
 }
 
 .honor-images {
   display: flex;
   gap: 1rem;
   margin-top: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .honor-images img {
-  width: 220px;
+  width: 200px;
   height: auto;
   border: 1px solid #ccc;
   border-radius: 8px;
