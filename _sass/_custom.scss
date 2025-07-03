@@ -291,3 +291,17 @@
   margin-bottom: 0.5rem;
   color: $color-secondary;
 }
+
+/* Side heading styling for About page focus areas */
+.side-heading {
+  font-weight: bold;
+}
+
+/* Wrapper styling for each focus area section */
+.focus-area-section {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+}

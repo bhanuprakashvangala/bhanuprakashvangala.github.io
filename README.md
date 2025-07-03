@@ -88,9 +88,7 @@ To use the chat widget on the website, start the lightweight API server:
 python llm_chat/server.py
 ```
 
-This server exposes a `/chat` endpoint that the site widget calls to answer questions using the content of this repository.
-
-   The script uses the `distilgpt2` model by default. Set the `LLM_MODEL` environment variable if you want to use a different Hugging Face model path.
+This server exposes an `/api/chat` endpoint that the site widget calls to answer questions using OpenAI's API and Bhanu's profile context. Set the `OPENAI_API_KEY` environment variable with your API key before running.
 
 # Acknowledges
 
