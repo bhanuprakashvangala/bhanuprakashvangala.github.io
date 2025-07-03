@@ -88,14 +88,14 @@ To use the chat widget on the website, start the lightweight API server:
 python llm_chat/server.py
 ```
 
-Alternatively you can run the Node.js version (uses the Mistral model via the Hugging Face Inference API):
+Alternatively you can run the Node.js version:
 
 ```bash
 npm install --prefix llm_chat
 node llm_chat/server.js
 ```
 
-This server exposes an `/api/chat` endpoint that the site widget calls to answer questions using the Mistral-7B-Instruct-v0.2 model and Bhanu's profile context. Set the `HF_TOKEN` environment variable with your Hugging Face API token before running.
+This server exposes an `/api/chat` endpoint that the site widget calls to answer questions using OpenAI's API and Bhanu's profile context. Set the `OPENAI_API_KEY` environment variable with your API key before running.
 
 # Acknowledges
 

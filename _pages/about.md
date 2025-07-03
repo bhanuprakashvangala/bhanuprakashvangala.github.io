@@ -16,7 +16,8 @@ redirect_from:
 {% assign url = gsDataBaseUrl | append: "google-scholar-stats/gs_data_shieldsio.json" %}
 
 <span class='anchor' id='about-me'></span>
-<div class="page-section" id="section-about-me">
+
+
 
 # About Me
 
@@ -60,12 +61,11 @@ redirect_from:
   </div>
 </div>
 
-</div>
+
 
 [//]: <> <span style="color:blue"> </span>
 
 <span class='anchor' id='news'></span>
-<div class="page-section" id="section-news">
 # 🔥 News
 
 - *2025.05*: 🎓 Earned my M.S. in Computer Science (GPA: 4.0/4.0) from the [University of Missouri](https://engineering.missouri.edu/departments/eecs/eecs-research/), Columbia.  
@@ -85,13 +85,10 @@ redirect_from:
 - *2023.04*: 🏅 Honored with the **Excellence in Research** Award at VIT for multilingual NLP and social media analytics contributions.  
 - *2023.03*: Volunteered as an **AI Community Evangelist** at Adobe, contributing to community education and developer engagement.  
 - *2022.11*: Served as an **Internshala Student Partner (ISP)**, leading brand campaigns and peer mentoring on campus.  
-- *2020*: Joined the **Brandiverse** team as a creative contributor, working on outreach and media strategy.
+- *2020*: Joined the **Brandiverse** team as a creative contributor, working on outreach and media strategy.  
 - *2021*: Collaborated with the **Synergy Team** at VIT, supporting student experience initiatives and university development programs.
 
-</div>
-
 <span class='anchor' id='publications'></span>
-<div class="page-section" id="section-publications">
 # Publications
 <div class='paper-box'>
   <div class='paper-box-image'>
@@ -296,10 +293,7 @@ redirect_from:
   </li>
 </ul>
 
-</div>
-
 <span class='anchor' id='honors-and-awards'></span>
-<div class="page-section" id="section-honors-and-awards">
 # Honors and Awards
 <ul class="honors-section">
   <li>
@@ -333,10 +327,8 @@ redirect_from:
 </ul>
 
 
-</div>
 
 <span class='anchor' id='educations'></span>
-<div class="page-section" id="section-educations">
 # Educations
 
 <div class="edu-box">
@@ -401,10 +393,7 @@ redirect_from:
     <p class="text-secondary">2017.03</p>
   </div>
 </div>
-</div>
-
 <span class='anchor' id='academic-service'></span>
-<div class="page-section" id="section-academic-service">
 # Academic Service
 
 - Conference Volunteer Reviewer: ICML (25, 24, 23), ACL (25, 24, 23), ICCV (25), CVPR (25), ICLR (25), AAAI (25), ICASSP (25), NeurIPS (24), EMNLP (24), ECCV (25), IJCAI (25), NAACL (25)  
@@ -412,12 +401,9 @@ redirect_from:
 
 # Teaching Experience
 
-- Fall 2025, Fall 2024, Spring 2024, Fall 2023 – TA for Web Development
-
-</div>
+- Fall 2025, Fall 2024, Spring 2024, Fall 2023 – TA for Web Development  
 
 <span class='anchor' id='internships-and-research-experience'></span>
-<div class="page-section" id="section-internships-and-research-experience">
 # Internships and Research Experience
 
 - *May 2022 – Jan 2023*, **Adobe Research**, NLP Research Intern  
@@ -440,10 +426,8 @@ redirect_from:
 - *May 2020 – Dec 2020*, **Internshala**, Internshala Student Partner (ISP)  
   Promoted internships, conducted career-building sessions, and facilitated student-industry interaction on campus.  
 
-- *2019 – 2020*, **VIT University – Synergy Team & Club Organizer**
-  Organized AI/NLP workshops and tech events under various student bodies.
-
-</div>
+- *2019 – 2020*, **VIT University – Synergy Team & Club Organizer**  
+  Organized AI/NLP workshops and tech events under various student bodies.  
 
 <!-- Statcounter code for personal website -->
 <script type="text/javascript">
