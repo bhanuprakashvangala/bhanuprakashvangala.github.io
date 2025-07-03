@@ -88,6 +88,13 @@ To use the chat widget on the website, start the lightweight API server:
 python llm_chat/server.py
 ```
 
+Alternatively you can run the Node.js version:
+
+```bash
+npm install --prefix llm_chat
+node llm_chat/server.js
+```
+
 This server exposes an `/api/chat` endpoint that the site widget calls to answer questions using OpenAI's API and Bhanu's profile context. Set the `OPENAI_API_KEY` environment variable with your API key before running.
 
 # Acknowledges

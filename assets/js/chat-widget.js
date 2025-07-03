@@ -12,12 +12,12 @@
     if(!toggle) return;
 
     toggle.addEventListener('click', function(){
-      box.style.display = 'flex';
+      box.classList.add('visible');
     });
 
     if(close){
       close.addEventListener('click', function(){
-        box.style.display = 'none';
+        box.classList.remove('visible');
       });
     }
 
@@ -47,9 +47,9 @@
       fetch('/api/chat', {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({query: text})
+        body: JSON.stringify({message: text})
       }).then(r => r.json())
-        .then(d => appendMsg('Bot', d.answer))
+        .then(d => appendMsg('Bot', d.reply))
         .catch(() => appendMsg('Error', 'Something went wrong.'));
     }
 
