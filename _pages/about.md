@@ -27,11 +27,6 @@ redirect_from:
     <p>My research focuses on advancing trustworthy and reliable AI, with an emphasis on large language models (LLMs), scalable systems, and scientific discovery. I began my graduate journey at Mizzou, completing my M.S. in Computer Science here while designing robust frameworks for deploying LLMs on distributed and high-performance computing environments — work that naturally evolved into my doctoral research.</p>
     <p>Supported by the Department of Defense, NSF, and NASA, my work addresses one of the most critical questions in AI today: How can we build systems that not only generate knowledge but also justify and verify their outputs?</p>
     <p>I am passionate about mentoring students, writing about graduate life abroad, and building tools that make AI systems more interpretable, reproducible, and aligned with human values — a vision that guides every aspect of my research.</p>
-    <ul class="about-highlights">
-      <li>PhD researcher at the University of Missouri</li>
-      <li>Focus: Trustworthy AI, Scalable LLMs, Factuality, Scientific Discovery</li>
-      <li>Passionate mentor and reproducibility advocate</li>
-    </ul>
     <h3 class="focus-heading">Areas of Focus</h3>
     <div class="focus-tabs">
       <ul class="tab-labels">
