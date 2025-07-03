@@ -272,6 +272,12 @@ html {
   text-align: justify;
 }
 
+/* Heading above the areas of focus tabs */
+.focus-heading {
+  margin-top: 1rem;
+  color: $color-secondary;
+}
+
 /* Grid boxes for research focus */
 .research-focuses {
   display: grid;

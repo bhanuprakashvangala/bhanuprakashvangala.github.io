@@ -69,4 +69,10 @@ $btn.on('click', function() {
   $(this).toggleClass('close');
 });
 
+// hide dropdown after selecting a link
+$hlinks.on('click', 'a', function() {
+  $hlinks.addClass('hidden');
+  $btn.removeClass('close');
+});
+
 updateNav();
