@@ -22,9 +22,9 @@ app = Flask(__name__)
 @app.route('/api/chat', methods=['POST'])
 def chat():
     data = request.get_json() or {}
-    query = data.get('query', '')
+    query = data.get('message') or data.get('query', '')
     if not query:
-        return jsonify({'answer': ''})
+        return jsonify({'reply': ''})
 
     messages = [
         {"role": "system", "content": PROFILE_PROMPT},
@@ -39,9 +39,9 @@ def chat():
         )
         answer = completion.choices[0].message.content
     except Exception:
-        answer = "Error: Something went wrong."
+        answer = "Sorry, something went wrong. Please try again later."
 
-    return jsonify({'answer': answer})
+    return jsonify({'reply': answer})
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000)
