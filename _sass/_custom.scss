@@ -251,6 +251,14 @@
   display: block;
 }
 
+/* Styling for individual focus areas */
+.focus-area {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
 .focus-section h3 {
   margin-top: 0;
   color: $color-secondary;

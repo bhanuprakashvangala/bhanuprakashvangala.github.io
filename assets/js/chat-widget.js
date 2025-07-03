@@ -12,12 +12,12 @@
     if(!toggle) return;
 
     toggle.addEventListener('click', function(){
-      box.classList.add('visible');
+      box.style.display = 'flex';
     });
 
     if(close){
       close.addEventListener('click', function(){
-        box.classList.remove('visible');
+        box.style.display = 'none';
       });
     }
 
