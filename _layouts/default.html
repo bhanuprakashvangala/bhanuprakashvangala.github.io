@@ -30,10 +30,19 @@ layout: compress
     {% include scripts.html %}
 
       <div id="chat-widget">
-        <button id="chat-toggle"><i class="fas fa-comments" aria-hidden="true"></i><span class="chat-label">Chat</span></button>
+        <button id="chat-toggle"><i class="fas fa-comments" aria-hidden="true"></i><span class="chat-label">Chat with me!</span></button>
         <div id="chat-box">
+          <div class="chat-header"><span class="chat-title">T-001</span><button id="chat-close" aria-label="Close">&times;</button></div>
+          <div id="chat-suggestions">
+            <button class="chat-suggestion">What's your biggest accomplishment?</button>
+            <button class="chat-suggestion">Key projects to see?</button>
+            <button class="chat-suggestion">Why should we hire you?</button>
+          </div>
           <div id="chat-log"></div>
-          <input id="chat-input" type="text" placeholder="Ask me anything..." />
+          <div class="chat-input-row">
+            <input id="chat-input" type="text" placeholder="Ask me anything..." />
+            <button id="chat-send">Send</button>
+          </div>
         </div>
       </div>
 
