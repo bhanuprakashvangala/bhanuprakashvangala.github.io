@@ -47,15 +47,15 @@
 $font-sans:     'Inter', sans-serif !default;
 $font-serif:    'Merriweather', serif !default;
 
-$color-primary:   #d4af37 !default;  // gold tone for headings and nav
-$color-secondary: #d4af37 !default;  // gold tone for secondary accents
+$color-primary:   #000000 !default;  // black for headings and nav
+$color-secondary: #d4af37 !default;  // secondary accent
 $color-accent:    #ffd700 !default;  // bright gold highlight
 $color-bg:        #ffffff !default;
-$color-text:      #d4af37 !default;  // body text in gold
+$color-text:      #000000 !default;  // body text in black
 
 $primary-color: $color-primary;      // update theme variables
 $info-color:    $color-primary;
-$link-color:    $color-secondary;
+$link-color:    #0066cc;
 
 
 @import "custom";
@@ -81,7 +81,7 @@ h3 { font-size: 1.75rem; }
 
 /* 4) Anchors & Link Styles */
 a {
-  color: $color-secondary;
+  color: $link-color;
   text-decoration: none;
   border-bottom: 2px solid transparent;
   transition: border-color 0.2s;
