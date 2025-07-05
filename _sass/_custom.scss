@@ -3,10 +3,27 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Global emphasis and links */
+body {
+  strong {
+    color: $color-secondary;
+  }
+  a {
+    color: $color-secondary;
+    &:hover { color: $color-accent; }
+  }
+}
+
 .about-me {
   text-align: justify;
   margin: 0 1em 1em 1em;
   line-height: 1.5;
+  strong {
+    color: $color-secondary;
+  }
+  a {
+    color: $color-accent;
+  }
 }
 
 .about-me ul {
@@ -313,4 +330,9 @@ html {
   border-radius: 8px;
   margin-bottom: 20px;
   border: 1px solid #ddd;
+}
+
+/* Footer coloring */
+.page__footer p {
+  color: $color-secondary;
 }
