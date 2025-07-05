@@ -46,11 +46,11 @@
 /* 2) Color & Typography Variables */
 $font-sans:     'Inter', sans-serif !default;
 $font-serif:    'Merriweather', serif !default;
-$color-primary:   #1a202c !default;
-$color-secondary: #2b6cb0 !default;
-$color-accent:    #d69e2e !default;
+$color-primary:   #1e3a8a !default;  // deep blue for headings
+$color-secondary: #c53030 !default;  // warm red for highlights
+$color-accent:    #ff8600 !default;  // orange accent
 $color-bg:        #ffffff !default;
-$color-text:      #2d3748 !default;
+$color-text:      #333333 !default;  // slightly darker body text
 
 @import "custom";
 /* 3) Global Base Styles */
