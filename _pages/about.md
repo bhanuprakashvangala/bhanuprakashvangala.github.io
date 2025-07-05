@@ -23,7 +23,7 @@ redirect_from:
 
 <div class="about-box">
   <div class="about-box-content">
-    <p>Hello!</p>
+    <p id="hello-text">Hello!</p>
     <p>I’m <strong>Bhanu Prakash Vangala</strong>, a <strong>Ph.D. researcher in Computer Science</strong> at <a href="https://engineering.missouri.edu/departments/eecs/eecs-research/" target="_blank">the University of Missouri</a>.</p>
     <p>My research focuses on building AI that is <strong>trustworthy</strong>, <strong>efficient</strong>, and <strong>reliable</strong>, with an emphasis on <strong>large language models (LLMs)</strong>, <strong>high-performance computing (HPC)</strong>, and <strong>scalable, reproducible systems</strong>. I began my graduate journey at Mizzou, completing my M.S. in Computer Science under <a href="https://scottgs.mufaculty.umsystem.edu/" target="_blank">Dr. Grant Scott</a> and <a href="https://en.wikipedia.org/wiki/Jianlin_Cheng" target="_blank">Dr. Jianlin Cheng</a>. During my master’s, I worked on designing robust frameworks for deploying LLMs on distributed and HPC environments and studied hallucinations in AI for materials science — work that naturally evolved into my Ph.D. research and working under <a href="https://engineering.missouri.edu/faculty/tanu-malik/" target="_blank">Dr. Tanu Malik</a> at Radiant Lab.</p>
     <p>My work is supported by grants from the <strong>Department of Defense</strong>, <strong>NSF</strong>, and <strong>NASA</strong>. It addresses some of the most critical questions and faults in AI today: How can we build systems that not only generate knowledge but also justify/correct and verify their outputs? Can they be scalable and reproducible? Will LLMs eventually become true personal agents that understand and work alongside us?</p>
