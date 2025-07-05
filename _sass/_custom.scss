@@ -7,6 +7,12 @@ html {
   text-align: justify;
   margin: 0 1em 1em 1em;
   line-height: 1.5;
+  strong {
+    color: $color-secondary;
+  }
+  a {
+    color: $color-accent;
+  }
 }
 
 .about-me ul {
