@@ -6,10 +6,10 @@ html {
 /* Global emphasis and links */
 body {
   strong {
-    color: $color-secondary;
+    color: inherit;
   }
   a {
-    color: $color-secondary;
+    color: $link-color;
     &:hover { color: $color-accent; }
   }
 }
@@ -19,10 +19,10 @@ body {
   margin: 0 1em 1em 1em;
   line-height: 1.5;
   strong {
-    color: $color-secondary;
+    color: inherit;
   }
   a {
-    color: $color-accent;
+    color: $link-color;
   }
 }
 
