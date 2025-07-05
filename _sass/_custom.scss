@@ -6,7 +6,7 @@ html {
 /* Global emphasis and links */
 body {
   strong {
-    color: inherit;
+    color: $color-accent;
   }
   a {
     color: $link-color;
@@ -19,7 +19,7 @@ body {
   margin: 0 1em 1em 1em;
   line-height: 1.5;
   strong {
-    color: inherit;
+    color: $color-accent;
   }
   a {
     color: $link-color;
