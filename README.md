@@ -65,6 +65,16 @@ Some examples:
 1. If you change the source code of the website, the livereload server will automatically refresh.
 1. When you finish the modification of your homepage, `commit` your changings and `push` to your remote REPO using `git` command.
 
+## Answer Questions from the Site
+
+A lightweight script located in `qa_tool/qa.py` allows you to ask questions about the site content. The script loads all files in `_pages` and uses a small question-answering model to respond.
+
+```bash
+pip install transformers
+python qa_tool/qa.py "Who is Bhanu?"
+```
+
+The answer is generated from the text contained in the website.
 # Acknowledges
 
 - AcadHomepage incorporates Font Awesome, which is distributed under the terms of the SIL OFL 1.1 and MIT License.
