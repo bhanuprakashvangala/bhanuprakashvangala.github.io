@@ -75,7 +75,10 @@ If you want to experiment with the model locally you can use the `@huggingface/t
 
 ```javascript
 import { pipeline } from '@huggingface/transformers';
+
 const answerer = await pipeline('question-answering', 'Xenova/flan-t5-base');
+const answerer = await pipeline('question-answering', 'Xenova/bert-base-uncased-finetuned-squad');
+
 const output = await answerer('Who was Jim Henson?', 'Jim Henson was a nice puppet.');
 ```
 # Acknowledges
