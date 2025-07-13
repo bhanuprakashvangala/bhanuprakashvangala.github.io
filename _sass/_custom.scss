@@ -31,3 +31,84 @@ details.abstract summary {
   border-radius: 4px;
   vertical-align: super;
 }
+
+/* Chat widget styles */
+#chat-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #00369f;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+#chat-window {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 300px;
+  height: 400px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  display: none;
+  flex-direction: column;
+  z-index: 1000;
+}
+#chat-header {
+  background: #00369f;
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#chat-messages {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+}
+#chat-form {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+}
+#chat-form input {
+  flex: 1;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+#chat-form button {
+  margin-left: 5px;
+  padding: 5px 10px;
+  background: #00369f;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+}
+.msg {
+  margin-bottom: 8px;
+}
+.msg.user {
+  text-align: right;
+  color: #00369f;
+}
+.msg.assistant {
+  text-align: left;
+}
+.suggestions {
+  margin-bottom: 10px;
+}
+.suggest {
+  background: #f3f3f3;
+  padding: 4px 6px;
+  margin: 2px 0;
+  border-radius: 4px;
+  cursor: pointer;
+}
