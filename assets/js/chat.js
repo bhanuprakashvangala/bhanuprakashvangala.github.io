@@ -1,7 +1,8 @@
 let qa;
 let qaContext = '';
-// Switched to a slightly larger but still lightweight QA model
-const modelId = 'Xenova/bert-base-uncased-finetuned-squad';
+
+// Switch to a more capable but browser‑friendly model
+const modelId = 'Xenova/flan-t5-base';
 
 async function loadModel() {
   try {
@@ -88,7 +89,9 @@ async function sendMessage(text) {
     // Log the type and value of the incoming message to help debug
     console.log('sendMessage input:', typeof text, text);
     // Ensure the question is a string before passing to the model
-    const query = String(text);
+
+    const query = typeof text === 'string' ? text : String(text);
+
     const result = await qa(query, { context: qaContext });
     document.querySelector('#chat-messages').lastChild.textContent = result.answer;
   } catch (err) {
