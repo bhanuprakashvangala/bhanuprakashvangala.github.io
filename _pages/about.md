@@ -434,7 +434,7 @@ redirect_from:
 <div class="edu-box">
   <div class="edu-box-icon"><i class="fas fa-user-graduate"></i></div>
   <div class="edu-box-content">
-    <h4><span class="badge bg-primary">Ph.D.</span> <small>Computer Science</small>, <a href="https://engineering.missouri.edu/departments/eecs/eecs-research/" target="_blank">University of Missouri</a>, Columbia</h4>
+    <h4><span class="degree-badge">Ph.D.</span> <small>Computer Science</small>, <a href="https://engineering.missouri.edu/departments/eecs/eecs-research/" target="_blank">University of Missouri</a>, Columbia</h4>
     <p class="text-secondary">2023.08 – 2027.06 (expected)</p>
     <ul>
       <li>Co-advised by Dr. Jianlin Cheng and Dr. Tanu Malik</li>
@@ -448,7 +448,7 @@ redirect_from:
 <div class="edu-box">
   <div class="edu-box-icon"><i class="fas fa-user-graduate"></i></div>
   <div class="edu-box-content">
-    <h4><span class="badge bg-primary">M.S.</span> <small>Computer Science</small>, <a href="https://engineering.missouri.edu/departments/eecs/eecs-research/" target="_blank">University of Missouri</a>, Columbia</h4>
+    <h4><span class="degree-badge">M.S.</span> <small>Computer Science</small>, <a href="https://engineering.missouri.edu/departments/eecs/eecs-research/" target="_blank">University of Missouri</a>, Columbia</h4>
     <p class="text-secondary">2023.08 – 2025.05</p>
     <ul>
       <li><strong>Thesis:</strong> <em>Deploying LLM-as-a-Service in Kubernetes HPC Clusters</em></li>
@@ -463,7 +463,7 @@ redirect_from:
 <div class="edu-box">
   <div class="edu-box-icon"><i class="fas fa-user-graduate"></i></div>
   <div class="edu-box-content">
-    <h4><span class="badge bg-primary">Bachelor of Technology</span> <small>Computer Science and Engineering with Specialization in Data Analytics</small>, <a href="https://vit.ac.in/schools/school-of-computer-science-and-engineering-for-ug-courses" target="_blank">Vellore Institute of Technology, India</a></h4>
+    <h4><span class="degree-badge">Bachelor of Technology</span> <small>Computer Science and Engineering with Specialization in Data Analytics</small>, <a href="https://vit.ac.in/schools/school-of-computer-science-and-engineering-for-ug-courses" target="_blank">Vellore Institute of Technology, India</a></h4>
     <p class="text-secondary">2019.05 – 2023.05</p>
     <ul>
       <li>Excellence in Research and Best Department Thesis</li>
