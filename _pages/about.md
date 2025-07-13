@@ -97,6 +97,14 @@ redirect_from:
         padding: 20px;
         margin-bottom: 1rem;
       }
+      .edu-box {
+        display: flex;
+        align-items: flex-start;
+      }
+      .edu-box-icon {
+        margin-right: 1rem;
+        font-size: 1.5rem;
+      }
       .paper-box-image .badge {
         background: #d4af37;
         color: #000;
@@ -189,7 +197,7 @@ redirect_from:
       <li>Applied to biomedical and scientific text generation tasks.</li>
     </ul>
     <div style="display: inline">
-      <a href="https://drive.google.com/file/d/1oMbe8br7-wm7NLkrOFbFGtT2vUlxdCTn/view?usp=drive_link"><strong>[paper]</strong></a>
+      <a class="pdf-link" href="https://drive.google.com/file/d/1oMbe8br7-wm7NLkrOFbFGtT2vUlxdCTn/view?usp=drive_link" title="PDF"><i class="fas fa-file-pdf"></i></a>
     </div>
     <details class='abstract'>
       <summary>Show Abstract</summary>
@@ -212,7 +220,7 @@ redirect_from:
       <li>Transformer-based architecture for multi-dimensional consistency checking of LLM outputs.</li>
     </ul>
     <div style="display: inline">
-      <a href="https://drive.google.com/file/d/1o6tqCJdhiCTAR4AEM59fV4t2VSdvS4yt/view?usp=drive_link"><strong>[paper]</strong></a>
+      <a class="pdf-link" href="https://drive.google.com/file/d/1o6tqCJdhiCTAR4AEM59fV4t2VSdvS4yt/view?usp=drive_link" title="PDF"><i class="fas fa-file-pdf"></i></a>
     </div>
     <details class='abstract'>
       <summary>Show Abstract</summary>

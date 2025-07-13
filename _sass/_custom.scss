@@ -1,0 +1,22 @@
+details.abstract {
+  margin-top: 0.5rem;
+  border: 1px solid #eee;
+  background: #fafafa;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+}
+
+details.abstract summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: $color-primary;
+}
+
+.pdf-link {
+  margin-left: 0.25rem;
+  color: $color-primary;
+}
+
+.pdf-link i {
+  font-size: 1.1rem;
+}
