@@ -1,4 +1,4 @@
-const hfToken = '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';
+const hfToken = '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';
 const modelId = 'mistralai/Mathstral-7b-v0.1';
 
 function createChatWidget() {
