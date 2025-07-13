@@ -1,6 +1,7 @@
 let qa;
 let qaContext = '';
-const modelId = 'Xenova/distilbert-base-cased-distilled-squad';
+// Switched to a slightly larger but still lightweight QA model
+const modelId = 'Xenova/bert-base-uncased-finetuned-squad';
 
 async function loadModel() {
   try {
@@ -84,7 +85,11 @@ async function sendMessage(text) {
     if (!qa) {
       throw new Error('Model not loaded');
     }
-    const result = await qa(text, { context: qaContext });
+    // Log the type and value of the incoming message to help debug
+    console.log('sendMessage input:', typeof text, text);
+    // Ensure the question is a string before passing to the model
+    const query = String(text);
+    const result = await qa(query, { context: qaContext });
     document.querySelector('#chat-messages').lastChild.textContent = result.answer;
   } catch (err) {
     document.querySelector('#chat-messages').lastChild.textContent = 'Error: ' + err.message;
