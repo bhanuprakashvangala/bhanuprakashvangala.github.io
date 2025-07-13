@@ -1,5 +1,5 @@
-const hfToken = process.env.HF_TOKEN;
-const modelId = 'mistralai/Mathstral-7b-v0.1';
+//const hfToken = process.env.HF_TOKEN;
+const modelId = 'deepseek-ai/DeepSeek-R1';
 
 function createChatWidget() {
   const chatButton = document.createElement('button');
