@@ -17,7 +17,8 @@ def load_context():
     return ' '.join(context)
 
 def answer_question(question, context):
-    qa = pipeline('question-answering', model='distilbert-base-cased-distilled-squad')
+    # Use a more capable FLAN-T5 model for question answering
+    qa = pipeline('question-answering', model='google/flan-t5-base')
     result = qa(question=question, context=context)
     return result['answer']
 
