@@ -99,6 +99,7 @@ redirect_from:
   </div>
 </div>
 
+<span class='anchor' id='news'></span>
 # News
 
 - *2025.05*: 🎓 Earned my M.S. in Computer Science (GPA: 4.0/4.0) from the [University of Missouri](https://engineering.missouri.edu/departments/eecs/eecs-research/), Columbia.  
