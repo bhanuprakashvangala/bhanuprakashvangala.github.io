@@ -17,7 +17,8 @@ def load_context():
     return ' '.join(context)
 
 def answer_question(question, context):
-    qa = pipeline('question-answering', model='distilbert-base-cased-distilled-squad')
+    # Use an uncased BERT model fine-tuned on SQuAD for better generalization
+    qa = pipeline('question-answering', model='bert-base-uncased-finetuned-squad')
     result = qa(question=question, context=context)
     return result['answer']
 

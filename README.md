@@ -67,7 +67,7 @@ Some examples:
 
 ## Interactive Chatbot
 
-The site now includes a chat widget that can answer questions using the page content. It relies on a tiny question‑answering model that is loaded directly in the browser via `@xenova/transformers`. The model used is [Xenova/distilbert-base-cased-distilled-squad](https://huggingface.co/distilbert-base-cased-distilled-squad) with ONNX weights so it runs entirely client side; no installation is required.
+The site now includes a chat widget that can answer questions using the page content. It relies on a tiny question‑answering model that is loaded directly in the browser via `@xenova/transformers`. The model used is [Xenova/bert-base-uncased-finetuned-squad](https://huggingface.co/Xenova/bert-base-uncased-finetuned-squad) with ONNX weights so it runs entirely client side; no installation is required.
 
 Open the website and click the **Chat** button to ask a question. The model is downloaded on the first use and replies are generated from the information stored in `_pages`.
 
@@ -75,7 +75,7 @@ If you want to experiment with the model locally you can use the `@huggingface/t
 
 ```javascript
 import { pipeline } from '@huggingface/transformers';
-const answerer = await pipeline('question-answering', 'Xenova/distilbert-base-cased-distilled-squad');
+const answerer = await pipeline('question-answering', 'Xenova/bert-base-uncased-finetuned-squad');
 const output = await answerer('Who was Jim Henson?', 'Jim Henson was a nice puppet.');
 ```
 # Acknowledges
