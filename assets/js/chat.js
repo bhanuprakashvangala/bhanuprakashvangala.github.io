@@ -1,5 +1,13 @@
-//const hfToken = process.env.HF_TOKEN;
-const modelId = 'deepseek-ai/DeepSeek-R1';
+let qa;
+let qaContext = '';
+const modelId = 'Xenova/distilbert-base-cased-distilled-squad';
+
+async function loadModel() {
+  const { pipeline } = window.transformers;
+  const res = await fetch('assets/qa_context.txt');
+  qaContext = await res.text();
+  qa = await pipeline('question-answering', modelId);
+}
 
 function createChatWidget() {
   const chatButton = document.createElement('button');
@@ -52,7 +60,6 @@ function createChatWidget() {
   });
 }
 
-let history = [];
 function appendMessage(role, content) {
   const messages = document.querySelector('#chat-messages');
   const div = document.createElement('div');
@@ -64,28 +71,16 @@ function appendMessage(role, content) {
 
 async function sendMessage(text) {
   appendMessage('user', text);
-  history.push({role: 'user', content: text});
   appendMessage('assistant', '...');
-  const options = {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${hfToken}`,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      inputs: history,
-      parameters: { max_new_tokens: 256 }
-    })
-  };
   try {
-    const res = await fetch(`https://api-inference.huggingface.co/models/${modelId}`, options);
-    const data = await res.json();
-    const reply = data && data.length ? data[0].generated_text ?? data.generated_text : JSON.stringify(data);
-    history.push({role: 'assistant', content: reply});
-    document.querySelector('#chat-messages').lastChild.textContent = reply;
+    const result = await qa(text, { context: qaContext });
+    document.querySelector('#chat-messages').lastChild.textContent = result.answer;
   } catch (err) {
     document.querySelector('#chat-messages').lastChild.textContent = 'Error: ' + err;
   }
 }
 
-document.addEventListener('DOMContentLoaded', createChatWidget);
+document.addEventListener('DOMContentLoaded', async () => {
+  await loadModel();
+  createChatWidget();
+});
