@@ -29,6 +29,13 @@ redirect_from:
     <p>Beyond my technical work, I am passionate about mentoring students as a teaching assistant, writing and blogging about graduate life abroad and technical concepts in LLMs, and building tools that make AI systems more interpretable, effective, reproducible, and aligned with human values — a vision that guides every aspect of my research.</p>
     <h3 class="focus-heading">Areas of Focus</h3>
     <style>
+      .about-box-content {
+        border-left: 4px solid #d4af37;
+        border-radius: 10px;
+        padding: 20px;
+        color: #000;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
       .focus-wrapper {
         display: flex;
         flex-wrap: wrap;
@@ -59,11 +66,13 @@ redirect_from:
         transition: background 0.2s;
       }
       .focus-tabs .tab:hover {
-        background: #ffe599;
+        background: #333;
+        color: #fff;
       }
       .focus-tabs .tab.active {
-        background: #ffd966;
-        border-color: transparent;
+        background: #000;
+        border-color: #d4af37;
+        color: #fff;
         font-weight: bold;
       }
       .focus-tabs .tab-content {
