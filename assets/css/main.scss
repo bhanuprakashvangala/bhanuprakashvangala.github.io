@@ -40,6 +40,44 @@
 @import "vendor/magnific-popup/magnific-popup";
 @import "print";
 
+/* 1) Import Web Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@700&display=swap');
+
+/* 2) Color & Typography Variables */
+$font-sans:     'Inter', sans-serif !default;
+$font-serif:    'Merriweather', serif !default;
+
+$color-primary:   #d4af37 !default;
+$color-secondary: #d4af37 !default;
+$color-accent:    #ffd700 !default;
+$color-bg:        #ffffff !default;
+$color-text:      #d4af37 !default;
+
+$primary-color: $color-primary;
+$info-color:    $color-primary;
+$link-color:    $color-secondary;
+
+@import "custom";
+
+/* 3) Global Base Styles */
+body {
+  font-family: $font-sans;
+  font-size: 1rem;
+  line-height: 1.6;
+  background-color: $color-bg;
+  color: $color-text;
+  padding: 1rem;
+}
+
+h1, h2, h3, h4 {
+  font-family: $font-serif;
+  color: $color-primary;
+  margin: 1.5rem 0 0.5rem;
+  line-height: 1.25;
+}
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+
 .paper-box {
     display: flex;
     justify-content: left;
