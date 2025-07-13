@@ -29,72 +29,96 @@ redirect_from:
     <p>Beyond my technical work, I am passionate about mentoring students as a teaching assistant, writing and blogging about graduate life abroad and technical concepts in LLMs, and building tools that make AI systems more interpretable, effective, reproducible, and aligned with human values — a vision that guides every aspect of my research.</p>
     <h3 class="focus-heading">Areas of Focus</h3>
     <style>
-      .focus-tabs .tab-labels {
+      .focus-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        align-items: flex-start;
+      }
+      .focus-wrapper img {
+        width: 120px;
+        border-radius: 50%;
+      }
+      .focus-tabs {
+        flex: 1;
+      }
+      .focus-tabs .tab-list {
         display: flex;
         flex-wrap: wrap;
         list-style: none;
         padding: 0;
-        margin: 0 0 10px 0;
-        border-bottom: 2px solid #eee;
+        margin: 0 0 1rem;
+        gap: 0.5rem;
       }
-      .focus-tabs .tab-labels li {
-        flex: 1 1 200px;
-        margin: 5px;
-        padding: 10px 15px;
-        background: #f9f9f9;
-        border-radius: 8px;
-        text-align: center;
+      .focus-tabs .tab {
+        padding: 8px 15px;
+        border: 1px solid #ccc;
+        background: #fff;
+        border-radius: 20px;
         cursor: pointer;
-        transition: all 0.3s;
-        font-weight: 600;
-        border: 1px solid #ddd;
+        transition: background 0.2s;
       }
-      .focus-tabs .tab-labels li.active,
-      .focus-tabs .tab-labels li:hover {
+      .focus-tabs .tab:hover {
+        background: #ffe599;
+      }
+      .focus-tabs .tab.active {
         background: #ffd966;
-        border-color: #ffbf00;
-        color: #333;
+        border-color: transparent;
+        font-weight: bold;
       }
       .focus-tabs .tab-content {
-        background: #fafafa;
-        padding: 20px;
-        border-radius: 10px;
         border: 1px solid #eee;
+        border-radius: 10px;
+        padding: 20px;
+        background: #fafafa;
       }
-      .focus-tabs .tab-pane h3 {
-        margin-top: 0;
-      }
+      .focus-tabs .tab-pane { display: none; }
+      .focus-tabs .tab-pane.active { display: block; }
     </style>
-    <div class="focus-tabs">
-      <ul class="tab-labels">
-        <li class="active" data-tab="focus1">Trustworthy AI</li>
-        <li data-tab="focus2">Scalable LLMs</li>
-        <li data-tab="focus3">Factuality</li>
-        <li data-tab="focus4">Sci Discovery</li>
-      </ul>
-      <div class="tab-content">
-        <div id="focus1" class="tab-pane active focus-area focus-area-section">
-          <h3 class="side-heading">Trustworthy and Interpretable AI</h3>
-          <p>Developing AI systems that do more than generate fluent outputs — they can reason transparently, explain their decision processes, detect inconsistencies, and actively self-correct. My work focuses on designing architectures and evaluation frameworks that empower models to justify their responses, ultimately fostering greater trust and adoption of AI in critical domains like science, healthcare, and law.</p>
-          <hr />
-        </div>
-        <div id="focus2" class="tab-pane focus-area focus-area-section">
-          <h3 class="side-heading">Efficient and Scalable Language Models</h3>
-          <p>Pushing the boundaries of large-scale AI deployment through model compression, distributed training optimization, and advanced memory management. I design scalable architectures and Helm-based deployment pipelines that make state-of-the-art language models accessible to researchers and practitioners without requiring massive infrastructure investments, enabling equitable and practical use of cutting-edge AI technologies.</p>
-          <hr />
-        </div>
-        <div id="focus3" class="tab-pane focus-area focus-area-section">
-          <h3 class="side-heading">Factuality and Evaluation</h3>
-          <p>Creating robust benchmarks and advanced evaluation pipelines to rigorously measure the factual consistency, reliability, and safety of language model outputs. By integrating contradiction detection graphs, retrieval-augmented checks, and semantic consistency metrics, I ensure that AI systems can be trusted in settings where accuracy is paramount and errors carry significant real-world consequences.</p>
-          <hr />
-        </div>
-        <div id="focus4" class="tab-pane focus-area focus-area-section">
-          <h3 class="side-heading">AI for Scientific Discovery</h3>
-          <p>Leveraging the power of LLMs and multimodal AI to accelerate research in materials science, biomedical innovation, and policy modeling. My work enables domain scientists to harness AI as a collaborative partner — not only to analyze and generate data, but to form hypotheses, validate findings, and drive scientific breakthroughs with greater efficiency and confidence.</p>
-          <hr />
+    <div class="focus-wrapper">
+      <img src="images/Bhanu1.jpg" alt="Bhanu Prakash Vangala" />
+      <div class="focus-tabs">
+        <ul class="tab-list">
+          <li class="tab active" data-tab="focus1">Trustworthy AI</li>
+          <li class="tab" data-tab="focus2">Scalable LLMs</li>
+          <li class="tab" data-tab="focus3">Factuality</li>
+          <li class="tab" data-tab="focus4">Sci Discovery</li>
+        </ul>
+        <div class="tab-content">
+          <div id="focus1" class="tab-pane active">
+            <h3 class="side-heading">Trustworthy and Interpretable AI</h3>
+            <p>Developing AI systems that do more than generate fluent outputs — they can reason transparently, explain their decision processes, detect inconsistencies, and actively self-correct. My work focuses on designing architectures and evaluation frameworks that empower models to justify their responses, ultimately fostering greater trust and adoption of AI in critical domains like science, healthcare, and law.</p>
+            <hr />
+          </div>
+          <div id="focus2" class="tab-pane">
+            <h3 class="side-heading">Efficient and Scalable Language Models</h3>
+            <p>Pushing the boundaries of large-scale AI deployment through model compression, distributed training optimization, and advanced memory management. I design scalable architectures and Helm-based deployment pipelines that make state-of-the-art language models accessible to researchers and practitioners without requiring massive infrastructure investments, enabling equitable and practical use of cutting-edge AI technologies.</p>
+            <hr />
+          </div>
+          <div id="focus3" class="tab-pane">
+            <h3 class="side-heading">Factuality and Evaluation</h3>
+            <p>Creating robust benchmarks and advanced evaluation pipelines to rigorously measure the factual consistency, reliability, and safety of language model outputs. By integrating contradiction detection graphs, retrieval-augmented checks, and semantic consistency metrics, I ensure that AI systems can be trusted in settings where accuracy is paramount and errors carry significant real-world consequences.</p>
+            <hr />
+          </div>
+          <div id="focus4" class="tab-pane">
+            <h3 class="side-heading">AI for Scientific Discovery</h3>
+            <p>Leveraging the power of LLMs and multimodal AI to accelerate research in materials science, biomedical innovation, and policy modeling. My work enables domain scientists to harness AI as a collaborative partner — not only to analyze and generate data, but to form hypotheses, validate findings, and drive scientific breakthroughs with greater efficiency and confidence.</p>
+            <hr />
+          </div>
         </div>
       </div>
     </div>
+    <script>
+      document.querySelectorAll('.focus-tabs .tab').forEach(function(tab) {
+        tab.addEventListener('click', function() {
+          var target = this.getAttribute('data-tab');
+          document.querySelectorAll('.focus-tabs .tab').forEach(t => t.classList.remove('active'));
+          document.querySelectorAll('.focus-tabs .tab-pane').forEach(p => p.classList.remove('active'));
+          this.classList.add('active');
+          document.getElementById(target).classList.add('active');
+        });
+      });
+    </script>
     <p class="text-secondary">Thanks for stopping by—feel free to explore my work on <a href="https://bhanuprakashvangala.github.io">GitHub</a> or connect with me on <a href="https://www.linkedin.com/in/vangalabhanuprakash/">LinkedIn</a>!</p>
   </div>
 </div>
