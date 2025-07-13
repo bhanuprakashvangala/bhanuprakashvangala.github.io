@@ -1,4 +1,4 @@
-const hfToken = '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';
+const hfToken = process.env.HF_TOKEN;
 const modelId = 'mistralai/Mathstral-7b-v0.1';
 
 function createChatWidget() {
