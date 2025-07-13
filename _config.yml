@@ -7,7 +7,7 @@
 
 # Site Settings
 title                    : "Bhanu Prakash Vangala"
-description              : "PhD student in Computer Science"
+description              : "PhD in Computer Science"
 repository               : "bhanuprakashvangala/bhanuprakashvangala.github.io"
 google_scholar_stats_use_cdn : true
 
@@ -24,7 +24,7 @@ author:
   name             : "Bhanu Prakash Vangala"
   avatar           : "images/Bhanu1.jpg"
   bio              : ""
-  location         : "Columbia, USA"
+  location         : "Missouri, USA"
   employer         :
   pubmed           : 
   googlescholar    : 
