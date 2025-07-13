@@ -105,11 +105,31 @@ redirect_from:
         margin-right: 1rem;
         font-size: 1.5rem;
       }
-      .paper-box-image .badge {
-        background: #d4af37;
-        color: #000;
-      }
-    </style>
+        .paper-box-image .badge {
+          background: #d4af37;
+          color: #000;
+        }
+        .honor-item {
+          display: flex;
+          align-items: flex-start;
+          background: #fafafa;
+          border-left: 4px solid #d4af37;
+          border-right: 4px solid #d4af37;
+          box-shadow: 0 0 0 2px #d4af37 inset;
+          border-radius: 10px;
+          padding: 10px;
+          margin-bottom: 1rem;
+        }
+        .honor-date {
+          font-weight: bold;
+          margin-right: 1rem;
+          color: #00369f;
+          min-width: 4.5em;
+        }
+        .honor-content {
+          flex: 1;
+        }
+      </style>
     <div class="focus-wrapper">
       <div class="focus-tabs">
         <ul class="tab-list">
