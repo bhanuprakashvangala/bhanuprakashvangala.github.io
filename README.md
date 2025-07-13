@@ -67,9 +67,17 @@ Some examples:
 
 ## Interactive Chatbot
 
-The site now includes a chat widget that can answer questions using the page content. It relies on a tiny question‑answering model that is loaded directly in the browser via `@xenova/transformers`; no installation is required.
+The site now includes a chat widget that can answer questions using the page content. It relies on a tiny question‑answering model that is loaded directly in the browser via `@xenova/transformers`. The model used is [Xenova/distilbert-base-cased-distilled-squad](https://huggingface.co/distilbert-base-cased-distilled-squad) with ONNX weights so it runs entirely client side; no installation is required.
 
 Open the website and click the **Chat** button to ask a question. The model is downloaded on the first use and replies are generated from the information stored in `_pages`.
+
+If you want to experiment with the model locally you can use the `@huggingface/transformers` NPM package:
+
+```javascript
+import { pipeline } from '@huggingface/transformers';
+const answerer = await pipeline('question-answering', 'Xenova/distilbert-base-cased-distilled-squad');
+const output = await answerer('Who was Jim Henson?', 'Jim Henson was a nice puppet.');
+```
 # Acknowledges
 
 - AcadHomepage incorporates Font Awesome, which is distributed under the terms of the SIL OFL 1.1 and MIT License.
