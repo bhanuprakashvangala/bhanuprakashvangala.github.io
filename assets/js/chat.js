@@ -3,10 +3,18 @@ let qaContext = '';
 const modelId = 'Xenova/distilbert-base-cased-distilled-squad';
 
 async function loadModel() {
-  const { pipeline } = window.transformers;
-  const res = await fetch('assets/qa_context.txt');
-  qaContext = await res.text();
-  qa = await pipeline('question-answering', modelId);
+  try {
+    const { pipeline } = window.transformers;
+    const contextPath = new URL('assets/qa_context.txt', document.baseURI).pathname;
+    const res = await fetch(contextPath);
+    if (!res.ok) {
+      throw new Error('Failed to load context');
+    }
+    qaContext = await res.text();
+    qa = await pipeline('question-answering', modelId);
+  } catch (err) {
+    console.error('Failed to initialize QA model:', err);
+  }
 }
 
 function createChatWidget() {
@@ -73,10 +81,13 @@ async function sendMessage(text) {
   appendMessage('user', text);
   appendMessage('assistant', '...');
   try {
+    if (!qa) {
+      throw new Error('Model not loaded');
+    }
     const result = await qa(text, { context: qaContext });
     document.querySelector('#chat-messages').lastChild.textContent = result.answer;
   } catch (err) {
-    document.querySelector('#chat-messages').lastChild.textContent = 'Error: ' + err;
+    document.querySelector('#chat-messages').lastChild.textContent = 'Error: ' + err.message;
   }
 }
 
