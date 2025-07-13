@@ -41,6 +41,11 @@ redirect_from:
         flex-wrap: wrap;
         gap: 1rem;
         align-items: flex-start;
+        border-left: 4px solid #d4af37;
+        border-right: 4px solid #d4af37;
+        box-shadow: 0 0 0 2px #d4af37 inset;
+        border-radius: 10px;
+        padding: 10px;
       }
       .focus-wrapper img {
         width: 120px;
@@ -83,9 +88,21 @@ redirect_from:
       }
       .focus-tabs .tab-pane { display: none; }
       .focus-tabs .tab-pane.active { display: block; }
+      .paper-box,
+      .edu-box {
+        border-left: 4px solid #d4af37;
+        border-right: 4px solid #d4af37;
+        box-shadow: 0 0 0 2px #d4af37 inset;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 1rem;
+      }
+      .paper-box-image .badge {
+        background: #d4af37;
+        color: #000;
+      }
     </style>
     <div class="focus-wrapper">
-      <img src="images/Bhanu1.jpg" alt="Bhanu Prakash Vangala" />
       <div class="focus-tabs">
         <ul class="tab-list">
           <li class="tab active" data-tab="focus1">Trustworthy AI</li>
