@@ -65,6 +65,11 @@ Some examples:
 1. If you change the source code of the website, the livereload server will automatically refresh.
 1. When you finish the modification of your homepage, `commit` your changings and `push` to your remote REPO using `git` command.
 
+## Interactive Chatbot
+
+The site now includes a chat widget that can answer questions using the page content. It relies on a tiny question‑answering model that is loaded directly in the browser via `@xenova/transformers`; no installation is required.
+
+Open the website and click the **Chat** button to ask a question. The model is downloaded on the first use and replies are generated from the information stored in `_pages`.
 # Acknowledges
 
 - AcadHomepage incorporates Font Awesome, which is distributed under the terms of the SIL OFL 1.1 and MIT License.
