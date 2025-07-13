@@ -47,11 +47,11 @@
 $font-sans:     'Inter', sans-serif !default;
 $font-serif:    'Merriweather', serif !default;
 
-$color-primary:   #d4af37 !default;
-$color-secondary: #d4af37 !default;
-$color-accent:    #ffd700 !default;
+$color-primary:   #00369f !default;
+$color-secondary: #00369f !default;
+$color-accent:    #00369f !default;
 $color-bg:        #ffffff !default;
-$color-text:      #d4af37 !default;
+$color-text:      #333333 !default;
 
 $primary-color: $color-primary;
 $info-color:    $color-primary;
@@ -144,4 +144,31 @@ h1:before, .anchor:before {
     color: white;
     background-color: #00369f;
     font-size: .8em;
+}
+
+/* Honors and Awards Section */
+.honors-section {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  list-style-position: outside;
+  margin-left: 0;
+  padding-left: 1.2em;
+}
+
+.honors-section li {
+  margin-bottom: 1rem;
+}
+
+.honor-images {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.honor-images img {
+  width: 120px;
+  height: auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
 }
