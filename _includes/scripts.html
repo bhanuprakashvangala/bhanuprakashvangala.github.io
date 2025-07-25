@@ -3,6 +3,9 @@
   import { pipeline } from 'https://cdn.jsdelivr.net/npm/@xenova/transformers';
   window.transformers = { pipeline };
 </script>
+<script>
+  window.LLM_API_ENDPOINT = "{{ site.llm_api_endpoint }}";
+</script>
 <script src="assets/js/chat.js"></script>
 
 {% include analytics.html %}
