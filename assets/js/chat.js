@@ -1,19 +1,24 @@
 let qa;
 let qaContext = '';
 
+// Endpoint for server-side LLM if provided
+const apiEndpoint = window.LLM_API_ENDPOINT || '';
+
 // Switch to a more capable but browser‑friendly model
 const modelId = 'Xenova/flan-t5-base';
 
 async function loadModel() {
   try {
-    const { pipeline } = window.transformers;
     const contextPath = new URL('assets/qa_context.txt', document.baseURI).pathname;
     const res = await fetch(contextPath);
-    if (!res.ok) {
-      throw new Error('Failed to load context');
+    if (res.ok) {
+      qaContext = await res.text();
     }
-    qaContext = await res.text();
-    qa = await pipeline('question-answering', modelId);
+
+    if (!apiEndpoint) {
+      const { pipeline } = window.transformers;
+      qa = await pipeline('question-answering', modelId);
+    }
   } catch (err) {
     console.error('Failed to initialize QA model:', err);
   }
@@ -83,17 +88,29 @@ async function sendMessage(text) {
   appendMessage('user', text);
   appendMessage('assistant', '...');
   try {
-    if (!qa) {
-      throw new Error('Model not loaded');
-    }
-    // Log the type and value of the incoming message to help debug
-    console.log('sendMessage input:', typeof text, text);
-    // Ensure the question is a string before passing to the model
-
+    let answer = '';
     const query = typeof text === 'string' ? text : String(text);
 
-    const result = await qa(query, { context: qaContext });
-    document.querySelector('#chat-messages').lastChild.textContent = result.answer;
+    if (apiEndpoint) {
+      const response = await fetch(apiEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt: query })
+      });
+      if (!response.ok) throw new Error('API request failed');
+      const data = await response.json();
+      answer = data.generated_text || data.answer || data.output || data;
+      if (typeof answer !== 'string') {
+        answer = JSON.stringify(answer);
+      }
+    } else {
+      if (!qa) {
+        throw new Error('Model not loaded');
+      }
+      const result = await qa(query, { context: qaContext });
+      answer = result.answer;
+    }
+    document.querySelector('#chat-messages').lastChild.textContent = answer;
   } catch (err) {
     document.querySelector('#chat-messages').lastChild.textContent = 'Error: ' + err.message;
   }

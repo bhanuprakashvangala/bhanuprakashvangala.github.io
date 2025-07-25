@@ -13,6 +13,7 @@ google_scholar_stats_use_cdn : true
 
 # google analytics
 google_analytics_id      : G-JFP04P2CJV
+llm_api_endpoint        : "http://a93814c911930406599ccd20046945a8-505552828.us-east-1.elb.amazonaws.com:8080/generate"
 
 # SEO Related
 google_site_verification : UT_lVOnAes50EAwbsIFw8BrxTnE8YPxiDLWzPE
