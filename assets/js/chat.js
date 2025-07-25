@@ -14,13 +14,8 @@ async function loadModel() {
     if (res.ok) {
       qaContext = await res.text();
     }
-
-    if (!apiEndpoint) {
-      const { pipeline } = window.transformers;
-      qa = await pipeline('question-answering', modelId);
-    }
   } catch (err) {
-    console.error('Failed to initialize QA model:', err);
+    console.error('Failed to initialize QA context:', err);
   }
 }
 
@@ -92,20 +87,31 @@ async function sendMessage(text) {
     const query = typeof text === 'string' ? text : String(text);
 
     if (apiEndpoint) {
-      const response = await fetch(apiEndpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prompt: query })
-      });
-      if (!response.ok) throw new Error('API request failed');
-      const data = await response.json();
-      answer = data.generated_text || data.answer || data.output || data;
-      if (typeof answer !== 'string') {
-        answer = JSON.stringify(answer);
+      try {
+        const response = await fetch(apiEndpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ prompt: query })
+        });
+        if (!response.ok) throw new Error('API request failed');
+        const data = await response.json();
+        answer = data.generated_text || data.answer || data.output || data;
+        if (typeof answer !== 'string') {
+          answer = JSON.stringify(answer);
+        }
+      } catch (apiErr) {
+        console.warn('Remote API failed, falling back to local model:', apiErr);
+        if (!qa) {
+          const { pipeline } = window.transformers;
+          qa = await pipeline('question-answering', modelId);
+        }
+        const result = await qa(query, { context: qaContext });
+        answer = result.answer;
       }
     } else {
       if (!qa) {
-        throw new Error('Model not loaded');
+        const { pipeline } = window.transformers;
+        qa = await pipeline('question-answering', modelId);
       }
       const result = await qa(query, { context: qaContext });
       answer = result.answer;
