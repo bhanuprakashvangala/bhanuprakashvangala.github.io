@@ -81,6 +81,7 @@ redirect_from:
         font-weight: bold;
       }
       .focus-tabs .tab-content {
+        display: none;
         border: 1px solid #eee;
         border-radius: 10px;
         padding: 20px;
@@ -133,13 +134,13 @@ redirect_from:
     <div class="focus-wrapper">
       <div class="focus-tabs">
         <ul class="tab-list">
-          <li class="tab active" data-tab="focus1">Trustworthy AI</li>
+          <li class="tab" data-tab="focus1">Trustworthy AI</li>
           <li class="tab" data-tab="focus2">Scalable LLMs</li>
           <li class="tab" data-tab="focus3">Factuality</li>
           <li class="tab" data-tab="focus4">Sci Discovery</li>
         </ul>
         <div class="tab-content">
-          <div id="focus1" class="tab-pane active">
+          <div id="focus1" class="tab-pane">
             <h3 class="side-heading">Trustworthy and Interpretable AI</h3>
             <p>Developing AI systems that do more than generate fluent outputs — they can reason transparently, explain their decision processes, detect inconsistencies, and actively self-correct. My work focuses on designing architectures and evaluation frameworks that empower models to justify their responses, ultimately fostering greater trust and adoption of AI in critical domains like science, healthcare, and law.</p>
             <hr />
@@ -163,13 +164,21 @@ redirect_from:
       </div>
     </div>
     <script>
+      const tabContent = document.querySelector('.focus-tabs .tab-content');
       document.querySelectorAll('.focus-tabs .tab').forEach(function(tab) {
         tab.addEventListener('click', function() {
           var target = this.getAttribute('data-tab');
-          document.querySelectorAll('.focus-tabs .tab').forEach(t => t.classList.remove('active'));
-          document.querySelectorAll('.focus-tabs .tab-pane').forEach(p => p.classList.remove('active'));
-          this.classList.add('active');
-          document.getElementById(target).classList.add('active');
+          if (this.classList.contains('active')) {
+            this.classList.remove('active');
+            document.getElementById(target).classList.remove('active');
+            tabContent.style.display = 'none';
+          } else {
+            document.querySelectorAll('.focus-tabs .tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.focus-tabs .tab-pane').forEach(p => p.classList.remove('active'));
+            this.classList.add('active');
+            document.getElementById(target).classList.add('active');
+            tabContent.style.display = 'block';
+          }
         });
       });
     </script>
