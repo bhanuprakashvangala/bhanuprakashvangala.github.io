@@ -116,6 +116,14 @@ redirect_from:
     </div>
   </div>
   
+  <!-- Collaboration Status -->
+  <div class="collaboration-status">
+    <div class="status-indicator">
+      <span class="status-dot"></span>
+      <span class="status-text">Available for collaboration</span>
+    </div>
+  </div>
+  
 </div>
 </div>
 
@@ -142,6 +150,65 @@ redirect_from:
     padding: 2rem;
     margin: 2rem 0;
     background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    position: relative;
+  }
+  
+  /* Collaboration Status Indicator */
+  .collaboration-status {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 2rem;
+    background: white;
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    border: 1px solid #e5e7eb;
+  }
+  
+  .status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .status-dot {
+    width: 10px;
+    height: 10px;
+    background: #4caf50;
+    border-radius: 50%;
+    position: relative;
+    animation: pulse-green 2s infinite;
+  }
+  
+  .status-dot::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: #4caf50;
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: pulse-ring 2s infinite;
+  }
+  
+  @keyframes pulse-green {
+    0% { opacity: 1; }
+    50% { opacity: 0.6; }
+    100% { opacity: 1; }
+  }
+  
+  @keyframes pulse-ring {
+    0% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.3); opacity: 0.1; }
+    100% { transform: scale(1); opacity: 0.3; }
+  }
+  
+  .status-text {
+    font-size: 0.9rem;
+    color: #333;
+    font-weight: 500;
   }
   
   .about-container {
@@ -583,10 +650,73 @@ redirect_from:
         /* Professional Experience Single Container */
         .experience-single-container {
           padding: 1.5rem;
+          position: relative;
+          display: flex;
+          gap: 2rem;
+        }
+        
+        .timeline-track {
+          position: relative;
+          width: 40px;
+          flex-shrink: 0;
+        }
+        
+        .timeline-line {
+          position: absolute;
+          left: 20px;
+          top: 0;
+          bottom: 0;
+          width: 3px;
+          background: linear-gradient(to bottom, #2c5aa0, #4caf50);
+          border-radius: 3px;
+        }
+        
+        .timeline-ball {
+          position: absolute;
+          left: 12px;
+          top: 0;
+          width: 20px;
+          height: 20px;
+          background: #2c5aa0;
+          border-radius: 50%;
+          border: 3px solid white;
+          box-shadow: 0 0 0 3px rgba(44, 90, 160, 0.3);
+          transition: top 0.3s ease;
+          z-index: 10;
+        }
+        
+        .experience-entries {
+          flex: 1;
         }
         
         .experience-entry {
           padding: 1rem 0;
+          position: relative;
+          display: flex;
+          gap: 1rem;
+        }
+        
+        .entry-marker {
+          position: absolute;
+          left: -48px;
+          top: 1.2rem;
+          width: 10px;
+          height: 10px;
+          background: #ddd;
+          border-radius: 50%;
+          border: 2px solid white;
+          transition: all 0.3s ease;
+        }
+        
+        .experience-entry.active .entry-marker {
+          background: #4caf50;
+          width: 14px;
+          height: 14px;
+          left: -50px;
+        }
+        
+        .entry-content {
+          flex: 1;
         }
         
         .experience-entry:first-child {
@@ -763,11 +893,49 @@ const observer = new IntersectionObserver((entries) => {
   });
 });
 
+// Professional Experience Timeline Animation
+function updateTimelineBall() {
+  const entries = document.querySelectorAll('.experience-entry');
+  const ball = document.getElementById('experienceBall');
+  
+  if (!ball || entries.length === 0) return;
+  
+  const scrollPosition = window.scrollY + window.innerHeight / 2;
+  
+  entries.forEach((entry, index) => {
+    const rect = entry.getBoundingClientRect();
+    const absoluteTop = rect.top + window.scrollY;
+    const absoluteBottom = absoluteTop + rect.height;
+    
+    // Check if this entry is in view
+    if (scrollPosition >= absoluteTop && scrollPosition <= absoluteBottom) {
+      // Update ball position
+      const marker = entry.querySelector('.entry-marker');
+      if (marker) {
+        const markerRect = marker.getBoundingClientRect();
+        const markerTop = markerRect.top + window.scrollY - entry.parentElement.parentElement.getBoundingClientRect().top - window.scrollY;
+        ball.style.top = (markerTop - 5) + 'px';
+      }
+      
+      // Update active state
+      entries.forEach(e => e.classList.remove('active'));
+      entry.classList.add('active');
+    }
+  });
+}
+
 // Observe stat cards when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.stat-card').forEach(card => {
     observer.observe(card);
   });
+  
+  // Initialize timeline
+  updateTimelineBall();
+  
+  // Update on scroll
+  window.addEventListener('scroll', updateTimelineBall);
+  window.addEventListener('resize', updateTimelineBall);
 });
 
 // Professional Experience Section Styles
@@ -1350,67 +1518,92 @@ document.head.appendChild(styleSheet);
 
 <div class="golden-border-wrapper">
   <div class="experience-single-container">
-    <div class="experience-entry">
-      <h4><strong>University of Missouri – Radiant Lab</strong> <small>— Research Assistant</small></h4>
-      <p class="text-secondary">Jan 2024 – Present</p>
-      <ul>
-        <li><strong>NASA-Funded Innovation:</strong> Revolutionizing scientific reproducibility with LLM-powered containers that automatically debug and enhance collaborative research workflows</li>
-        <li><strong>Self-Aware AI:</strong> Pioneering self-reflecting LLMs that monitor and correct their own reasoning in real-time, pushing the boundaries of AI reliability</li>
-      </ul>
+    <div class="timeline-track">
+      <div class="timeline-line"></div>
+      <div class="timeline-ball" id="experienceBall"></div>
     </div>
     
-    <hr class="experience-divider">
-    
-    <div class="experience-entry">
-      <h4><strong>University of Missouri – Data Intensive Computing Lab</strong> <small>— Research & Teaching Assistant</small></h4>
-      <p class="text-secondary">Aug 2023 – Present</p>
-      <ul>
-        <li><strong>DoD-Funded Breakthrough:</strong> Developed HalluMat & HalluFormer achieving 30% hallucination reduction in scientific LLMs, published at AAAI 2025</li>
-        <li><strong>HPC Innovation:</strong> Architected serverless GPU orchestration with Pick-and-Spin framework, revolutionizing LLM deployment efficiency</li>
-        <li><strong>Teaching Excellence:</strong> Mentored 115+ students in full-stack development, fostering next-generation tech talent</li>
-      </ul>
-    </div>
-    
-    <hr class="experience-divider">
-    
-    <div class="experience-entry">
-      <h4><strong>University of Missouri – PAAL Lab</strong> <small>— Research Assistant</small></h4>
-      <p class="text-secondary">Aug 2023 – Jan 2024</p>
-      <ul>
-        <li><strong>AgTech Innovation:</strong> Led UAV crop analysis team, boosting accuracy by 40% using deep learning and geospatial intelligence</li>
-      </ul>
-    </div>
-    
-    <hr class="experience-divider">
-    
-    <div class="experience-entry">
-      <h4><strong>Adobe Research</strong> <small>— NLP Research Intern</small></h4>
-      <p class="text-secondary">May 2022 – Jan 2023</p>
-      <ul>
-        <li><strong>Enterprise-Scale NLP:</strong> Architected advanced web scraping and information extraction pipelines, mastering large-scale data processing for client-facing research solutions</li>
-      </ul>
-      <p><em>Mentor</em>: <a href="https://research.adobe.com/person/nandakishore-kambhatla/" target="_blank">Nanda Kishore</a></p>
-    </div>
-    
-    <hr class="experience-divider">
-    
-    <div class="experience-entry">
-      <h4><strong>Brandiverse</strong> <small>— Data Analyst Intern</small></h4>
-      <p class="text-secondary">May 2020 – Jul 2020</p>
-      <ul>
-        <li><strong>Marketing Intelligence:</strong> Transformed customer sentiment analysis with sophisticated NLP pipelines, driving strategic marketing improvements</li>
-      </ul>
-      <p><em>Recognition</em>: Certificate of Outstanding Achievement</p>
-    </div>
-    
-    <hr class="experience-divider">
-    
-    <div class="experience-entry">
-      <h4><strong>Internshala</strong> <small>— Student Partner (ISP)</small></h4>
-      <p class="text-secondary">May 2020 – Dec 2020</p>
-      <ul>
-        <li><strong>Campus Leadership:</strong> Orchestrated career development initiatives, bridging student-industry gaps and promoting professional growth</li>
-      </ul>
+    <div class="experience-entries">
+      <div class="experience-entry" data-entry="1">
+        <div class="entry-marker"></div>
+        <div class="entry-content">
+          <h4><strong>University of Missouri – Radiant Lab</strong> <small>— Research Assistant</small></h4>
+          <p class="text-secondary">Jan 2024 – Present</p>
+          <ul>
+            <li><strong>NASA-Funded Innovation:</strong> Revolutionizing scientific reproducibility with LLM-powered containers that automatically debug and enhance collaborative research workflows</li>
+            <li><strong>Self-Aware AI:</strong> Pioneering self-reflecting LLMs that monitor and correct their own reasoning in real-time, pushing the boundaries of AI reliability</li>
+          </ul>
+        </div>
+      </div>
+      
+      <hr class="experience-divider">
+      
+      <div class="experience-entry" data-entry="2">
+        <div class="entry-marker"></div>
+        <div class="entry-content">
+          <h4><strong>University of Missouri – Data Intensive Computing Lab</strong> <small>— Research & Teaching Assistant</small></h4>
+          <p class="text-secondary">Aug 2023 – Present</p>
+          <ul>
+            <li><strong>DoD-Funded Breakthrough:</strong> Developed HalluMat & HalluFormer achieving 30% hallucination reduction in scientific LLMs, published at AAAI 2025</li>
+            <li><strong>HPC Innovation:</strong> Architected serverless GPU orchestration with Pick-and-Spin framework, revolutionizing LLM deployment efficiency</li>
+            <li><strong>Teaching Excellence:</strong> Mentored 115+ students in full-stack development, fostering next-generation tech talent</li>
+          </ul>
+        </div>
+      </div>
+      
+      <hr class="experience-divider">
+      
+      <div class="experience-entry" data-entry="3">
+        <div class="entry-marker"></div>
+        <div class="entry-content">
+          <h4><strong>University of Missouri – PAAL Lab</strong> <small>— Research Assistant</small></h4>
+          <p class="text-secondary">Aug 2023 – Jan 2024</p>
+          <ul>
+            <li><strong>AgTech Innovation:</strong> Led UAV crop analysis team, boosting accuracy by 40% using deep learning and geospatial intelligence</li>
+          </ul>
+        </div>
+      </div>
+      
+      <hr class="experience-divider">
+      
+      <div class="experience-entry" data-entry="4">
+        <div class="entry-marker"></div>
+        <div class="entry-content">
+          <h4><strong>Adobe Research</strong> <small>— NLP Research Intern</small></h4>
+          <p class="text-secondary">May 2022 – Jan 2023</p>
+          <ul>
+            <li><strong>Enterprise-Scale NLP:</strong> Architected advanced web scraping and information extraction pipelines, mastering large-scale data processing for client-facing research solutions</li>
+          </ul>
+          <p><em>Mentor</em>: <a href="https://research.adobe.com/person/nandakishore-kambhatla/" target="_blank">Nanda Kishore</a></p>
+        </div>
+      </div>
+      
+      <hr class="experience-divider">
+      
+      <div class="experience-entry" data-entry="5">
+        <div class="entry-marker"></div>
+        <div class="entry-content">
+          <h4><strong>Brandiverse</strong> <small>— Data Analyst Intern</small></h4>
+          <p class="text-secondary">May 2020 – Jul 2020</p>
+          <ul>
+            <li><strong>Marketing Intelligence:</strong> Transformed customer sentiment analysis with sophisticated NLP pipelines, driving strategic marketing improvements</li>
+          </ul>
+          <p><em>Recognition</em>: Certificate of Outstanding Achievement</p>
+        </div>
+      </div>
+      
+      <hr class="experience-divider">
+      
+      <div class="experience-entry" data-entry="6">
+        <div class="entry-marker"></div>
+        <div class="entry-content">
+          <h4><strong>Internshala</strong> <small>— Student Partner (ISP)</small></h4>
+          <p class="text-secondary">May 2020 – Dec 2020</p>
+          <ul>
+            <li><strong>Campus Leadership:</strong> Orchestrated career development initiatives, bridging student-industry gaps and promoting professional growth</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </div>
