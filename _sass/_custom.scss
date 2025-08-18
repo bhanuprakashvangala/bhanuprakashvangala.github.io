@@ -32,83 +32,186 @@ details.abstract summary {
   vertical-align: super;
 }
 
-/* Chat widget styles */
+/* Enhanced Chat widget styles */
 #chat-toggle {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #00369f;
+  bottom: 25px;
+  right: 25px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: #fff;
   border: none;
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  width: 65px;
+  height: 65px;
   cursor: pointer;
   z-index: 1000;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  transition: all 0.3s ease;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+#chat-toggle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
 }
 
 #chat-window {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 300px;
-  height: 400px;
+  bottom: 25px;
+  right: 25px;
+  width: 350px;
+  height: 450px;
   background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 10px;
+  border: none;
+  border-radius: 15px;
   display: none;
   flex-direction: column;
   z-index: 1000;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+  animation: slideUp 0.3s ease;
 }
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 #chat-header {
-  background: #00369f;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: #fff;
-  padding: 10px;
+  padding: 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-radius: 15px 15px 0 0;
+  font-weight: 500;
 }
+
+#chat-close {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+#chat-close:hover {
+  opacity: 1;
+}
+
 #chat-messages {
   flex: 1;
-  padding: 10px;
+  padding: 15px;
   overflow-y: auto;
+  background: #f8f9fa;
 }
+
+#chat-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+#chat-messages::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+#chat-messages::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
 #chat-form {
   display: flex;
-  padding: 10px;
-  border-top: 1px solid #ccc;
+  padding: 15px;
+  border-top: 1px solid #e5e7eb;
+  background: #fff;
+  border-radius: 0 0 15px 15px;
 }
+
 #chat-form input {
   flex: 1;
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: 10px 15px;
+  border: 1px solid #e5e7eb;
+  border-radius: 25px;
+  outline: none;
+  transition: border-color 0.2s;
 }
+
+#chat-form input:focus {
+  border-color: #667eea;
+}
+
 #chat-form button {
-  margin-left: 5px;
-  padding: 5px 10px;
-  background: #00369f;
+  margin-left: 8px;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  font-weight: 500;
 }
+
+#chat-form button:hover {
+  transform: scale(1.05);
+}
+
 .msg {
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  padding: 10px 14px;
+  border-radius: 18px;
+  max-width: 80%;
+  word-wrap: break-word;
+  animation: fadeIn 0.3s ease;
 }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .msg.user {
-  text-align: right;
-  color: #00369f;
-}
-.msg.assistant {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  margin-left: auto;
   text-align: left;
 }
-.suggestions {
-  margin-bottom: 10px;
+
+.msg.assistant {
+  background: #fff;
+  color: #333;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
+
+.suggestions {
+  margin-bottom: 15px;
+}
+
 .suggest {
-  background: #f3f3f3;
-  padding: 4px 6px;
-  margin: 2px 0;
-  border-radius: 4px;
+  background: #fff;
+  padding: 8px 12px;
+  margin: 5px 0;
+  border-radius: 20px;
   cursor: pointer;
+  transition: all 0.2s;
+  display: inline-block;
+  margin-right: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  font-size: 13px;
+}
+
+.suggest:hover {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
 }
