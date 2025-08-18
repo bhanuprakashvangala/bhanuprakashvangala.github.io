@@ -271,7 +271,7 @@ redirect_from:
   <div class='paper-box-image'>
     <div>
       <div class="badge">SC 2025 Poster</div>
-      <img src='images/LLM-as-Service-portfolio-image.png' alt="Dynamic LLM Orchestration" width="100%">
+      <img src='images/AdaptiveLLMaaS.png' alt="Adaptive LLM Orchestration Architecture" width="100%">
     </div>
   </div>
   <div class='paper-box-text'>
