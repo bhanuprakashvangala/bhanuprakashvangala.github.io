@@ -130,15 +130,15 @@ async function loadModels() {
 function createChatWidget() {
   const chatButton = document.createElement('button');
   chatButton.id = 'chat-toggle';
-  chatButton.innerHTML = '<i class="fas fa-comments"></i>';
-  chatButton.title = 'Chat with AI Assistant';
+  chatButton.innerHTML = '<div style="text-align: center; line-height: 1.2;"><i class="fas fa-robot" style="font-size: 18px; margin-bottom: 2px; display: block;"></i><span style="font-size: 10px; font-weight: 600;">AI</span></div>';
+  chatButton.title = 'AI Research Assistant - Ask about Bhanu\'s work';
   document.body.appendChild(chatButton);
 
   const chatWindow = document.createElement('div');
   chatWindow.id = 'chat-window';
   chatWindow.innerHTML = `
     <div id="chat-header">
-      <span>🤖 AI Research Assistant</span>
+      <span>🤖 Ask about Bhanu's Research</span>
       <button id="chat-close">&times;</button>
     </div>
     <div id="chat-messages">
@@ -152,7 +152,7 @@ function createChatWidget() {
       </div>
     </div>
     <form id="chat-form">
-      <input id="chat-input" type="text" placeholder="Ask about Bhanu or anything else..." required />
+      <input id="chat-input" type="text" placeholder="Ask about Bhanu's research, publications, projects..." required />
       <button type="submit">Send</button>
     </form>`;
   document.body.appendChild(chatWindow);
