@@ -72,16 +72,22 @@ redirect_from:
         <h4 style="text-align: center; color: #2c5aa0; margin: 1.5rem 0 1rem 0;">Research Supported By</h4>
         <div class="funding-logos">
           <div class="funding-item">
-            <div class="funding-logo">🛡️</div>
-            <span>Department of Defense</span>
-          </div>
-          <div class="funding-item">
-            <div class="funding-logo">🔬</div>
-            <span>National Science Foundation</span>
-          </div>
-          <div class="funding-item">
-            <div class="funding-logo">🚀</div>
+            <div class="funding-logo">
+              <img src="https://www.nasa.gov/wp-content/themes/nasa/assets/images/nasa-logo.svg" alt="NASA" style="height: 30px; width: auto;">
+            </div>
             <span>NASA</span>
+          </div>
+          <div class="funding-item">
+            <div class="funding-logo">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/United_States_Department_of_Defense_Seal.svg/240px-United_States_Department_of_Defense_Seal.svg.png" alt="DOD" style="height: 30px; width: auto;">
+            </div>
+            <span>Department of Defense (ERDC)</span>
+          </div>
+          <div class="funding-item">
+            <div class="funding-logo">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/NSF_logo.png/240px-NSF_logo.png" alt="NSF" style="height: 30px; width: auto;">
+            </div>
+            <span>National Science Foundation</span>
           </div>
         </div>
       </div>
@@ -618,6 +624,202 @@ document.addEventListener('DOMContentLoaded', function() {
     observer.observe(card);
   });
 });
+
+// Professional Experience Section Styles
+const experienceStyles = `
+  .experience-section {
+    margin: 2rem 0;
+  }
+  
+  .experience-category {
+    margin-bottom: 3rem;
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(44, 90, 160, 0.1);
+    border: 2px solid rgba(44, 90, 160, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .experience-category:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(44, 90, 160, 0.15);
+    border-color: rgba(44, 90, 160, 0.2);
+  }
+  
+  .experience-category h3 {
+    color: #2c5aa0;
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+  }
+  
+  .experience-category h3 i {
+    font-size: 1.2rem;
+    background: linear-gradient(135deg, #2c5aa0, #4caf50);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .experience-highlight {
+    font-size: 1.1rem;
+    color: #444;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 12px;
+    border-left: 4px solid #2c5aa0;
+  }
+  
+  .experience-timeline {
+    position: relative;
+    padding-left: 2rem;
+  }
+  
+  .experience-timeline::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, #2c5aa0, #4caf50);
+    border-radius: 3px;
+  }
+  
+  .experience-item {
+    position: relative;
+    margin-bottom: 2rem;
+    background: #fafafa;
+    border-radius: 15px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+  }
+  
+  .experience-item:hover {
+    background: #f0f8ff;
+    transform: translateX(10px);
+    box-shadow: 0 5px 20px rgba(44, 90, 160, 0.1);
+  }
+  
+  .experience-item.current {
+    background: linear-gradient(135deg, #e3f2fd 0%, #f0f8ff 100%);
+    border: 2px solid rgba(44, 90, 160, 0.2);
+  }
+  
+  .experience-item.featured {
+    background: linear-gradient(135deg, #fff3e0 0%, #fafafa 100%);
+    border: 2px solid rgba(255, 152, 0, 0.3);
+  }
+  
+  .timeline-marker {
+    position: absolute;
+    left: -2.3rem;
+    top: 1.5rem;
+    width: 12px;
+    height: 12px;
+    background: #ddd;
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 0 0 3px #ddd;
+  }
+  
+  .timeline-marker.active {
+    background: #2c5aa0;
+    box-shadow: 0 0 0 3px #2c5aa0;
+    animation: pulse 2s infinite;
+  }
+  
+  .timeline-marker.featured {
+    background: #ff9800;
+    box-shadow: 0 0 0 3px #ff9800;
+  }
+  
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 3px #2c5aa0; }
+    50% { box-shadow: 0 0 0 6px rgba(44, 90, 160, 0.5); }
+    100% { box-shadow: 0 0 0 3px #2c5aa0; }
+  }
+  
+  .item-content h4 {
+    color: #2c5aa0;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+  
+  .item-content .role {
+    color: #4caf50;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  
+  .duration {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+  
+  .impact {
+    margin: 0.8rem 0;
+    line-height: 1.6;
+    color: #333;
+    font-size: 0.95rem;
+  }
+  
+  .impact strong {
+    color: #2c5aa0;
+  }
+  
+  .mentor, .recognition {
+    margin-top: 1rem;
+    font-style: italic;
+    color: #666;
+    font-size: 0.9rem;
+  }
+  
+  .mentor a {
+    color: #2c5aa0;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  .mentor a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .experience-category {
+      padding: 1.5rem;
+    }
+    
+    .experience-timeline {
+      padding-left: 1.5rem;
+    }
+    
+    .timeline-marker {
+      left: -1.8rem;
+    }
+    
+    .experience-item {
+      padding: 1rem;
+    }
+    
+    .experience-item:hover {
+      transform: translateX(5px);
+    }
+  }
+`;
+
+// Inject the styles
+const styleSheet = document.createElement('style');
+styleSheet.textContent = experienceStyles;
+document.head.appendChild(styleSheet);
 </script>
 
 <span class='anchor' id='news'></span>
@@ -1024,96 +1226,85 @@ document.addEventListener('DOMContentLoaded', function() {
 
 - Fall 2025, Fall 2024, Spring 2024, Fall 2023 – TA for Web Development  
 
-<span class='anchor' id='internships-and-research-experience'></span>
-# Internships and Research Experience
+<span class='anchor' id='professional-experience'></span>
+# Professional Experience
 
-<div class="edu-box">
-  <div class="edu-box-icon"><i class="fas fa-flask"></i></div>
-  <div class="edu-box-content">
-    <h4><strong>Adobe Research</strong> <small>— NLP Research Intern</small></h4>
-    <p class="text-secondary">May 2022 – Jan 2023</p>
-    <ul>
-      <li>Researched web scraping and information extraction as part of the NLP team under Nanda Kishore.</li>
-      <li>Gained expertise in large-scale data processing, visualization, and client-facing research workflows.</li>
-    </ul>
-    <p><em>Mentor</em>: <a href="https://research.adobe.com/person/nandakishore-kambhatla/" target="_blank">Nanda Kishore</a></p>
+<div class="experience-section">
+  <div class="experience-category">
+    <h3><i class="fas fa-rocket"></i> Research Impact</h3>
+    <div class="experience-content">
+      <p class="experience-highlight">🏆 <strong>Building the Future of Trustworthy AI</strong> — Leading cutting-edge research across multiple prestigious labs</p>
+      
+      <div class="experience-timeline">
+        <div class="experience-item current">
+          <div class="timeline-marker active"></div>
+          <div class="item-content">
+            <h4><strong>Radiant Lab, University of Missouri</strong> <span class="role">Research Assistant</span></h4>
+            <p class="duration">Jan 2024 – Present</p>
+            <p class="impact">🔬 <strong>NASA-Funded Innovation:</strong> Revolutionizing scientific reproducibility with LLM-powered containers that automatically debug and enhance collaborative research workflows</p>
+            <p class="impact">🧠 <strong>Self-Aware AI:</strong> Pioneering self-reflecting LLMs that monitor and correct their own reasoning in real-time, pushing the boundaries of AI reliability</p>
+          </div>
+        </div>
+
+        <div class="experience-item current">
+          <div class="timeline-marker active"></div>
+          <div class="item-content">
+            <h4><strong>Data Intensive Computing Lab, University of Missouri</strong> <span class="role">Research & Teaching Assistant</span></h4>
+            <p class="duration">Aug 2023 – Present</p>
+            <p class="impact">🎯 <strong>DoD-Funded Breakthrough:</strong> Developed HalluMat & HalluFormer achieving 30% hallucination reduction in scientific LLMs, published at AAAI 2025</p>
+            <p class="impact">⚡ <strong>HPC Innovation:</strong> Architected serverless GPU orchestration with Pick-and-Spin framework, revolutionizing LLM deployment efficiency</p>
+            <p class="impact">👥 <strong>Teaching Excellence:</strong> Mentored 115+ students in full-stack development, fostering next-generation tech talent</p>
+          </div>
+        </div>
+
+        <div class="experience-item">
+          <div class="timeline-marker"></div>
+          <div class="item-content">
+            <h4><strong>PAAL Lab, University of Missouri</strong> <span class="role">Research Assistant</span></h4>
+            <p class="duration">Aug 2023 – Jan 2024</p>
+            <p class="impact">🛸 <strong>AgTech Innovation:</strong> Led UAV crop analysis team, boosting accuracy by 40% using deep learning and geospatial intelligence</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-<hr>
 
-<div class="edu-box">
-  <div class="edu-box-icon"><i class="fas fa-laptop-code"></i></div>
-  <div class="edu-box-content">
-    <h4><strong>University of Missouri – Data Intensive Computing Lab</strong> <small>— Research & Teaching Assistant</small></h4>
-    <p class="text-secondary">Aug 2023 – Present</p>
-    <ul>
-      <li>Hallucination Detection Model: Developed hybrid frameworks for domain-tuned LLMs in materials science, improving factual consistency by 30% (DoD funded).</li>
-      <li>Designed Helm charts for scalable NLP deployment in HPC environments (NSF funded).</li>
-      <li>Supported 115+ students in Web Development (MERN stack), mentoring and evaluating projects.</li>
-    </ul>
-  </div>
-</div>
-<hr>
+  <div class="experience-category">
+    <h3><i class="fas fa-briefcase"></i> Industry Excellence</h3>
+    <div class="experience-content">
+      <p class="experience-highlight">💼 <strong>From Startups to Tech Giants</strong> — Delivering impactful solutions across diverse industry landscapes</p>
+      
+      <div class="experience-timeline">
+        <div class="experience-item featured">
+          <div class="timeline-marker featured"></div>
+          <div class="item-content">
+            <h4><strong>Adobe Research</strong> <span class="role">NLP Research Intern</span></h4>
+            <p class="duration">May 2022 – Jan 2023</p>
+            <p class="impact">🔍 <strong>Enterprise-Scale NLP:</strong> Architected advanced web scraping and information extraction pipelines, mastering large-scale data processing for client-facing research solutions</p>
+            <p class="mentor">Mentored by <a href="https://research.adobe.com/person/nandakishore-kambhatla/" target="_blank">Nanda Kishore</a></p>
+          </div>
+        </div>
 
-<div class="edu-box">
-  <div class="edu-box-icon"><i class="fas fa-brain"></i></div>
-  <div class="edu-box-content">
-    <h4><strong>University of Missouri – Radiant Lab</strong> <small>— Research Assistant</small></h4>
-    <p class="text-secondary">Jan 2024 – Present</p>
-    <ul>
-      <li>Reproducible Scientific Containers: Enhancing data-savvy, provenance-tracking containers for collaborative model analytics, integrating LLMs to automate debugging and improve reproducibility (NASA funded).</li>
-      <li>AI Trustworthiness and Self-Reflecting LLMs: Designing models that can monitor, verify, and revise their own reasoning in real time, enabling more reliable and adaptive AI systems.</li>
-    </ul>
-  </div>
-</div>
-<hr>
+        <div class="experience-item">
+          <div class="timeline-marker"></div>
+          <div class="item-content">
+            <h4><strong>Brandiverse</strong> <span class="role">Data Analyst Intern</span></h4>
+            <p class="duration">May 2020 – Jul 2020</p>
+            <p class="impact">📊 <strong>Marketing Intelligence:</strong> Transformed customer sentiment analysis with sophisticated NLP pipelines, driving strategic marketing improvements</p>
+            <p class="recognition">🏅 Certificate of Outstanding Achievement</p>
+          </div>
+        </div>
 
-<div class="edu-box">
-  <div class="edu-box-icon"><i class="fas fa-drone"></i></div>
-  <div class="edu-box-content">
-    <h4><strong>University of Missouri – PAAL Lab</strong> <small>— Research Assistant</small></h4>
-    <p class="text-secondary">Aug 2023 – Jan 2024</p>
-    <ul>
-      <li>Led UAV-based crop analysis team, improving accuracy of UAV data processing by 40% with deep learning and HPC-driven workflows.</li>
-      <li>Developed focus enhancement models and performed advanced geospatial analysis (Vegetation Indices, Mapping, and Image Stitching) using QGIS.</li>
-    </ul>
-  </div>
-</div>
-<hr>
-
-<div class="edu-box">
-  <div class="edu-box-icon"><i class="fas fa-chart-line"></i></div>
-  <div class="edu-box-content">
-    <h4><strong>Brandiverse</strong> <small>— Data Analyst Intern</small></h4>
-    <p class="text-secondary">May 2020 – Jul 2020</p>
-    <ul>
-      <li>Analyzed customer sentiment using NLP pipelines; contributed to marketing strategy improvements.</li>
-    </ul>
-    <p><em>Recognition</em>: Certificate of Outstanding Achievement</p>
-  </div>
-</div>
-<hr>
-
-<div class="edu-box">
-  <div class="edu-box-icon"><i class="fas fa-handshake"></i></div>
-  <div class="edu-box-content">
-    <h4><strong>Internshala</strong> <small>— Student Partner (ISP)</small></h4>
-    <p class="text-secondary">May 2020 – Dec 2020</p>
-    <ul>
-      <li>Promoted internships, conducted career-building sessions, and facilitated student-industry interaction on campus.</li>
-    </ul>
-  </div>
-</div>
-<hr>
-
-<div class="edu-box">
-  <div class="edu-box-icon"><i class="fas fa-users"></i></div>
-  <div class="edu-box-content">
-    <h4><strong>VIT University – Synergy Team & Club Organizer</strong></h4>
-    <p class="text-secondary">2019 – 2020</p>
-    <ul>
-      <li>Organized AI/NLP workshops and tech events under various student bodies.</li>
-    </ul>
+        <div class="experience-item">
+          <div class="timeline-marker"></div>
+          <div class="item-content">
+            <h4><strong>Internshala</strong> <span class="role">Student Partner (ISP)</span></h4>
+            <p class="duration">May 2020 – Dec 2020</p>
+            <p class="impact">🌟 <strong>Campus Leadership:</strong> Orchestrated career development initiatives, bridging student-industry gaps and promoting professional growth</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
  
