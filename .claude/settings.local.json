@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(del:*)",
+      "Bash(rm:*)",
+      "WebFetch(domain:papers.nips.cc)",
+      "Bash(git add:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
