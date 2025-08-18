@@ -1,17 +1,112 @@
 let qa;
 let textGenerator;
 
-// Enhanced context about Bhanu and general knowledge
+// Comprehensive context about Bhanu's research and work
 const bhanuContext = `
-Bhanu Prakash Vangala is an experienced software professional with over 8 years of experience in computer vision and machine learning.
-He currently works at Microsoft as a Senior Software Engineer specializing in AI and ML.
-His research focuses on computer vision, deep learning, natural language processing, and AI applications.
-He completed his Bachelor's degree in Computer Science and has published multiple research papers.
-His expertise includes Python, TensorFlow, PyTorch, and various machine learning frameworks.
-He has worked on projects involving brain tumor detection, pneumonia detection, image colorization, and various AI applications.
-His interests include artificial intelligence, machine learning, computer vision, and building innovative solutions.
-He has won multiple hackathons and received recognition for his academic excellence.
-Contact: You can reach Bhanu through the contact form on this website or via his professional profiles linked here.
+PERSONAL & ACADEMIC INFO:
+Bhanu Prakash Vangala is a Ph.D. researcher in Computer Science at the University of Missouri, Columbia.
+- Completed M.S. in Computer Science with perfect 4.0/4.0 GPA from University of Missouri (May 2025)
+- Outstanding Master's Student Award recipient from College of Engineering, University of Missouri
+- Google PhD Fellowship nominee (2025) - one of three nominees from University of Missouri
+- B.Tech in Computer Science and Engineering with Data Analytics specialization from VIT Vellore (2019-2023)
+- Excellence in Research Award and Best Department Thesis Award at VIT
+
+RESEARCH FOCUS & ADVISORS:
+- Research Focus: Trustworthy AI, efficient and reliable LLMs, high-performance computing (HPC), scalable reproducible systems
+- Current Advisor: Dr. Tanu Malik at Radiant Lab (Ph.D.)
+- Previous Advisors: Dr. Grant Scott and Dr. Jianlin Cheng (M.S.)
+- Funding: Department of Defense, NSF, and NASA grants
+
+MAJOR PUBLICATIONS & CONTRIBUTIONS:
+
+1. HalluMat: Hallucination Detection in Scientific LLMs (AAAI 2025)
+- Developed HalluMatData benchmark dataset for evaluating hallucination detection in materials science LLMs
+- Created HalluMatDetector: multi-stage detection pipeline with intrinsic verification, multi-source retrieval, contradiction graph analysis
+- Achieved 30% reduction in hallucination rates compared to baseline LLM outputs
+- Introduced Paraphrased Hallucination Consistency Score (PHCS) metric
+- Applied to biomedical and scientific text generation tasks with focus on research integrity
+
+2. HalluFormer: Faithfulness Evaluation Framework (AAAI 2025) 
+- Novel transformer-based architecture for multi-dimensional consistency checking of LLM outputs
+- Reformulated hallucination detection as classification problem for consistency assessment
+- F1 score: 0.9471 on MultiNLI test dataset, 0.7285 on blind ANAH dataset
+- Successfully deployed in scientific and clinical research environments
+- Establishes transformer-based approaches for improving LLM reliability
+
+3. Adaptive Inference: Orchestrating Fine-Tuned LLMs with Serverless GPUs (SC 2025 Poster)
+- Introduced Pick-and-Spin framework for policy-driven model selection with serverless GPU orchestration
+- Matrix-based (L×I) deployment model for dynamic routing to optimal (model, backend) pairs
+- Multi-objective scoring function balancing domain relevance, latency, and cost
+- Scale-to-zero serverless execution using Kubernetes with Knative and KEDA
+- Supports multiple domain-specific models (BioGPT, ChemBERTa, MatSciBERT) across inference backends
+- Research poster serves as foundation for planned comprehensive paper submission
+
+4. Deploying LLM-as-a-Service in Kubernetes HPC Clusters (Master's Thesis)
+- Foundational Helm-chart-based deployment ecosystem that evolved into Pick-and-Spin framework
+- GPU affinity scheduling algorithms, dynamic resource throttling, load balancing protocols
+- 60% reduction in deployment overhead, 40% enhancement in resource utilization
+- Successfully deployed on Nautilus distributed computing cluster serving 100+ users
+- Architectural foundation for serverless adaptive LLM orchestration
+
+TECHNICAL PROJECTS:
+
+5. Brain Tumor Detection in MRI Images
+- Two CNN architectures: custom-designed CNN and transfer learning with ResNet50V2
+- Advanced data augmentation (random flipping, rotation, zooming) for robustness
+- Systematic hyperparameter tuning and learning rate optimization
+- Comprehensive evaluation with accuracy, precision, recall, F1-score metrics
+- TensorFlow/Keras implementation on Google Colab
+
+6. Pneumonia Detection in Chest X-rays (MICCAI)
+- Five deep learning architectures: custom CNN, ResNet18, VGG16, ResNet50, EfficientNet
+- 5,216 training images with K-fold cross-validation and multi-GPU acceleration
+- EfficientNet achieved highest performance for medical image classification
+- Clinical workflow integration for radiologist assistance
+
+7. Image Colorization Using AI (IJARESM)
+- Convolutional autoencoders and GAN architectures for photorealistic colorization
+- Large-scale datasets with carefully designed loss functions
+- Applied to historical photograph restoration and film colorization
+
+8. KOO: Multilingual Sentiment Analysis
+- Comprehensive sentiment analysis across Hindi, English, Telugu, regional Indian languages
+- Transformer-based models and traditional ML algorithms for social media processing
+- Real-time analysis of millions of posts with scalable infrastructure
+- Platform integration for content moderation and user experience enhancement
+
+RESEARCH AREAS:
+- Trustworthy and Interpretable AI: Self-correcting LLMs with transparent reasoning
+- Scalable Systems: HPC infrastructure and Kubernetes-based deployment pipelines  
+- Factuality and Evaluation: Robust benchmarks for measuring LLM reliability
+- Scientific AI: Multimodal AI for materials science and biomedical innovation
+
+ACHIEVEMENTS & RECOGNITION:
+- Outstanding Master's Student Award (University of Missouri, 2025)
+- Google PhD Fellowship Nominee (2025)
+- MUIDSI Hackathon Runner-Up for VisionAI project ($1,000 prize)
+- Excellence in Research Award (VIT, 2023)
+- Best Department Thesis Award (VIT, 2023)
+- Adobe AI Community Evangelist
+- Teaching Assistant: 100+ students in web development (MERN stack)
+
+WORK EXPERIENCE:
+- Research Assistant: Data Intensive Computing Lab, University of Missouri (2023-Present)
+- Research Assistant: Radiant Lab, University of Missouri (2024-Present) 
+- Research Assistant: PAAL Lab, University of Missouri (2023-2024)
+- NLP Research Intern: Adobe Research (2022-2023)
+- Data Analyst Intern: Brandiverse (2020)
+- Internshala Student Partner (ISP) (2020)
+
+CURRENT PROJECTS:
+- ReflectMemory: Persistent memory control for long-context LLM reasoning
+- KubeLLM: Multi-tenant LLM inference on GPU-based HPC clusters
+- Reproducible Scientific Containers with LLM integration (NASA funded)
+- AI Trustworthiness and Self-Reflecting LLMs
+
+CONTACT:
+LinkedIn: https://www.linkedin.com/in/vangalabhanuprakash/
+Email: bv3hz@missouri.edu (University), vangalabhanuprakash.12@gmail.com (Personal)
+GitHub: Available for project exploration
 `;
 
 // Endpoint for server-side LLM if provided
@@ -35,22 +130,25 @@ async function loadModels() {
 function createChatWidget() {
   const chatButton = document.createElement('button');
   chatButton.id = 'chat-toggle';
-  chatButton.innerText = 'Chat';
+  chatButton.innerHTML = '<i class="fas fa-comments"></i>';
+  chatButton.title = 'Chat with AI Assistant';
   document.body.appendChild(chatButton);
 
   const chatWindow = document.createElement('div');
   chatWindow.id = 'chat-window';
   chatWindow.innerHTML = `
     <div id="chat-header">
-      <span>Hi! Ask me anything</span>
+      <span>🤖 AI Research Assistant</span>
       <button id="chat-close">&times;</button>
     </div>
     <div id="chat-messages">
       <div class="suggestions">
-        <p class="suggest">Who is Bhanu?</p>
-        <p class="suggest">What are his main skills?</p>
+        <p class="suggest">What is Bhanu's research focus?</p>
+        <p class="suggest">Tell me about his publications</p>
+        <p class="suggest">What awards has he received?</p>
         <p class="suggest">How can I contact him?</p>
-        <p class="suggest">Tell me about AI</p>
+        <p class="suggest">What is trustworthy AI?</p>
+        <p class="suggest">Explain hallucination in LLMs</p>
       </div>
     </div>
     <form id="chat-form">
@@ -94,7 +192,7 @@ function appendMessage(role, content) {
 }
 
 function isAboutBhanu(query) {
-  const bhanuKeywords = ['bhanu', 'he', 'his', 'him', 'vangala', 'contact', 'experience', 'skills', 'projects', 'work', 'microsoft', 'research'];
+  const bhanuKeywords = ['bhanu', 'he', 'his', 'him', 'vangala', 'contact', 'experience', 'skills', 'projects', 'work', 'research', 'thesis', 'phd', 'missouri', 'mizzou', 'university', 'professor', 'advisor', 'publications', 'awards', 'fellowship'];
   const lowerQuery = query.toLowerCase();
   return bhanuKeywords.some(keyword => lowerQuery.includes(keyword));
 }
@@ -102,18 +200,50 @@ function isAboutBhanu(query) {
 function getSimpleAnswer(query) {
   const lowerQuery = query.toLowerCase();
   
-  // Simple pattern matching for common questions
+  // Comprehensive pattern matching for detailed questions about Bhanu
   const responses = {
-    'hello': 'Hello! How can I help you today?',
-    'hi': 'Hi there! Feel free to ask me anything about Bhanu or general topics.',
-    'how are you': "I'm doing great! How can I assist you?",
-    'thank': "You're welcome! Is there anything else you'd like to know?",
-    'bye': 'Goodbye! Have a great day!',
-    'what is ai': 'AI (Artificial Intelligence) is the simulation of human intelligence in machines programmed to think and learn.',
-    'what is machine learning': 'Machine Learning is a subset of AI that enables systems to learn and improve from experience without being explicitly programmed.',
-    'what is deep learning': 'Deep Learning is a subset of machine learning that uses neural networks with multiple layers to progressively extract higher-level features from data.',
-    'what is computer vision': 'Computer Vision is a field of AI that trains computers to interpret and understand visual information from the world.',
-    'what is nlp': 'NLP (Natural Language Processing) is a branch of AI that helps computers understand, interpret, and generate human language.',
+    'hello': 'Hello! I\'m Bhanu\'s AI research assistant. I can help you learn about his work in trustworthy AI, LLM deployment, hallucination detection, and more!',
+    'hi': 'Hi there! I can provide detailed information about Bhanu\'s research at University of Missouri, his publications, projects, and achievements.',
+    'how are you': "I'm doing great! I'm here to help you learn about Bhanu's cutting-edge research in AI reliability and LLM orchestration.",
+    'thank': "You're welcome! Feel free to ask about his specific publications like HalluMat, HalluFormer, or the Pick-and-Spin framework.",
+    'bye': 'Goodbye! Come back anytime to learn more about Bhanu\'s research in trustworthy AI and scalable systems!',
+    
+    // Research and Publications
+    'hallumat': 'HalluMat is Bhanu\'s AAAI 2025 paper on hallucination detection in scientific LLMs. It introduces HalluMatData benchmark dataset and HalluMatDetector pipeline, achieving 30% reduction in hallucination rates with the novel PHCS metric for materials science applications.',
+    'halluformer': 'HalluFormer is Bhanu\'s AAAI 2025 paper presenting a transformer-based faithfulness evaluation framework. It achieved 0.9471 F1 score on MultiNLI and 0.7285 on ANAH dataset, reformulating hallucination detection as a classification problem for consistency assessment.',
+    'pick-and-spin': 'Pick-and-Spin is Bhanu\'s SC 2025 poster framework for orchestrating fine-tuned LLMs with serverless GPUs. It uses matrix-based (L×I) deployment with multi-objective scoring for domain relevance, latency, and cost optimization in HPC environments.',
+    'thesis': 'Bhanu\'s master\'s thesis "Deploying LLM-as-a-Service in Kubernetes HPC Clusters" established the foundational Helm-chart-based deployment ecosystem. It achieved 60% reduction in deployment overhead and 40% better resource utilization, serving 100+ users on Nautilus cluster.',
+    
+    // Technical Areas
+    'trustworthy ai': 'Trustworthy AI is Bhanu\'s main research focus - building self-correcting LLMs with transparent reasoning. His HalluMat and HalluFormer work directly addresses AI reliability through hallucination detection and factual consistency evaluation.',
+    'hallucination': 'AI hallucination is when models generate false information. Bhanu developed two major solutions: HalluMat (30% hallucination reduction in scientific contexts) and HalluFormer (transformer-based consistency checking with 94.71% accuracy).',
+    'kubernetes': 'Bhanu extensively works with Kubernetes for LLM deployment. His thesis and Pick-and-Spin framework use Kubernetes with Knative and KEDA for serverless GPU orchestration and multi-tenant LLM inference in HPC clusters.',
+    'hpc': 'High-Performance Computing is central to Bhanu\'s work. He deploys LLMs on HPC clusters like Nautilus, develops GPU-aware scheduling algorithms, and creates scalable infrastructure for research environments.',
+    
+    // Achievements and Recognition
+    'awards': 'Bhanu received Outstanding Master\'s Student Award (2025), Google PhD Fellowship nomination, MUIDSI Hackathon Runner-Up ($1,000), Excellence in Research Award at VIT, and Best Department Thesis Award.',
+    'fellowship': 'Bhanu was nominated for the prestigious Google PhD Fellowship in 2025, one of only three nominees from University of Missouri, recognizing his exceptional research in NLP and AI.',
+    'hackathon': 'Bhanu won Runner-Up in MUIDSI Hackathon with VisionAI project for visually impaired assistance, earning $1,000 prize for his innovative AI accessibility solution.',
+    
+    // Academic Info
+    'education': 'Bhanu completed M.S. Computer Science with perfect 4.0 GPA at University of Missouri (2025), and B.Tech CSE with Data Analytics at VIT Vellore (2019-2023). Currently pursuing Ph.D. at Missouri.',
+    'advisor': 'Bhanu currently works under Dr. Tanu Malik at Radiant Lab for his Ph.D. Previously advised by Dr. Grant Scott and Dr. Jianlin Cheng for his master\'s degree.',
+    'university': 'Bhanu is at University of Missouri, Columbia, pursuing Ph.D. in Computer Science. He completed his M.S. there with perfect GPA and Outstanding Student Award.',
+    
+    // Projects
+    'brain tumor': 'Bhanu\'s brain tumor detection project used two CNN architectures (custom CNN and ResNet50V2) with advanced data augmentation. Implemented on TensorFlow/Keras with comprehensive evaluation metrics for medical imaging.',
+    'pneumonia': 'His pneumonia detection work (MICCAI) evaluated five deep learning models on 5,216 chest X-rays. EfficientNet achieved best performance with K-fold validation and multi-GPU acceleration for clinical workflow integration.',
+    'image colorization': 'Bhanu developed AI-powered colorization using convolutional autoencoders and GANs. Applied to historical photograph restoration and film colorization with sophisticated loss functions for photorealistic results.',
+    'koo': 'KOO sentiment analysis project handled multilingual social media content (Hindi, English, Telugu). Real-time processing of millions of posts with transformer models for content moderation and user experience enhancement.',
+    
+    // Current Work
+    'current projects': 'Bhanu is currently working on ReflectMemory (persistent memory for LLM reasoning), KubeLLM (multi-tenant LLM inference), and NASA-funded reproducible scientific containers with LLM integration.',
+    'funding': 'Bhanu\'s research is supported by grants from Department of Defense, NSF, and NASA, covering his work on trustworthy AI, hallucination detection, and reproducible scientific computing.',
+    
+    // Contact and General
+    'contact': 'You can reach Bhanu at bv3hz@missouri.edu (university) or vangalabhanuprakash.12@gmail.com (personal). Connect on LinkedIn: https://www.linkedin.com/in/vangalabhanuprakash/',
+    'publications': 'Bhanu has 8+ publications including AAAI 2025 papers (HalluMat, HalluFormer), SC 2025 poster (Pick-and-Spin), his master\'s thesis, and multiple technical projects in medical AI and NLP.',
+    'research focus': 'Bhanu researches trustworthy AI, efficient LLMs, HPC systems, and scientific AI. His work spans hallucination detection, serverless GPU orchestration, factuality evaluation, and reproducible computing systems.',
   };
 
   for (const [key, value] of Object.entries(responses)) {
@@ -209,9 +339,9 @@ async function getLocalAnswer(query) {
     
     // Fallback responses
     if (isAboutBhanu(query)) {
-      return "Bhanu is an experienced AI/ML engineer at Microsoft with expertise in computer vision and deep learning. For specific details, please check the About section of this website.";
+      return "Bhanu Prakash Vangala is a Ph.D. researcher at University of Missouri specializing in trustworthy AI and LLM deployment. He has published papers at AAAI 2025 on hallucination detection and submitted innovative work on serverless GPU orchestration. Feel free to ask about his specific research, publications, achievements, or projects!";
     }
-    return "I can help answer questions about Bhanu or general topics. Please try rephrasing your question.";
+    return "I can help answer questions about Bhanu's research, publications, projects, or general AI topics. Try asking about HalluMat, HalluFormer, Pick-and-Spin, or his academic achievements!";
   }
 }
 

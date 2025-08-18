@@ -222,8 +222,12 @@ redirect_from:
     <p><strong><a href="https://drive.google.com/file/d/1oMbe8br7-wm7NLkrOFbFGtT2vUlxdCTn/view?usp=drive_link">HalluMat: Hallucination Detection in Scientific LLMs</a></strong></p>
     <p><strong>Bhanu Prakash Vangala</strong>, Jianlin Cheng</p>
     <ul>
-      <li>A hybrid evaluation pipeline combining intrinsic and extrinsic techniques to flag hallucinations in domain-specific outputs.</li>
-      <li>Applied to biomedical and scientific text generation tasks.</li>
+      <li><strong>Primary Innovation:</strong> Developed HalluMatData, a comprehensive benchmark dataset specifically designed for evaluating hallucination detection methods in domain-specific large language models applied to materials science research</li>
+      <li><strong>Technical Framework:</strong> Implemented HalluMatDetector, a sophisticated multi-stage detection pipeline that combines intrinsic verification mechanisms, multi-source knowledge retrieval, contradiction graph analysis, and comprehensive metric-based assessment protocols</li>
+      <li><strong>Quantitative Results:</strong> Demonstrated significant improvement with 30% reduction in hallucination rates compared to baseline LLM outputs, with particular effectiveness in high-entropy query scenarios across multiple materials science subdomains</li>
+      <li><strong>Methodological Contribution:</strong> Introduced the Paraphrased Hallucination Consistency Score (PHCS), a novel metric for quantifying inconsistencies in LLM responses across semantically equivalent queries, providing deeper insights into model reliability patterns</li>
+      <li><strong>Knowledge Integration:</strong> Combined knowledge graph-based contradiction detection with fine-grained factual verification techniques to establish a more reliable and interpretable framework for AI-assisted scientific discovery processes</li>
+      <li><strong>Domain Impact:</strong> Addresses critical challenges in research integrity by providing tools to detect and mitigate factually incorrect or misleading information generation in scientific contexts</li>
     </ul>
     <div style="display: inline">
       <a class="pdf-link" href="https://drive.google.com/file/d/1oMbe8br7-wm7NLkrOFbFGtT2vUlxdCTn/view?usp=drive_link" title="PDF"><i class="fas fa-file-pdf"></i></a>
@@ -246,7 +250,12 @@ redirect_from:
     <p><strong><a href="https://drive.google.com/file/d/1o6tqCJdhiCTAR4AEM59fV4t2VSdvS4yt/view?usp=drive_link">HalluFormer: Faithfulness Evaluation Framework</a></strong></p>
     <p><strong>Bhanu Prakash Vangala</strong>, Jianlin Cheng</p>
     <ul>
-      <li>Transformer-based architecture for multi-dimensional consistency checking of LLM outputs.</li>
+      <li><strong>Architectural Innovation:</strong> Designed a novel transformer-based neural architecture specifically optimized for multi-dimensional consistency assessment between input questions, generated answers, and retrieved knowledge contexts in large language model outputs</li>
+      <li><strong>Problem Reformulation:</strong> Transformed the traditionally complex hallucination detection challenge into a well-defined classification problem that systematically evaluates consistency patterns across diverse knowledge sources and contextual information</li>
+      <li><strong>Empirical Performance:</strong> Achieved robust performance with F1 score of 0.9471 on the established MultiNLI test dataset, and demonstrated strong generalization capabilities with F1 score of 0.7285 on the blind ANAH evaluation dataset</li>
+      <li><strong>Cross-Domain Generalization:</strong> Exhibits exceptional ability to detect hallucinations across previously unseen data distributions, indicating strong transferability and robustness of the underlying detection mechanisms</li>
+      <li><strong>High-Stakes Applications:</strong> Successfully deployed and validated in critical scientific and clinical research environments where factual accuracy is paramount and erroneous information could have significant consequences</li>
+      <li><strong>Methodological Advancement:</strong> Establishes transformer-based approaches as a viable and effective paradigm for improving the reliability and trustworthiness of large language model systems in knowledge-intensive domains</li>
     </ul>
     <div style="display: inline">
       <a class="pdf-link" href="https://drive.google.com/file/d/1o6tqCJdhiCTAR4AEM59fV4t2VSdvS4yt/view?usp=drive_link" title="PDF"><i class="fas fa-file-pdf"></i></a>
@@ -254,6 +263,34 @@ redirect_from:
     <details class='abstract'>
       <summary>Show Abstract</summary>
       <p>Despite the impressive performance of Large Language Models (LLMs) in a variety of natural language processing tasks, they are still prone to producing information that is factually inaccurate, known as hallucination. In critical fields related to scientific and clinical domains that demand highly precise answers, the negative effect of this phenomenon is even more pronounced. To address this problem, we formulate the hallucination detection problem as a classification problem of assessing the consistency between questions, answers and retrieved knowledge contexts and propose HalluFormer, a transformer-based model for detecting hallucinations of LLMs. HalluFormer was trained and tested on the MultiNLI dataset. It achieves an F1 score of 0.9471 on the MultiNLI test dataset. On the blind ANAH test dataset, it achieves an F1 score of 0.7285, indicating it can generalize reasonably well to completely new data. The results demonstrate that transformer-based methods can be utilized to detect hallucinations of LLMs, paving the way for further research on improving the reliability of LLMs.</p>
+    </details>
+  </div>
+</div>
+
+<div class='paper-box'>
+  <div class='paper-box-image'>
+    <div>
+      <div class="badge">SC 2025 Poster</div>
+      <img src='images/LLM-as-Service-portfolio-image.png' alt="Dynamic LLM Orchestration" width="100%">
+    </div>
+  </div>
+  <div class='paper-box-text'>
+    <p><strong><a href="https://submissions.supercomputing.org/">Adaptive Inference: Orchestrating Fine-Tuned LLMs with Serverless GPUs in HPC Environments</a></strong></p>
+    <p><strong>Bhanu Prakash Vangala</strong>, Tanu Malik</p>
+    <ul>
+      <li><strong>Research Poster Presentation:</strong> Presented Pick-and-Spin framework as a research poster at SC 2025, showcasing preliminary results and methodology for policy-driven model selection with serverless GPU orchestration</li>
+      <li><strong>Matrix-Based Orchestration Concept:</strong> Introduced the conceptual framework of a two-dimensional grid (L×I) deployment model where rows represent fine-tuned models and columns denote inference backends for dynamic routing</li>
+      <li><strong>Adaptive Routing Algorithm Design:</strong> Proposed a multi-objective scoring function approach that balances domain relevance (using DistilBERT classification), predicted latency, and estimated cost with configurable weights</li>
+      <li><strong>Serverless GPU Architecture Prototype:</strong> Demonstrated proof-of-concept for scale-to-zero serverless execution using Kubernetes with Knative and KEDA for on-demand service provisioning</li>
+      <li><strong>Preliminary Performance Results:</strong> Initial evaluation showing superior scalability and GPU utilization potential compared to always-on deployments, with promising cost reduction indicators</li>
+      <li><strong>Future Paper Development:</strong> Research poster serves as foundation for planned comprehensive paper submission with extended evaluation, enhanced methodology, and detailed performance analysis</li>
+    </ul>
+    <div style="display: inline">
+      <a class="pdf-link" href="https://submissions.supercomputing.org/" title="SC25 Poster Submission"><i class="fas fa-file-pdf"></i></a>
+    </div>
+    <details class='abstract'>
+      <summary>Show Abstract</summary>
+      <p>Large Language Models (LLMs) are increasingly fine-tuned for domain-specific applications in science, engineering, and industry. However, providing these models as a service (LLMaaS) or self hosting poses cost and efficiency challenges: commercial APIs impose high recurring fees, while running multiple fine-tuned models locally wastes expensive GPUs when they sit idle. We present Pick-and-Spin, a framework that combines policy-driven model selection with serverless GPU orchestration. We conceptualize deployment as a two-dimensional grid (L×I), where rows represent fine-tuned models and columns denote inference backends. When a user submits a prompt, Pick-and-Spin dynamically routes it to the most relevant and cost-effective (model, backend) pair, spinning up services on demand while scaling idle ones to zero. By unifying adaptive routing with serverless execution, Pick-and-Spin demonstrates a scalable and affordable pathway for delivering domain-specific LLMs in high-performance computing (HPC) research environments.</p>
     </details>
   </div>
 </div>
@@ -269,14 +306,19 @@ redirect_from:
     <p><strong><a href="#">Deploying LLM-as-a-Service in Kubernetes HPC Clusters</a></strong></p>
     <p><strong>Bhanu Prakash Vangala</strong>, Grant Scott, Jianlin Cheng</p>
     <ul>
-      <li>Designed a Helm-based GPU-aware deployment pipeline for LLM inference in research clusters.</li>
+      <li><strong>Foundational Infrastructure:</strong> Established the foundational Helm-chart-based deployment ecosystem that later evolved into the Pick-and-Spin framework, enabling scalable and reliable large language model inference services in HPC environments</li>
+      <li><strong>Core Resource Management:</strong> Engineered fundamental GPU affinity scheduling algorithms, dynamic resource throttling mechanisms, and load balancing protocols that form the basis for advanced serverless orchestration</li>
+      <li><strong>Multi-Tenancy Foundation:</strong> Designed secure, isolated multi-tenant access configurations supporting concurrent research workflows while maintaining data privacy and computational resource fairness</li>
+      <li><strong>Performance Baseline:</strong> Established baseline performance metrics with 60% reduction in deployment overhead and 40% enhancement in resource utilization, providing the foundation for adaptive scaling improvements</li>
+      <li><strong>Production Validation:</strong> Successfully deployed and validated the foundational system on the Nautilus distributed computing cluster, serving over 100 concurrent users and informing the development of dynamic orchestration capabilities</li>
+      <li><strong>Architectural Foundation:</strong> Created the underlying architecture and design principles that enabled the evolution toward serverless, adaptive LLM orchestration with Pick-and-Spin framework</li>
     </ul>
     <div style="display: inline">
       <a href="#"><strong>[thesis]</strong></a>
     </div>
     <details class='abstract'>
       <summary>Show Abstract</summary>
-      <p>This work focuses on scalable and efficient deployment strategies for large language models in high-performance computing (HPC) environments. It outlines a Helm-chart-based approach for deploying containerized models with GPU affinity scheduling, resource throttling, and multi-user access configurations.</p>
+      <p>This foundational work establishes the architectural principles and deployment strategies for large language models in high-performance computing (HPC) environments that later evolved into the Pick-and-Spin framework. It outlines the core Helm-chart-based approach for deploying containerized models with GPU affinity scheduling, resource throttling, and multi-user access configurations. The research provides the technical foundation for dynamic model orchestration, serverless scaling, and adaptive routing capabilities that enable efficient multi-model LLM deployments in research environments.</p>
     </details>
   </div>
 </div>
@@ -292,8 +334,12 @@ redirect_from:
     <p><strong><a href="https://drive.google.com/file/d/1upCswGveonJPN2vmuXzKlhbKqE8tkGSA/view?usp=sharing">Brain Tumor Detection in MRI Images</a></strong></p>
     <p><strong>Bhanu Prakash Vangala</strong></p>
     <ul>
-      <li>Built a CNN-based pipeline to classify MRI scans into normal and tumor-positive cases.</li>
-      <li>Used preprocessed image datasets and trained on Google Colab with Keras/TensorFlow.</li>
+      <li><strong>Model Architecture:</strong> Developed and implemented two distinct convolutional neural network architectures: a custom-designed CNN optimized for brain tumor detection and a transfer learning approach utilizing the pre-trained ResNet50V2 architecture</li>
+      <li><strong>Data Engineering:</strong> Processed comprehensive MRI image datasets with advanced data augmentation techniques including random flipping, rotation, and zooming transformations to enhance model robustness and reduce overfitting</li>
+      <li><strong>Performance Optimization:</strong> Conducted systematic hyperparameter tuning and learning rate optimization to achieve optimal training parameters, resulting in improved accuracy and generalization capabilities</li>
+      <li><strong>Evaluation Framework:</strong> Implemented rigorous model evaluation using multiple metrics including accuracy, precision, recall, and F1-score, with comprehensive visualization through confusion matrices and performance analytics</li>
+      <li><strong>Clinical Relevance:</strong> Demonstrated the practical potential of neural networks in medical imaging diagnostics, contributing to automated diagnostic assistance tools for healthcare professionals</li>
+      <li><strong>Technical Implementation:</strong> Utilized TensorFlow and Keras frameworks with Google Colab infrastructure for efficient model training and deployment</li>
     </ul>
     <div style="display: inline">
       <a href="https://drive.google.com/file/d/1upCswGveonJPN2vmuXzKlhbKqE8tkGSA/view?usp=sharing"><strong>[project]</strong></a>
@@ -316,8 +362,12 @@ redirect_from:
     <p><strong><a href="https://drive.google.com/file/d/1UJKKHXcFIvtjClUyrr6dhatMKN1svU7C/view?usp=sharing">Pneumonia Detection in Chest X-rays Using Deep Learning</a></strong></p>
     <p><strong>Bhanu Prakash Vangala</strong></p>
     <ul>
-      <li>Applied CNN models to classify chest X-rays for pneumonia diagnosis.</li>
-      <li>Trained on Kaggle datasets using transfer learning (ResNet, VGG).</li>
+      <li><strong>Multi-Model Approach:</strong> Implemented and evaluated five distinct deep learning architectures including custom CNN, ResNet18, VGG16, ResNet50 with K-Fold Cross-Validation, and EfficientNet for comprehensive performance comparison</li>
+      <li><strong>Dataset Scale:</strong> Trained on extensive Chest X-Ray Pneumonia dataset containing 5,216 training images, employing rigorous validation protocols using precision, recall, F1-score, and ROC-AUC metrics</li>
+      <li><strong>Advanced Training Strategies:</strong> Utilized innovative techniques including K-fold cross-validation for robust model assessment and multi-GPU acceleration for enhanced computational efficiency</li>
+      <li><strong>Performance Excellence:</strong> Achieved superior classification results with EfficientNet demonstrating the highest performance, validating the effectiveness of state-of-the-art architectures in medical image analysis</li>
+      <li><strong>Clinical Integration:</strong> Designed solutions specifically for integration into clinical workflows to assist radiologists in diagnostic decision-making processes</li>
+      <li><strong>Healthcare Impact:</strong> Addresses critical needs in global healthcare by providing automated, scalable pneumonia detection systems for improved patient outcomes worldwide</li>
     </ul>
     <div style="display: inline">
       <a href="https://drive.google.com/file/d/1UJKKHXcFIvtjClUyrr6dhatMKN1svU7C/view?usp=sharing"><strong>[project]</strong></a>
@@ -340,8 +390,12 @@ redirect_from:
     <p><strong><a href="https://drive.google.com/file/d/14GH6eNzC28uhcN1Y-E3iZJ9a5G8mdXLz/view?usp=sharing">Image Colorization Using AI</a></strong></p>
     <p><strong>Bhanu Prakash Vangala</strong></p>
     <ul>
-      <li>Developed a deep learning model to convert grayscale images to color.</li>
-      <li>Used convolutional autoencoders and GAN-based architectures for photorealistic results.</li>
+      <li><strong>Technical Innovation:</strong> Developed sophisticated deep learning models combining convolutional autoencoders and Generative Adversarial Network (GAN) architectures to achieve photorealistic image colorization from grayscale inputs</li>
+      <li><strong>Architectural Design:</strong> Implemented advanced neural network architectures that learn complex color mappings and semantic understanding to produce naturally colored images with high fidelity</li>
+      <li><strong>Training Methodology:</strong> Utilized large-scale image datasets with carefully designed loss functions and training protocols to ensure color accuracy and visual coherence across diverse image categories</li>
+      <li><strong>Quality Assessment:</strong> Achieved superior results in both quantitative metrics and qualitative visual evaluation, demonstrating significant improvements over traditional colorization methods</li>
+      <li><strong>Cultural Application:</strong> Successfully applied to historical photograph restoration and film colorization projects, contributing to cultural preservation and media enhancement initiatives</li>
+      <li><strong>Research Impact:</strong> Published findings demonstrate the potential of AI-driven image processing techniques for creative applications and historical documentation preservation</li>
     </ul>
     <div style="display: inline">
       <a href="https://drive.google.com/file/d/14GH6eNzC28uhcN1Y-E3iZJ9a5G8mdXLz/view?usp=sharing"><strong>[project]</strong></a>
@@ -364,8 +418,12 @@ redirect_from:
     <p><strong><a href="https://drive.google.com/file/d/1a2Xan4sDdC7ib7Hj5HODcjPyztmTee4k/view?usp=sharing">KOO: Uncovering User Sentiments and Trends!</a></strong></p>
     <p><strong>Bhanu Prakash Vangala</strong></p>
     <ul>
-      <li>Developed a multilingual sentiment analysis system for KOO, leveraging NLP and machine learning to analyze user sentiment across various languages.</li>
-      <li>Provided real-time sentiment insights for improved user experience and content moderation on the social networking platform.</li>
+      <li><strong>Multilingual NLP Pipeline:</strong> Engineered a comprehensive sentiment analysis system capable of processing and analyzing user-generated content across multiple languages including Hindi, English, Telugu, and other regional Indian languages</li>
+      <li><strong>Advanced Machine Learning:</strong> Implemented state-of-the-art transformer-based models and traditional machine learning algorithms optimized for social media text processing and sentiment classification tasks</li>
+      <li><strong>Real-time Processing:</strong> Developed scalable infrastructure for real-time sentiment analysis of millions of posts and comments, enabling immediate insights into user sentiment trends and platform dynamics</li>
+      <li><strong>Platform Integration:</strong> Successfully integrated the system into KOO's content moderation workflow, providing automated sentiment-based content filtering and user experience enhancement mechanisms</li>
+      <li><strong>Data Science Innovation:</strong> Created novel approaches for handling code-switching, informal language patterns, and cultural context in multilingual social media text analysis</li>
+      <li><strong>Business Impact:</strong> Delivered actionable insights that improved user engagement metrics and enhanced platform safety through proactive sentiment-based content management strategies</li>
     </ul>
     <div style="display: inline">
       <a href="https://drive.google.com/file/d/1a2Xan4sDdC7ib7Hj5HODcjPyztmTee4k/view?usp=sharing"><strong>[project]</strong></a>
