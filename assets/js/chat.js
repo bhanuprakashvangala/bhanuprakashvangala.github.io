@@ -286,6 +286,114 @@ function getSimpleAnswer(query) {
   return null;
 }
 
+function getFollowUpAnswer(query, context) {
+  const lowerQuery = query.toLowerCase().replace(/[^\w\s]/g, ' ').trim();
+  
+  // Check if this is a follow-up question
+  const followUpPatterns = [
+    'yes please', 'tell me more', 'go on', 'continue', 'elaborate', 'details',
+    'yes', 'tell me about', 'more info', 'more details', 'explain more'
+  ];
+  
+  const isFollowUp = followUpPatterns.some(pattern => lowerQuery.includes(pattern));
+  
+  if (isFollowUp && context.length > 1) {
+    // Look at the previous conversation to understand what they want to know more about
+    const recentMessages = context.slice(-4); // Last 4 messages
+    
+    // Check what topic was being discussed
+    for (let i = recentMessages.length - 1; i >= 0; i--) {
+      const msg = recentMessages[i];
+      if (msg.role === 'user') {
+        const prevQuery = msg.content.toLowerCase();
+        
+        // If they asked about publications before
+        if (prevQuery.includes('publication') || prevQuery.includes('papers') || prevQuery.includes('research work')) {
+          return `Here are Bhanu's key publications in detail:
+
+1. **HalluMat (AAAI 2025)**: Developed HalluMatData benchmark dataset and HalluMatDetector pipeline achieving 30% reduction in hallucination rates. Introduced PHCS metric for materials science LLM evaluation.
+
+2. **HalluFormer (AAAI 2025)**: Transformer-based faithfulness evaluation framework achieving 0.9471 F1 score on MultiNLI and 0.7285 on ANAH dataset for consistency assessment.
+
+3. **Pick-and-Spin (SC 2025 Poster)**: Serverless GPU orchestration framework with matrix-based (L×I) deployment for fine-tuned LLMs in HPC environments.
+
+4. **Master's Thesis**: LLM-as-a-Service deployment in Kubernetes achieving 60% deployment overhead reduction and 40% better resource utilization.
+
+5. **Medical AI Projects**: Brain tumor detection (CNN + ResNet50V2), Pneumonia detection (5 architectures, EfficientNet best), Image colorization (GANs).
+
+6. **KOO Sentiment Analysis**: Multilingual system for Hindi/English/Telugu social media processing with real-time capabilities.`;
+        }
+        
+        // If they asked about research focus before
+        if (prevQuery.includes('research') && (prevQuery.includes('focus') || prevQuery.includes('area'))) {
+          return `Bhanu's research spans four main areas:
+
+**1. Trustworthy AI**: Building self-correcting LLMs with transparent reasoning. His HalluMat and HalluFormer work directly addresses AI reliability through hallucination detection.
+
+**2. Scalable Systems**: HPC infrastructure and Kubernetes-based deployment pipelines. His Pick-and-Spin framework enables serverless GPU orchestration for multiple fine-tuned models.
+
+**3. Factuality & Evaluation**: Creating robust benchmarks for measuring LLM reliability. Developed PHCS metric and multi-stage detection pipelines for scientific applications.
+
+**4. Scientific AI**: Multimodal AI for materials science and biomedical innovation. His work is funded by DoD, NSF, and NASA for reproducible scientific computing.
+
+Current projects include ReflectMemory (persistent memory for LLM reasoning) and NASA-funded reproducible scientific containers.`;
+        }
+        
+        // If they asked about awards before
+        if (prevQuery.includes('award') || prevQuery.includes('achievement') || prevQuery.includes('recognition')) {
+          return `Bhanu's achievements include:
+
+**Academic Excellence:**
+- Outstanding Master's Student Award (University of Missouri, 2025)
+- Google PhD Fellowship Nominee (2025) - one of only three from Missouri
+- Perfect 4.0/4.0 GPA in M.S. Computer Science
+- Excellence in Research Award (VIT, 2023)
+- Best Department Thesis Award (VIT, 2023)
+
+**Competition Success:**
+- MUIDSI Hackathon Runner-Up with VisionAI project ($1,000 prize)
+- VIT AI Tech-Thon Runner-Up
+
+**Professional Recognition:**
+- Adobe AI Community Evangelist
+- Internshala Student Partner (ISP)
+- Teaching Excellence: 100+ students mentored in web development
+
+**Research Funding:**
+- Department of Defense grants
+- NSF funding support
+- NASA research grants for reproducible scientific computing`;
+        }
+        
+        // If they asked about contact before
+        if (prevQuery.includes('contact') || prevQuery.includes('reach') || prevQuery.includes('email')) {
+          return `You can reach Bhanu through multiple channels:
+
+**Email:**
+- University: bv3hz@missouri.edu
+- Personal: vangalabhanuprakash.12@gmail.com
+
+**Professional Networks:**
+- LinkedIn: https://www.linkedin.com/in/vangalabhanuprakash/
+- GitHub: Available for project exploration and collaboration
+
+**Academic Affiliation:**
+- Ph.D. Researcher, Computer Science Department
+- University of Missouri, Columbia
+- Radiant Lab (Dr. Tanu Malik)
+
+Feel free to reach out about research collaborations, publications, or academic opportunities!`;
+        }
+      }
+    }
+  }
+  
+  return null;
+}
+
+// Store conversation context
+let conversationContext = [];
+
 async function sendMessage(text) {
   appendMessage('user', text);
   appendMessage('assistant', '...');
@@ -294,10 +402,22 @@ async function sendMessage(text) {
     let answer = '';
     const query = typeof text === 'string' ? text : String(text);
     
-    // Check for simple responses first
+    // Add to conversation context
+    conversationContext.push({role: 'user', content: query});
+    
+    // Check for follow-up patterns first
+    const followUpAnswer = getFollowUpAnswer(query, conversationContext);
+    if (followUpAnswer) {
+      document.querySelector('#chat-messages').lastChild.textContent = followUpAnswer;
+      conversationContext.push({role: 'assistant', content: followUpAnswer});
+      return;
+    }
+    
+    // Check for simple responses
     const simpleAnswer = getSimpleAnswer(query);
     if (simpleAnswer) {
       document.querySelector('#chat-messages').lastChild.textContent = simpleAnswer;
+      conversationContext.push({role: 'assistant', content: simpleAnswer});
       return;
     }
 
@@ -330,10 +450,12 @@ async function sendMessage(text) {
     }
     
     document.querySelector('#chat-messages').lastChild.textContent = answer;
+    conversationContext.push({role: 'assistant', content: answer});
   } catch (err) {
     console.error('Chat error:', err);
-    document.querySelector('#chat-messages').lastChild.textContent = 
-      'I apologize, but I encountered an issue. Please try rephrasing your question or ask something else.';
+    const errorMsg = 'I apologize, but I encountered an issue. Please try rephrasing your question or ask something else.';
+    document.querySelector('#chat-messages').lastChild.textContent = errorMsg;
+    conversationContext.push({role: 'assistant', content: errorMsg});
   }
 }
 
