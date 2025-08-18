@@ -33,9 +33,9 @@ redirect_from:
       </div>
       
       <div class="about-description">
-        <p>My research focuses on building AI that is <strong>trustworthy</strong>, <strong>efficient</strong>, and <strong>reliable</strong>, with an emphasis on <strong>large language models (LLMs)</strong>, <strong>high-performance computing (HPC)</strong>, and <strong>scalable, reproducible systems</strong>.</p>
-        <p>I began my graduate journey at Mizzou, completing my M.S. in Computer Science under <a href="https://scottgs.mufaculty.umsystem.edu/" target="_blank">Dr. Grant Scott</a> and <a href="https://en.wikipedia.org/wiki/Jianlin_Cheng" target="_blank">Dr. Jianlin Cheng</a>. Currently pursuing my Ph.D. under <a href="https://engineering.missouri.edu/faculty/tanu-malik/" target="_blank">Dr. Tanu Malik</a> at Radiant Lab.</p>
-        <p>Beyond technical work, I'm passionate about mentoring students, writing about graduate life abroad, and building tools that make AI systems more interpretable and aligned with human values.</p>
+        <p>My research focuses on building AI that is <strong>trustworthy</strong>, <strong>efficient</strong>, and <strong>reliable</strong>, with an emphasis on <strong>large language models (LLMs)</strong>, <strong>high-performance computing (HPC)</strong>, and <strong>scalable, reproducible systems</strong>. I began my graduate journey at Mizzou, completing my M.S. in Computer Science under <a href="https://scottgs.mufaculty.umsystem.edu/" target="_blank">Dr. Grant Scott</a> and <a href="https://en.wikipedia.org/wiki/Jianlin_Cheng" target="_blank">Dr. Jianlin Cheng</a>. During my master's, I worked on designing robust frameworks for deploying LLMs on distributed and HPC environments and studied hallucinations in AI for materials science — work that naturally evolved into my Ph.D. research and working under <a href="https://engineering.missouri.edu/faculty/tanu-malik/" target="_blank">Dr. Tanu Malik</a> at Radiant Lab.</p>
+        <p>My work is supported by grants from the <strong>Department of Defense</strong>, <strong>NSF</strong>, and <strong>NASA</strong>. It addresses some of the most critical questions and faults in AI today: How can we build systems that not only generate knowledge but also justify/correct and verify their outputs? Can they be scalable and reproducible? Will LLMs eventually become true personal agents that understand and work alongside us?</p>
+        <p>Beyond my technical work, I am passionate about mentoring students as a teaching assistant, writing and blogging about graduate life abroad and technical concepts in LLMs, and building tools that make AI systems more interpretable, effective, reproducible, and aligned with human values — a vision that guides every aspect of my research.</p>
       </div>
     </div>
 
@@ -88,48 +88,48 @@ redirect_from:
     </div>
   </div>
   
-  <!-- Enhanced Areas of Focus -->
-  <div class="research-focus-section">
-    <h4 style="text-align: center; color: #2c5aa0; margin: 2rem 0 1rem 0;">Research Areas of Focus</h4>
-    <div class="focus-items">
-      <div class="focus-item" onclick="toggleFocusDescription('trustworthy')">
-        <div class="focus-logo">🛡️</div>
-        <span>Trustworthy and Interpretable AI</span>
-        <div class="focus-arrow">▼</div>
-      </div>
-      <div id="trustworthy-desc" class="focus-description">
-        <p><strong>Building Self-Correcting AI Systems:</strong> Developing AI systems that reason transparently, explain their decision processes, detect inconsistencies, and actively self-correct. My work focuses on designing architectures and evaluation frameworks that empower models to justify their responses, ultimately fostering greater trust and adoption of AI in critical domains like science, healthcare, and law where accuracy and explainability are paramount.</p>
-      </div>
-      
-      <div class="focus-item" onclick="toggleFocusDescription('scalable')">
-        <div class="focus-logo">⚙️</div>
-        <span>Efficient and Scalable Language Models</span>
-        <div class="focus-arrow">▼</div>
-      </div>
-      <div id="scalable-desc" class="focus-description">
-        <p><strong>Democratizing AI Infrastructure:</strong> Pushing the boundaries of large-scale AI deployment through model compression, distributed training optimization, and advanced memory management. I design scalable architectures and Helm-based deployment pipelines that make state-of-the-art language models accessible to researchers and practitioners without requiring massive infrastructure investments, enabling equitable and practical use of cutting-edge AI technologies.</p>
-      </div>
-      
-      <div class="focus-item" onclick="toggleFocusDescription('factuality')">
-        <div class="focus-logo">✅</div>
-        <span>Factuality and Evaluation</span>
-        <div class="focus-arrow">▼</div>
-      </div>
-      <div id="factuality-desc" class="focus-description">
-        <p><strong>Rigorous AI Reliability Assessment:</strong> Creating robust benchmarks and advanced evaluation pipelines to rigorously measure the factual consistency, reliability, and safety of language model outputs. By integrating contradiction detection graphs, retrieval-augmented checks, and semantic consistency metrics, I ensure that AI systems can be trusted in settings where accuracy is paramount and errors carry significant real-world consequences.</p>
-      </div>
-      
-      <div class="focus-item" onclick="toggleFocusDescription('scientific')">
-        <div class="focus-logo">🔬</div>
-        <span>AI for Scientific Discovery</span>
-        <div class="focus-arrow">▼</div>
-      </div>
-      <div id="scientific-desc" class="focus-description">
-        <p><strong>Accelerating Research Breakthroughs:</strong> Leveraging the power of LLMs and multimodal AI to accelerate research in materials science, biomedical innovation, and policy modeling. My work enables domain scientists to harness AI as a collaborative partner — not only to analyze and generate data, but to form hypotheses, validate findings, and drive scientific breakthroughs with greater efficiency and confidence.</p>
+  <!-- Research Areas Layout -->
+  <div class="research-areas-layout">
+    <!-- Left: Areas of Focus -->
+    <div class="focus-section">
+      <h4 style="color: #2c5aa0; margin: 1rem 0;">Research Areas of Focus</h4>
+      <div class="focus-items">
+        <div class="focus-item" onclick="openFocusModal('trustworthy', this)">
+          <div class="focus-logo">🛡️</div>
+          <span>Trustworthy AI</span>
+        </div>
+        
+        <div class="focus-item" onclick="openFocusModal('scalable', this)">
+          <div class="focus-logo">⚙️</div>
+          <span>Scalable Systems</span>
+        </div>
+        
+        <div class="focus-item" onclick="openFocusModal('factuality', this)">
+          <div class="focus-logo">✅</div>
+          <span>Factuality</span>
+        </div>
+        
+        <div class="focus-item" onclick="openFocusModal('scientific', this)">
+          <div class="focus-logo">🔬</div>
+          <span>Scientific AI</span>
+        </div>
       </div>
     </div>
   </div>
 </div>
+</div>
+
+<!-- Focus Area Modal -->
+<div id="focusModal" class="focus-modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3 id="modalTitle"></h3>
+      <span class="close-modal" onclick="closeFocusModal()">&times;</span>
+    </div>
+    <div class="modal-body">
+      <div id="modalContent"></div>
+    </div>
+  </div>
 </div>
 
 <style>
@@ -257,9 +257,15 @@ redirect_from:
     color: #555;
   }
   
-  /* Research Focus Styles */
-  .research-focus-section {
+  /* Research Areas Layout */
+  .research-areas-layout {
+    display: grid;
+    grid-template-columns: 1fr;
     margin-top: 2rem;
+  }
+  
+  .focus-section {
+    max-width: 400px;
   }
   
   .focus-items {
@@ -279,12 +285,13 @@ redirect_from:
     transition: all 0.3s ease;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     border: 1px solid #e5e7eb;
+    position: relative;
   }
   
   .focus-item:hover {
     background: #f8f9fa;
-    transform: translateX(5px);
-    box-shadow: 0 4px 12px rgba(44, 90, 160, 0.1);
+    transform: translateX(5px) scale(1.02);
+    box-shadow: 0 6px 16px rgba(44, 90, 160, 0.15);
     border-color: #2c5aa0;
   }
   
@@ -302,42 +309,101 @@ redirect_from:
     color: #2c5aa0;
   }
   
-  .focus-arrow {
-    font-size: 0.8rem;
-    color: #666;
-    transition: transform 0.3s ease;
-    flex-shrink: 0;
+  /* Modal Styles */
+  .focus-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease;
   }
   
-  .focus-item.active .focus-arrow {
-    transform: rotate(180deg);
-  }
-  
-  .focus-description {
-    max-height: 0;
+  .modal-content {
+    background: white;
+    margin: 5% auto;
+    padding: 0;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: modalSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
     overflow: hidden;
-    transition: all 0.4s ease;
-    background: #f8f9fa;
-    border-radius: 8px;
-    margin-left: 58px;
-    border-left: 3px solid #2c5aa0;
   }
   
-  .focus-description.active {
-    max-height: 300px;
-    padding: 1rem 1.5rem;
-    margin-bottom: 0.5rem;
+  .modal-header {
+    background: linear-gradient(135deg, #2c5aa0 0%, #4caf50 100%);
+    color: white;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   
-  .focus-description p {
+  .modal-header h3 {
     margin: 0;
-    color: #555;
-    line-height: 1.6;
-    font-size: 0.95rem;
+    font-size: 1.5rem;
+    font-weight: 600;
   }
   
-  .focus-description strong {
+  .close-modal {
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+  }
+  
+  .close-modal:hover {
+    opacity: 1;
+  }
+  
+  .modal-body {
+    padding: 2rem;
+    line-height: 1.7;
+    color: #555;
+  }
+  
+  .modal-body p {
+    margin: 1rem 0;
+    font-size: 1rem;
+  }
+  
+  .modal-body strong {
     color: #2c5aa0;
+    font-weight: 600;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes modalSlideIn {
+    from {
+      opacity: 0;
+      transform: scale(0.7) translateY(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+  
+  @keyframes modalSlideOut {
+    from {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: scale(0.7) translateY(-50px);
+    }
   }
   
   /* Responsive Design */
@@ -440,23 +506,99 @@ function animateCounters() {
   });
 }
 
-// Focus area toggle function
-function toggleFocusDescription(areaId) {
-  const description = document.getElementById(areaId + '-desc');
-  const item = description.previousElementSibling;
-  const arrow = item.querySelector('.focus-arrow');
+// Focus area modal functions
+function openFocusModal(areaId, element) {
+  const modal = document.getElementById('focusModal');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalContent = document.getElementById('modalContent');
   
-  // Close all other descriptions
-  document.querySelectorAll('.focus-description').forEach(desc => {
-    if (desc.id !== areaId + '-desc') {
-      desc.classList.remove('active');
-      desc.previousElementSibling.classList.remove('active');
+  // Research area content
+  const focusContent = {
+    trustworthy: {
+      title: "🛡️ Trustworthy and Interpretable AI",
+      content: `<p><strong>Building Self-Correcting AI Systems</strong></p>
+                <p>Developing AI systems that do more than generate fluent outputs — they can reason transparently, explain their decision processes, detect inconsistencies, and actively self-correct. My work focuses on designing architectures and evaluation frameworks that empower models to justify their responses, ultimately fostering greater trust and adoption of AI in critical domains like science, healthcare, and law.</p>
+                <p><strong>Key Research Areas:</strong></p>
+                <ul>
+                  <li>Hallucination detection and mitigation in large language models</li>
+                  <li>Explainable AI architectures for critical applications</li>
+                  <li>Self-correction mechanisms in neural networks</li>
+                  <li>Transparent reasoning frameworks for scientific discovery</li>
+                </ul>`
+    },
+    scalable: {
+      title: "⚙️ Efficient and Scalable Language Models",
+      content: `<p><strong>Democratizing AI Infrastructure</strong></p>
+                <p>Pushing the boundaries of large-scale AI deployment through model compression, distributed training optimization, and advanced memory management. I design scalable architectures and Helm-based deployment pipelines that make state-of-the-art language models accessible to researchers and practitioners without requiring massive infrastructure investments.</p>
+                <p><strong>Technical Focus Areas:</strong></p>
+                <ul>
+                  <li>Kubernetes-based LLM deployment in HPC environments</li>
+                  <li>Serverless GPU orchestration with Pick-and-Spin framework</li>
+                  <li>Multi-tenant inference systems for research clusters</li>
+                  <li>Resource optimization and dynamic scaling algorithms</li>
+                </ul>`
+    },
+    factuality: {
+      title: "✅ Factuality and Evaluation",
+      content: `<p><strong>Rigorous AI Reliability Assessment</strong></p>
+                <p>Creating robust benchmarks and advanced evaluation pipelines to rigorously measure the factual consistency, reliability, and safety of language model outputs. By integrating contradiction detection graphs, retrieval-augmented checks, and semantic consistency metrics, I ensure that AI systems can be trusted in settings where accuracy is paramount.</p>
+                <p><strong>Evaluation Innovations:</strong></p>
+                <ul>
+                  <li>HalluMatData benchmark for materials science LLM evaluation</li>
+                  <li>Paraphrased Hallucination Consistency Score (PHCS) metric</li>
+                  <li>Multi-stage detection pipelines with knowledge graph integration</li>
+                  <li>Contradiction detection and semantic consistency frameworks</li>
+                </ul>`
+    },
+    scientific: {
+      title: "🔬 AI for Scientific Discovery",
+      content: `<p><strong>Accelerating Research Breakthroughs</strong></p>
+                <p>Leveraging the power of LLMs and multimodal AI to accelerate research in materials science, biomedical innovation, and policy modeling. My work enables domain scientists to harness AI as a collaborative partner — not only to analyze and generate data, but to form hypotheses, validate findings, and drive scientific breakthroughs with greater efficiency and confidence.</p>
+                <p><strong>Scientific Applications:</strong></p>
+                <ul>
+                  <li>Materials science research with domain-specific LLMs</li>
+                  <li>Biomedical innovation and drug discovery acceleration</li>
+                  <li>Reproducible scientific computing with AI integration</li>
+                  <li>Multimodal AI for complex scientific data analysis</li>
+                </ul>`
     }
-  });
+  };
   
-  // Toggle current description
-  description.classList.toggle('active');
-  item.classList.toggle('active');
+  // Set modal content
+  modalTitle.innerHTML = focusContent[areaId].title;
+  modalContent.innerHTML = focusContent[areaId].content;
+  
+  // Add click source animation effect
+  element.style.transform = 'scale(0.95)';
+  setTimeout(() => {
+    element.style.transform = '';
+  }, 200);
+  
+  // Show modal
+  modal.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeFocusModal() {
+  const modal = document.getElementById('focusModal');
+  const modalContent = modal.querySelector('.modal-content');
+  
+  // Add closing animation
+  modalContent.style.animation = 'modalSlideOut 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+  
+  setTimeout(() => {
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+    modalContent.style.animation = '';
+  }, 300);
+}
+
+// Close modal when clicking outside
+window.onclick = function(event) {
+  const modal = document.getElementById('focusModal');
+  if (event.target === modal) {
+    closeFocusModal();
+  }
 }
 
 // Intersection Observer for scroll animations
