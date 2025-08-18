@@ -120,7 +120,7 @@ redirect_from:
   <div class="collaboration-status">
     <div class="status-indicator">
       <span class="status-dot"></span>
-      <span class="status-text">Available for collaboration</span>
+      <span class="status-text">Available for internships & collaborations</span>
     </div>
   </div>
   
