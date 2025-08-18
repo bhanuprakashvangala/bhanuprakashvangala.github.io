@@ -579,6 +579,63 @@ redirect_from:
         .honor-content {
           flex: 1;
         }
+        
+        /* Professional Experience Single Container */
+        .experience-single-container {
+          padding: 1.5rem;
+        }
+        
+        .experience-entry {
+          padding: 1rem 0;
+        }
+        
+        .experience-entry:first-child {
+          padding-top: 0;
+        }
+        
+        .experience-entry:last-child {
+          padding-bottom: 0;
+        }
+        
+        .experience-entry h4 {
+          color: #2c5aa0;
+          margin-bottom: 0.5rem;
+        }
+        
+        .experience-entry h4 small {
+          color: #666;
+          font-weight: normal;
+        }
+        
+        .experience-entry .text-secondary {
+          color: #6c757d;
+          margin-bottom: 0.8rem;
+        }
+        
+        .experience-entry ul {
+          margin: 0;
+          padding-left: 1.5rem;
+        }
+        
+        .experience-entry li {
+          margin-bottom: 0.5rem;
+        }
+        
+        .experience-divider {
+          margin: 1rem 0;
+          border: none;
+          border-top: 1px solid #e5e7eb;
+        }
+        
+        .golden-border-wrapper {
+          border-left: 4px solid #d4af37;
+          border-right: 4px solid #d4af37;
+          box-shadow: 0 0 0 2px #d4af37 inset;
+          border-radius: 20px;
+          padding: 2rem;
+          margin: 2rem 0;
+          background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        }
       </style>
 
 
@@ -1291,68 +1348,70 @@ document.head.appendChild(styleSheet);
 <span class='anchor' id='professional-experience'></span>
 # Professional Experience
 
-<div class="edu-box">
-  <div class="edu-box-content">
-    <h4><strong>University of Missouri – Radiant Lab</strong> <small>— Research Assistant</small></h4>
-    <p class="text-secondary">Jan 2024 – Present</p>
-    <ul>
-      <li><strong>NASA-Funded Innovation:</strong> Revolutionizing scientific reproducibility with LLM-powered containers that automatically debug and enhance collaborative research workflows</li>
-      <li><strong>Self-Aware AI:</strong> Pioneering self-reflecting LLMs that monitor and correct their own reasoning in real-time, pushing the boundaries of AI reliability</li>
-    </ul>
-  </div>
-</div>
-
-<div class="edu-box">
-  <div class="edu-box-content">
-    <h4><strong>University of Missouri – Data Intensive Computing Lab</strong> <small>— Research & Teaching Assistant</small></h4>
-    <p class="text-secondary">Aug 2023 – Present</p>
-    <ul>
-      <li><strong>DoD-Funded Breakthrough:</strong> Developed HalluMat & HalluFormer achieving 30% hallucination reduction in scientific LLMs, published at AAAI 2025</li>
-      <li><strong>HPC Innovation:</strong> Architected serverless GPU orchestration with Pick-and-Spin framework, revolutionizing LLM deployment efficiency</li>
-      <li><strong>Teaching Excellence:</strong> Mentored 115+ students in full-stack development, fostering next-generation tech talent</li>
-    </ul>
-  </div>
-</div>
-
-<div class="edu-box">
-  <div class="edu-box-content">
-    <h4><strong>University of Missouri – PAAL Lab</strong> <small>— Research Assistant</small></h4>
-    <p class="text-secondary">Aug 2023 – Jan 2024</p>
-    <ul>
-      <li><strong>AgTech Innovation:</strong> Led UAV crop analysis team, boosting accuracy by 40% using deep learning and geospatial intelligence</li>
-    </ul>
-  </div>
-</div>
-
-<div class="edu-box">
-  <div class="edu-box-content">
-    <h4><strong>Adobe Research</strong> <small>— NLP Research Intern</small></h4>
-    <p class="text-secondary">May 2022 – Jan 2023</p>
-    <ul>
-      <li><strong>Enterprise-Scale NLP:</strong> Architected advanced web scraping and information extraction pipelines, mastering large-scale data processing for client-facing research solutions</li>
-    </ul>
-    <p><em>Mentor</em>: <a href="https://research.adobe.com/person/nandakishore-kambhatla/" target="_blank">Nanda Kishore</a></p>
-  </div>
-</div>
-
-<div class="edu-box">
-  <div class="edu-box-content">
-    <h4><strong>Brandiverse</strong> <small>— Data Analyst Intern</small></h4>
-    <p class="text-secondary">May 2020 – Jul 2020</p>
-    <ul>
-      <li><strong>Marketing Intelligence:</strong> Transformed customer sentiment analysis with sophisticated NLP pipelines, driving strategic marketing improvements</li>
-    </ul>
-    <p><em>Recognition</em>: Certificate of Outstanding Achievement</p>
-  </div>
-</div>
-
-<div class="edu-box">
-  <div class="edu-box-content">
-    <h4><strong>Internshala</strong> <small>— Student Partner (ISP)</small></h4>
-    <p class="text-secondary">May 2020 – Dec 2020</p>
-    <ul>
-      <li><strong>Campus Leadership:</strong> Orchestrated career development initiatives, bridging student-industry gaps and promoting professional growth</li>
-    </ul>
+<div class="golden-border-wrapper">
+  <div class="experience-single-container">
+    <div class="experience-entry">
+      <h4><strong>University of Missouri – Radiant Lab</strong> <small>— Research Assistant</small></h4>
+      <p class="text-secondary">Jan 2024 – Present</p>
+      <ul>
+        <li><strong>NASA-Funded Innovation:</strong> Revolutionizing scientific reproducibility with LLM-powered containers that automatically debug and enhance collaborative research workflows</li>
+        <li><strong>Self-Aware AI:</strong> Pioneering self-reflecting LLMs that monitor and correct their own reasoning in real-time, pushing the boundaries of AI reliability</li>
+      </ul>
+    </div>
+    
+    <hr class="experience-divider">
+    
+    <div class="experience-entry">
+      <h4><strong>University of Missouri – Data Intensive Computing Lab</strong> <small>— Research & Teaching Assistant</small></h4>
+      <p class="text-secondary">Aug 2023 – Present</p>
+      <ul>
+        <li><strong>DoD-Funded Breakthrough:</strong> Developed HalluMat & HalluFormer achieving 30% hallucination reduction in scientific LLMs, published at AAAI 2025</li>
+        <li><strong>HPC Innovation:</strong> Architected serverless GPU orchestration with Pick-and-Spin framework, revolutionizing LLM deployment efficiency</li>
+        <li><strong>Teaching Excellence:</strong> Mentored 115+ students in full-stack development, fostering next-generation tech talent</li>
+      </ul>
+    </div>
+    
+    <hr class="experience-divider">
+    
+    <div class="experience-entry">
+      <h4><strong>University of Missouri – PAAL Lab</strong> <small>— Research Assistant</small></h4>
+      <p class="text-secondary">Aug 2023 – Jan 2024</p>
+      <ul>
+        <li><strong>AgTech Innovation:</strong> Led UAV crop analysis team, boosting accuracy by 40% using deep learning and geospatial intelligence</li>
+      </ul>
+    </div>
+    
+    <hr class="experience-divider">
+    
+    <div class="experience-entry">
+      <h4><strong>Adobe Research</strong> <small>— NLP Research Intern</small></h4>
+      <p class="text-secondary">May 2022 – Jan 2023</p>
+      <ul>
+        <li><strong>Enterprise-Scale NLP:</strong> Architected advanced web scraping and information extraction pipelines, mastering large-scale data processing for client-facing research solutions</li>
+      </ul>
+      <p><em>Mentor</em>: <a href="https://research.adobe.com/person/nandakishore-kambhatla/" target="_blank">Nanda Kishore</a></p>
+    </div>
+    
+    <hr class="experience-divider">
+    
+    <div class="experience-entry">
+      <h4><strong>Brandiverse</strong> <small>— Data Analyst Intern</small></h4>
+      <p class="text-secondary">May 2020 – Jul 2020</p>
+      <ul>
+        <li><strong>Marketing Intelligence:</strong> Transformed customer sentiment analysis with sophisticated NLP pipelines, driving strategic marketing improvements</li>
+      </ul>
+      <p><em>Recognition</em>: Certificate of Outstanding Achievement</p>
+    </div>
+    
+    <hr class="experience-divider">
+    
+    <div class="experience-entry">
+      <h4><strong>Internshala</strong> <small>— Student Partner (ISP)</small></h4>
+      <p class="text-secondary">May 2020 – Dec 2020</p>
+      <ul>
+        <li><strong>Campus Leadership:</strong> Orchestrated career development initiatives, bridging student-industry gaps and promoting professional growth</li>
+      </ul>
+    </div>
   </div>
 </div>
 
