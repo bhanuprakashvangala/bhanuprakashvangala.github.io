@@ -35,41 +35,46 @@ details.abstract summary {
 /* Enhanced Chat widget styles */
 #chat-toggle {
   position: fixed;
-  bottom: 25px;
-  right: 25px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  bottom: 30px;
+  right: 30px;
+  background: linear-gradient(135deg, #2c5aa0 0%, #4caf50 100%);
   color: #fff;
   border: none;
   border-radius: 50%;
-  width: 65px;
-  height: 65px;
+  width: 70px;
+  height: 70px;
   cursor: pointer;
   z-index: 1000;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 6px 20px rgba(44, 90, 160, 0.3);
   transition: all 0.3s ease;
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #chat-toggle:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(44, 90, 160, 0.4);
+  background: linear-gradient(135deg, #4caf50 0%, #2c5aa0 100%);
 }
 
 #chat-window {
   position: fixed;
-  bottom: 25px;
-  right: 25px;
-  width: 350px;
-  height: 450px;
+  bottom: 30px;
+  right: 30px;
+  width: 380px;
+  height: 500px;
   background: #fff;
   border: none;
-  border-radius: 15px;
+  border-radius: 20px;
   display: none;
   flex-direction: column;
   z-index: 1000;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-  animation: slideUp 0.3s ease;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+  animation: slideUp 0.4s ease;
+  border: 2px solid rgba(44, 90, 160, 0.1);
 }
 
 @keyframes slideUp {
@@ -84,14 +89,15 @@ details.abstract summary {
 }
 
 #chat-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #2c5aa0 0%, #4caf50 100%);
   color: #fff;
-  padding: 15px;
+  padding: 18px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 15px 15px 0 0;
-  font-weight: 500;
+  border-radius: 18px 18px 0 0;
+  font-weight: 600;
+  font-size: 16px;
 }
 
 #chat-close {
@@ -110,9 +116,10 @@ details.abstract summary {
 
 #chat-messages {
   flex: 1;
-  padding: 15px;
+  padding: 20px;
   overflow-y: auto;
   background: #f8f9fa;
+  border-radius: 0;
 }
 
 #chat-messages::-webkit-scrollbar {
@@ -130,10 +137,11 @@ details.abstract summary {
 
 #chat-form {
   display: flex;
-  padding: 15px;
+  padding: 18px 20px;
   border-top: 1px solid #e5e7eb;
   background: #fff;
-  border-radius: 0 0 15px 15px;
+  border-radius: 0 0 18px 18px;
+  gap: 10px;
 }
 
 #chat-form input {
@@ -146,23 +154,27 @@ details.abstract summary {
 }
 
 #chat-form input:focus {
-  border-color: #667eea;
+  border-color: #2c5aa0;
+  box-shadow: 0 0 0 2px rgba(44, 90, 160, 0.1);
 }
 
 #chat-form button {
-  margin-left: 8px;
-  padding: 10px 20px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  margin-left: 0;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #2c5aa0 0%, #4caf50 100%);
   color: #fff;
   border: none;
   border-radius: 25px;
   cursor: pointer;
-  transition: transform 0.2s;
-  font-weight: 500;
+  transition: all 0.2s;
+  font-weight: 600;
+  font-size: 14px;
 }
 
 #chat-form button:hover {
   transform: scale(1.05);
+  background: linear-gradient(135deg, #4caf50 0%, #2c5aa0 100%);
+  box-shadow: 0 4px 12px rgba(44, 90, 160, 0.3);
 }
 
 .msg {
@@ -180,7 +192,7 @@ details.abstract summary {
 }
 
 .msg.user {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #2c5aa0 0%, #4caf50 100%);
   color: #fff;
   margin-left: auto;
   text-align: left;
@@ -210,8 +222,8 @@ details.abstract summary {
 }
 
 .suggest:hover {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #2c5aa0 0%, #4caf50 100%);
   color: #fff;
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 8px rgba(44, 90, 160, 0.3);
 }
