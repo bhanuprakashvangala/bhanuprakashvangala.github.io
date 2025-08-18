@@ -21,6 +21,7 @@ redirect_from:
 # About Me
 
 <!-- Enhanced About Section with Stats and Dynamic Elements -->
+<div class="about-container-wrapper">
 <div class="about-container">
   <div class="about-main-grid">
     <!-- Left Column: Personal Info -->
@@ -86,62 +87,69 @@ redirect_from:
       </div>
     </div>
   </div>
-</div>
-<!-- Enhanced Areas of Focus -->
-<div class="research-focus-section">
-  <h3 style="text-align: center; color: #2c5aa0; margin: 3rem 0 2rem 0; font-size: 2rem;">Areas of Focus</h3>
   
-  <div class="focus-grid">
-    <div class="focus-card" data-focus="trustworthy">
-      <div class="focus-icon">🛡️</div>
-      <h4>Trustworthy AI</h4>
-      <p>Self-correcting LLMs with transparent reasoning</p>
-      <div class="focus-overlay">
-        <h5>Trustworthy and Interpretable AI</h5>
-        <p>Developing AI systems that reason transparently, explain decision processes, detect inconsistencies, and actively self-correct for critical applications in science and healthcare.</p>
+  <!-- Enhanced Areas of Focus -->
+  <div class="research-focus-section">
+    <h4 style="text-align: center; color: #2c5aa0; margin: 2rem 0 1rem 0;">Research Areas of Focus</h4>
+    <div class="focus-items">
+      <div class="focus-item" onclick="toggleFocusDescription('trustworthy')">
+        <div class="focus-logo">🛡️</div>
+        <span>Trustworthy and Interpretable AI</span>
+        <div class="focus-arrow">▼</div>
       </div>
-    </div>
-    
-    <div class="focus-card" data-focus="scalable">
-      <div class="focus-icon">⚙️</div>
-      <h4>Scalable Systems</h4>
-      <p>HPC infrastructure and deployment pipelines</p>
-      <div class="focus-overlay">
-        <h5>Efficient and Scalable Language Models</h5>
-        <p>Building efficient HPC infrastructure and Kubernetes-based deployment pipelines that make advanced language models accessible without massive infrastructure investments.</p>
+      <div id="trustworthy-desc" class="focus-description">
+        <p><strong>Building Self-Correcting AI Systems:</strong> Developing AI systems that reason transparently, explain their decision processes, detect inconsistencies, and actively self-correct. My work focuses on designing architectures and evaluation frameworks that empower models to justify their responses, ultimately fostering greater trust and adoption of AI in critical domains like science, healthcare, and law where accuracy and explainability are paramount.</p>
       </div>
-    </div>
-    
-    <div class="focus-card" data-focus="factuality">
-      <div class="focus-icon">✅</div>
-      <h4>Factuality</h4>
-      <p>Robust benchmarks for measuring reliability</p>
-      <div class="focus-overlay">
-        <h5>Factuality and Evaluation</h5>
-        <p>Creating robust benchmarks and evaluation frameworks to measure factual consistency and reliability in AI systems where accuracy is paramount.</p>
+      
+      <div class="focus-item" onclick="toggleFocusDescription('scalable')">
+        <div class="focus-logo">⚙️</div>
+        <span>Efficient and Scalable Language Models</span>
+        <div class="focus-arrow">▼</div>
       </div>
-    </div>
-    
-    <div class="focus-card" data-focus="scientific">
-      <div class="focus-icon">🔬</div>
-      <h4>Scientific AI</h4>
-      <p>Multimodal AI for materials and biomedical research</p>
-      <div class="focus-overlay">
-        <h5>AI for Scientific Discovery</h5>
-        <p>Leveraging multimodal AI for materials science and biomedical innovation, enabling AI as a collaborative partner in scientific breakthroughs.</p>
+      <div id="scalable-desc" class="focus-description">
+        <p><strong>Democratizing AI Infrastructure:</strong> Pushing the boundaries of large-scale AI deployment through model compression, distributed training optimization, and advanced memory management. I design scalable architectures and Helm-based deployment pipelines that make state-of-the-art language models accessible to researchers and practitioners without requiring massive infrastructure investments, enabling equitable and practical use of cutting-edge AI technologies.</p>
+      </div>
+      
+      <div class="focus-item" onclick="toggleFocusDescription('factuality')">
+        <div class="focus-logo">✅</div>
+        <span>Factuality and Evaluation</span>
+        <div class="focus-arrow">▼</div>
+      </div>
+      <div id="factuality-desc" class="focus-description">
+        <p><strong>Rigorous AI Reliability Assessment:</strong> Creating robust benchmarks and advanced evaluation pipelines to rigorously measure the factual consistency, reliability, and safety of language model outputs. By integrating contradiction detection graphs, retrieval-augmented checks, and semantic consistency metrics, I ensure that AI systems can be trusted in settings where accuracy is paramount and errors carry significant real-world consequences.</p>
+      </div>
+      
+      <div class="focus-item" onclick="toggleFocusDescription('scientific')">
+        <div class="focus-logo">🔬</div>
+        <span>AI for Scientific Discovery</span>
+        <div class="focus-arrow">▼</div>
+      </div>
+      <div id="scientific-desc" class="focus-description">
+        <p><strong>Accelerating Research Breakthroughs:</strong> Leveraging the power of LLMs and multimodal AI to accelerate research in materials science, biomedical innovation, and policy modeling. My work enables domain scientists to harness AI as a collaborative partner — not only to analyze and generate data, but to form hypotheses, validate findings, and drive scientific breakthroughs with greater efficiency and confidence.</p>
       </div>
     </div>
   </div>
 </div>
+</div>
 
 <style>
   /* Enhanced About Section Styles */
-  .about-container {
-    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  .about-container-wrapper {
+    border-left: 4px solid #d4af37;
+    border-right: 4px solid #d4af37;
+    box-shadow: 0 0 0 2px #d4af37 inset;
     border-radius: 20px;
     padding: 2rem;
     margin: 2rem 0;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  }
+  
+  .about-container {
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
   }
   
   .about-main-grid {
@@ -251,85 +259,85 @@ redirect_from:
   
   /* Research Focus Styles */
   .research-focus-section {
-    margin: 3rem 0;
-  }
-  
-  .focus-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
     margin-top: 2rem;
   }
   
-  .focus-card {
-    position: relative;
-    background: white;
-    border-radius: 15px;
-    padding: 2rem;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.4s ease;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-    border: 2px solid transparent;
-    overflow: hidden;
+  .focus-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
   }
   
-  .focus-card:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(44, 90, 160, 0.15);
+  .focus-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border: 1px solid #e5e7eb;
+  }
+  
+  .focus-item:hover {
+    background: #f8f9fa;
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(44, 90, 160, 0.1);
     border-color: #2c5aa0;
   }
   
-  .focus-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+  .focus-logo {
+    font-size: 1.8rem;
+    width: 50px;
+    text-align: center;
+    flex-shrink: 0;
   }
   
-  .focus-card h4 {
-    color: #2c5aa0;
-    margin: 1rem 0 0.5rem 0;
-    font-size: 1.3rem;
-  }
-  
-  .focus-card > p {
-    color: #666;
-    font-size: 0.95rem;
-    margin: 0;
-  }
-  
-  .focus-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, #2c5aa0 0%, #4caf50 100%);
-    color: white;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    opacity: 0;
-    transform: translateY(100%);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    border-radius: 15px;
-  }
-  
-  .focus-card:hover .focus-overlay {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  .focus-overlay h5 {
-    margin: 0 0 1rem 0;
-    font-size: 1.2rem;
+  .focus-item span {
+    flex: 1;
+    font-size: 1rem;
     font-weight: 600;
+    color: #2c5aa0;
   }
   
-  .focus-overlay p {
+  .focus-arrow {
+    font-size: 0.8rem;
+    color: #666;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+  }
+  
+  .focus-item.active .focus-arrow {
+    transform: rotate(180deg);
+  }
+  
+  .focus-description {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-left: 58px;
+    border-left: 3px solid #2c5aa0;
+  }
+  
+  .focus-description.active {
+    max-height: 300px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .focus-description p {
     margin: 0;
-    line-height: 1.5;
+    color: #555;
+    line-height: 1.6;
     font-size: 0.95rem;
+  }
+  
+  .focus-description strong {
+    color: #2c5aa0;
   }
   
   /* Responsive Design */
@@ -432,6 +440,25 @@ function animateCounters() {
   });
 }
 
+// Focus area toggle function
+function toggleFocusDescription(areaId) {
+  const description = document.getElementById(areaId + '-desc');
+  const item = description.previousElementSibling;
+  const arrow = item.querySelector('.focus-arrow');
+  
+  // Close all other descriptions
+  document.querySelectorAll('.focus-description').forEach(desc => {
+    if (desc.id !== areaId + '-desc') {
+      desc.classList.remove('active');
+      desc.previousElementSibling.classList.remove('active');
+    }
+  });
+  
+  // Toggle current description
+  description.classList.toggle('active');
+  item.classList.toggle('active');
+}
+
 // Intersection Observer for scroll animations
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -443,9 +470,11 @@ const observer = new IntersectionObserver((entries) => {
   });
 });
 
-// Observe stat cards
-document.querySelectorAll('.stat-card').forEach(card => {
-  observer.observe(card);
+// Observe stat cards when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.stat-card').forEach(card => {
+    observer.observe(card);
+  });
 });
 </script>
 
