@@ -198,7 +198,7 @@ function isAboutBhanu(query) {
 }
 
 function getSimpleAnswer(query) {
-  const lowerQuery = query.toLowerCase();
+  const lowerQuery = query.toLowerCase().replace(/[^\w\s]/g, ' ').trim();
   
   // Comprehensive pattern matching for detailed questions about Bhanu
   const responses = {
@@ -242,14 +242,45 @@ function getSimpleAnswer(query) {
     
     // Contact and General
     'contact': 'You can reach Bhanu at bv3hz@missouri.edu (university) or vangalabhanuprakash.12@gmail.com (personal). Connect on LinkedIn: https://www.linkedin.com/in/vangalabhanuprakash/',
-    'publications': 'Bhanu has 8+ publications including AAAI 2025 papers (HalluMat, HalluFormer), SC 2025 poster (Pick-and-Spin), his master\'s thesis, and multiple technical projects in medical AI and NLP.',
+    'publications': 'Bhanu has several key publications: 1) HalluMat (AAAI 2025) - hallucination detection achieving 30% reduction in scientific LLMs, 2) HalluFormer (AAAI 2025) - transformer-based faithfulness evaluation with 94.71% F1 score, 3) Pick-and-Spin (SC 2025 poster) - serverless GPU orchestration for fine-tuned LLMs, 4) Master\'s thesis on LLM-as-a-Service deployment in Kubernetes HPC clusters, plus projects in brain tumor detection, pneumonia diagnosis, and multilingual sentiment analysis.',
     'research focus': 'Bhanu researches trustworthy AI, efficient LLMs, HPC systems, and scientific AI. His work spans hallucination detection, serverless GPU orchestration, factuality evaluation, and reproducible computing systems.',
   };
 
-  for (const [key, value] of Object.entries(responses)) {
-    if (lowerQuery.includes(key)) {
-      return value;
+  // Check for exact word matches for greetings to avoid false positives
+  const words = lowerQuery.split(/\s+/);
+  const greetings = ['hello', 'hi', 'bye', 'thank'];
+  for (const greeting of greetings) {
+    if (words.includes(greeting) && responses[greeting]) {
+      return responses[greeting];
     }
+  }
+  
+  // Check for other exact matches
+  const nonGreetingKeys = Object.keys(responses).filter(key => !greetings.includes(key));
+  for (const key of nonGreetingKeys) {
+    if (lowerQuery.includes(key)) {
+      return responses[key];
+    }
+  }
+  
+  // Check for key phrase variations
+  if (lowerQuery.includes('publication') || lowerQuery.includes('papers') || lowerQuery.includes('research work')) {
+    return responses['publications'];
+  }
+  if (lowerQuery.includes('research') && (lowerQuery.includes('focus') || lowerQuery.includes('area') || lowerQuery.includes('interest'))) {
+    return responses['research focus'];
+  }
+  if (lowerQuery.includes('award') || lowerQuery.includes('recognition') || lowerQuery.includes('achievement')) {
+    return responses['awards'];
+  }
+  if (lowerQuery.includes('hallucin')) {
+    return responses['hallucination'];
+  }
+  if (lowerQuery.includes('trustworthy') || (lowerQuery.includes('trust') && lowerQuery.includes('ai'))) {
+    return responses['trustworthy ai'];
+  }
+  if (lowerQuery.includes('email') || lowerQuery.includes('reach') || lowerQuery.includes('linkedin')) {
+    return responses['contact'];
   }
   
   return null;
