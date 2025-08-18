@@ -182,7 +182,7 @@ redirect_from:
   /* Collaboration Status Indicator */
   .collaboration-status {
     position: absolute;
-    bottom: 1.5rem;
+    bottom: 0.5rem;
     right: 2rem;
     background: white;
     border-radius: 20px;
@@ -1586,9 +1586,11 @@ document.head.appendChild(styleSheet);
           <h4><strong>University of Missouri – Radiant Lab</strong> <small>— Research Assistant</small></h4>
           <p class="text-secondary">Jan 2024 – Present</p>
           <ul>
-            <li><strong>NASA-Funded Innovation:</strong> Revolutionizing scientific reproducibility with LLM-powered containers that automatically debug and enhance collaborative research workflows</li>
-            <li><strong>Self-Aware AI:</strong> Pioneering self-reflecting LLMs that monitor and correct their own reasoning in real-time, pushing the boundaries of AI reliability</li>
+            <li><strong>Reproducible Scientific Containers:</strong> Enhancing data-savvy, provenance-tracking containers for collaborative model analytics, integrating LLMs to automate debugging and improve reproducibility (NASA Funded)</li>
+            <li><strong>AI Trustworthiness & Self-Reflecting LLMs:</strong> Designing models that can monitor, verify, and revise their own reasoning in real time, enabling more reliable and adaptive AI systems</li>
+            <li><strong>Skills Gained:</strong> Distributed systems, container orchestration, reproducibility frameworks, advanced NLP integration</li>
           </ul>
+          <p><em>Advisor:</em> <a href="https://engineering.missouri.edu/faculty/tanu-malik/" target="_blank">Dr. Tanu Malik</a></p>
         </div>
       </div>
       
@@ -1598,12 +1600,14 @@ document.head.appendChild(styleSheet);
         <div class="entry-marker"></div>
         <div class="entry-content">
           <h4><strong>University of Missouri – Data Intensive Computing Lab</strong> <small>— Research & Teaching Assistant</small></h4>
-          <p class="text-secondary">Aug 2023 – Present</p>
+          <p class="text-secondary">Feb 2024 – Present</p>
           <ul>
-            <li><strong>DoD-Funded Breakthrough:</strong> Developed HalluMat & HalluFormer achieving 30% hallucination reduction in scientific LLMs, published at AAAI 2025</li>
-            <li><strong>HPC Innovation:</strong> Architected serverless GPU orchestration with Pick-and-Spin framework, revolutionizing LLM deployment efficiency</li>
-            <li><strong>Teaching Excellence:</strong> Mentored 115+ students in full-stack development, fostering next-generation tech talent</li>
+            <li><strong>Hallucination Detection Model:</strong> Developed hybrid frameworks for domain-tuned LLMs in material science, improving factual consistency by 30% (DoD Funded)</li>
+            <li><strong>Scalable NLP Deployment:</strong> Designed Helm charts for scalable NLP deployment in HPC environments (NSF Funded)</li>
+            <li><strong>Teaching Excellence:</strong> Supported 115+ students in Web Development (MERN stack), mentoring and evaluating projects</li>
+            <li><strong>Expertise Gained:</strong> Kubernetes, CI/CD, Helm, advanced NLP frameworks</li>
           </ul>
+          <p><em>Advisors:</em> <a href="https://scottgs.mufaculty.umsystem.edu/" target="_blank">Dr. Grant Scott</a> & <a href="https://en.wikipedia.org/wiki/Jianlin_Cheng" target="_blank">Dr. Jianlin Cheng</a></p>
         </div>
       </div>
       
@@ -1615,7 +1619,8 @@ document.head.appendChild(styleSheet);
           <h4><strong>University of Missouri – PAAL Lab</strong> <small>— Research Assistant</small></h4>
           <p class="text-secondary">Aug 2023 – Jan 2024</p>
           <ul>
-            <li><strong>AgTech Innovation:</strong> Led UAV crop analysis team, boosting accuracy by 40% using deep learning and geospatial intelligence</li>
+            <li><strong>UAV-based Crop Analysis:</strong> Led UAV-based crop analysis team, improving accuracy of UAV data processing by 40% with deep learning and HPC-driven workflows</li>
+            <li><strong>Geospatial Analysis:</strong> Developed focus enhancement models and performed advanced geospatial analysis (Vegetation Indices, Mapping and Image Stitching) using QGIS</li>
           </ul>
         </div>
       </div>
@@ -1625,12 +1630,13 @@ document.head.appendChild(styleSheet);
       <div class="experience-entry" data-entry="4">
         <div class="entry-marker"></div>
         <div class="entry-content">
-          <h4><strong>Adobe Research</strong> <small>— NLP Research Intern</small></h4>
+          <h4><strong>Adobe Research</strong> <small>— Volunteer Research Intern</small></h4>
           <p class="text-secondary">May 2022 – Jan 2023</p>
           <ul>
-            <li><strong>Enterprise-Scale NLP:</strong> Architected advanced web scraping and information extraction pipelines, mastering large-scale data processing for client-facing research solutions</li>
+            <li><strong>Web Scraping & Information Extraction:</strong> Researched web scraping and information extraction as part of NLP team, focusing on large-scale data processing</li>
+            <li><strong>Expertise Gained:</strong> Large-scale data processing, visualization, and client-facing research workflows</li>
           </ul>
-          <p><em>Mentor</em>: <a href="https://research.adobe.com/person/nandakishore-kambhatla/" target="_blank">Nanda Kishore</a></p>
+          <p><em>Mentor:</em> Nanda Kishore</p>
         </div>
       </div>
       
