@@ -40,28 +40,24 @@ redirect_from:
       
       <!-- Research Areas of Focus - Moved Up -->
       <div class="focus-section-early">
-        <h4 style="color: #2c5aa0; margin: 1.5rem 0 1rem 0; text-align: center; font-size: 1.2rem;">Research Areas of Focus <span style="font-size: 0.9rem; color: #666;">(Click to explore!)</span></h4>
+        <h4 style="color: #2c5aa0; margin: 1.5rem 0 1rem 0; text-align: center; font-size: 1.2rem;">Research Areas of Focus</h4>
         <div class="focus-grid-2x2">
           <div class="focus-card-interactive" onclick="openFocusModal('trustworthy', this)">
-            <div class="focus-icon">🛡️</div>
             <div class="focus-title">Trustworthy AI</div>
             <div class="click-indicator">Click to learn more</div>
           </div>
           
           <div class="focus-card-interactive" onclick="openFocusModal('scalable', this)">
-            <div class="focus-icon">⚙️</div>
             <div class="focus-title">Scalable Systems</div>
             <div class="click-indicator">Click to learn more</div>
           </div>
           
           <div class="focus-card-interactive" onclick="openFocusModal('factuality', this)">
-            <div class="focus-icon">✅</div>
             <div class="focus-title">Factuality</div>
             <div class="click-indicator">Click to learn more</div>
           </div>
           
           <div class="focus-card-interactive" onclick="openFocusModal('scientific', this)">
-            <div class="focus-icon">🔬</div>
             <div class="focus-title">Scientific AI</div>
             <div class="click-indicator">Click to learn more</div>
           </div>
@@ -73,25 +69,21 @@ redirect_from:
     <div class="about-stats">
       <div class="stats-grid">
         <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="stat-icon">🎓</div>
           <div class="stat-number" data-target="4.0">0</div>
-          <div class="stat-label">Perfect GPA</div>
+          <div class="stat-label">4.0 GPA</div>
         </div>
         
         <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="stat-icon">📄</div>
           <div class="stat-number" data-target="8">0</div>
           <div class="stat-label">Publications</div>
         </div>
         
         <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
-          <div class="stat-icon">💼</div>
           <div class="stat-number" data-target="15">0</div>
           <div class="stat-label">Projects</div>
         </div>
         
         <div class="stat-card" data-aos="fade-up" data-aos-delay="400">
-          <div class="stat-icon">👥</div>
           <div class="stat-number" data-target="100">0</div>
           <div class="stat-label">Students Mentored</div>
         </div>
@@ -281,46 +273,36 @@ redirect_from:
   .focus-card-interactive {
     background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
     border: 2px solid #e9ecef;
-    border-radius: 15px;
-    padding: 1.5rem;
+    border-radius: 12px;
+    padding: 1rem;
     text-align: center;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
-    min-height: 140px;
+    min-height: 80px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
   }
   
   .focus-card-interactive:hover {
-    transform: translateY(-8px) scale(1.03);
+    transform: translateY(-4px) scale(1.02);
     border-color: #2c5aa0;
     background: linear-gradient(135deg, #e3f2fd 0%, #f0f8ff 100%);
-    box-shadow: 0 8px 25px rgba(44, 90, 160, 0.2);
+    box-shadow: 0 6px 20px rgba(44, 90, 160, 0.15);
   }
   
   .focus-card-interactive:active {
-    transform: translateY(-4px) scale(1.01);
-  }
-  
-  .focus-icon {
-    font-size: 2.5rem;
-    margin-bottom: 0.8rem;
-    transition: transform 0.3s ease;
-  }
-  
-  .focus-card-interactive:hover .focus-icon {
-    transform: scale(1.2) rotate(5deg);
+    transform: translateY(-2px) scale(1.01);
   }
   
   .focus-title {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 700;
     color: #2c5aa0;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
     transition: color 0.3s ease;
   }
   
@@ -329,7 +311,7 @@ redirect_from:
   }
   
   .click-indicator {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: #666;
     opacity: 0.7;
     transition: all 0.3s ease;
@@ -533,12 +515,8 @@ redirect_from:
     }
     
     .focus-card-interactive {
-      min-height: 120px;
-      padding: 1.2rem;
-    }
-    
-    .focus-icon {
-      font-size: 2rem;
+      min-height: 70px;
+      padding: 0.8rem;
     }
     
     .focus-grid {
@@ -603,14 +581,6 @@ redirect_from:
         }
       </style>
 
-<!-- Contact Links -->
-<div style="text-align: center; margin: 3rem 0 2rem 0; padding: 2rem; background: linear-gradient(135deg, #f8f9fa, #ffffff); border-radius: 15px;">
-  <p style="font-size: 1.1rem; color: #2c5aa0; margin: 0;">Thanks for stopping by! Feel free to explore my work or connect with me:</p>
-  <div style="margin-top: 1rem; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
-    <a href="https://bhanuprakashvangala.github.io" style="color: #2c5aa0; text-decoration: none; font-weight: 600; padding: 0.5rem 1rem; border: 2px solid #2c5aa0; border-radius: 25px; transition: all 0.3s ease;">🌐 GitHub</a>
-    <a href="https://www.linkedin.com/in/vangalabhanuprakash/" style="color: #2c5aa0; text-decoration: none; font-weight: 600; padding: 0.5rem 1rem; border: 2px solid #2c5aa0; border-radius: 25px; transition: all 0.3s ease;">💼 LinkedIn</a>
-  </div>
-</div>
 
 <script>
 // Animated counters for stats
@@ -917,21 +887,21 @@ document.head.appendChild(styleSheet);
 <span class='anchor' id='news'></span>
 # News
 
-- *2025.05*: 🎓 Earned my M.S. in Computer Science (GPA: 4.0/4.0) from the [University of Missouri](https://engineering.missouri.edu/departments/eecs/eecs-research/), Columbia.  
-- *2025.04*: 🏆 Received the **Outstanding Master’s Student Award** from the MU Department of Computer Science.  
-- *2025.04*: 📤 Submitted a thesis proposal: *"Trustworthy AI: Building Self-correcting and Self-evolving Models for Scientific Discovery."*  
-- *2025.04*: 🎉 Presented our work on Hallucination Detection at **AAAI Spring Symposium 2025 on AI for Scientific Discovery track**  
+- *2025.05*: Earned my M.S. in Computer Science (GPA: 4.0/4.0) from the [University of Missouri](https://engineering.missouri.edu/departments/eecs/eecs-research/), Columbia.  
+- *2025.04*: Received the **Outstanding Master's Student Award** from the MU Department of Computer Science.  
+- *2025.04*: Submitted a thesis proposal: *"Trustworthy AI: Building Self-correcting and Self-evolving Models for Scientific Discovery."*  
+- *2025.04*: Presented our work on Hallucination Detection at **AAAI Spring Symposium 2025 on AI for Scientific Discovery track**  
 - *2025.03*: Started development of **ReflectMemory**, focused on persistent memory control for long-context LLM reasoning.  
 - *2025.03*: Deployed updated **KubeLLM** framework for multi-tenant LLM inference on GPU-based HPC clusters.  
-- *2025.02*: 🥈 Achieved **Runner-Up** in the MUIDSI School for Generative AI for Social Good hackathon on VisionAI for Visually Impaired project.  
+- *2025.02*: Achieved **Runner-Up** in the MUIDSI School for Generative AI for Social Good hackathon on VisionAI for Visually Impaired project.  
 - *2025.01*: Released benchmarking tools for **hallucination detection in scientific LLMs**, supporting hybrid evaluation methods.  
 - *2024.09*: Initiated documentation work on scalable **LLM-as-a-Service infrastructure** using Helm charts and node affinity scheduling.  
 - *2024.01*: Working as a TA for over 100 students in a web development course – guiding full-stack app development.  
-- *2023.12*: Led deployment of GPU-efficient LLM inference systems in the university’s Kubernetes-based HPC environment (Nautilus).  
+- *2023.12*: Led deployment of GPU-efficient LLM inference systems in the university's Kubernetes-based HPC environment (Nautilus).  
 - *2023.08*: Began research on **faithfulness, interpretability, and robustness** in large generative language models.  
-- *2023.06*: 🎉 Admitted to the Ph.D. program in Computer Science at the [University of Missouri](https://engineering.missouri.edu/departments/eecs/eecs-research/).  
+- *2023.06*: Admitted to the Ph.D. program in Computer Science at the [University of Missouri](https://engineering.missouri.edu/departments/eecs/eecs-research/).  
 - *2023.05*: Graduated with a B.Tech in CSE (Data Analytics) from VIT Vellore.  
-- *2023.04*: 🏅 Honored with the **Excellence in Research** Award at VIT for multilingual NLP and social media analytics contributions.  
+- *2023.04*: Honored with the **Excellence in Research** Award at VIT for multilingual NLP and social media analytics contributions.  
 - *2023.03*: Volunteered as an **AI Community Evangelist** at Adobe, contributing to community education and developer engagement.  
 - *2022.11*: Served as an **Internshala Student Partner (ISP)**, leading brand campaigns and peer mentoring on campus.  
 - *2020*: Joined the **Brandiverse** team as a creative contributor, working on outreach and media strategy.  
@@ -1321,76 +1291,79 @@ document.head.appendChild(styleSheet);
 <span class='anchor' id='professional-experience'></span>
 # Professional Experience
 
-<div class="golden-border-wrapper">
-  <div class="experience-section-unified">
-    <p class="experience-main-highlight">🚀 <strong>From Research Labs to Industry Giants</strong> — Building the future of trustworthy AI through cutting-edge research and impactful industry collaborations</p>
-    
-    <div class="unified-timeline">
-      <!-- Current Research Positions -->
-      <div class="experience-item current">
-        <div class="timeline-marker active"></div>
-        <div class="item-content">
-          <h4><strong>Radiant Lab, University of Missouri</strong> <span class="role">Research Assistant</span></h4>
-          <p class="duration">Jan 2024 – Present</p>
-          <p class="impact">🔬 <strong>NASA-Funded Innovation:</strong> Revolutionizing scientific reproducibility with LLM-powered containers that automatically debug and enhance collaborative research workflows</p>
-          <p class="impact">🧠 <strong>Self-Aware AI:</strong> Pioneering self-reflecting LLMs that monitor and correct their own reasoning in real-time, pushing the boundaries of AI reliability</p>
-        </div>
-      </div>
-
-      <div class="experience-item current">
-        <div class="timeline-marker active"></div>
-        <div class="item-content">
-          <h4><strong>Data Intensive Computing Lab, University of Missouri</strong> <span class="role">Research & Teaching Assistant</span></h4>
-          <p class="duration">Aug 2023 – Present</p>
-          <p class="impact">🎯 <strong>DoD-Funded Breakthrough:</strong> Developed HalluMat & HalluFormer achieving 30% hallucination reduction in scientific LLMs, published at AAAI 2025</p>
-          <p class="impact">⚡ <strong>HPC Innovation:</strong> Architected serverless GPU orchestration with Pick-and-Spin framework, revolutionizing LLM deployment efficiency</p>
-          <p class="impact">👥 <strong>Teaching Excellence:</strong> Mentored 115+ students in full-stack development, fostering next-generation tech talent</p>
-        </div>
-      </div>
-
-      <!-- Previous Research -->
-      <div class="experience-item">
-        <div class="timeline-marker"></div>
-        <div class="item-content">
-          <h4><strong>PAAL Lab, University of Missouri</strong> <span class="role">Research Assistant</span></h4>
-          <p class="duration">Aug 2023 – Jan 2024</p>
-          <p class="impact">🛸 <strong>AgTech Innovation:</strong> Led UAV crop analysis team, boosting accuracy by 40% using deep learning and geospatial intelligence</p>
-        </div>
-      </div>
-
-      <!-- Industry Experience -->
-      <div class="experience-item featured">
-        <div class="timeline-marker featured"></div>
-        <div class="item-content">
-          <h4><strong>Adobe Research</strong> <span class="role">NLP Research Intern</span></h4>
-          <p class="duration">May 2022 – Jan 2023</p>
-          <p class="impact">🔍 <strong>Enterprise-Scale NLP:</strong> Architected advanced web scraping and information extraction pipelines, mastering large-scale data processing for client-facing research solutions</p>
-          <p class="mentor">Mentored by <a href="https://research.adobe.com/person/nandakishore-kambhatla/" target="_blank">Nanda Kishore</a></p>
-        </div>
-      </div>
-
-      <div class="experience-item">
-        <div class="timeline-marker"></div>
-        <div class="item-content">
-          <h4><strong>Brandiverse</strong> <span class="role">Data Analyst Intern</span></h4>
-          <p class="duration">May 2020 – Jul 2020</p>
-          <p class="impact">📊 <strong>Marketing Intelligence:</strong> Transformed customer sentiment analysis with sophisticated NLP pipelines, driving strategic marketing improvements</p>
-          <p class="recognition">🏅 Certificate of Outstanding Achievement</p>
-        </div>
-      </div>
-
-      <div class="experience-item">
-        <div class="timeline-marker"></div>
-        <div class="item-content">
-          <h4><strong>Internshala</strong> <span class="role">Student Partner (ISP)</span></h4>
-          <p class="duration">May 2020 – Dec 2020</p>
-          <p class="impact">🌟 <strong>Campus Leadership:</strong> Orchestrated career development initiatives, bridging student-industry gaps and promoting professional growth</p>
-        </div>
-      </div>
-    </div>
+<div class="edu-box">
+  <div class="edu-box-content">
+    <h4><strong>University of Missouri – Radiant Lab</strong> <small>— Research Assistant</small></h4>
+    <p class="text-secondary">Jan 2024 – Present</p>
+    <ul>
+      <li><strong>NASA-Funded Innovation:</strong> Revolutionizing scientific reproducibility with LLM-powered containers that automatically debug and enhance collaborative research workflows</li>
+      <li><strong>Self-Aware AI:</strong> Pioneering self-reflecting LLMs that monitor and correct their own reasoning in real-time, pushing the boundaries of AI reliability</li>
+    </ul>
   </div>
 </div>
- 
+
+<div class="edu-box">
+  <div class="edu-box-content">
+    <h4><strong>University of Missouri – Data Intensive Computing Lab</strong> <small>— Research & Teaching Assistant</small></h4>
+    <p class="text-secondary">Aug 2023 – Present</p>
+    <ul>
+      <li><strong>DoD-Funded Breakthrough:</strong> Developed HalluMat & HalluFormer achieving 30% hallucination reduction in scientific LLMs, published at AAAI 2025</li>
+      <li><strong>HPC Innovation:</strong> Architected serverless GPU orchestration with Pick-and-Spin framework, revolutionizing LLM deployment efficiency</li>
+      <li><strong>Teaching Excellence:</strong> Mentored 115+ students in full-stack development, fostering next-generation tech talent</li>
+    </ul>
+  </div>
+</div>
+
+<div class="edu-box">
+  <div class="edu-box-content">
+    <h4><strong>University of Missouri – PAAL Lab</strong> <small>— Research Assistant</small></h4>
+    <p class="text-secondary">Aug 2023 – Jan 2024</p>
+    <ul>
+      <li><strong>AgTech Innovation:</strong> Led UAV crop analysis team, boosting accuracy by 40% using deep learning and geospatial intelligence</li>
+    </ul>
+  </div>
+</div>
+
+<div class="edu-box">
+  <div class="edu-box-content">
+    <h4><strong>Adobe Research</strong> <small>— NLP Research Intern</small></h4>
+    <p class="text-secondary">May 2022 – Jan 2023</p>
+    <ul>
+      <li><strong>Enterprise-Scale NLP:</strong> Architected advanced web scraping and information extraction pipelines, mastering large-scale data processing for client-facing research solutions</li>
+    </ul>
+    <p><em>Mentor</em>: <a href="https://research.adobe.com/person/nandakishore-kambhatla/" target="_blank">Nanda Kishore</a></p>
+  </div>
+</div>
+
+<div class="edu-box">
+  <div class="edu-box-content">
+    <h4><strong>Brandiverse</strong> <small>— Data Analyst Intern</small></h4>
+    <p class="text-secondary">May 2020 – Jul 2020</p>
+    <ul>
+      <li><strong>Marketing Intelligence:</strong> Transformed customer sentiment analysis with sophisticated NLP pipelines, driving strategic marketing improvements</li>
+    </ul>
+    <p><em>Recognition</em>: Certificate of Outstanding Achievement</p>
+  </div>
+</div>
+
+<div class="edu-box">
+  <div class="edu-box-content">
+    <h4><strong>Internshala</strong> <small>— Student Partner (ISP)</small></h4>
+    <p class="text-secondary">May 2020 – Dec 2020</p>
+    <ul>
+      <li><strong>Campus Leadership:</strong> Orchestrated career development initiatives, bridging student-industry gaps and promoting professional growth</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Contact Links - Moved to Bottom -->
+<div style="text-align: center; margin: 3rem 0 2rem 0; padding: 2rem; background: linear-gradient(135deg, #f8f9fa, #ffffff); border-radius: 15px;">
+  <p style="font-size: 1.1rem; color: #2c5aa0; margin: 0;">Thanks for stopping by! Feel free to explore my work or connect with me:</p>
+  <div style="margin-top: 1rem; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+    <a href="https://bhanuprakashvangala.github.io" style="color: #2c5aa0; text-decoration: none; font-weight: 600; padding: 0.5rem 1rem; border: 2px solid #2c5aa0; border-radius: 25px; transition: all 0.3s ease;">GitHub</a>
+    <a href="https://www.linkedin.com/in/vangalabhanuprakash/" style="color: #2c5aa0; text-decoration: none; font-weight: 600; padding: 0.5rem 1rem; border: 2px solid #2c5aa0; border-radius: 25px; transition: all 0.3s ease;">LinkedIn</a>
+  </div>
+</div>
 
 <!-- Statcounter code for personal website -->
 <script type="text/javascript">
