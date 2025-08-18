@@ -33,9 +33,39 @@ redirect_from:
       </div>
       
       <div class="about-description">
-        <p>My research focuses on building AI that is <strong>trustworthy</strong>, <strong>efficient</strong>, and <strong>reliable</strong>, with an emphasis on <strong>large language models (LLMs)</strong>, <strong>high-performance computing (HPC)</strong>, and <strong>scalable, reproducible systems</strong>. I began my graduate journey at Mizzou, completing my M.S. in Computer Science under <a href="https://scottgs.mufaculty.umsystem.edu/" target="_blank">Dr. Grant Scott</a> and <a href="https://en.wikipedia.org/wiki/Jianlin_Cheng" target="_blank">Dr. Jianlin Cheng</a>. During my master's, I worked on designing robust frameworks for deploying LLMs on distributed and HPC environments and studied hallucinations in AI for materials science — work that naturally evolved into my Ph.D. research under <a href="https://engineering.missouri.edu/faculty/tanu-malik/" target="_blank">Dr. Tanu Malik</a> at Radiant Lab.</p>
-        <p>My work addresses some of the most critical questions and faults in AI today: <em>How can we build systems that not only generate knowledge but also justify/correct and verify their outputs? Can they be scalable and reproducible? Will LLMs eventually become true personal agents that understand and work alongside us?</em></p>
-        <p>Beyond my technical work, I am passionate about mentoring students as a teaching assistant, writing and blogging about graduate life abroad and technical concepts in LLMs, and building tools that make AI systems more interpretable, effective, reproducible, and aligned with human values — a vision that guides every aspect of my research.</p>
+        <p>My research focuses on building AI that is <strong>trustworthy</strong>, <strong>efficient</strong>, and <strong>reliable</strong>, with an emphasis on <strong>large language models (LLMs)</strong>, <strong>high-performance computing (HPC)</strong>, and <strong>scalable, reproducible systems</strong>. I began my graduate journey at Mizzou, completing my M.S. in Computer Science under <a href="https://scottgs.mufaculty.umsystem.edu/" target="_blank"><strong>Dr. Grant Scott</strong></a> and <a href="https://en.wikipedia.org/wiki/Jianlin_Cheng" target="_blank"><strong>Dr. Jianlin Cheng</strong></a>. During my master's, I worked on designing robust frameworks for deploying LLMs on distributed and HPC environments and studied hallucinations in AI for materials science — work that naturally evolved into my Ph.D. research under <a href="https://engineering.missouri.edu/faculty/tanu-malik/" target="_blank"><strong>Dr. Tanu Malik</strong></a> at <strong>Radiant Lab</strong>.</p>
+        <p>My work addresses some of the most critical questions and faults in AI today: <em><strong>How can we build systems that not only generate knowledge but also justify/correct and verify their outputs? Can they be scalable and reproducible? Will LLMs eventually become true personal agents that understand and work alongside us?</strong></em></p>
+        <p>Beyond my technical work, I am passionate about <strong>mentoring students</strong> as a teaching assistant, <strong>writing and blogging</strong> about graduate life abroad and technical concepts in LLMs, and building tools that make AI systems more <strong>interpretable</strong>, <strong>effective</strong>, <strong>reproducible</strong>, and <strong>aligned with human values</strong> — a vision that guides every aspect of my research.</p>
+      </div>
+      
+      <!-- Research Areas of Focus - Moved Up -->
+      <div class="focus-section-early">
+        <h4 style="color: #2c5aa0; margin: 1.5rem 0 1rem 0; text-align: center; font-size: 1.2rem;">Research Areas of Focus <span style="font-size: 0.9rem; color: #666;">(Click to explore!)</span></h4>
+        <div class="focus-grid-2x2">
+          <div class="focus-card-interactive" onclick="openFocusModal('trustworthy', this)">
+            <div class="focus-icon">🛡️</div>
+            <div class="focus-title">Trustworthy AI</div>
+            <div class="click-indicator">Click to learn more</div>
+          </div>
+          
+          <div class="focus-card-interactive" onclick="openFocusModal('scalable', this)">
+            <div class="focus-icon">⚙️</div>
+            <div class="focus-title">Scalable Systems</div>
+            <div class="click-indicator">Click to learn more</div>
+          </div>
+          
+          <div class="focus-card-interactive" onclick="openFocusModal('factuality', this)">
+            <div class="focus-icon">✅</div>
+            <div class="focus-title">Factuality</div>
+            <div class="click-indicator">Click to learn more</div>
+          </div>
+          
+          <div class="focus-card-interactive" onclick="openFocusModal('scientific', this)">
+            <div class="focus-icon">🔬</div>
+            <div class="focus-title">Scientific AI</div>
+            <div class="click-indicator">Click to learn more</div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -79,7 +109,7 @@ redirect_from:
           </div>
           <div class="funding-item">
             <div class="funding-logo">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/United_States_Department_of_Defense_Seal.svg/240px-United_States_Department_of_Defense_Seal.svg.png" alt="DOD" style="height: 30px; width: auto;">
+              <img src="https://www.erdcwerx.org/wp-content/uploads/2023/02/ERDC-Logo-Featured-Image.png" alt="ERDC" style="height: 30px; width: auto;">
             </div>
             <span>Department of Defense (ERDC)</span>
           </div>
@@ -94,34 +124,6 @@ redirect_from:
     </div>
   </div>
   
-  <!-- Research Areas Layout -->
-  <div class="research-areas-layout">
-    <!-- Left: Areas of Focus -->
-    <div class="focus-section">
-      <h4 style="color: #2c5aa0; margin: 1rem 0;">Research Areas of Focus</h4>
-      <div class="focus-items">
-        <div class="focus-item" onclick="openFocusModal('trustworthy', this)">
-          <div class="focus-logo">🛡️</div>
-          <span>Trustworthy AI</span>
-        </div>
-        
-        <div class="focus-item" onclick="openFocusModal('scalable', this)">
-          <div class="focus-logo">⚙️</div>
-          <span>Scalable Systems</span>
-        </div>
-        
-        <div class="focus-item" onclick="openFocusModal('factuality', this)">
-          <div class="focus-logo">✅</div>
-          <span>Factuality</span>
-        </div>
-        
-        <div class="focus-item" onclick="openFocusModal('scientific', this)">
-          <div class="focus-logo">🔬</div>
-          <span>Scientific AI</span>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 </div>
 
@@ -261,6 +263,107 @@ redirect_from:
     font-size: 0.9rem;
     font-weight: 600;
     color: #555;
+  }
+  
+  /* New 2x2 Research Focus Grid */
+  .focus-section-early {
+    margin: 2rem 0;
+  }
+  
+  .focus-grid-2x2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .focus-card-interactive {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border: 2px solid #e9ecef;
+    border-radius: 15px;
+    padding: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+  
+  .focus-card-interactive:hover {
+    transform: translateY(-8px) scale(1.03);
+    border-color: #2c5aa0;
+    background: linear-gradient(135deg, #e3f2fd 0%, #f0f8ff 100%);
+    box-shadow: 0 8px 25px rgba(44, 90, 160, 0.2);
+  }
+  
+  .focus-card-interactive:active {
+    transform: translateY(-4px) scale(1.01);
+  }
+  
+  .focus-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.8rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .focus-card-interactive:hover .focus-icon {
+    transform: scale(1.2) rotate(5deg);
+  }
+  
+  .focus-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #2c5aa0;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+  }
+  
+  .focus-card-interactive:hover .focus-title {
+    color: #1a4480;
+  }
+  
+  .click-indicator {
+    font-size: 0.85rem;
+    color: #666;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    font-style: italic;
+  }
+  
+  .focus-card-interactive:hover .click-indicator {
+    opacity: 1;
+    color: #2c5aa0;
+    font-weight: 600;
+  }
+  
+  /* Add pulse animation for attention */
+  .focus-card-interactive::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #2c5aa0, #4caf50, #2c5aa0);
+    border-radius: 17px;
+    z-index: -1;
+    animation: borderPulse 3s ease-in-out infinite;
+    opacity: 0;
+  }
+  
+  .focus-card-interactive:hover::before {
+    opacity: 0.6;
+  }
+  
+  @keyframes borderPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
   }
   
   /* Research Areas Layout */
@@ -421,6 +524,21 @@ redirect_from:
     
     .stats-grid {
       grid-template-columns: 1fr 1fr;
+    }
+    
+    .focus-grid-2x2 {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      max-width: 400px;
+    }
+    
+    .focus-card-interactive {
+      min-height: 120px;
+      padding: 1.2rem;
+    }
+    
+    .focus-icon {
+      font-size: 2rem;
     }
     
     .focus-grid {
@@ -627,59 +745,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Professional Experience Section Styles
 const experienceStyles = `
-  .experience-section {
+  .experience-section-unified {
     margin: 2rem 0;
-  }
-  
-  .experience-category {
-    margin-bottom: 3rem;
-    background: white;
-    border-radius: 20px;
     padding: 2rem;
-    box-shadow: 0 10px 30px rgba(44, 90, 160, 0.1);
-    border: 2px solid rgba(44, 90, 160, 0.1);
-    transition: all 0.3s ease;
   }
   
-  .experience-category:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(44, 90, 160, 0.15);
-    border-color: rgba(44, 90, 160, 0.2);
-  }
-  
-  .experience-category h3 {
-    color: #2c5aa0;
-    font-size: 1.4rem;
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-weight: 700;
-  }
-  
-  .experience-category h3 i {
+  .experience-main-highlight {
     font-size: 1.2rem;
-    background: linear-gradient(135deg, #2c5aa0, #4caf50);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  
-  .experience-highlight {
-    font-size: 1.1rem;
     color: #444;
-    margin-bottom: 1.5rem;
-    padding: 1rem;
+    margin-bottom: 2.5rem;
+    padding: 1.5rem;
     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    border-radius: 12px;
-    border-left: 4px solid #2c5aa0;
+    border-radius: 15px;
+    border-left: 5px solid #2c5aa0;
+    text-align: center;
   }
   
-  .experience-timeline {
+  .unified-timeline {
     position: relative;
     padding-left: 2rem;
   }
   
-  .experience-timeline::before {
+  .unified-timeline::before {
     content: '';
     position: absolute;
     left: 15px;
@@ -794,11 +881,11 @@ const experienceStyles = `
   
   /* Responsive design */
   @media (max-width: 768px) {
-    .experience-category {
+    .experience-section-unified {
       padding: 1.5rem;
     }
     
-    .experience-timeline {
+    .unified-timeline {
       padding-left: 1.5rem;
     }
     
@@ -812,6 +899,11 @@ const experienceStyles = `
     
     .experience-item:hover {
       transform: translateX(5px);
+    }
+    
+    .experience-main-highlight {
+      padding: 1rem;
+      font-size: 1.1rem;
     }
   }
 `;
@@ -1229,79 +1321,70 @@ document.head.appendChild(styleSheet);
 <span class='anchor' id='professional-experience'></span>
 # Professional Experience
 
-<div class="experience-section">
-  <div class="experience-category">
-    <h3><i class="fas fa-rocket"></i> Research Impact</h3>
-    <div class="experience-content">
-      <p class="experience-highlight">🏆 <strong>Building the Future of Trustworthy AI</strong> — Leading cutting-edge research across multiple prestigious labs</p>
-      
-      <div class="experience-timeline">
-        <div class="experience-item current">
-          <div class="timeline-marker active"></div>
-          <div class="item-content">
-            <h4><strong>Radiant Lab, University of Missouri</strong> <span class="role">Research Assistant</span></h4>
-            <p class="duration">Jan 2024 – Present</p>
-            <p class="impact">🔬 <strong>NASA-Funded Innovation:</strong> Revolutionizing scientific reproducibility with LLM-powered containers that automatically debug and enhance collaborative research workflows</p>
-            <p class="impact">🧠 <strong>Self-Aware AI:</strong> Pioneering self-reflecting LLMs that monitor and correct their own reasoning in real-time, pushing the boundaries of AI reliability</p>
-          </div>
-        </div>
-
-        <div class="experience-item current">
-          <div class="timeline-marker active"></div>
-          <div class="item-content">
-            <h4><strong>Data Intensive Computing Lab, University of Missouri</strong> <span class="role">Research & Teaching Assistant</span></h4>
-            <p class="duration">Aug 2023 – Present</p>
-            <p class="impact">🎯 <strong>DoD-Funded Breakthrough:</strong> Developed HalluMat & HalluFormer achieving 30% hallucination reduction in scientific LLMs, published at AAAI 2025</p>
-            <p class="impact">⚡ <strong>HPC Innovation:</strong> Architected serverless GPU orchestration with Pick-and-Spin framework, revolutionizing LLM deployment efficiency</p>
-            <p class="impact">👥 <strong>Teaching Excellence:</strong> Mentored 115+ students in full-stack development, fostering next-generation tech talent</p>
-          </div>
-        </div>
-
-        <div class="experience-item">
-          <div class="timeline-marker"></div>
-          <div class="item-content">
-            <h4><strong>PAAL Lab, University of Missouri</strong> <span class="role">Research Assistant</span></h4>
-            <p class="duration">Aug 2023 – Jan 2024</p>
-            <p class="impact">🛸 <strong>AgTech Innovation:</strong> Led UAV crop analysis team, boosting accuracy by 40% using deep learning and geospatial intelligence</p>
-          </div>
+<div class="golden-border-wrapper">
+  <div class="experience-section-unified">
+    <p class="experience-main-highlight">🚀 <strong>From Research Labs to Industry Giants</strong> — Building the future of trustworthy AI through cutting-edge research and impactful industry collaborations</p>
+    
+    <div class="unified-timeline">
+      <!-- Current Research Positions -->
+      <div class="experience-item current">
+        <div class="timeline-marker active"></div>
+        <div class="item-content">
+          <h4><strong>Radiant Lab, University of Missouri</strong> <span class="role">Research Assistant</span></h4>
+          <p class="duration">Jan 2024 – Present</p>
+          <p class="impact">🔬 <strong>NASA-Funded Innovation:</strong> Revolutionizing scientific reproducibility with LLM-powered containers that automatically debug and enhance collaborative research workflows</p>
+          <p class="impact">🧠 <strong>Self-Aware AI:</strong> Pioneering self-reflecting LLMs that monitor and correct their own reasoning in real-time, pushing the boundaries of AI reliability</p>
         </div>
       </div>
-    </div>
-  </div>
 
-  <div class="experience-category">
-    <h3><i class="fas fa-briefcase"></i> Industry Excellence</h3>
-    <div class="experience-content">
-      <p class="experience-highlight">💼 <strong>From Startups to Tech Giants</strong> — Delivering impactful solutions across diverse industry landscapes</p>
-      
-      <div class="experience-timeline">
-        <div class="experience-item featured">
-          <div class="timeline-marker featured"></div>
-          <div class="item-content">
-            <h4><strong>Adobe Research</strong> <span class="role">NLP Research Intern</span></h4>
-            <p class="duration">May 2022 – Jan 2023</p>
-            <p class="impact">🔍 <strong>Enterprise-Scale NLP:</strong> Architected advanced web scraping and information extraction pipelines, mastering large-scale data processing for client-facing research solutions</p>
-            <p class="mentor">Mentored by <a href="https://research.adobe.com/person/nandakishore-kambhatla/" target="_blank">Nanda Kishore</a></p>
-          </div>
+      <div class="experience-item current">
+        <div class="timeline-marker active"></div>
+        <div class="item-content">
+          <h4><strong>Data Intensive Computing Lab, University of Missouri</strong> <span class="role">Research & Teaching Assistant</span></h4>
+          <p class="duration">Aug 2023 – Present</p>
+          <p class="impact">🎯 <strong>DoD-Funded Breakthrough:</strong> Developed HalluMat & HalluFormer achieving 30% hallucination reduction in scientific LLMs, published at AAAI 2025</p>
+          <p class="impact">⚡ <strong>HPC Innovation:</strong> Architected serverless GPU orchestration with Pick-and-Spin framework, revolutionizing LLM deployment efficiency</p>
+          <p class="impact">👥 <strong>Teaching Excellence:</strong> Mentored 115+ students in full-stack development, fostering next-generation tech talent</p>
         </div>
+      </div>
 
-        <div class="experience-item">
-          <div class="timeline-marker"></div>
-          <div class="item-content">
-            <h4><strong>Brandiverse</strong> <span class="role">Data Analyst Intern</span></h4>
-            <p class="duration">May 2020 – Jul 2020</p>
-            <p class="impact">📊 <strong>Marketing Intelligence:</strong> Transformed customer sentiment analysis with sophisticated NLP pipelines, driving strategic marketing improvements</p>
-            <p class="recognition">🏅 Certificate of Outstanding Achievement</p>
-          </div>
+      <!-- Previous Research -->
+      <div class="experience-item">
+        <div class="timeline-marker"></div>
+        <div class="item-content">
+          <h4><strong>PAAL Lab, University of Missouri</strong> <span class="role">Research Assistant</span></h4>
+          <p class="duration">Aug 2023 – Jan 2024</p>
+          <p class="impact">🛸 <strong>AgTech Innovation:</strong> Led UAV crop analysis team, boosting accuracy by 40% using deep learning and geospatial intelligence</p>
         </div>
+      </div>
 
-        <div class="experience-item">
-          <div class="timeline-marker"></div>
-          <div class="item-content">
-            <h4><strong>Internshala</strong> <span class="role">Student Partner (ISP)</span></h4>
-            <p class="duration">May 2020 – Dec 2020</p>
-            <p class="impact">🌟 <strong>Campus Leadership:</strong> Orchestrated career development initiatives, bridging student-industry gaps and promoting professional growth</p>
-          </div>
+      <!-- Industry Experience -->
+      <div class="experience-item featured">
+        <div class="timeline-marker featured"></div>
+        <div class="item-content">
+          <h4><strong>Adobe Research</strong> <span class="role">NLP Research Intern</span></h4>
+          <p class="duration">May 2022 – Jan 2023</p>
+          <p class="impact">🔍 <strong>Enterprise-Scale NLP:</strong> Architected advanced web scraping and information extraction pipelines, mastering large-scale data processing for client-facing research solutions</p>
+          <p class="mentor">Mentored by <a href="https://research.adobe.com/person/nandakishore-kambhatla/" target="_blank">Nanda Kishore</a></p>
+        </div>
+      </div>
+
+      <div class="experience-item">
+        <div class="timeline-marker"></div>
+        <div class="item-content">
+          <h4><strong>Brandiverse</strong> <span class="role">Data Analyst Intern</span></h4>
+          <p class="duration">May 2020 – Jul 2020</p>
+          <p class="impact">📊 <strong>Marketing Intelligence:</strong> Transformed customer sentiment analysis with sophisticated NLP pipelines, driving strategic marketing improvements</p>
+          <p class="recognition">🏅 Certificate of Outstanding Achievement</p>
+        </div>
+      </div>
+
+      <div class="experience-item">
+        <div class="timeline-marker"></div>
+        <div class="item-content">
+          <h4><strong>Internshala</strong> <span class="role">Student Partner (ISP)</span></h4>
+          <p class="duration">May 2020 – Dec 2020</p>
+          <p class="impact">🌟 <strong>Campus Leadership:</strong> Orchestrated career development initiatives, bridging student-industry gaps and promoting professional growth</p>
         </div>
       </div>
     </div>
