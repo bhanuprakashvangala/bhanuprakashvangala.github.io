@@ -20,75 +20,348 @@ redirect_from:
 
 # About Me
 
-<div class="about-box">
-  <div class="about-box-content">
-    <p class="text-accent">Hello!</p>
-    <p>I’m <strong>Bhanu Prakash Vangala</strong>, a <strong>Ph.D. researcher in Computer Science</strong> at <a href="https://engineering.missouri.edu/departments/eecs/eecs-research/" target="_blank">the University of Missouri</a>.</p>
-    <p>My research focuses on building AI that is <strong>trustworthy</strong>, <strong>efficient</strong>, and <strong>reliable</strong>, with an emphasis on <strong>large language models (LLMs)</strong>, <strong>high-performance computing (HPC)</strong>, and <strong>scalable, reproducible systems</strong>. I began my graduate journey at Mizzou, completing my M.S. in Computer Science under <a href="https://scottgs.mufaculty.umsystem.edu/" target="_blank">Dr. Grant Scott</a> and <a href="https://en.wikipedia.org/wiki/Jianlin_Cheng" target="_blank">Dr. Jianlin Cheng</a>. During my master’s, I worked on designing robust frameworks for deploying LLMs on distributed and HPC environments and studied hallucinations in AI for materials science — work that naturally evolved into my Ph.D. research and working under <a href="https://engineering.missouri.edu/faculty/tanu-malik/" target="_blank">Dr. Tanu Malik</a> at Radiant Lab.</p>
-    <p>My work is supported by grants from the <strong>Department of Defense</strong>, <strong>NSF</strong>, and <strong>NASA</strong>. It addresses some of the most critical questions and faults in AI today: How can we build systems that not only generate knowledge but also justify/correct and verify their outputs? Can they be scalable and reproducible? Will LLMs eventually become true personal agents that understand and work alongside us?</p>
-    <p>Beyond my technical work, I am passionate about mentoring students as a teaching assistant, writing and blogging about graduate life abroad and technical concepts in LLMs, and building tools that make AI systems more interpretable, effective, reproducible, and aligned with human values — a vision that guides every aspect of my research.</p>
-    <h3 class="focus-heading">Areas of Focus</h3>
-    <style>
-      .about-box-content {
-        border-left: 4px solid #d4af37;
-        border-radius: 10px;
-        padding: 20px;
-        color: #000;
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      }
-      .focus-wrapper {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-        align-items: flex-start;
-        border-left: 4px solid #d4af37;
-        border-right: 4px solid #d4af37;
-        box-shadow: 0 0 0 2px #d4af37 inset;
-        border-radius: 10px;
-        padding: 10px;
-      }
-      .focus-wrapper img {
-        width: 120px;
-        border-radius: 50%;
-      }
-      .focus-tabs {
-        flex: 1;
-      }
-      .focus-tabs .tab-list {
-        display: flex;
-        flex-wrap: wrap;
-        list-style: none;
-        padding: 0;
-        margin: 0 0 1rem;
-        gap: 0.5rem;
-      }
-      .focus-tabs .tab {
-        padding: 8px 15px;
-        border: 1px solid #ccc;
-        background: #fff;
-        border-radius: 20px;
-        cursor: pointer;
-        transition: background 0.2s;
-      }
-      .focus-tabs .tab:hover {
-        background: #333;
-        color: #fff;
-      }
-      .focus-tabs .tab.active {
-        background: #000;
-        border-color: #d4af37;
-        color: #fff;
-        font-weight: bold;
-      }
-      .focus-tabs .tab-content {
-        display: none;
-        border: 1px solid #eee;
-        border-radius: 10px;
-        padding: 20px;
-        background: #fafafa;
-      }
-      .focus-tabs .tab-pane { display: none; }
-      .focus-tabs .tab-pane.active { display: block; }
+<!-- Enhanced About Section with Stats and Dynamic Elements -->
+<div class="about-container">
+  <div class="about-main-grid">
+    <!-- Left Column: Personal Info -->
+    <div class="about-info">
+      <div class="about-header">
+        <h2 style="margin: 0; font-size: 2rem; background: linear-gradient(135deg, #2c5aa0, #4caf50); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Hello! I'm Bhanu Prakash Vangala</h2>
+        <p style="font-size: 1.1rem; color: #666; margin: 0.5rem 0;">Ph.D. Researcher in Computer Science</p>
+        <p style="color: #2c5aa0; font-weight: 600;">University of Missouri, Columbia</p>
+      </div>
+      
+      <div class="about-description">
+        <p>My research focuses on building AI that is <strong>trustworthy</strong>, <strong>efficient</strong>, and <strong>reliable</strong>, with an emphasis on <strong>large language models (LLMs)</strong>, <strong>high-performance computing (HPC)</strong>, and <strong>scalable, reproducible systems</strong>.</p>
+        <p>I began my graduate journey at Mizzou, completing my M.S. in Computer Science under <a href="https://scottgs.mufaculty.umsystem.edu/" target="_blank">Dr. Grant Scott</a> and <a href="https://en.wikipedia.org/wiki/Jianlin_Cheng" target="_blank">Dr. Jianlin Cheng</a>. Currently pursuing my Ph.D. under <a href="https://engineering.missouri.edu/faculty/tanu-malik/" target="_blank">Dr. Tanu Malik</a> at Radiant Lab.</p>
+        <p>Beyond technical work, I'm passionate about mentoring students, writing about graduate life abroad, and building tools that make AI systems more interpretable and aligned with human values.</p>
+      </div>
+    </div>
+
+    <!-- Right Column: Dynamic Stats -->
+    <div class="about-stats">
+      <div class="stats-grid">
+        <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="stat-icon">🎓</div>
+          <div class="stat-number" data-target="4.0">0</div>
+          <div class="stat-label">Perfect GPA</div>
+        </div>
+        
+        <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="stat-icon">📄</div>
+          <div class="stat-number" data-target="8">0</div>
+          <div class="stat-label">Publications</div>
+        </div>
+        
+        <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="stat-icon">💼</div>
+          <div class="stat-number" data-target="15">0</div>
+          <div class="stat-label">Projects</div>
+        </div>
+        
+        <div class="stat-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="stat-icon">👥</div>
+          <div class="stat-number" data-target="100">0</div>
+          <div class="stat-label">Students Mentored</div>
+        </div>
+      </div>
+      
+      <!-- Funding Agencies -->
+      <div class="funding-section">
+        <h4 style="text-align: center; color: #2c5aa0; margin: 1.5rem 0 1rem 0;">Research Supported By</h4>
+        <div class="funding-logos">
+          <div class="funding-item">
+            <div class="funding-logo">🛡️</div>
+            <span>Department of Defense</span>
+          </div>
+          <div class="funding-item">
+            <div class="funding-logo">🔬</div>
+            <span>National Science Foundation</span>
+          </div>
+          <div class="funding-item">
+            <div class="funding-logo">🚀</div>
+            <span>NASA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Enhanced Areas of Focus -->
+<div class="research-focus-section">
+  <h3 style="text-align: center; color: #2c5aa0; margin: 3rem 0 2rem 0; font-size: 2rem;">Areas of Focus</h3>
+  
+  <div class="focus-grid">
+    <div class="focus-card" data-focus="trustworthy">
+      <div class="focus-icon">🛡️</div>
+      <h4>Trustworthy AI</h4>
+      <p>Self-correcting LLMs with transparent reasoning</p>
+      <div class="focus-overlay">
+        <h5>Trustworthy and Interpretable AI</h5>
+        <p>Developing AI systems that reason transparently, explain decision processes, detect inconsistencies, and actively self-correct for critical applications in science and healthcare.</p>
+      </div>
+    </div>
+    
+    <div class="focus-card" data-focus="scalable">
+      <div class="focus-icon">⚙️</div>
+      <h4>Scalable Systems</h4>
+      <p>HPC infrastructure and deployment pipelines</p>
+      <div class="focus-overlay">
+        <h5>Efficient and Scalable Language Models</h5>
+        <p>Building efficient HPC infrastructure and Kubernetes-based deployment pipelines that make advanced language models accessible without massive infrastructure investments.</p>
+      </div>
+    </div>
+    
+    <div class="focus-card" data-focus="factuality">
+      <div class="focus-icon">✅</div>
+      <h4>Factuality</h4>
+      <p>Robust benchmarks for measuring reliability</p>
+      <div class="focus-overlay">
+        <h5>Factuality and Evaluation</h5>
+        <p>Creating robust benchmarks and evaluation frameworks to measure factual consistency and reliability in AI systems where accuracy is paramount.</p>
+      </div>
+    </div>
+    
+    <div class="focus-card" data-focus="scientific">
+      <div class="focus-icon">🔬</div>
+      <h4>Scientific AI</h4>
+      <p>Multimodal AI for materials and biomedical research</p>
+      <div class="focus-overlay">
+        <h5>AI for Scientific Discovery</h5>
+        <p>Leveraging multimodal AI for materials science and biomedical innovation, enabling AI as a collaborative partner in scientific breakthroughs.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Enhanced About Section Styles */
+  .about-container {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border-radius: 20px;
+    padding: 2rem;
+    margin: 2rem 0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+  
+  .about-main-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  
+  .about-info {
+    padding-right: 1rem;
+  }
+  
+  .about-header h2 {
+    background: linear-gradient(135deg, #2c5aa0, #4caf50);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .about-description p {
+    line-height: 1.7;
+    margin: 1rem 0;
+    color: #555;
+  }
+  
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .stat-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid transparent;
+  }
+  
+  .stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(44, 90, 160, 0.15);
+    border-color: #2c5aa0;
+  }
+  
+  .stat-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2c5aa0;
+    margin: 0.5rem 0;
+  }
+  
+  .stat-label {
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: 600;
+  }
+  
+  .funding-section {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  }
+  
+  .funding-logos {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .funding-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.8rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+  }
+  
+  .funding-item:hover {
+    background: #e3f2fd;
+    transform: translateX(5px);
+  }
+  
+  .funding-logo {
+    font-size: 1.5rem;
+    width: 40px;
+    text-align: center;
+  }
+  
+  .funding-item span {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #555;
+  }
+  
+  /* Research Focus Styles */
+  .research-focus-section {
+    margin: 3rem 0;
+  }
+  
+  .focus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  
+  .focus-card {
+    position: relative;
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    border: 2px solid transparent;
+    overflow: hidden;
+  }
+  
+  .focus-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(44, 90, 160, 0.15);
+    border-color: #2c5aa0;
+  }
+  
+  .focus-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .focus-card h4 {
+    color: #2c5aa0;
+    margin: 1rem 0 0.5rem 0;
+    font-size: 1.3rem;
+  }
+  
+  .focus-card > p {
+    color: #666;
+    font-size: 0.95rem;
+    margin: 0;
+  }
+  
+  .focus-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #2c5aa0 0%, #4caf50 100%);
+    color: white;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 15px;
+  }
+  
+  .focus-card:hover .focus-overlay {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .focus-overlay h5 {
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  
+  .focus-overlay p {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 0.95rem;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .about-main-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .stats-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    
+    .focus-grid {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    
+    .focus-card {
+      padding: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .about-container {
+      padding: 1.5rem;
+    }
+  }
       .paper-box,
       .edu-box {
         border-left: 4px solid #d4af37;
@@ -131,60 +404,50 @@ redirect_from:
           flex: 1;
         }
       </style>
-    <div class="focus-wrapper">
-      <div class="focus-tabs">
-        <ul class="tab-list">
-          <li class="tab" data-tab="focus1">Trustworthy AI</li>
-          <li class="tab" data-tab="focus2">Scalable LLMs</li>
-          <li class="tab" data-tab="focus3">Factuality</li>
-          <li class="tab" data-tab="focus4">Sci Discovery</li>
-        </ul>
-        <div class="tab-content">
-          <div id="focus1" class="tab-pane">
-            <h3 class="side-heading">Trustworthy and Interpretable AI</h3>
-            <p>Developing AI systems that do more than generate fluent outputs — they can reason transparently, explain their decision processes, detect inconsistencies, and actively self-correct. My work focuses on designing architectures and evaluation frameworks that empower models to justify their responses, ultimately fostering greater trust and adoption of AI in critical domains like science, healthcare, and law.</p>
-            <hr />
-          </div>
-          <div id="focus2" class="tab-pane">
-            <h3 class="side-heading">Efficient and Scalable Language Models</h3>
-            <p>Pushing the boundaries of large-scale AI deployment through model compression, distributed training optimization, and advanced memory management. I design scalable architectures and Helm-based deployment pipelines that make state-of-the-art language models accessible to researchers and practitioners without requiring massive infrastructure investments, enabling equitable and practical use of cutting-edge AI technologies.</p>
-            <hr />
-          </div>
-          <div id="focus3" class="tab-pane">
-            <h3 class="side-heading">Factuality and Evaluation</h3>
-            <p>Creating robust benchmarks and advanced evaluation pipelines to rigorously measure the factual consistency, reliability, and safety of language model outputs. By integrating contradiction detection graphs, retrieval-augmented checks, and semantic consistency metrics, I ensure that AI systems can be trusted in settings where accuracy is paramount and errors carry significant real-world consequences.</p>
-            <hr />
-          </div>
-          <div id="focus4" class="tab-pane">
-            <h3 class="side-heading">AI for Scientific Discovery</h3>
-            <p>Leveraging the power of LLMs and multimodal AI to accelerate research in materials science, biomedical innovation, and policy modeling. My work enables domain scientists to harness AI as a collaborative partner — not only to analyze and generate data, but to form hypotheses, validate findings, and drive scientific breakthroughs with greater efficiency and confidence.</p>
-            <hr />
-          </div>
-        </div>
-      </div>
-    </div>
-    <script>
-      const tabContent = document.querySelector('.focus-tabs .tab-content');
-      document.querySelectorAll('.focus-tabs .tab').forEach(function(tab) {
-        tab.addEventListener('click', function() {
-          var target = this.getAttribute('data-tab');
-          if (this.classList.contains('active')) {
-            this.classList.remove('active');
-            document.getElementById(target).classList.remove('active');
-            tabContent.style.display = 'none';
-          } else {
-            document.querySelectorAll('.focus-tabs .tab').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.focus-tabs .tab-pane').forEach(p => p.classList.remove('active'));
-            this.classList.add('active');
-            document.getElementById(target).classList.add('active');
-            tabContent.style.display = 'block';
-          }
-        });
-      });
-    </script>
-    <p class="text-secondary">Thanks for stopping by—feel free to explore my work on <a href="https://bhanuprakashvangala.github.io">GitHub</a> or connect with me on <a href="https://www.linkedin.com/in/vangalabhanuprakash/">LinkedIn</a>!</p>
+
+<!-- Contact Links -->
+<div style="text-align: center; margin: 3rem 0 2rem 0; padding: 2rem; background: linear-gradient(135deg, #f8f9fa, #ffffff); border-radius: 15px;">
+  <p style="font-size: 1.1rem; color: #2c5aa0; margin: 0;">Thanks for stopping by! Feel free to explore my work or connect with me:</p>
+  <div style="margin-top: 1rem; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+    <a href="https://bhanuprakashvangala.github.io" style="color: #2c5aa0; text-decoration: none; font-weight: 600; padding: 0.5rem 1rem; border: 2px solid #2c5aa0; border-radius: 25px; transition: all 0.3s ease;">🌐 GitHub</a>
+    <a href="https://www.linkedin.com/in/vangalabhanuprakash/" style="color: #2c5aa0; text-decoration: none; font-weight: 600; padding: 0.5rem 1rem; border: 2px solid #2c5aa0; border-radius: 25px; transition: all 0.3s ease;">💼 LinkedIn</a>
   </div>
 </div>
+
+<script>
+// Animated counters for stats
+function animateCounters() {
+  const counters = document.querySelectorAll('.stat-number');
+  counters.forEach(counter => {
+    const target = +counter.getAttribute('data-target');
+    const count = +counter.innerText;
+    const increment = target / 100;
+    
+    if (count < target) {
+      counter.innerText = Math.ceil(count + increment);
+      setTimeout(() => animateCounters(), 20);
+    } else {
+      counter.innerText = target;
+    }
+  });
+}
+
+// Intersection Observer for scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      if (entry.target.classList.contains('stat-card')) {
+        animateCounters();
+      }
+    }
+  });
+});
+
+// Observe stat cards
+document.querySelectorAll('.stat-card').forEach(card => {
+  observer.observe(card);
+});
+</script>
 
 <span class='anchor' id='news'></span>
 # News
