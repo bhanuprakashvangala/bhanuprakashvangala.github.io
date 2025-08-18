@@ -149,8 +149,34 @@ redirect_from:
     border-radius: 20px;
     padding: 2rem;
     margin: 2rem 0;
-    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
     position: relative;
+    background: 
+      linear-gradient(135deg, rgba(44, 90, 160, 0.03) 0%, rgba(76, 175, 80, 0.03) 100%),
+      radial-gradient(circle at 20% 80%, rgba(44, 90, 160, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(76, 175, 80, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
+      linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    background-size: 100% 100%, 600px 600px, 600px 600px, 800px 800px, 100% 100%;
+    overflow: hidden;
+  }
+  
+  .about-container-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(212, 175, 55, 0.03) 35px, rgba(212, 175, 55, 0.03) 70px),
+      repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(44, 90, 160, 0.02) 35px, rgba(44, 90, 160, 0.02) 70px);
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  .about-container-wrapper > * {
+    position: relative;
+    z-index: 1;
   }
   
   /* Collaboration Status Indicator */
@@ -163,6 +189,7 @@ redirect_from:
     padding: 0.5rem 1rem;
     box-shadow: 0 2px 10px rgba(0,0,0,0.08);
     border: 1px solid #e5e7eb;
+    z-index: 2;
   }
   
   .status-indicator {
@@ -659,6 +686,7 @@ redirect_from:
           position: relative;
           width: 40px;
           flex-shrink: 0;
+          z-index: 2;
         }
         
         .timeline-line {
@@ -669,6 +697,7 @@ redirect_from:
           width: 3px;
           background: linear-gradient(to bottom, #2c5aa0, #4caf50);
           border-radius: 3px;
+          z-index: 2;
         }
         
         .timeline-ball {
@@ -682,7 +711,7 @@ redirect_from:
           border: 3px solid white;
           box-shadow: 0 0 0 3px rgba(44, 90, 160, 0.3);
           transition: top 0.3s ease;
-          z-index: 10;
+          z-index: 3;
         }
         
         .experience-entries {
@@ -706,6 +735,7 @@ redirect_from:
           border-radius: 50%;
           border: 2px solid white;
           transition: all 0.3s ease;
+          z-index: 2;
         }
         
         .experience-entry.active .entry-marker {
@@ -764,7 +794,33 @@ redirect_from:
           border-radius: 20px;
           padding: 2rem;
           margin: 2rem 0;
-          background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+          position: relative;
+          background: 
+            linear-gradient(45deg, rgba(76, 175, 80, 0.04) 0%, rgba(44, 90, 160, 0.04) 100%),
+            radial-gradient(circle at 75% 25%, rgba(212, 175, 55, 0.05) 0%, transparent 60%),
+            radial-gradient(circle at 25% 75%, rgba(44, 90, 160, 0.04) 0%, transparent 60%),
+            linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+          background-size: 100% 100%, 500px 500px, 500px 500px, 100% 100%;
+          overflow: hidden;
+        }
+        
+        .golden-border-wrapper::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-image: 
+            repeating-linear-gradient(60deg, transparent, transparent 40px, rgba(76, 175, 80, 0.02) 40px, rgba(76, 175, 80, 0.02) 80px),
+            repeating-linear-gradient(-30deg, transparent, transparent 50px, rgba(212, 175, 55, 0.02) 50px, rgba(212, 175, 55, 0.02) 100px);
+          pointer-events: none;
+          z-index: 0;
+        }
+        
+        .golden-border-wrapper > * {
+          position: relative;
+          z-index: 1;
         }
       </style>
 
