@@ -28,14 +28,39 @@ redirect_from:
     <div class="about-info">
       <div class="about-header">
         <h2 style="margin: 0; font-size: 2rem; background: linear-gradient(135deg, #2c5aa0, #4caf50); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Hello! I'm Bhanu Prakash Vangala</h2>
-        <p style="font-size: 1.1rem; color: #666; margin: 0.5rem 0;">Ph.D. Researcher in Computer Science</p>
-        <p style="color: #2c5aa0; font-weight: 600;">University of Missouri, Columbia</p>
+        <p class="role-line">Doctoral Student · Research &amp; Teaching Assistant</p>
+        <p class="role-line">University of Missouri — Radiant Lab &amp; Data Intensive Computing Lab</p>
       </div>
-      
+
+      <div class="about-highlights">
+        <span class="highlight-badge">Google PhD Nominee ’25 (Top 3 of 6000)</span>
+        <span class="highlight-badge">NASA · DoD · NSF Funded Research</span>
+        <span class="highlight-badge">AAAI ’25 · ACM SRC ’25</span>
+      </div>
+
+      <div class="contact-chip-group">
+        <a class="contact-chip" href="tel:+15736393768">📞 +1 (573) 639-3768</a>
+        <a class="contact-chip" href="mailto:bv3hz@umsystem.edu">✉️ bv3hz@umsystem.edu</a>
+        <a class="contact-chip" href="https://bhanuprakashvangala.github.io" target="_blank" rel="noopener">🌐 Portfolio</a>
+        <a class="contact-chip" href="https://www.linkedin.com/in/vangalabhanuprakash/" target="_blank" rel="noopener">🔗 LinkedIn</a>
+      </div>
+
+      <div class="research-interests">
+        <h4>Research Interests</h4>
+        <div class="interest-chips">
+          <span>LLMs</span>
+          <span>NLP</span>
+          <span>Agentic AI</span>
+          <span>Trustworthy AI</span>
+          <span>Scalable ML Systems</span>
+          <span>Reproducibility &amp; Provenance</span>
+        </div>
+      </div>
+
       <div class="about-description">
-        <p>My research focuses on building AI that is <strong>trustworthy</strong>, <strong>efficient</strong>, and <strong>reliable</strong>, with an emphasis on <strong>large language models (LLMs)</strong>, <strong>high-performance computing (HPC)</strong>, and <strong>scalable, reproducible systems</strong>. I began my graduate journey at Mizzou, completing my M.S. in Computer Science under <a href="https://scottgs.mufaculty.umsystem.edu/" target="_blank"><strong>Dr. Grant Scott</strong></a> and <a href="https://en.wikipedia.org/wiki/Jianlin_Cheng" target="_blank"><strong>Dr. Jianlin Cheng</strong></a>. During my master's, I worked on designing robust frameworks for deploying LLMs on distributed and HPC environments and studied hallucinations in AI for materials science — work that naturally evolved into my Ph.D. research under <a href="https://engineering.missouri.edu/faculty/tanu-malik/" target="_blank"><strong>Dr. Tanu Malik</strong></a> at <strong>Radiant Lab</strong>.</p>
-        <p>My work addresses some of the most critical questions and faults in AI today: <em><strong>How can we build systems that not only generate knowledge but also justify/correct and verify their outputs? Can they be scalable and reproducible? Will LLMs eventually become true personal agents that understand and work alongside us?</strong></em></p>
-        <p>Beyond my technical work, I am passionate about <strong>mentoring students</strong> as a teaching assistant, <strong>writing and blogging</strong> about graduate life abroad and technical concepts in LLMs, and building tools that make AI systems more <strong>interpretable</strong>, <strong>effective</strong>, <strong>reproducible</strong>, and <strong>aligned with human values</strong> — a vision that guides every aspect of my research.</p>
+        <p>I am a doctoral student and research &amp; teaching assistant at the University of Missouri with <strong>3+ years of NASA, DoD, and NSF-funded research</strong> experience. My work has been recognized through the <strong>Google PhD Fellowship Nomination (2025)</strong>—ranked in the top 3 scholars out of 6,000 participants—and the <strong>Outstanding Master’s Student Award (2025)</strong> from the College of Engineering.</p>
+        <p>My research sits at the intersection of <strong>LLM reproducibility</strong>, <strong>agentic and trustworthy AI</strong>, and <strong>scalable ML systems</strong>. I build self-monitoring LLM infrastructure such as the <em>Pick-and-Spin</em> router for adaptive inference on serverless GPUs, and design factuality pipelines like <em>HalluMat</em> and <em>HalluFormer</em> that drive a <strong>30% reduction in hallucinations</strong> for materials science assistants deployed on HPC clusters.</p>
+        <p>Outside the lab, I mentor <strong>115+ engineers</strong> across MERN and NLP courses, orchestrate reproducible container workflows with provenance tracking for collaborative science teams, and contribute to the Missouri AI community through hackathons, reviewing, and outreach.</p>
       </div>
       
       <!-- Research Areas of Focus - Moved Up -->
@@ -69,22 +94,22 @@ redirect_from:
     <div class="about-stats">
       <div class="stats-grid">
         <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="stat-number" data-target="4.0">0</div>
-          <div class="stat-label">4.0 GPA</div>
+          <div class="stat-number" data-target="3.9">0</div>
+          <div class="stat-label">Ph.D. GPA</div>
         </div>
-        
+
         <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="stat-number" data-target="8">0</div>
-          <div class="stat-label">Publications</div>
+          <div class="stat-number" data-target="7">0</div>
+          <div class="stat-label">Peer-reviewed Works</div>
         </div>
-        
+
         <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
-          <div class="stat-number" data-target="15">0</div>
-          <div class="stat-label">Projects</div>
+          <div class="stat-number" data-target="3">0</div>
+          <div class="stat-label">Years of Funded Research</div>
         </div>
-        
+
         <div class="stat-card" data-aos="fade-up" data-aos-delay="400">
-          <div class="stat-number" data-target="100">0</div>
+          <div class="stat-number" data-target="115">0</div>
           <div class="stat-label">Students Mentored</div>
         </div>
       </div>
@@ -262,6 +287,87 @@ redirect_from:
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+
+  .role-line {
+    font-size: 1rem;
+    color: #4a4a4a;
+    margin: 0.35rem 0;
+    font-weight: 600;
+  }
+
+  .about-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin: 1.2rem 0;
+  }
+
+  .highlight-badge {
+    background: rgba(44, 90, 160, 0.1);
+    border: 1px solid rgba(44, 90, 160, 0.2);
+    border-radius: 999px;
+    padding: 0.4rem 0.9rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #1a4480;
+    backdrop-filter: blur(4px);
+  }
+
+  .contact-chip-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .contact-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 0.95rem;
+    border-radius: 999px;
+    border: 1px solid #d4af37;
+    color: #2c5aa0;
+    font-weight: 600;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    transition: all 0.2s ease;
+  }
+
+  .contact-chip:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(44, 90, 160, 0.18);
+    background: linear-gradient(135deg, rgba(44, 90, 160, 0.12), rgba(76, 175, 80, 0.12));
+  }
+
+  .research-interests {
+    margin-bottom: 1.5rem;
+  }
+
+  .research-interests h4 {
+    color: #2c5aa0;
+    font-size: 1.05rem;
+    margin-bottom: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .interest-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .interest-chips span {
+    padding: 0.35rem 0.8rem;
+    border-radius: 999px;
+    background: rgba(76, 175, 80, 0.12);
+    color: #256029;
+    font-weight: 600;
+    font-size: 0.85rem;
+    border: 1px solid rgba(76, 175, 80, 0.2);
   }
   
   .about-description p {
@@ -597,7 +703,28 @@ redirect_from:
       grid-template-columns: 1fr;
       gap: 2rem;
     }
-    
+
+    .about-header h2,
+    .role-line {
+      text-align: center;
+    }
+
+    .about-highlights {
+      justify-content: center;
+    }
+
+    .contact-chip-group {
+      justify-content: center;
+    }
+
+    .research-interests h4 {
+      text-align: center;
+    }
+
+    .interest-chips {
+      justify-content: center;
+    }
+
     .stats-grid {
       grid-template-columns: 1fr 1fr;
     }
@@ -1168,9 +1295,10 @@ document.head.appendChild(styleSheet);
 <span class='anchor' id='news'></span>
 # News
 
-- *2025.05*: Earned my M.S. in Computer Science (GPA: 4.0/4.0) from the [University of Missouri](https://engineering.missouri.edu/departments/eecs/eecs-research/), Columbia.  
-- *2025.04*: Received the **Outstanding Master's Student Award** from the MU Department of Computer Science.  
-- *2025.04*: Submitted a thesis proposal: *"Trustworthy AI: Building Self-correcting and Self-evolving Models for Scientific Discovery."*  
+- *2025.05*: Earned my M.S. in Computer Science (GPA: 4.0/4.0) from the [University of Missouri](https://engineering.missouri.edu/departments/eecs/eecs-research/), Columbia.
+- *2025.04*: Received the **Outstanding Master's Student Award** from the MU Department of Computer Science.
+- *2025.04*: Selected as a **Google PhD Fellowship Nominee (NLP)** — ranked top 3 among 6,000 candidates across the university consortium.
+- *2025.04*: Submitted a thesis proposal: *"Trustworthy AI: Building Self-correcting and Self-evolving Models for Scientific Discovery."*
 - *2025.04*: Presented our work on Hallucination Detection at **AAAI Spring Symposium 2025 on AI for Scientific Discovery track**  
 - *2025.03*: Started development of **ReflectMemory**, focused on persistent memory control for long-context LLM reasoning.  
 - *2025.03*: Deployed updated **KubeLLM** framework for multi-tenant LLM inference on GPU-based HPC clusters.  
@@ -1199,7 +1327,7 @@ document.head.appendChild(styleSheet);
   </div>
   <div class='paper-box-text'>
     <p><strong><a href="https://drive.google.com/file/d/1oMbe8br7-wm7NLkrOFbFGtT2vUlxdCTn/view?usp=drive_link">HalluMat: Hallucination Detection in Scientific LLMs</a></strong></p>
-    <p><strong>Bhanu Prakash Vangala</strong>, Jianlin Cheng</p>
+    <p><strong>B. P. Vangala</strong>, S. Mahmud, P. Neupane, J. Selvaraj, J. Cheng</p>
     <ul>
       <li><strong>Primary Innovation:</strong> Developed HalluMatData, a comprehensive benchmark dataset specifically designed for evaluating hallucination detection methods in domain-specific large language models applied to materials science research</li>
       <li><strong>Technical Framework:</strong> Implemented HalluMatDetector, a sophisticated multi-stage detection pipeline that combines intrinsic verification mechanisms, multi-source knowledge retrieval, contradiction graph analysis, and comprehensive metric-based assessment protocols</li>
@@ -1227,7 +1355,7 @@ document.head.appendChild(styleSheet);
   </div>
   <div class='paper-box-text'>
     <p><strong><a href="https://drive.google.com/file/d/1o6tqCJdhiCTAR4AEM59fV4t2VSdvS4yt/view?usp=drive_link">HalluFormer: Faithfulness Evaluation Framework</a></strong></p>
-    <p><strong>Bhanu Prakash Vangala</strong>, Jianlin Cheng</p>
+    <p>S. Mahmud, P. Neupane, J. Selvaraj, <strong>B. P. Vangala</strong>, J. Cheng</p>
     <ul>
       <li><strong>Architectural Innovation:</strong> Designed a novel transformer-based neural architecture specifically optimized for multi-dimensional consistency assessment between input questions, generated answers, and retrieved knowledge contexts in large language model outputs</li>
       <li><strong>Problem Reformulation:</strong> Transformed the traditionally complex hallucination detection challenge into a well-defined classification problem that systematically evaluates consistency patterns across diverse knowledge sources and contextual information</li>
@@ -1249,7 +1377,7 @@ document.head.appendChild(styleSheet);
 <div class='paper-box'>
   <div class='paper-box-image'>
     <div>
-      <div class="badge">SC 2025 Poster</div>
+      <div class="badge">ACM SRC 2025</div>
       <img src='images/AdaptiveLLMaaS.png' alt="Adaptive LLM Orchestration Architecture" width="100%">
     </div>
   </div>
@@ -1257,12 +1385,10 @@ document.head.appendChild(styleSheet);
     <p><strong><a href="https://submissions.supercomputing.org/">Adaptive Inference: Orchestrating Fine-Tuned LLMs with Serverless GPUs in HPC Environments</a></strong></p>
     <p><strong>Bhanu Prakash Vangala</strong>, Tanu Malik</p>
     <ul>
-      <li><strong>Research Poster Presentation:</strong> Presented Pick-and-Spin framework as a research poster at SC 2025, showcasing preliminary results and methodology for policy-driven model selection with serverless GPU orchestration</li>
-      <li><strong>Matrix-Based Orchestration Concept:</strong> Introduced the conceptual framework of a two-dimensional grid (L×I) deployment model where rows represent fine-tuned models and columns denote inference backends for dynamic routing</li>
-      <li><strong>Adaptive Routing Algorithm Design:</strong> Proposed a multi-objective scoring function approach that balances domain relevance (using DistilBERT classification), predicted latency, and estimated cost with configurable weights</li>
-      <li><strong>Serverless GPU Architecture Prototype:</strong> Demonstrated proof-of-concept for scale-to-zero serverless execution using Kubernetes with Knative and KEDA for on-demand service provisioning</li>
-      <li><strong>Preliminary Performance Results:</strong> Initial evaluation showing superior scalability and GPU utilization potential compared to always-on deployments, with promising cost reduction indicators</li>
-      <li><strong>Future Paper Development:</strong> Research poster serves as foundation for planned comprehensive paper submission with extended evaluation, enhanced methodology, and detailed performance analysis</li>
+      <li><strong>Pick-and-Spin router:</strong> Policy-driven orchestration that maps fine-tuned domain models to optimal GPU backends using a two-dimensional <em>L × I</em> deployment matrix.</li>
+      <li><strong>Serverless GPUs on Kubernetes:</strong> Combines Knative and KEDA to scale inference workloads to zero and restart within seconds for cost-aware HPC usage.</li>
+      <li><strong>Latency–cost balancing:</strong> Multi-objective scoring leverages DistilBERT relevance, latency predictors, and pricing signals to pick the best (model, backend) pair per request.</li>
+      <li><strong>HPC integration:</strong> Deployed across NSF Nautilus and AWS SageMaker endpoints to support materials, biomedical, and geospatial assistants within the Radiant Lab toolchain.</li>
     </ul>
     <div style="display: inline">
       <a class="pdf-link" href="https://submissions.supercomputing.org/" title="SC25 Poster Submission"><i class="fas fa-file-pdf"></i></a>
@@ -1311,7 +1437,7 @@ document.head.appendChild(styleSheet);
   </div>
   <div class='paper-box-text'>
     <p><strong><a href="https://drive.google.com/file/d/1upCswGveonJPN2vmuXzKlhbKqE8tkGSA/view?usp=sharing">Brain Tumor Detection in MRI Images</a></strong></p>
-    <p><strong>Bhanu Prakash Vangala</strong></p>
+    <p><strong>B. P. Vangala</strong>, G. Khadakkar, F. Bunyak</p>
     <ul>
       <li><strong>Model Architecture:</strong> Developed and implemented two distinct convolutional neural network architectures: a custom-designed CNN optimized for brain tumor detection and a transfer learning approach utilizing the pre-trained ResNet50V2 architecture</li>
       <li><strong>Data Engineering:</strong> Processed comprehensive MRI image datasets with advanced data augmentation techniques including random flipping, rotation, and zooming transformations to enhance model robustness and reduce overfitting</li>
@@ -1339,7 +1465,7 @@ document.head.appendChild(styleSheet);
   </div>
   <div class='paper-box-text'>
     <p><strong><a href="https://drive.google.com/file/d/1UJKKHXcFIvtjClUyrr6dhatMKN1svU7C/view?usp=sharing">Pneumonia Detection in Chest X-rays Using Deep Learning</a></strong></p>
-    <p><strong>Bhanu Prakash Vangala</strong></p>
+    <p><strong>B. P. Vangala</strong>, G. Khadakkar, F. Bunyak</p>
     <ul>
       <li><strong>Multi-Model Approach:</strong> Implemented and evaluated five distinct deep learning architectures including custom CNN, ResNet18, VGG16, ResNet50 with K-Fold Cross-Validation, and EfficientNet for comprehensive performance comparison</li>
       <li><strong>Dataset Scale:</strong> Trained on extensive Chest X-Ray Pneumonia dataset containing 5,216 training images, employing rigorous validation protocols using precision, recall, F1-score, and ROC-AUC metrics</li>
@@ -1367,7 +1493,7 @@ document.head.appendChild(styleSheet);
   </div>
   <div class='paper-box-text'>
     <p><strong><a href="https://drive.google.com/file/d/14GH6eNzC28uhcN1Y-E3iZJ9a5G8mdXLz/view?usp=sharing">Image Colorization Using AI</a></strong></p>
-    <p><strong>Bhanu Prakash Vangala</strong></p>
+    <p><strong>B. P. Vangala</strong>, S. S. Somepalli, R. Chigurupati</p>
     <ul>
       <li><strong>Technical Innovation:</strong> Developed sophisticated deep learning models combining convolutional autoencoders and Generative Adversarial Network (GAN) architectures to achieve photorealistic image colorization from grayscale inputs</li>
       <li><strong>Architectural Design:</strong> Implemented advanced neural network architectures that learn complex color mappings and semantic understanding to produce naturally colored images with high fidelity</li>
@@ -1397,6 +1523,7 @@ document.head.appendChild(styleSheet);
     <p><strong><a href="https://drive.google.com/file/d/1a2Xan4sDdC7ib7Hj5HODcjPyztmTee4k/view?usp=sharing">KOO: Uncovering User Sentiments and Trends!</a></strong></p>
     <p><strong>Bhanu Prakash Vangala</strong></p>
     <ul>
+      <li><strong>Advisors:</strong> Dr. P. Kumaraguru (IIT Hyderabad) and Dr. Soughbhagya Barpanda guided the thesis as part of PRECOG/KOO collaboration.</li>
       <li><strong>Multilingual NLP Pipeline:</strong> Engineered a comprehensive sentiment analysis system capable of processing and analyzing user-generated content across multiple languages including Hindi, English, Telugu, and other regional Indian languages</li>
       <li><strong>Advanced Machine Learning:</strong> Implemented state-of-the-art transformer-based models and traditional machine learning algorithms optimized for social media text processing and sentiment classification tasks</li>
       <li><strong>Real-time Processing:</strong> Developed scalable infrastructure for real-time sentiment analysis of millions of posts and comments, enabling immediate insights into user sentiment trends and platform dynamics</li>
@@ -1484,7 +1611,7 @@ document.head.appendChild(styleSheet);
       </div>
     </div>
   </li>
-  <li class="honor-item"><div class="honor-date">2025.04</div><div class="honor-content">Selected for <strong>Google PhD Fellowship Nomination</strong>, one of three <a href="https://engineering.missouri.edu/departments/eecs/eecs-research/" target="_blank">University of Missouri</a> nominees</div></li>
+  <li class="honor-item"><div class="honor-date">2025.04</div><div class="honor-content">Selected for <strong>Google PhD Fellowship Nomination</strong> — ranked top 3 among 6,000 participants and one of three <a href="https://engineering.missouri.edu/departments/eecs/eecs-research/" target="_blank">University of Missouri</a> nominees</div></li>
   <li class="honor-item"><div class="honor-date">2023</div><div class="honor-content"><strong>Dean’s Research Excellence Award</strong>, <a href="https://vit.ac.in/schools/school-of-computer-science-and-engineering-for-ug-courses" target="_blank">Vellore Institute of Technology</a> (VIT)</div></li>
   <li class="honor-item"><div class="honor-date">2023</div><div class="honor-content"><strong>Best Department Thesis Award</strong>, VIT for B.Tech thesis on multilingual sentiment analysis</div></li>
   <li class="honor-item"><div class="honor-date">2022</div><div class="honor-content"><strong>Runner-Up</strong>, VIT AI Tech-Thon</div></li>
@@ -1506,6 +1633,7 @@ document.head.appendChild(styleSheet);
       <li>Co-advised by Dr. Jianlin Cheng and Dr. Tanu Malik</li>
       <li><strong>Research focus:</strong> Trustworthy and Efficient LLMs, Self-Correcting and Evolving Language Models, Evaluation in LLMs</li>
       <li>Google PhD Fellowship nominee (NLP), Outstanding Student Award recipient</li>
+      <li><strong>GPA:</strong> 3.9/4.0</li>
       <li>Supported by NASA, National Science Foundation, and Department of Defense grants for research in scientific LLMs and scalable AI infrastructure</li>
     </ul>
   </div>
@@ -1674,6 +1802,8 @@ document.head.appendChild(styleSheet);
 <div style="text-align: center; margin: 3rem 0 2rem 0; padding: 2rem; background: linear-gradient(135deg, #f8f9fa, #ffffff); border-radius: 15px;">
   <p style="font-size: 1.1rem; color: #2c5aa0; margin: 0;">Thanks for stopping by! Feel free to explore my work or connect with me:</p>
   <div style="margin-top: 1rem; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+    <a href="mailto:bv3hz@umsystem.edu" style="color: #2c5aa0; text-decoration: none; font-weight: 600; padding: 0.5rem 1rem; border: 2px solid #2c5aa0; border-radius: 25px; transition: all 0.3s ease;">Email</a>
+    <a href="tel:+15736393768" style="color: #2c5aa0; text-decoration: none; font-weight: 600; padding: 0.5rem 1rem; border: 2px solid #2c5aa0; border-radius: 25px; transition: all 0.3s ease;">Call</a>
     <a href="https://bhanuprakashvangala.github.io" style="color: #2c5aa0; text-decoration: none; font-weight: 600; padding: 0.5rem 1rem; border: 2px solid #2c5aa0; border-radius: 25px; transition: all 0.3s ease;">GitHub</a>
     <a href="https://www.linkedin.com/in/vangalabhanuprakash/" style="color: #2c5aa0; text-decoration: none; font-weight: 600; padding: 0.5rem 1rem; border: 2px solid #2c5aa0; border-radius: 25px; transition: all 0.3s ease;">LinkedIn</a>
   </div>

@@ -5,9 +5,10 @@ let textGenerator;
 const bhanuContext = `
 PERSONAL & ACADEMIC INFO:
 Bhanu Prakash Vangala is a Ph.D. researcher in Computer Science at the University of Missouri, Columbia.
+- 3+ years of NASA, DoD, and NSF-funded research across trustworthy AI and HPC systems.
 - Completed M.S. in Computer Science with perfect 4.0/4.0 GPA from University of Missouri (May 2025)
 - Outstanding Master's Student Award recipient from College of Engineering, University of Missouri
-- Google PhD Fellowship nominee (2025) - one of three nominees from University of Missouri
+- Google PhD Fellowship nominee (2025) — top 3 among 6,000 participants across the University of Missouri consortium
 - B.Tech in Computer Science and Engineering with Data Analytics specialization from VIT Vellore (2019-2023)
 - Excellence in Research Award and Best Department Thesis Award at VIT
 
@@ -33,13 +34,11 @@ MAJOR PUBLICATIONS & CONTRIBUTIONS:
 - Successfully deployed in scientific and clinical research environments
 - Establishes transformer-based approaches for improving LLM reliability
 
-3. Adaptive Inference: Orchestrating Fine-Tuned LLMs with Serverless GPUs (SC 2025 Poster)
-- Introduced Pick-and-Spin framework for policy-driven model selection with serverless GPU orchestration
-- Matrix-based (L×I) deployment model for dynamic routing to optimal (model, backend) pairs
-- Multi-objective scoring function balancing domain relevance, latency, and cost
-- Scale-to-zero serverless execution using Kubernetes with Knative and KEDA
-- Supports multiple domain-specific models (BioGPT, ChemBERTa, MatSciBERT) across inference backends
-- Research poster serves as foundation for planned comprehensive paper submission
+3. Adaptive Inference: Orchestrating Fine-Tuned LLMs with Serverless GPUs (ACM SRC 2025)
+- Pick-and-Spin router delivers policy-driven orchestration across fine-tuned domain models and GPU backends.
+- Two-dimensional L×I deployment matrix maps language models to inference providers for each request.
+- Knative + KEDA enable scale-to-zero serverless GPUs while balancing latency and cost targets.
+- Supports materials, biomedical, and geospatial assistants on NSF Nautilus and AWS SageMaker endpoints.
 
 4. Deploying LLM-as-a-Service in Kubernetes HPC Clusters (Master's Thesis)
 - Foundational Helm-chart-based deployment ecosystem that evolved into Pick-and-Spin framework
@@ -83,11 +82,12 @@ RESEARCH AREAS:
 ACHIEVEMENTS & RECOGNITION:
 - Outstanding Master's Student Award (University of Missouri, 2025)
 - Google PhD Fellowship Nominee (2025)
+- ACM Student Research Competition 2025 finalist at SC25 for Adaptive Inference poster
 - MUIDSI Hackathon Runner-Up for VisionAI project ($1,000 prize)
 - Excellence in Research Award (VIT, 2023)
 - Best Department Thesis Award (VIT, 2023)
 - Adobe AI Community Evangelist
-- Teaching Assistant: 100+ students in web development (MERN stack)
+- Teaching Assistant: 115+ students in web development (MERN stack)
 
 WORK EXPERIENCE:
 - Research Assistant: Data Intensive Computing Lab, University of Missouri (2023-Present)
@@ -105,7 +105,8 @@ CURRENT PROJECTS:
 
 CONTACT:
 LinkedIn: https://www.linkedin.com/in/vangalabhanuprakash/
-Email: bv3hz@missouri.edu (University), vangalabhanuprakash.12@gmail.com (Personal)
+Email: bv3hz@umsystem.edu (University), vangalabhanuprakash.12@gmail.com (Personal)
+Phone: +1 (573) 639-3768
 GitHub: Available for project exploration
 `;
 
@@ -241,8 +242,8 @@ function getSimpleAnswer(query) {
     'funding': 'Bhanu\'s research is supported by grants from Department of Defense, NSF, and NASA, covering his work on trustworthy AI, hallucination detection, and reproducible scientific computing.',
     
     // Contact and General
-    'contact': 'You can reach Bhanu at bv3hz@missouri.edu (university) or vangalabhanuprakash.12@gmail.com (personal). Connect on LinkedIn: https://www.linkedin.com/in/vangalabhanuprakash/',
-    'publications': 'Bhanu has several key publications: 1) HalluMat (AAAI 2025) - hallucination detection achieving 30% reduction in scientific LLMs, 2) HalluFormer (AAAI 2025) - transformer-based faithfulness evaluation with 94.71% F1 score, 3) Pick-and-Spin (SC 2025 poster) - serverless GPU orchestration for fine-tuned LLMs, 4) Master\'s thesis on LLM-as-a-Service deployment in Kubernetes HPC clusters, plus projects in brain tumor detection, pneumonia diagnosis, and multilingual sentiment analysis.',
+    'contact': 'You can reach Bhanu at bv3hz@umsystem.edu (university) or vangalabhanuprakash.12@gmail.com (personal). Connect on LinkedIn: https://www.linkedin.com/in/vangalabhanuprakash/',
+    'publications': 'Bhanu has several key publications: 1) HalluMat (AAAI 2025) - hallucination detection achieving 30% reduction in scientific LLMs, 2) HalluFormer (AAAI 2025) - transformer-based faithfulness evaluation with 94.71% F1 score, 3) Pick-and-Spin (ACM SRC 2025 poster) - serverless GPU orchestration for fine-tuned LLMs, 4) Master\'s thesis on LLM-as-a-Service deployment in Kubernetes HPC clusters, plus projects in brain tumor detection, pneumonia diagnosis, and multilingual sentiment analysis.',
     'research focus': 'Bhanu researches trustworthy AI, efficient LLMs, HPC systems, and scientific AI. His work spans hallucination detection, serverless GPU orchestration, factuality evaluation, and reproducible computing systems.',
   };
 
@@ -370,7 +371,7 @@ Current projects include ReflectMemory (persistent memory for LLM reasoning) and
           return `You can reach Bhanu through multiple channels:
 
 **Email:**
-- University: bv3hz@missouri.edu
+- University: bv3hz@umsystem.edu
 - Personal: vangalabhanuprakash.12@gmail.com
 
 **Professional Networks:**
