@@ -9,25 +9,32 @@ layout: compress
     {% include head/custom.html %}
   </head>
 
-  <body>
-
+  <body class="academic-theme">
     {% include browser-upgrade.html %}
-    {% include masthead.html %}
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <div class="site-shell">
+      <header class="site-header" role="banner">
+        {% include masthead.html %}
+      </header>
 
-    <div id="main" role="main">
-      {% include sidebar.html %}
-    
-      <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-        {% if page.title %}<meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
-        <div class="page__inner-wrap">
-          <section class="page__content" itemprop="text">
-            {{ content }}
-          </section>
+      <main id="main" class="site-main" role="main">
+        <article class="page" itemscope itemtype="http://schema.org/Person">
+          {% if page.title %}<meta itemprop="name" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
+          <div class="page__inner-wrap">
+            <section class="page__content" itemprop="description">
+              {{ content }}
+            </section>
+          </div>
+        </article>
+      </main>
+
+      <footer class="site-footer" role="contentinfo">
+        <div class="site-footer__inner">
+          <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}. Built for scholarly work with Jekyll.</p>
         </div>
-      </article>
+      </footer>
     </div>
 
     {% include scripts.html %}
-
   </body>
 </html>
