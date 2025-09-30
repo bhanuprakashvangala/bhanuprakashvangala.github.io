@@ -6,20 +6,8 @@
 <script>
   window.LLM_API_ENDPOINT = "{{ site.llm_api_endpoint }}";
 </script>
+<script src="assets/js/chat.js"></script>
 <script src="assets/js/email.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var toggle = document.querySelector('.site-nav__toggle');
-    var menu = document.querySelector('#site-menu');
-    if (!toggle || !menu) return;
-
-    toggle.addEventListener('click', function () {
-      var expanded = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', (!expanded).toString());
-      menu.classList.toggle('is-open');
-    });
-  });
-</script>
 
 {% include analytics.html %}
 {% include fetch_google_scholar_stats.html %}
