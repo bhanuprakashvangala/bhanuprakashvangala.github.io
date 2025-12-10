@@ -1,65 +1,25 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your entire site, values
-# which you are expected to set up once and rarely need to edit after that.
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# `jekyll serve`. If you change this file, please restart the server process.
-
 # Site Settings
 title                    : "Bhanu Prakash Vangala"
-description              : "PhD in Computer Science"
+description              : "Ph.D. Student in Computer Science"
 repository               : "bhanuprakashvangala/bhanuprakashvangala.github.io"
-google_scholar_stats_use_cdn : true
 
-# google analytics
+# Google Analytics
 google_analytics_id      : G-JFP04P2CJV
-llm_api_endpoint        : "http://a93814c911930406599ccd20046945a8-505552828.us-east-1.elb.amazonaws.com:8080/generate"
 
 # SEO Related
 google_site_verification : UT_lVOnAes50EAwbsIFw8BrxTnE8YPxiDLWzPE
-#bing_site_verification   : B5AA590E7B9C03956A6F7DEC0F776211
-#baidu_site_verification  : code-ZxFK3f4pfb
 
 # Site Author
 author:
   name             : "Bhanu Prakash Vangala"
   avatar           : "images/Bhanu1.jpg"
-  bio              : ""
-  location         : "Missouri, USA"
-  employer         :
-  pubmed           : 
-  googlescholar    : 
+  bio              : "Ph.D. Student, University of Missouri"
+  location         : "Columbia, MO"
   email            : "bv3hz@umsystem.edu"
-  researchgate     : "https://www.researchgate.net/profile/Bhanu-Prakash-Vangala-3?ev=hdr_xprf"
-  uri              :
-  bitbucket        :
-  codepen          :
-  dribbble         :
-  flickr           :
-  facebook         :
-  foursquare       :
   github           : "bhanuprakashvangala"
-  cv               : "https://drive.google.com/file/d/1tlWZiUilKqoZiyHjKfpueTkGkwACzpqi/view?usp=sharing"
-  google_plus      :
-  keybase          :
-  instagram        :
-  impactstory      : #"https://profiles.impactstory.org/u/xxxx-xxxx-xxxx-xxxx"
-  lastfm           :
   linkedin         : "vangalabhanuprakash"
-  dblp             : #"https://dblp.org/pid/75/6568-6.html"
-  orcid            : #"https://orcid.org/0000-0002-9160-3848"
-  pinterest        :
-  soundcloud       :
-  stackoverflow    : # http://stackoverflow.com/users/123456/username
-  steam            :
-  tumblr           :
-  twitter          : 
-  vine             :
-  weibo            :
-  xing             :
-  youtube          :
-  wikipedia        :
-
+  cv               : "https://drive.google.com/file/d/1tlWZiUilKqoZiyHjKfpueTkGkwACzpqi/view?usp=sharing"
+  googlescholar    : "https://scholar.google.com/citations?user=YOUR_ID"
 
 # Reading Files
 include:
@@ -98,14 +58,12 @@ keep_files:
 encoding: "utf-8"
 markdown_ext: "markdown,mkdown,mkdn,mkd,md"
 
-
 # Conversion
 markdown: kramdown
 highlighter: rouge
 lsi: false
 excerpt_separator: "\n\n"
 incremental: false
-
 
 # Markdown Processing
 kramdown:
@@ -120,7 +78,6 @@ kramdown:
 
 # Defaults
 defaults:
-  # _pages
   - scope:
       path: ""
       type: pages
@@ -128,17 +85,14 @@ defaults:
       layout: default
       author_profile: true
 
-
 # Sass/SCSS
 sass:
   sass_dir: _sass
-  style: compressed # http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
-
+  style: compressed
 
 # Outputting
 permalink: /:categories/:title/
-timezone: Asia/Shanghai # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-
+timezone: America/Chicago
 
 # Plugins
 plugins:
@@ -147,7 +101,7 @@ plugins:
   - jekyll-gist
   - jekyll-feed
   - jekyll-redirect-from
-# mimic GitHub Pages with --safe
+
 whitelist:
   - jekyll-paginate
   - jekyll-sitemap
@@ -155,9 +109,7 @@ whitelist:
   - jekyll-feed
   - jemoji
 
-
 # HTML Compression
-# - http://jch.penibelst.de/
 compress_html:
   clippings: all
   ignore:
