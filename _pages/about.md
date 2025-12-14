@@ -12,17 +12,13 @@ redirect_from:
 
 # About Me
 
-I am a Ph.D. student in Computer Science at the [University of Missouri](https://engineering.missouri.edu/departments/eecs/), advised by [Dr. Tanu Malik](https://engineering.missouri.edu/faculty/tanu-malik/).
-
-My research focuses on **Efficiency in LLMs**, **Trustworthy AI**, and **Reproducibility in Systems**.
-
-In Summer 2026, I will join **Microsoft** as a Research Data Science Intern.
+I am a Ph.D. student in Computer Science at the [University of Missouri](https://engineering.missouri.edu/departments/eecs/), advised by [Dr. Tanu Malik](https://engineering.missouri.edu/faculty/tanu-malik/). My research focuses on **Efficiency in LLMs**, **Trustworthy AI**, and **Reproducibility in Systems**. In Summer 2026, I will join **Microsoft** as a Research Data Science Intern.
 
 Previously, I completed my M.S. in Computer Science at Missouri, advised by [Dr. Jianlin Cheng](https://en.wikipedia.org/wiki/Jianlin_Cheng) and [Dr. Grant Scott](https://scottgs.mufaculty.umsystem.edu/). I received my B.Tech from VIT University (Vellore Institute of Technology), where I worked on multilingual sentiment analysis advised by Dr. Soughbhagya Barpanda, with dataset and collaboration support from [Dr. P. Kumaraguru](https://www.iiit.ac.in/people/faculty/pk/) (PRECOG, IIIT Hyderabad).
 
 I was selected as a **Google PhD Fellowship Nominee (2025)** in NLP, one of three nominees from Missouri, and received the **Outstanding Master's Student Award (2025)**.
 
-**Research Interests:** LLMs | NLP | Agentic AI | Trustworthy AI | Scalable ML Systems | Reproducibility
+**Research Interests:** LLMs, NLP, Agentic AI, Trustworthy AI, Scalable ML Systems, Reproducibility
 
 ---
 
@@ -301,7 +297,7 @@ I was selected as a **Google PhD Fellowship Nominee (2025)** in NLP, one of thre
     <div class="pub-title">Adaptive Inference: Orchestrating Fine-Tuned LLMs with Serverless GPUs in HPC Environments</div>
     <div class="pub-authors"><a href="#">Bhanu Prakash Vangala</a>, Tanu Malik</div>
     <div class="pub-links">
-      <a href="#">Paper</a>
+      <a href="#">Poster</a>
       <a href="#">Code</a>
       <span class="pub-venue">ACM SC 2025</span>
     </div>
@@ -334,6 +330,35 @@ I was selected as a **Google PhD Fellowship Nominee (2025)** in NLP, one of thre
     <div class="pub-links">
       <a href="https://drive.google.com/file/d/1a2Xan4sDdC7ib7Hj5HODcjPyztmTee4k/view">Paper</a>
       <span class="pub-venue">B.Tech Thesis 2023</span>
+    </div>
+  </div>
+</div>
+
+<div class="pub-card">
+  <div class="pub-img">
+    <img src="images/Brain%20Tumor-Portfolio%20Image.png" alt="Brain Tumor Detection">
+  </div>
+  <div class="pub-content">
+    <div class="pub-title">Brain Tumor Detection in MRI Images Using Deep Learning</div>
+    <div class="pub-authors"><a href="#">Bhanu Prakash Vangala</a></div>
+    <div class="pub-links">
+      <a href="https://drive.google.com/file/d/1upCswGveonJPN2vmuXzKlhbKqE8tkGSA/view?usp=sharing">Project Report</a>
+      <a href="https://github.com/bhanuprakashvangala">Code</a>
+      <span class="pub-venue">Research Project</span>
+    </div>
+  </div>
+</div>
+
+<div class="pub-card">
+  <div class="pub-img">
+    <img src="images/Pneumonia-Portfolio%20Image.png" alt="Pneumonia Detection">
+  </div>
+  <div class="pub-content">
+    <div class="pub-title">Pneumonia Detection in Chest X-rays Using Deep Learning</div>
+    <div class="pub-authors"><a href="#">Bhanu Prakash Vangala</a></div>
+    <div class="pub-links">
+      <a href="https://drive.google.com/file/d/1UJKKHXcFIvtjClUyrr6dhatMKN1svU7C/view?usp=sharing">Project Report</a>
+      <span class="pub-venue">Research Project</span>
     </div>
   </div>
 </div>
@@ -493,7 +518,7 @@ document.addEventListener('keydown', function(e) {
 <div style="text-align: center; margin-top: 3rem; color: #666;">
   <p>Thanks for visiting! Feel free to reach out.</p>
   <p>
-    <a href="mailto:bv3hz@umsystem.edu">Email</a> ·
+    <a href="mailto:bv3hz@missouri.edu">Email</a> ·
     <a href="https://github.com/bhanuprakashvangala">GitHub</a> ·
     <a href="https://www.linkedin.com/in/vangalabhanuprakash/">LinkedIn</a>
   </p>
