@@ -172,3 +172,98 @@ h1:before, .anchor:before {
   border: 1px solid #ccc;
   border-radius: 8px;
 }
+/* Homepage content blocks */
+.quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+  margin: 1rem 0 1.75rem;
+}
+
+.quick-links a {
+  border: 1px solid #d9dfec;
+  border-radius: 999px;
+  padding: .35rem .8rem;
+  background: #f8faff;
+  font-size: .9rem;
+  text-decoration: none;
+}
+
+.pub-card {
+  display: flex;
+  gap: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  margin-bottom: 1.25rem;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .08);
+}
+
+.pub-card:hover { box-shadow: 0 2px 8px rgba(0, 0, 0, .14); }
+
+.pub-img {
+  width: 200px;
+  min-width: 200px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+
+.pub-img img { max-width: 100%; max-height: 150px; object-fit: contain; }
+.pub-content { padding: 15px 20px; flex: 1; }
+.pub-title { font-size: 1.05rem; font-weight: 600; margin-bottom: .65rem; }
+.pub-authors { color: #555; margin-bottom: .8rem; font-size: .95rem; }
+.pub-links { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; }
+.pub-link-disabled { color: #777; font-size: .92rem; }
+.pub-venue { margin-left: auto; color: #666; font-weight: 600; }
+
+.award-item, .exp-item {
+  margin-bottom: 1.25rem;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 3px solid #2a6496;
+}
+
+.award-date, .exp-item .date, .edu-item .date {
+  color: #666;
+  font-size: .9rem;
+  margin-bottom: .4rem;
+}
+
+.award-images { display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
+.award-images img {
+  height: 80px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform .2s;
+  border: 1px solid #ddd;
+}
+.award-images img:hover { transform: scale(1.05); }
+
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  background: rgba(0, 0, 0, .9);
+  justify-content: center;
+  align-items: center;
+}
+.lightbox.active { display: flex; }
+.lightbox img { max-width: 90%; max-height: 90%; border-radius: 8px; }
+.lightbox-close { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 40px; cursor: pointer; }
+
+.edu-item {
+  margin-bottom: 1.25rem;
+  padding-left: 20px;
+  border-left: 3px solid #2a6496;
+}
+
+@media (max-width: 600px) {
+  .pub-card { flex-direction: column; }
+  .pub-img { width: 100%; min-width: auto; }
+  .pub-venue { margin-left: 0; width: 100%; }
+}
