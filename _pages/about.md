@@ -20,6 +20,14 @@ I was selected as a **Google PhD Fellowship Nominee (2025)** in NLP, one of thre
 
 **Research Interests:** LLMs, NLP, Agentic AI, Trustworthy AI, Scalable ML Systems, Reproducibility
 
+<div class="quick-links">
+  <a href="mailto:bv3hz@missouri.edu">Email</a>
+  <a href="https://scholar.google.com/citations?user=qHBOnpkAAAAJ&hl=en">Google Scholar</a>
+  <a href="https://dblp.org/pid/75/6568-6.html">DBLP</a>
+  <a href="https://github.com/bhanuprakashvangala">GitHub</a>
+  <a href="https://www.linkedin.com/in/vangalabhanuprakash/">LinkedIn</a>
+</div>
+
 ---
 
 <span class='anchor' id='news'></span>
@@ -41,189 +49,6 @@ I was selected as a **Google PhD Fellowship Nominee (2025)** in NLP, one of thre
 <span class='anchor' id='publications'></span>
 # Publications
 
-<style>
-/* Clean publication card style like Rachit's site */
-.pub-card {
-  display: flex;
-  background: #f8f9fa;
-  border-radius: 8px;
-  margin-bottom: 1.5rem;
-  overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-}
-.pub-card:hover {
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-}
-.pub-img {
-  width: 200px;
-  min-width: 200px;
-  padding: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #fff;
-}
-.pub-img img {
-  max-width: 100%;
-  max-height: 150px;
-  object-fit: contain;
-}
-.pub-content {
-  padding: 15px 20px;
-  flex: 1;
-}
-.pub-title {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #333;
-  background: #e9ecef;
-  padding: 8px 12px;
-  border-radius: 4px;
-  margin-bottom: 10px;
-}
-.pub-authors {
-  color: #555;
-  margin-bottom: 12px;
-  font-size: 0.95rem;
-}
-.pub-authors a {
-  color: #2a6496;
-  text-decoration: underline;
-}
-.pub-links {
-  display: flex;
-  gap: 15px;
-  align-items: center;
-}
-.pub-links a {
-  color: #2a6496;
-  font-weight: 500;
-  text-decoration: none;
-}
-.pub-links a:hover {
-  text-decoration: underline;
-}
-.pub-venue {
-  margin-left: auto;
-  color: #666;
-  font-weight: 500;
-}
-
-/* Awards with clickable enlargeable images */
-.award-item {
-  margin-bottom: 1.5rem;
-  padding: 15px;
-  background: #f8f9fa;
-  border-radius: 8px;
-}
-.award-date {
-  font-weight: 600;
-  color: #2a6496;
-  margin-bottom: 5px;
-}
-.award-images {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-  flex-wrap: wrap;
-}
-.award-images a {
-  display: block;
-}
-.award-images img {
-  height: 80px;
-  width: auto;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: transform 0.2s;
-  border: 1px solid #ddd;
-}
-.award-images img:hover {
-  transform: scale(1.05);
-}
-
-/* Image lightbox */
-.lightbox {
-  display: none;
-  position: fixed;
-  z-index: 9999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.9);
-  justify-content: center;
-  align-items: center;
-}
-.lightbox.active {
-  display: flex;
-}
-.lightbox img {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 8px;
-}
-.lightbox-close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  color: white;
-  font-size: 40px;
-  cursor: pointer;
-}
-
-/* Clean education style */
-.edu-item {
-  margin-bottom: 1.5rem;
-  padding-left: 20px;
-  border-left: 3px solid #2a6496;
-}
-.edu-item h4 {
-  margin: 0 0 5px 0;
-  color: #333;
-}
-.edu-item .date {
-  color: #666;
-  font-size: 0.9rem;
-  margin-bottom: 8px;
-}
-
-/* Experience timeline */
-.exp-item {
-  margin-bottom: 1.5rem;
-  padding: 15px;
-  background: #f8f9fa;
-  border-radius: 8px;
-  border-left: 3px solid #2a6496;
-}
-.exp-item h4 {
-  margin: 0 0 5px 0;
-  color: #2a6496;
-}
-.exp-item .date {
-  color: #666;
-  font-size: 0.9rem;
-  margin-bottom: 8px;
-}
-
-@media (max-width: 600px) {
-  .pub-card {
-    flex-direction: column;
-  }
-  .pub-img {
-    width: 100%;
-    min-width: auto;
-  }
-  .pub-links {
-    flex-wrap: wrap;
-  }
-  .pub-venue {
-    margin-left: 0;
-    margin-top: 10px;
-    width: 100%;
-  }
-}
-</style>
 
 ### 2026
 
@@ -235,8 +60,8 @@ I was selected as a **Google PhD Fellowship Nominee (2025)** in NLP, one of thre
     <div class="pub-title">Efficient Multi-Model Orchestration for Self-Hosted Large Language Models</div>
     <div class="pub-authors"><a href="#">Bhanu Prakash Vangala</a>, Tanu Malik, Ashish Gehani</div>
     <div class="pub-links">
-      <a href="#">Paper</a>
-      <a href="#">Code</a>
+      <span class="pub-link-disabled">Paper (forthcoming)</span>
+      <span class="pub-link-disabled">Code (coming soon)</span>
       <span class="pub-venue">AAAI 2026</span>
     </div>
   </div>
@@ -250,8 +75,8 @@ I was selected as a **Google PhD Fellowship Nominee (2025)** in NLP, one of thre
     <div class="pub-title">AI-Generated Code Is Not Reproducible (Yet): An Empirical Study of Dependency Gaps in Agents</div>
     <div class="pub-authors"><a href="#">Bhanu Prakash Vangala</a>, Ammar Ali, Tanu Malik, Ashish Gehani</div>
     <div class="pub-links">
-      <a href="#">Paper</a>
-      <a href="#">Code</a>
+      <span class="pub-link-disabled">Paper (forthcoming)</span>
+      <span class="pub-link-disabled">Code (coming soon)</span>
       <span class="pub-venue">AAAI 2026</span>
     </div>
   </div>
@@ -268,7 +93,7 @@ I was selected as a **Google PhD Fellowship Nominee (2025)** in NLP, one of thre
     <div class="pub-authors"><a href="#">Bhanu Prakash Vangala</a>, Syed Mahmud, Prabhat Neupane, Janani Selvaraj, Jianlin Cheng</div>
     <div class="pub-links">
       <a href="https://drive.google.com/file/d/1oMbe8br7-wm7NLkrOFbFGtT2vUlxdCTn/view">Paper</a>
-      <a href="#">Code</a>
+      <span class="pub-link-disabled">Code (coming soon)</span>
       <span class="pub-venue">AAAI 2025</span>
     </div>
   </div>
@@ -283,7 +108,7 @@ I was selected as a **Google PhD Fellowship Nominee (2025)** in NLP, one of thre
     <div class="pub-authors">Syed Mahmud, Prabhat Neupane, Janani Selvaraj, <a href="#">Bhanu Prakash Vangala</a>, Jianlin Cheng</div>
     <div class="pub-links">
       <a href="https://drive.google.com/file/d/1o6tqCJdhiCTAR4AEM59fV4t2VSdvS4yt/view">Paper</a>
-      <a href="#">Code</a>
+      <span class="pub-link-disabled">Code (coming soon)</span>
       <span class="pub-venue">AAAI 2025</span>
     </div>
   </div>
@@ -297,8 +122,8 @@ I was selected as a **Google PhD Fellowship Nominee (2025)** in NLP, one of thre
     <div class="pub-title">Adaptive Inference: Orchestrating Fine-Tuned LLMs with Serverless GPUs in HPC Environments</div>
     <div class="pub-authors"><a href="#">Bhanu Prakash Vangala</a>, Tanu Malik</div>
     <div class="pub-links">
-      <a href="#">Poster</a>
-      <a href="#">Code</a>
+      <span class="pub-link-disabled">Poster (coming soon)</span>
+      <span class="pub-link-disabled">Code (coming soon)</span>
       <span class="pub-venue">ACM SC 2025</span>
     </div>
   </div>
@@ -314,7 +139,7 @@ I was selected as a **Google PhD Fellowship Nominee (2025)** in NLP, one of thre
     <div class="pub-title">Deploying LLMs as a Service in Kubernetes HPC Cluster</div>
     <div class="pub-authors"><a href="#">Bhanu Prakash Vangala</a>, Grant Scott, Jianlin Cheng</div>
     <div class="pub-links">
-      <a href="#">Thesis</a>
+      <span class="pub-link-disabled">Thesis link (coming soon)</span>
       <span class="pub-venue">M.S. Thesis 2025</span>
     </div>
   </div>
@@ -501,7 +326,7 @@ document.addEventListener('keydown', function(e) {
 ---
 
 <span class='anchor' id='academic-service'></span>
-# Service
+# Academic Service
 
 **Reviewer:** NeurIPS, ICML, ACL, CVPR, ICLR, AAAI, EMNLP, ECCV, ICCV, IJCAI, NAACL, ICASSP
 
