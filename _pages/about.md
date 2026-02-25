@@ -33,16 +33,12 @@ I was selected as a **Google PhD Fellowship Nominee (2025)** in NLP, one of thre
 <span class='anchor' id='news'></span>
 # News
 
-- *2025.12*: Two papers accepted at **AAAI 2026**
-- *2025.11*: Joining **Microsoft** as Research Data Science Intern (Summer 2026)
-- *2025.05*: Earned my M.S. in Computer Science (GPA: 4.0/4.0) from the University of Missouri
-- *2025.05*: Received the **Outstanding Master's Student Award** from the MU College of Engineering
-- *2025.04*: Selected as a **Google PhD Fellowship Nominee (NLP)** — one of three nominees from Missouri
-- *2025.03*: Achieved **Runner-Up** in the MUIDSI AI Hackathon ($1,000 prize)
-- *2025.01*: Two papers accepted at **AAAI 2025**
-- *2024.01*: Working as a TA for 100+ students in Web Development
-- *2023.08*: Began Ph.D. research on faithfulness, interpretability, and robustness in LLMs
-- *2023.05*: Graduated with B.Tech from VIT Vellore
+- *2026.02*: My presentation on **"Evaluating Dependency Gaps in LLM-Generated Code"** was selected for the **Sixth Chameleon User Meeting** (April 15–16, 2026) at NCAR’s Mesa Lab in Boulder, Colorado
+- *2026.01*: I presented **"AI-Generated Code Is Not Reproducible (Yet): An Empirical Study of Dependency Gaps in LLM-Based Coding Agents"** (Jan 26) and **"Efficient Multi-Model Orchestration for Self-Hosted Large Language Models"** (Jan 27) at **AAAI 2026** in Singapore
+- *2025.12*: Our paper **"AI-Generated Code Is Not Reproducible (Yet): An Empirical Study of Dependency Gaps in LLM-Based Coding Agents"** was accepted at the **RAI 2025 workshop**
+- *2025.11*: Our paper **"Efficient Multi-Model Orchestration for Self-Hosted Large Language Models"** was accepted at the **Deployable Artificial Intelligence (DAI2025) Workshop**
+- *2025.05*: Graduated with my **M.S. in Computer Science** and continued to pursue my **Ph.D. in Computer Science at Mizzou**
+- *2025.03*: Received the **Outstanding Master's Student Award** at the Mizzou Engineering Awards Banquet 2025
 
 ---
 
