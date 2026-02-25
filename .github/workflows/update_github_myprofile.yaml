@@ -11,6 +11,16 @@ jobs:
         sudo apt-get install python3-setuptools
     - name: Run
       run: |
+        if [ ! -d "./github_myprofile_updater" ]; then
+          echo "Skipping update: ./github_myprofile_updater not found in this repository."
+          exit 0
+        fi
+
+        if [ -z "${{ secrets.GHRS_GITHUB_API_TOKEN }}" ]; then
+          echo "Skipping update: GHRS_GITHUB_API_TOKEN is not configured."
+          exit 0
+        fi
+
         cd ./github_myprofile_updater
         python3 update.py
         git init
