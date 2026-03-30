@@ -369,7 +369,7 @@ document.addEventListener('keydown', function(e) {
 <div class="exp-item">
   <h4>University of Missouri, Radiant Lab — Research Assistant</h4>
   <div class="date">Jan 2024 - Present</div>
-  <p>NASA-funded research on reproducible scientific containers and AI-generated code reproducibility; work on bandit-based model switching (FlexiFlow) and autonomous experimentation (TRACE)<br>
+  <p>NASA-funded research on reproducible scientific containers, AI-generated code reproducibility, and multi-model orchestration (Pick-and-Spin); work on bandit-based model switching (FlexiFlow) and autonomous experimentation (TRACE)<br>
   Advisor: Dr. Tanu Malik</p>
 </div>
 
