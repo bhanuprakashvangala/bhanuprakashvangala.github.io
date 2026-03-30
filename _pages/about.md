@@ -210,73 +210,40 @@ I was selected as a **Google PhD Fellowship Nominee (2025)** in NLP, one of thre
 # Projects
 
 <div class="pub-card">
-  <div class="pub-img">
-    <img src="images/AdaptiveLLMaaS.png" alt="FlexiFlow">
-  </div>
   <div class="pub-content">
     <div class="pub-title">FlexiFlow: Bandit-based Model Switching in ML Workflows</div>
-    <div class="pub-authors">Abhilash Jindal, Todd Nief, Tanu Malik, Shankaradithyaa V, Tvisha Malik, Anshik Sahu, Amitabh Chaudhary, Aaron Schein</div>
-    <div class="pub-desc">A dataflow system that dynamically switches between ML models at runtime using multi-armed bandit strategies. FlexiFlow learns to rank models by balancing assertion pass probabilities with operator runtimes, achieving up to 23% accuracy improvement and 48% efficiency gains over sequential execution. Introduces Hybrid Thompson Sampling (HTS) for rollback-aware configuration selection across multi-step ML pipelines.</div>
-    <div class="pub-links">
-      <span class="pub-venue">VLDB 2026</span>
-    </div>
+    <div class="pub-desc">Building a dataflow system that dynamically switches between ML models at runtime using multi-armed bandit strategies to improve accuracy and efficiency across multi-step ML pipelines.</div>
   </div>
 </div>
 
 <div class="pub-card">
-  <div class="pub-img">
-    <img src="images/LLM-as-Service-portfolio-image.png" alt="TRACE">
-  </div>
   <div class="pub-content">
     <div class="pub-title">TRACE: A Programmable Cloud Laboratory for Autonomous Experimentation</div>
-    <div class="pub-authors">Tanu Malik (PI), Derek Anderson, Matt Maschmann, Min Su, Minh Phan, Prasad Calyam, Kate Keahey, Cogan Shimizu, Clintin Davis-Stober, Chenhao Tan, and others</div>
-    <div class="pub-desc">A proposed Programmable Cloud Laboratory (PCL) Node that enables closed-loop autonomous experimentation across three science drivers: volume electron microscopy, neutron scattering (MURR), and microscale manufacturing. Built on an agentic architecture with MCP-based instrument integration, Bayesian experiment planners, and computational cognitive models for human-AI co-reasoning. Designed to reduce multi-day experimental workflows to hours.</div>
-    <div class="pub-links">
-      <span class="pub-venue">NSF PCL Proposal</span>
-    </div>
+    <div class="pub-desc">Developing a closed-loop autonomous experimentation platform across volume electron microscopy, neutron scattering, and microscale manufacturing using agentic architectures and Bayesian experiment planners.</div>
   </div>
 </div>
 
 <div class="pub-card">
-  <div class="pub-img">
-    <img src="images/AdaptiveLLMaaS.png" alt="LearnLLM.dev">
-  </div>
   <div class="pub-content">
     <div class="pub-title">LearnLLM.dev — Learn to Build with Large Language Models</div>
-    <div class="pub-authors"><a href="#">Bhanu Prakash Vangala</a></div>
-    <div class="pub-desc">An educational platform teaching LLM development from beginner to production-ready. Features 83+ structured lessons covering prompt engineering, LangChain, RAG systems, AI agents, fine-tuning, vector databases, and deployment — plus 30+ hands-on coding challenges. Serving 10,000+ active learners.</div>
+    <div class="pub-desc">Building an educational platform with 83+ lessons and 30+ hands-on challenges teaching LLM development — from prompt engineering to production-grade AI agents. Serving 10,000+ active learners.</div>
     <div class="pub-links">
       <a href="https://learnllm.dev">Website</a>
-      <span class="pub-venue">Educational Platform</span>
     </div>
   </div>
 </div>
 
 <div class="pub-card">
-  <div class="pub-img">
-    <img src="images/Hackathon%20Winner.jpeg" alt="VisionAI">
-  </div>
   <div class="pub-content">
     <div class="pub-title">VisionAI: AI-Powered Assistance for the Visually Impaired</div>
-    <div class="pub-authors"><a href="#">Bhanu Prakash Vangala</a> and team</div>
-    <div class="pub-desc">A multimodal AI system for hazard detection and accessibility, built using fine-tuned vision-language models (VLLMs). Combines real-time image understanding with natural language guidance to assist visually impaired users in navigating indoor and outdoor environments. Runner-up at the IBM/MUIDSI Generative AI for Social Good Hackathon 2025 ($1,000 prize).</div>
-    <div class="pub-links">
-      <span class="pub-venue">IBM/MUIDSI Hackathon 2025</span>
-    </div>
+    <div class="pub-desc">Built a multimodal AI system for hazard detection and accessibility using fine-tuned vision-language models. Runner-up at the IBM/MUIDSI Generative AI for Social Good Hackathon 2025.</div>
   </div>
 </div>
 
 <div class="pub-card">
-  <div class="pub-img">
-    <img src="images/AdaptiveLLMaaS.png" alt="Indoor Navigation">
-  </div>
   <div class="pub-content">
     <div class="pub-title">Autonomous Indoor Navigation System</div>
-    <div class="pub-authors"><a href="#">Bhanu Prakash Vangala</a> and team</div>
-    <div class="pub-desc">An autonomous indoor navigation system using BLE beacons and Raspberry Pi for real-time positioning, with A* and Dijkstra pathfinding algorithms. Features a Kotlin mobile app for turn-by-turn indoor guidance. Built for the VIT AI Techethon.</div>
-    <div class="pub-links">
-      <span class="pub-venue">VIT AI Techethon</span>
-    </div>
+    <div class="pub-desc">Built an indoor navigation system using BLE beacons and Raspberry Pi with A* and Dijkstra pathfinding, paired with a Kotlin mobile app for turn-by-turn guidance.</div>
   </div>
 </div>
 
