@@ -425,9 +425,7 @@ document.addEventListener('keydown', function(e) {
 <span class='anchor' id='academic-service'></span>
 # Academic Service
 
-**Reviewer:** NeurIPS (Outstanding Reviewer — AI4MAT Track), NeurIPS (Main Track), ICLR, ICML, ACL, CVPR, AAAI, EMNLP, ECCV, ICCV, IJCAI, NAACL, ICASSP, CIKM, IEEE
-
-**Journals:** TPAMI, TIP, TMLR, JVCI
+**Reviewer:** NeurIPS (Outstanding Reviewer — AI4MAT Track), NeurIPS (Main Track), ICLR, ICML, ACL, AAAI, CIKM, IEEE
 
 ---
 
