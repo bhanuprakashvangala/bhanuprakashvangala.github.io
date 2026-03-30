@@ -226,7 +226,7 @@ I was selected as a **Google PhD Fellowship Nominee (2025)** in NLP, one of thre
 <div class="pub-card">
   <div class="pub-content">
     <div class="pub-title">Reproducible Containers for Advancing Process-oriented Collaborative Analytics</div>
-    <div class="pub-desc">Developing data-savvy reproducible containers that automatically encapsulate scientific applications with provenance tracking. Working on AI-generated code reproducibility and multi-model orchestration (Pick-and-Spin) for LLM inference within this project.</div>
+    <div class="pub-desc">Developing data-savvy reproducible containers that automatically encapsulate scientific applications with provenance tracking. Studying dependency issues in AI-generated code, multi-model orchestration (Pick-and-Spin) for LLM inference, and reproducibility challenges in LLM-based coding agents.</div>
   </div>
 </div>
 
