@@ -12,13 +12,15 @@ redirect_from:
 
 # About Me
 
-I am a Ph.D. student in Computer Science at the [University of Missouri](https://engineering.missouri.edu/departments/eecs/), advised by [Dr. Tanu Malik](https://engineering.missouri.edu/faculty/tanu-malik/). My research focuses on **Efficiency in LLMs**, **Trustworthy AI**, and **Reproducibility in Systems**. In Summer 2026, I will join **Microsoft** as a Research Data Science Intern.
+I am a Ph.D. student in Computer Science at the [University of Missouri](https://engineering.missouri.edu/departments/eecs/), advised by [Dr. Tanu Malik](https://engineering.missouri.edu/faculty/tanu-malik/). My research focuses on **Agentic AI Systems**, **Trustworthy AI**, and **Reproducibility in Systems**. I build systems that reason, plan, and act autonomously — from multi-model orchestration and bandit-based model switching in ML workflows to closed-loop autonomous experimentation platforms. I received an offer from **Microsoft** for a Research Data Science Internship (Summer 2026).
+
+I am also the creator of [**LearnLLM.dev**](https://learnllm.dev), an educational platform with 83+ lessons and 30+ hands-on challenges that teaches LLM development from beginner prompt engineering to production-grade AI agents, serving 10,000+ active learners.
 
 Previously, I completed my M.S. in Computer Science at Missouri, advised by [Dr. Jianlin Cheng](https://en.wikipedia.org/wiki/Jianlin_Cheng) and [Dr. Grant Scott](https://scottgs.mufaculty.umsystem.edu/). I received my B.Tech from VIT University (Vellore Institute of Technology), where I worked on multilingual sentiment analysis advised by Dr. Soughbhagya Barpanda, with dataset and collaboration support from [Dr. P. Kumaraguru](https://www.iiit.ac.in/people/faculty/pk/) (PRECOG, IIIT Hyderabad).
 
 I was selected as a **Google PhD Fellowship Nominee (2025)** in NLP, one of three nominees from Missouri, and received the **Outstanding Master's Student Award (2025)**.
 
-**Research Interests:** LLMs, NLP, Agentic AI, Trustworthy AI, Scalable ML Systems, Reproducibility
+**Research Interests:** Agentic AI Systems, LLMs, NLP, Trustworthy AI, Autonomous Experimentation, Scalable ML Systems, Reproducibility
 
 <div class="quick-links">
   <a href="mailto:bv3hz@missouri.edu">Email</a>
@@ -37,7 +39,7 @@ I was selected as a **Google PhD Fellowship Nominee (2025)** in NLP, one of thre
 - *2026.01*: I presented **"AI-Generated Code Is Not Reproducible (Yet): An Empirical Study of Dependency Gaps in LLM-Based Coding Agents"** (Jan 26) and **"Efficient Multi-Model Orchestration for Self-Hosted Large Language Models"** (Jan 27) at **AAAI 2026** in Singapore
 - *2025.12*: Our paper **"AI-Generated Code Is Not Reproducible (Yet): An Empirical Study of Dependency Gaps in LLM-Based Coding Agents"** was accepted at the **RAI 2025 workshop**
 - *2025.11*: Our paper **"Efficient Multi-Model Orchestration for Self-Hosted Large Language Models"** was accepted at the **Deployable Artificial Intelligence (DAI2025) Workshop**
-- *2025.11*: Joining **Microsoft** as Research Data Science Intern (Summer 2026)
+- *2025.11*: Received an offer from **Microsoft** for Research Data Science Internship (Summer 2026)
 - *2025.05*: Graduated with my **M.S. in Computer Science** and continued to pursue my **Ph.D. in Computer Science at Mizzou**
 - *2025.04*: Selected as a **Google PhD Fellowship Nominee (NLP)** — one of three nominees from the University of Missouri
 - *2025.04*: Presented our work on hallucination detection at the **AAAI Spring Symposium 2025 (AI for Scientific Discovery track)**
@@ -204,8 +206,89 @@ I was selected as a **Google PhD Fellowship Nominee (2025)** in NLP, one of thre
 
 ---
 
+<span class='anchor' id='projects'></span>
+# Projects
+
+<div class="pub-card">
+  <div class="pub-img">
+    <img src="images/AdaptiveLLMaaS.png" alt="FlexiFlow">
+  </div>
+  <div class="pub-content">
+    <div class="pub-title">FlexiFlow: Bandit-based Model Switching in ML Workflows</div>
+    <div class="pub-authors">Abhilash Jindal, Todd Nief, Tanu Malik, Shankaradithyaa V, Tvisha Malik, Anshik Sahu, Amitabh Chaudhary, Aaron Schein</div>
+    <div class="pub-desc">A dataflow system that dynamically switches between ML models at runtime using multi-armed bandit strategies. FlexiFlow learns to rank models by balancing assertion pass probabilities with operator runtimes, achieving up to 23% accuracy improvement and 48% efficiency gains over sequential execution. Introduces Hybrid Thompson Sampling (HTS) for rollback-aware configuration selection across multi-step ML pipelines.</div>
+    <div class="pub-links">
+      <span class="pub-venue">VLDB 2026</span>
+    </div>
+  </div>
+</div>
+
+<div class="pub-card">
+  <div class="pub-img">
+    <img src="images/LLM-as-Service-portfolio-image.png" alt="TRACE">
+  </div>
+  <div class="pub-content">
+    <div class="pub-title">TRACE: A Programmable Cloud Laboratory for Autonomous Experimentation</div>
+    <div class="pub-authors">Tanu Malik (PI), Derek Anderson, Matt Maschmann, Min Su, Minh Phan, Prasad Calyam, Kate Keahey, Cogan Shimizu, Clintin Davis-Stober, Chenhao Tan, and others</div>
+    <div class="pub-desc">An NSF-funded Programmable Cloud Laboratory (PCL) Node that enables closed-loop autonomous experimentation across three science drivers: volume electron microscopy, neutron scattering (MURR), and microscale manufacturing. Built on an agentic architecture with MCP-based instrument integration, Bayesian experiment planners, and computational cognitive models for human-AI co-reasoning. Designed to reduce multi-day experimental workflows to hours.</div>
+    <div class="pub-links">
+      <span class="pub-venue">NSF PCL Program</span>
+    </div>
+  </div>
+</div>
+
+<div class="pub-card">
+  <div class="pub-img">
+    <img src="images/AdaptiveLLMaaS.png" alt="LearnLLM.dev">
+  </div>
+  <div class="pub-content">
+    <div class="pub-title">LearnLLM.dev — Learn to Build with Large Language Models</div>
+    <div class="pub-authors"><a href="#">Bhanu Prakash Vangala</a></div>
+    <div class="pub-desc">An educational platform teaching LLM development from beginner to production-ready. Features 83+ structured lessons covering prompt engineering, LangChain, RAG systems, AI agents, fine-tuning, vector databases, and deployment — plus 30+ hands-on coding challenges. Serving 10,000+ active learners.</div>
+    <div class="pub-links">
+      <a href="https://learnllm.dev">Website</a>
+      <span class="pub-venue">Educational Platform</span>
+    </div>
+  </div>
+</div>
+
+<div class="pub-card">
+  <div class="pub-img">
+    <img src="images/Hackathon%20Winner.jpeg" alt="VisionAI">
+  </div>
+  <div class="pub-content">
+    <div class="pub-title">VisionAI: AI-Powered Assistance for the Visually Impaired</div>
+    <div class="pub-authors"><a href="#">Bhanu Prakash Vangala</a> and team</div>
+    <div class="pub-desc">A multimodal AI system for hazard detection and accessibility, built using fine-tuned vision-language models (VLLMs). Combines real-time image understanding with natural language guidance to assist visually impaired users in navigating indoor and outdoor environments. Runner-up at the IBM/MUIDSI Generative AI for Social Good Hackathon 2025 ($1,000 prize).</div>
+    <div class="pub-links">
+      <span class="pub-venue">IBM/MUIDSI Hackathon 2025</span>
+    </div>
+  </div>
+</div>
+
+<div class="pub-card">
+  <div class="pub-img">
+    <img src="images/AdaptiveLLMaaS.png" alt="Indoor Navigation">
+  </div>
+  <div class="pub-content">
+    <div class="pub-title">Autonomous Indoor Navigation System</div>
+    <div class="pub-authors"><a href="#">Bhanu Prakash Vangala</a> and team</div>
+    <div class="pub-desc">An autonomous indoor navigation system using BLE beacons and Raspberry Pi for real-time positioning, with A* and Dijkstra pathfinding algorithms. Features a Kotlin mobile app for turn-by-turn indoor guidance. Built for the VIT AI Techethon.</div>
+    <div class="pub-links">
+      <span class="pub-venue">VIT AI Techethon</span>
+    </div>
+  </div>
+</div>
+
+---
+
 <span class='anchor' id='honors-and-awards'></span>
 # Honors and Awards
+
+<div class="award-item">
+  <div class="award-date">2025</div>
+  <strong>Outstanding Reviewer Award</strong>, NeurIPS 2025 (AI for Accelerated Materials Design Track)
+</div>
 
 <div class="award-item">
   <div class="award-date">May 2025</div>
@@ -288,7 +371,7 @@ document.addEventListener('keydown', function(e) {
   <h4>Ph.D. in Computer Science, University of Missouri</h4>
   <div class="date">2023 - 2027 (expected)</div>
   <p>Advisor: Dr. Tanu Malik | GPA: 3.9/4.0<br>
-  Research: Trustworthy AI, LLM Efficiency, Reproducibility<br>
+  Research: Agentic AI Systems, Trustworthy AI, Autonomous Experimentation, Reproducibility<br>
   Funded by NASA, NSF, and Department of Defense</p>
 </div>
 
@@ -312,14 +395,14 @@ document.addEventListener('keydown', function(e) {
 # Experience
 
 <div class="exp-item">
-  <h4>Microsoft — Research Data Science Intern</h4>
+  <h4>Microsoft — Research Data Science Intern (Offer Received)</h4>
   <div class="date">Summer 2026</div>
 </div>
 
 <div class="exp-item">
   <h4>University of Missouri, Radiant Lab — Research Assistant</h4>
   <div class="date">Jan 2024 - Present</div>
-  <p>NASA-funded research on reproducible scientific containers and self-reflecting LLMs<br>
+  <p>NASA/NSF-funded research on agentic AI systems, bandit-based model switching (FlexiFlow), autonomous experimentation (TRACE), and reproducible scientific containers<br>
   Advisor: Dr. Tanu Malik</p>
 </div>
 
@@ -342,7 +425,7 @@ document.addEventListener('keydown', function(e) {
 <span class='anchor' id='academic-service'></span>
 # Academic Service
 
-**Reviewer:** NeurIPS, ICML, ACL, CVPR, ICLR, AAAI, EMNLP, ECCV, ICCV, IJCAI, NAACL, ICASSP
+**Reviewer:** NeurIPS (Outstanding Reviewer — AI4MAT Track), NeurIPS (Main Track), ICLR, ICML, ACL, CVPR, AAAI, EMNLP, ECCV, ICCV, IJCAI, NAACL, ICASSP, CIKM, IEEE
 
 **Journals:** TPAMI, TIP, TMLR, JVCI
 
