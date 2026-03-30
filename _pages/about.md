@@ -74,9 +74,9 @@ I was selected as a **Google PhD Fellowship Nominee (2025)** in NLP, one of thre
   </div>
   <div class="pub-content">
     <div class="pub-title">Efficient Multi-Model Orchestration for Self-Hosted Large Language Models</div>
-    <div class="pub-authors"><a href="#">Bhanu Prakash Vangala</a>, Tanu Malik, Ashish Gehani</div>
+    <div class="pub-authors"><a href="#">Bhanu Prakash Vangala</a>, Tanu Malik</div>
     <div class="pub-links">
-      <span class="pub-link-disabled">Paper (forthcoming)</span>
+      <a href="https://arxiv.org/abs/2512.22402">Paper</a>
       <span class="pub-link-disabled">Code (coming soon)</span>
       <span class="pub-venue">AAAI 2026</span>
     </div>
@@ -88,10 +88,10 @@ I was selected as a **Google PhD Fellowship Nominee (2025)** in NLP, one of thre
     <img src="images/LLM-as-Service-portfolio-image.png" alt="AI-Generated Code Reproducibility">
   </div>
   <div class="pub-content">
-    <div class="pub-title">AI-Generated Code Is Not Reproducible (Yet): An Empirical Study of Dependency Gaps in Agents</div>
-    <div class="pub-authors"><a href="#">Bhanu Prakash Vangala</a>, Ammar Ali, Tanu Malik, Ashish Gehani</div>
+    <div class="pub-title">AI-Generated Code Is Not Reproducible (Yet): An Empirical Study of Dependency Gaps in LLM-Based Coding Agents</div>
+    <div class="pub-authors"><a href="#">Bhanu Prakash Vangala</a>, Ali Adibifar, Ashish Gehani, Tanu Malik</div>
     <div class="pub-links">
-      <span class="pub-link-disabled">Paper (forthcoming)</span>
+      <a href="https://arxiv.org/abs/2512.22387">Paper</a>
       <span class="pub-link-disabled">Code (coming soon)</span>
       <span class="pub-venue">AAAI 2026</span>
     </div>
