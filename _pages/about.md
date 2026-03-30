@@ -230,9 +230,9 @@ I was selected as a **Google PhD Fellowship Nominee (2025)** in NLP, one of thre
   <div class="pub-content">
     <div class="pub-title">TRACE: A Programmable Cloud Laboratory for Autonomous Experimentation</div>
     <div class="pub-authors">Tanu Malik (PI), Derek Anderson, Matt Maschmann, Min Su, Minh Phan, Prasad Calyam, Kate Keahey, Cogan Shimizu, Clintin Davis-Stober, Chenhao Tan, and others</div>
-    <div class="pub-desc">An NSF-funded Programmable Cloud Laboratory (PCL) Node that enables closed-loop autonomous experimentation across three science drivers: volume electron microscopy, neutron scattering (MURR), and microscale manufacturing. Built on an agentic architecture with MCP-based instrument integration, Bayesian experiment planners, and computational cognitive models for human-AI co-reasoning. Designed to reduce multi-day experimental workflows to hours.</div>
+    <div class="pub-desc">A proposed Programmable Cloud Laboratory (PCL) Node that enables closed-loop autonomous experimentation across three science drivers: volume electron microscopy, neutron scattering (MURR), and microscale manufacturing. Built on an agentic architecture with MCP-based instrument integration, Bayesian experiment planners, and computational cognitive models for human-AI co-reasoning. Designed to reduce multi-day experimental workflows to hours.</div>
     <div class="pub-links">
-      <span class="pub-venue">NSF PCL Program</span>
+      <span class="pub-venue">NSF PCL Proposal</span>
     </div>
   </div>
 </div>
@@ -402,14 +402,14 @@ document.addEventListener('keydown', function(e) {
 <div class="exp-item">
   <h4>University of Missouri, Radiant Lab — Research Assistant</h4>
   <div class="date">Jan 2024 - Present</div>
-  <p>NASA/NSF-funded research on agentic AI systems, bandit-based model switching (FlexiFlow), autonomous experimentation (TRACE), and reproducible scientific containers<br>
+  <p>NASA-funded research on reproducible scientific containers and AI-generated code reproducibility; work on bandit-based model switching (FlexiFlow) and autonomous experimentation (TRACE)<br>
   Advisor: Dr. Tanu Malik</p>
 </div>
 
 <div class="exp-item">
   <h4>University of Missouri, Data Intensive Computing Lab — Research & Teaching Assistant</h4>
   <div class="date">Feb 2024 - Present</div>
-  <p>DoD/NSF-funded research on hallucination detection in LLMs (30% improvement)<br>
+  <p>DoD/ERDC-funded research on hallucination detection in LLMs (30% improvement); NSF-funded work on LLM-as-a-Service infrastructure<br>
   TA for Web Development: mentored 115+ students<br>
   Advisors: Dr. Grant Scott, Dr. Jianlin Cheng</p>
 </div>
