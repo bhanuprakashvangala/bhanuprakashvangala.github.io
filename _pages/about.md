@@ -12,7 +12,7 @@ redirect_from:
 
 # About Me
 
-I am a Doctoral Researcher in Computer Science at the [University of Missouri](https://engineering.missouri.edu/departments/eecs/), advised by [Dr. Tanu Malik](https://engineering.missouri.edu/faculty/tanu-malik/) and [Dr. Jianlin Cheng](https://engineering.missouri.edu/faculty/jianlin-cheng/). My research focuses on **agentic AI systems**, **multi-model LLM orchestration**, and **trustworthy/reproducible machine learning systems**. I build and evaluate end-to-end platforms that reason, plan, and act autonomously across HPC and cloud environments.
+I am a Doctoral Researcher in Computer Science at the [University of Missouri](https://engineering.missouri.edu/departments/eecs/), advised by [Dr. Tanu Malik](https://engineering.missouri.edu/faculty/tanu-malik/). My research focuses on **agentic AI systems**, **multi-model LLM orchestration**, and **trustworthy/reproducible machine learning systems**. I build and evaluate end-to-end platforms that reason, plan, and act autonomously across HPC and cloud environments.
 
 I completed my M.S. in Computer Science at Missouri (GPA 4.0/4.0), where my thesis studied deploying LLMs as a service on Kubernetes-based HPC clusters. I received my B.Tech in CSE (Data Analytics) from VIT, where I worked on multilingual sentiment analysis with collaborators at IIIT Hyderabad.
 
@@ -37,6 +37,9 @@ Recent recognitions include **Google PhD Fellowship Nominee (NLP, 2025)**, **Out
 - *2026.04*: Awarded a **Chameleon Cloud Travel Award** (Top 10 proposals) for the Sixth Chameleon User Meeting
 - *2026.02*: My presentation on **"Evaluating Dependency Gaps in LLM-Generated Code"** was selected for the **Sixth Chameleon User Meeting** (April 15–16, 2026) at NCAR’s Mesa Lab in Boulder, Colorado
 - *2026.01*: I presented **"AI-Generated Code Is Not Reproducible (Yet): An Empirical Study of Dependency Gaps in LLM-Based Coding Agents"** (Jan 26) and **"Efficient Multi-Model Orchestration for Self-Hosted Large Language Models"** (Jan 27) at **AAAI 2026** in Singapore
+- *2026.01*: Submitted **"The Environment Specification Gap"** (extended 1,000-instance study) to **TMLR**
+- *2026.01*: Submitted **"Resource-Aware Multi-Model Serving for GPU Cloud Infrastructure"** to **IEEE CLOUD 2026**
+- *2026.01*: Submitted **"Beyond Functional Correctness: Evaluating AI-Generated Software Services"** to **ACM REP 2026**
 - *2025.12*: Our paper **"AI-Generated Code Is Not Reproducible (Yet): An Empirical Study of Dependency Gaps in LLM-Based Coding Agents"** was accepted at the **RAI 2025 workshop**
 - *2025.11*: Our paper **"Efficient Multi-Model Orchestration for Self-Hosted Large Language Models"** was accepted at the **Deployable Artificial Intelligence (DAI2025) Workshop**
 - *2025.11*: Received an offer from **Microsoft** for Research Data Science Internship (Summer 2026)
@@ -141,6 +144,53 @@ Recent recognitions include **Google PhD Fellowship Nominee (NLP, 2025)**, **Out
       <span class="pub-link-disabled">Poster (coming soon)</span>
       <span class="pub-link-disabled">Code (coming soon)</span>
       <span class="pub-venue">ACM SC 2025</span>
+    </div>
+  </div>
+</div>
+
+### Under Review (2026)
+
+<div class="pub-card">
+  <div class="pub-img">
+    <img src="images/LLM-as-Service-portfolio-image.png" alt="Environment Specification Gap">
+  </div>
+  <div class="pub-content">
+    <div class="pub-title">The Environment Specification Gap: An Empirical Study of Dependency Misspecification in LLM-Generated Code</div>
+    <div class="pub-authors"><a href="#">Bhanu Prakash Vangala</a>, Ashish Gehani, Tanu Malik</div>
+    <div class="pub-links">
+      <span class="pub-link-disabled">Preprint (coming soon)</span>
+      <span class="pub-link-disabled">Code (coming soon)</span>
+      <span class="pub-venue">Under Review at TMLR</span>
+    </div>
+  </div>
+</div>
+
+<div class="pub-card">
+  <div class="pub-img">
+    <img src="images/AdaptiveLLMaaS.png" alt="Resource-Aware Multi-Model Serving">
+  </div>
+  <div class="pub-content">
+    <div class="pub-title">Resource-Aware Multi-Model Serving for GPU Cloud Infrastructure</div>
+    <div class="pub-authors"><a href="#">Bhanu Prakash Vangala</a>, Tanu Malik</div>
+    <div class="pub-links">
+      <span class="pub-link-disabled">Preprint (coming soon)</span>
+      <span class="pub-link-disabled">Code (coming soon)</span>
+      <span class="pub-venue">Under Review at IEEE CLOUD 2026</span>
+    </div>
+  </div>
+</div>
+
+<div class="pub-card">
+  <div class="pub-img">
+    <img src="images/AdaptiveLLMaaS.png" alt="Beyond Functional Correctness">
+  </div>
+  <div class="pub-content">
+    <div class="pub-title">Beyond Functional Correctness: Evaluating AI-Generated Software Services</div>
+    <div class="pub-authors"><a href="#">Bhanu Prakash Vangala</a>, Ashish Gehani, Tanu Malik</div>
+    <div class="pub-links">
+      <span class="pub-link-disabled">Preprint (coming soon)</span>
+      <span class="pub-link-disabled">Code (coming soon)</span>
+      <span class="pub-venue">Under Review at ACM REP 2026</span>
     </div>
   </div>
 </div>
