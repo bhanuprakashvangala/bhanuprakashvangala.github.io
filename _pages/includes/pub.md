@@ -125,6 +125,7 @@
 
 ## 🎯 Under Review / In Preparation
 
-- **Self-Correcting LLMs**: Framework for automatic error detection and correction in language model outputs *(Submitting to ACL 2025)*
-- **Factuality Benchmarks**: Comprehensive evaluation suite for scientific domain LLMs *(Preparing for NeurIPS 2025)*
-- **Reproducible AI Containers**: Provenance-tracking containers for collaborative model development *(NASA-funded, targeting ICML 2025)*
+- **The Environment Specification Gap: An Empirical Study of Dependency Misspecification in LLM-Generated Code**  \n  *Bhanu Prakash Vangala, Ashish Gehani, Tanu Malik* — **Under Review (TMLR)**
+- **Resource-Aware Multi-Model Serving for GPU Cloud Infrastructure**  \n  *Bhanu Prakash Vangala, Tanu Malik* — **Under Review (IEEE CLOUD 2026)**
+- **Beyond Functional Correctness: Evaluating AI-Generated Software Services**  \n  *Bhanu Prakash Vangala, Ashish Gehani, Tanu Malik* — **Under Review (ACM REP 2026)**
+- **Evaluating Multiple Agentic-AI Interaction on Bare-Metal Machines**  \n  *Bhanu Prakash Vangala, Ashish Gehani, Tanu Malik* — **Chameleon Cloud User Meeting 2026**
