@@ -12,18 +12,16 @@ redirect_from:
 
 # About Me
 
-I am a Ph.D. student in Computer Science at the [University of Missouri](https://engineering.missouri.edu/departments/eecs/), advised by [Dr. Tanu Malik](https://engineering.missouri.edu/faculty/tanu-malik/). My research focuses on **Agentic AI Systems**, **Trustworthy AI**, and **Reproducibility in Systems**. I build systems that reason, plan, and act autonomously — from multi-model orchestration and bandit-based model switching in ML workflows to closed-loop autonomous experimentation platforms. I received an offer from **Microsoft** for a Research Data Science Internship (Summer 2026).
+I am a Doctoral Researcher in Computer Science at the [University of Missouri](https://engineering.missouri.edu/departments/eecs/), advised by [Dr. Tanu Malik](https://engineering.missouri.edu/faculty/tanu-malik/) and [Dr. Jianlin Cheng](https://engineering.missouri.edu/faculty/jianlin-cheng/). My research focuses on **agentic AI systems**, **multi-model LLM orchestration**, and **trustworthy/reproducible machine learning systems**. I build and evaluate end-to-end platforms that reason, plan, and act autonomously across HPC and cloud environments.
 
-I am also the creator of [**LearnLLM.dev**](https://learnllm.dev), an educational platform with 83+ lessons and 30+ hands-on challenges that teaches LLM development from beginner prompt engineering to production-grade AI agents, serving 10,000+ active learners.
+I completed my M.S. in Computer Science at Missouri (GPA 4.0/4.0), where my thesis studied deploying LLMs as a service on Kubernetes-based HPC clusters. I received my B.Tech in CSE (Data Analytics) from VIT, where I worked on multilingual sentiment analysis with collaborators at IIIT Hyderabad.
 
-Previously, I completed my M.S. in Computer Science at Missouri, advised by [Dr. Jianlin Cheng](https://en.wikipedia.org/wiki/Jianlin_Cheng) and [Dr. Grant Scott](https://scottgs.mufaculty.umsystem.edu/). I received my B.Tech from VIT University (Vellore Institute of Technology), where I worked on multilingual sentiment analysis advised by Dr. Soughbhagya Barpanda, with dataset and collaboration support from [Dr. P. Kumaraguru](https://www.iiit.ac.in/people/faculty/pk/) (PRECOG, IIIT Hyderabad).
+Recent recognitions include **Google PhD Fellowship Nominee (NLP, 2025)**, **Outstanding Master's Student Award (2025)**, and **EECS Graduate Travel Fellowship (2026)**.
 
-I was selected as a **Google PhD Fellowship Nominee (2025)** in NLP, one of three nominees from Missouri, and received the **Outstanding Master's Student Award (2025)**.
-
-**Research Interests:** Agentic AI Systems, LLMs, NLP, Trustworthy AI, Autonomous Experimentation, Scalable ML Systems, Reproducibility
+**Research Interests:** Agentic AI systems, LLM orchestration, reproducibility, provenance, distributed inference systems, and evaluation science
 
 <div class="quick-links">
-  <a href="mailto:bv3hz@missouri.edu">Email</a>
+  <a href="mailto:bv3hz@umsystem.edu">Email</a>
   <a href="https://scholar.google.com/citations?user=qHBOnpkAAAAJ&hl=en">Google Scholar</a>
   <a href="https://dblp.org/pid/75/6568-6.html">DBLP</a>
   <a href="https://github.com/bhanuprakashvangala">GitHub</a>
@@ -35,6 +33,8 @@ I was selected as a **Google PhD Fellowship Nominee (2025)** in NLP, one of thre
 <span class='anchor' id='news'></span>
 # News
 
+- *2026.04*: Received the **EECS Graduate Travel Fellowship** from the University of Missouri College of Engineering
+- *2026.04*: Awarded a **Chameleon Cloud Travel Award** (Top 10 proposals) for the Sixth Chameleon User Meeting
 - *2026.02*: My presentation on **"Evaluating Dependency Gaps in LLM-Generated Code"** was selected for the **Sixth Chameleon User Meeting** (April 15–16, 2026) at NCAR’s Mesa Lab in Boulder, Colorado
 - *2026.01*: I presented **"AI-Generated Code Is Not Reproducible (Yet): An Empirical Study of Dependency Gaps in LLM-Based Coding Agents"** (Jan 26) and **"Efficient Multi-Model Orchestration for Self-Hosted Large Language Models"** (Jan 27) at **AAAI 2026** in Singapore
 - *2025.12*: Our paper **"AI-Generated Code Is Not Reproducible (Yet): An Empirical Study of Dependency Gaps in LLM-Based Coding Agents"** was accepted at the **RAI 2025 workshop**
@@ -412,7 +412,7 @@ document.addEventListener('keydown', function(e) {
 <div style="text-align: center; margin-top: 3rem; color: #666;">
   <p>Thanks for visiting! Feel free to reach out.</p>
   <p>
-    <a href="mailto:bv3hz@missouri.edu">Email</a> ·
+    <a href="mailto:bv3hz@umsystem.edu">Email</a> ·
     <a href="https://github.com/bhanuprakashvangala">GitHub</a> ·
     <a href="https://www.linkedin.com/in/vangalabhanuprakash/">LinkedIn</a>
   </p>
