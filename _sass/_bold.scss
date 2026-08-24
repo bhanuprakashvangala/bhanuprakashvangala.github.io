@@ -1,0 +1,588 @@
+/* ==========================================================================
+   BOLD
+   --------------------------------------------------------------------------
+   Structural pass. The page was a narrow column of identical grey cards inside
+   a wide viewport, thirteen thousand pixels tall, with no colour anywhere.
+   This layer fixes the layout rather than decorating it:
+
+     - the homepage runs full width, since the sidebar only repeated the hero
+     - publications become a two-column grid instead of one long list
+     - topics and venues carry colour, so the page stops reading as one tone
+     - the hero fills the fold and the type steps up hard
+
+   ASCII only, libsass-safe, additive: it never redefines a token.
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. Width. The shell was 1140px with a 220px sidebar inside it, so prose ran
+   in about 850px of a 1440px viewport. Reclaim it.
+   -------------------------------------------------------------------------- */
+
+:root {
+  --maxw-page: 1280px;
+}
+
+@media (min-width: 1600px) {
+  :root { --maxw-page: 1380px; }
+}
+
+
+/* --------------------------------------------------------------------------
+   2. Hero. Fill the fold, and let the type carry.
+   -------------------------------------------------------------------------- */
+
+.hero {
+  min-height: 78vh;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  justify-content: center;
+  padding-top: var(--space-8, 2.5rem);
+}
+
+.hero-name {
+  font-size: 4.25rem;
+  line-height: 0.98;
+  letter-spacing: -0.042em;
+  margin-bottom: var(--space-4, 1rem);
+}
+
+@media (min-width: 900px) {
+  .hero-name { font-size: 5.5rem; }
+}
+
+@media (min-width: 1280px) {
+  .hero-name { font-size: 6.25rem; }
+}
+
+@media (max-width: 600px) {
+  .hero { min-height: 0; }
+  .hero-name { font-size: 2.75rem; }
+}
+
+.hero-role {
+  font-size: var(--fs-xl, 1.5rem);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+/* The measure was tuned for a 850px column. Now that the shell is 1280px and
+   the hero shares it with the console, text was breaking early and leaving the
+   right half of every line empty. Widen it, and stop single words dropping to
+   a line of their own. */
+.hero-summary {
+  font-size: var(--fs-md, 1.125rem);
+  line-height: 1.6;
+  max-width: 58ch;
+  text-wrap: pretty;
+}
+
+.hero-affil,
+.hero-role {
+  max-width: 58ch;
+  text-wrap: balance;
+}
+
+.hero > p {
+  max-width: 58ch;
+}
+
+/* Prose elsewhere on the page had the same problem: a 68ch cap inside a much
+   wider shell reads as a ragged column floating in space. */
+.page__content > p,
+.section > p,
+.section-sub {
+  max-width: 74ch;
+  text-wrap: pretty;
+}
+
+.pub-title,
+.project-title,
+.section-title {
+  text-wrap: balance;
+}
+
+/* The stats read as a strip of figures rather than four lonely numbers. */
+.stat-grid {
+  gap: var(--space-4, 1rem);
+}
+
+.stat-grid .stat {
+  padding: var(--space-5, 1.25rem);
+  background: var(--c-surface, #f8fafc);
+  border: 1px solid var(--c-border, #e3e8ef);
+  border-radius: var(--radius-lg, 14px);
+}
+
+
+/* --------------------------------------------------------------------------
+   3. Publications in two columns
+   Fourteen entries stacked single-file is most of the page's height. Two
+   columns halve the scroll and let the artwork sit larger inside each card.
+   -------------------------------------------------------------------------- */
+
+@media (min-width: 1000px) {
+  .pub-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-5, 1.25rem);
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+  }
+
+  .pub-list .pub {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    height: 100%;
+    margin: 0;
+  }
+
+  /* Artwork goes full-bleed across the top of the card instead of sitting as
+     a small square beside the text. This is what makes the page look built. */
+  .pub-list .pub .pub-thumb {
+    width: 100%;
+    max-width: none;
+    padding-top: 44%;
+    margin-bottom: var(--space-2, 0.5rem);
+    border-radius: var(--radius, 8px);
+  }
+
+  .pub-list .pub .pub-body {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    -webkit-box-flex: 1;
+    flex: 1 1 auto;
+  }
+
+  /* pin the metadata row to the bottom so every card's badges line up */
+  .pub-list .pub .pub-meta {
+    margin-top: auto;
+    padding-top: var(--space-3, 0.75rem);
+  }
+}
+
+.pub-list .pub .pub-thumb img {
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+
+/* --------------------------------------------------------------------------
+   4. Colour
+   The page was one tone from top to bottom. Topics and venues now carry hue,
+   which is the cheapest way to make a long page legible at a glance. Every
+   pairing below is text on a tint of the same hue, so contrast holds in both
+   schemes without a second palette.
+   -------------------------------------------------------------------------- */
+
+.pub-tag {
+  font-weight: 600;
+  border-radius: var(--radius-pill, 999px);
+  background: var(--c-surface-2, #eef2f7);
+}
+
+/* Hue per topic. Values are deliberately dark in light mode and light in dark
+   mode, set through a single custom property so each rule stays one line. */
+.pub-tags .pub-tag { color: var(--tag-ink, var(--c-text-muted, #4d5769)); background: var(--tag-bg, var(--c-surface-2, #eef2f7)); }
+
+.pub[data-tags~="orchestration"]   .pub-tag:first-child { --tag-ink: #1d4ed8; --tag-bg: rgba(29, 78, 216, 0.10); }
+.pub[data-tags~="reproducibility"] .pub-tag:first-child { --tag-ink: #0f766e; --tag-bg: rgba(15, 118, 110, 0.10); }
+.pub[data-tags~="hallucination"]   .pub-tag:first-child { --tag-ink: #a21caf; --tag-bg: rgba(162, 28, 175, 0.10); }
+.pub[data-tags~="systems"]         .pub-tag:first-child { --tag-ink: #8a4408; --tag-bg: rgba(180, 83, 9, 0.11); }
+.pub[data-tags~="vision"]          .pub-tag:first-child { --tag-ink: #be123c; --tag-bg: rgba(190, 18, 60, 0.10); }
+.pub[data-tags~="nlp"]             .pub-tag:first-child { --tag-ink: #3d620c; --tag-bg: rgba(77, 124, 15, 0.12); }
+
+:root[data-theme="dark"] .pub[data-tags~="orchestration"]   .pub-tag:first-child { --tag-ink: #93b4fd; --tag-bg: rgba(147, 180, 253, 0.14); }
+:root[data-theme="dark"] .pub[data-tags~="reproducibility"] .pub-tag:first-child { --tag-ink: #5eead4; --tag-bg: rgba(94, 234, 212, 0.13); }
+:root[data-theme="dark"] .pub[data-tags~="hallucination"]   .pub-tag:first-child { --tag-ink: #f0abfc; --tag-bg: rgba(240, 171, 252, 0.13); }
+:root[data-theme="dark"] .pub[data-tags~="systems"]         .pub-tag:first-child { --tag-ink: #fcd34d; --tag-bg: rgba(252, 211, 77, 0.13); }
+:root[data-theme="dark"] .pub[data-tags~="vision"]          .pub-tag:first-child { --tag-ink: #fda4af; --tag-bg: rgba(253, 164, 175, 0.13); }
+:root[data-theme="dark"] .pub[data-tags~="nlp"]             .pub-tag:first-child { --tag-ink: #bef264; --tag-bg: rgba(190, 242, 100, 0.13); }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .pub[data-tags~="orchestration"]   .pub-tag:first-child { --tag-ink: #93b4fd; --tag-bg: rgba(147, 180, 253, 0.14); }
+  :root:not([data-theme="light"]) .pub[data-tags~="reproducibility"] .pub-tag:first-child { --tag-ink: #5eead4; --tag-bg: rgba(94, 234, 212, 0.13); }
+  :root:not([data-theme="light"]) .pub[data-tags~="hallucination"]   .pub-tag:first-child { --tag-ink: #f0abfc; --tag-bg: rgba(240, 171, 252, 0.13); }
+  :root:not([data-theme="light"]) .pub[data-tags~="systems"]         .pub-tag:first-child { --tag-ink: #fcd34d; --tag-bg: rgba(252, 211, 77, 0.13); }
+  :root:not([data-theme="light"]) .pub[data-tags~="vision"]          .pub-tag:first-child { --tag-ink: #fda4af; --tag-bg: rgba(253, 164, 175, 0.13); }
+  :root:not([data-theme="light"]) .pub[data-tags~="nlp"]             .pub-tag:first-child { --tag-ink: #bef264; --tag-bg: rgba(190, 242, 100, 0.13); }
+}
+
+
+/* --------------------------------------------------------------------------
+   5. Sections. Bigger headings, and a rule that spans the measure.
+   -------------------------------------------------------------------------- */
+
+.section-title {
+  font-size: 2.5rem;
+  letter-spacing: -0.03em;
+}
+
+@media (min-width: 900px) {
+  .section-title { font-size: 3rem; }
+}
+
+.section {
+  padding-top: var(--space-10, 4rem);
+}
+
+/* Projects sit three-up on a wide screen instead of two. */
+@media (min-width: 1100px) {
+  .project-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   6. News as a denser two-column list on wide screens.
+   -------------------------------------------------------------------------- */
+
+@media (min-width: 1100px) {
+  .news-feed {
+    -webkit-column-count: 2;
+    column-count: 2;
+    -webkit-column-gap: var(--space-8, 2.5rem);
+    column-gap: var(--space-8, 2.5rem);
+  }
+
+  .news-feed .news-item {
+    -webkit-column-break-inside: avoid;
+    break-inside: avoid;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   7. Print: the grid collapses back to one column.
+   -------------------------------------------------------------------------- */
+
+@media print {
+  .pub-list { display: block !important; }
+  .news-feed { -webkit-column-count: 1 !important; column-count: 1 !important; }
+  .hero { min-height: 0 !important; }
+}
+
+
+/* --------------------------------------------------------------------------
+   8. Reclaim the sidebar column
+   The pages no longer render a sidebar, but susy still sizes .page as
+   span(10 of 12) and .page__inner-wrap as a nested span, so roughly 320px of a
+   1280px shell went to a column that is not there.
+   -------------------------------------------------------------------------- */
+
+#main .page,
+#main .page__inner-wrap,
+#main .page__content {
+  width: 100%;
+  max-width: none;
+  float: none;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+
+/* --------------------------------------------------------------------------
+   9. Hero portrait
+   -------------------------------------------------------------------------- */
+
+.hero-portrait {
+  display: block;
+  width: 96px;
+  height: 96px;
+  margin: 0 0 var(--space-5, 1.25rem);
+  border-radius: 999px;
+  object-fit: cover;
+  border: 1px solid var(--c-border-strong, #7f8a9c);
+  box-shadow: var(--shadow-md, 0 4px 12px rgba(16, 24, 40, .07));
+}
+
+@media (min-width: 900px) {
+  .hero-portrait { width: 132px; height: 132px; }
+}
+
+
+/* --------------------------------------------------------------------------
+   10. The three threads
+   The spine of the dissertation, stated before the paper list so a reader
+   meets the argument rather than a bibliography.
+   -------------------------------------------------------------------------- */
+
+.hero-thesis {
+  margin-top: calc(-1 * var(--space-2, 0.5rem));
+  font-size: var(--fs-md, 1.125rem);
+  color: var(--c-text-muted, #4d5769);
+  font-style: italic;
+}
+
+.thread-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5, 1.25rem);
+  margin: var(--space-6, 1.5rem) 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: none;
+}
+
+@media (min-width: 1000px) {
+  .thread-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+.thread-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-6, 1.5rem);
+  background: var(--c-surface, #f8fafc);
+  border: 1px solid var(--c-border, #e3e8ef);
+  border-radius: var(--radius-lg, 14px);
+  overflow: hidden;
+}
+
+/* a hue per thread, matching the topic tags on the papers below */
+.thread-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--thread-hue, var(--c-accent, #00369f));
+}
+
+.thread-card[data-thread="hallucination"]   { --thread-hue: #a21caf; }
+.thread-card[data-thread="reproducibility"] { --thread-hue: #0f766e; }
+.thread-card[data-thread="orchestration"]   { --thread-hue: #1d4ed8; }
+
+.thread-n {
+  font-family: var(--font-mono, monospace);
+  font-size: var(--fs-xs, 0.75rem);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--thread-hue, var(--c-accent, #00369f));
+  margin-bottom: var(--space-3, 0.75rem);
+}
+
+.thread-title {
+  margin: 0 0 var(--space-1, 0.25rem);
+  font-size: var(--fs-lg, 1.3125rem);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.thread-lead {
+  margin: 0 0 var(--space-3, 0.75rem);
+  font-size: var(--fs-sm, 0.875rem);
+  color: var(--c-text-muted, #4d5769);
+}
+
+.thread-text {
+  margin: 0 0 var(--space-4, 1rem);
+  font-size: var(--fs-sm, 0.875rem);
+  line-height: 1.6;
+  max-width: none;
+}
+
+.thread-refs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2, 0.5rem);
+  margin: auto 0 0;
+}
+
+/* The thread hues are chosen for a light ground; on a dark one they fall to
+   2.6:1. Swap to the light tints already used by the matching topic tags. */
+:root[data-theme="dark"] .thread-card[data-thread="hallucination"]   { --thread-hue: #f0abfc; }
+:root[data-theme="dark"] .thread-card[data-thread="reproducibility"] { --thread-hue: #5eead4; }
+:root[data-theme="dark"] .thread-card[data-thread="orchestration"]   { --thread-hue: #93b4fd; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .thread-card[data-thread="hallucination"]   { --thread-hue: #f0abfc; }
+  :root:not([data-theme="light"]) .thread-card[data-thread="reproducibility"] { --thread-hue: #5eead4; }
+  :root:not([data-theme="light"]) .thread-card[data-thread="orchestration"]   { --thread-hue: #93b4fd; }
+}
+
+
+/* --------------------------------------------------------------------------
+   11. Two-column hero
+   Prose caps at roughly 58ch. In a 1216px shell that left half of every line
+   empty, which is what made the spacing read as broken. Putting the shell on
+   the right gives the measure a reason to be narrow.
+   -------------------------------------------------------------------------- */
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8, 2.5rem);
+  align-items: center;
+  width: 100%;
+  max-width: none;
+}
+
+@media (min-width: 1100px) {
+  .hero-grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: var(--space-9, 3rem);
+  }
+}
+
+.hero-col { min-width: 0; }
+
+/* Containers that are not prose must not inherit the measure cap. */
+.thread-grid,
+.tag-row,
+.link-pills,
+.stat-grid,
+.hero-grid,
+.hero-col {
+  max-width: none;
+}
+
+
+/* --------------------------------------------------------------------------
+   12. The terminal
+   -------------------------------------------------------------------------- */
+
+.terminal {
+  display: flex;
+  flex-direction: column;
+  height: 460px;
+  font-family: var(--font-mono, ui-monospace, Menlo, Consolas, monospace);
+  font-size: 12.5px;
+  line-height: 1.6;
+  background: #0d1117;
+  color: #c9d4e2;
+  border: 1px solid var(--c-border-strong, #7f8a9c);
+  border-radius: var(--radius-lg, 14px);
+  box-shadow: var(--shadow-lg, 0 12px 32px rgba(16, 24, 40, .10));
+  overflow: hidden;
+  cursor: text;
+}
+
+@media (max-width: 1099px) { .terminal { height: 380px; } }
+@media (max-width: 600px)  { .terminal { height: 320px; font-size: 11.5px; } }
+
+.term-bar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 12px;
+  height: 34px;
+  background: #161b22;
+  border-bottom: 1px solid #232b36;
+  flex: 0 0 auto;
+}
+
+.term-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #30363d;
+}
+.term-dot:nth-child(1) { background: #ff5f57; }
+.term-dot:nth-child(2) { background: #febc2e; }
+.term-dot:nth-child(3) { background: #28c840; }
+
+.term-title {
+  margin-left: 8px;
+  font-size: 11px;
+  color: #8b98a8;
+  letter-spacing: 0.02em;
+}
+
+.term-out {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 12px 14px 4px;
+  overscroll-behavior: contain;
+}
+
+.term-line {
+  white-space: pre-wrap;
+  word-break: break-word;
+  min-height: 1.6em;
+}
+
+.term-line.is-dim  { color: #7d8998; }
+.term-line.is-err  { color: #ff8a80; }
+.term-line.is-echo { color: #e6edf3; }
+
+.t-dir    { color: #79b8ff; font-weight: 600; }
+.t-file   { color: #c9d4e2; }
+.t-prompt { color: #56d364; }
+.t-path   { color: #79b8ff; }
+.t-caret  { color: #8b98a8; }
+.t-accent { color: #ffa657; }
+
+.t-link {
+  font: inherit;
+  color: #79b8ff;
+  background: none;
+  border: 0;
+  padding: 0;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.t-link:hover { color: #a5d6ff; }
+
+.term-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px 14px;
+  border-top: 1px solid #232b36;
+  flex: 0 0 auto;
+}
+
+.term-chip {
+  font: inherit;
+  font-size: 11px;
+  color: #8b98a8;
+  background: #161b22;
+  border: 1px solid #2b3440;
+  border-radius: var(--radius-pill, 999px);
+  padding: 4px 10px;
+  cursor: pointer;
+}
+.term-chip:hover { color: #e6edf3; border-color: #3d4754; }
+.term-chip:focus-visible { outline: 2px solid #79b8ff; outline-offset: 2px; }
+
+.term-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px 12px;
+  border-top: 1px solid #232b36;
+  flex: 0 0 auto;
+}
+
+.term-prompt { white-space: nowrap; }
+
+.term-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  font: inherit;
+  color: #e6edf3;
+  background: none;
+  border: 0;
+  outline: none;
+  padding: 0;
+  caret-color: #56d364;
+}
+
+/* The shell paints its own dark chrome in both schemes on purpose: a terminal
+   that turns white is not a terminal. Contrast is checked against #0d1117. */
+
+@media print { .terminal { display: none; } }

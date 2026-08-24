@@ -152,51 +152,75 @@ html.js-motion [data-reveal].is-revealed {
 
 
 /* --------------------------------------------------------------------------
-   3. HERO STAGE -- canvas, scrim, spotlight
-   The hero becomes an isolated stacking context with four bands:
+   3. HERO STAGE -- canvas and cursor spotlight
+   Two decorative bands under the hero content, inside the hero's own
+   stacking context:
 
      z 0  #hero-canvas   JS paints it; this file owns only placement
-     z 1  .spotlight     cursor-follow glow (fine pointers only)
-     z 2  .hero:after    readability scrim
-     z 3  .hero > *      all real hero content
+     z 0  .spotlight     cursor-follow glow, pinned below the text
+     z 1  hero content
 
-   The scrim is painted in the PAGE BACKGROUND COLOUR at partial alpha. That
-   is the trick that makes this safe: over a blank hero it is literally
-   invisible (bg over bg), and it can only ever dilute the canvas back toward
-   the ground colour, never tint it. It is what guarantees the contrast floor.
+   There is deliberately NO scrim element. A background-coloured veil over the
+   canvas is algebraically identical to lowering the canvas's own opacity --
+   final = a*BG + (1-a)*(o*P + (1-o)*BG) collapses to a canvas at opacity
+   (1-a)*o -- so the readability budget is spent straight on --mo-canvas-op
+   instead. One less layer, no hard-coded copy of --c-bg to drift out of step
+   with _tokens.scss, and no z-index argument with the card layer about who
+   paints on top. See the header of section 3a for the contrast arithmetic.
    -------------------------------------------------------------------------- */
 
 .hero {
   position: relative;
-  isolation: isolate;          /* keeps the four bands out of the page's z war */
+  isolation: isolate;          /* keeps the bands out of the page's z war */
 
-  /* Canvas strength. Split into a theme value and a viewport multiplier so
-     the small-screen reduction (which cannot raise specificity) never has to
-     fight the [data-theme] selectors that set --mo-canvas-op. */
-  --mo-canvas-op: 0.42;
+  /* Canvas strength, split into a theme value and a viewport multiplier so
+     the small-screen reduction -- which cannot raise its own specificity --
+     never has to fight the [data-theme] selectors that set --mo-canvas-op. */
+  --mo-canvas-op: 0.28;
   --mo-canvas-scale: 1;
+
+  /* Glow strength. Also a custom property rather than a themed opacity rule,
+     so the dark value never has to out-specify the positioning rule below. */
+  --mo-spot-op: 0.58;
 }
 
-.hero > * {
+/* Content above the decoration. The :not() is not decoration itself:
+   _richer.scss ships this exact selector, and an ID inside :not() counts as
+   an ID, so a plain `.hero > *` (0-1-0) would lose to its 1-1-0 no matter how
+   late this file loads. Same selector, same values -- whichever wins, the
+   result is identical, and this file still stands alone if that one goes. */
+.hero > *:not(#hero-canvas) {
   position: relative;
-  z-index: 3;
+  z-index: 1;
 }
 
+/* 3a. The canvas.
+   Placement, size, mask and opacity only -- the pixels are the JS's business.
+   The opacity ceiling is the contrast contract. With the canvas painting its
+   strongest permitted ink (see the JS notes: --c-accent or --c-text-faint at
+   globalAlpha <= 0.50) and the spotlight at full strength on top, the darkest
+   ground any hero text can land on is rgb(209, 219, 240) in light and
+   rgb(41, 51, 71) in dark. Measured against those:
+     light  --c-text 11.87:1   --c-text-muted 5.25:1   --c-accent 7.46:1
+     dark   --c-text 10.57:1   --c-text-muted 5.96:1   --c-accent 6.15:1
+   The binding case is --c-text-muted at --fs-sm, which needs 4.5:1. */
 #hero-canvas {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 0;                  /* ID beats `.hero > *` on both properties */
+  z-index: 0;                  /* ID selector, so it outranks the rule above */
   display: block;
   width: 100%;
   height: 100%;
   pointer-events: none;
-  opacity: 0.42;                                              /* no-calc fallback */
+  opacity: 0.28;                                              /* no-calc fallback */
   opacity: calc(var(--mo-canvas-op) * var(--mo-canvas-scale));
 
   /* Soft elliptical vignette so the paint has no hard edge on any side: the
-     gradient reaches zero alpha inside the box on all four edges. Single
-     layer on purpose -- multi-layer mask compositing is not portable. */
+     gradient reaches zero alpha inside the box on all four edges, and leans
+     toward the top where the hero has the most room. A single layer on
+     purpose -- multi-layer mask compositing is not portable, and its failure
+     mode (mask ignored) is a visible rectangle. */
   -webkit-mask-image: radial-gradient(
     ellipse 55% 78% at 50% 35%,
     rgba(0, 0, 0, 1) 0%,
@@ -211,43 +235,26 @@ html.js-motion [data-reveal].is-revealed {
   );
 }
 
-/* Readability scrim. Strongest at the top (the 40-52px serif name), lightest
-   through the middle where the canvas should breathe, firming up again over
-   the stat strip. rgba values are the literal --c-bg of each theme; they must
-   be kept in step with _tokens.scss if that ever changes. */
-.hero:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 2;
-  pointer-events: none;
-  background-image: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.55) 0%,
-    rgba(255, 255, 255, 0.32) 58%,
-    rgba(255, 255, 255, 0.46) 100%
-  );
-}
-
-/* Cursor spotlight. Off by default and off for good on coarse pointers; only
-   a live script plus a fine pointer switches it on. --sx / --sy are px, with
-   the unit, measured inside the hero's padding box. */
+/* 3b. Cursor spotlight.
+   Off by default, and off for good on coarse pointers: only a live script
+   plus a fine pointer switches it on. --sx / --sy are px WITH the unit,
+   measured inside the hero's padding box. */
 .hero .spotlight {
   display: none;
 }
 
 @media (hover: hover) and (pointer: fine) {
-  html.js-motion .hero .spotlight {
+  /* `:not(#hero-canvas)` again, for the same reason: this must outrank the
+     1-1-0 content rule, or the glow gets promoted into the text band and
+     paints over the name. */
+  html.js-motion .hero > .spotlight:not(#hero-canvas) {
     display: block;
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    z-index: 1;
+    z-index: 0;
     pointer-events: none;
     opacity: 0;
     transition: opacity 360ms var(--ease, #{$mo-ease});
@@ -258,26 +265,21 @@ html.js-motion [data-reveal].is-revealed {
     );
   }
 
-  html.js-motion .hero .spotlight.is-active { opacity: 0.85; }
+  html.js-motion .hero > .spotlight:not(#hero-canvas).is-active {
+    opacity: var(--mo-spot-op, 0.58);
+  }
 }
 
 /* Dark-theme stage values, replayed through the same three-selector contract
-   _tokens.scss uses, so an explicit light choice on a dark OS still wins. */
+   _tokens.scss uses, so an explicit light choice on a dark OS still wins.
+   Both values are custom properties on .hero, so neither has to win a
+   specificity fight with the rules above. The dark accent-soft is already
+   translucent, so the glow is pulled back rather than pushed up. */
 @mixin mo-stage-dark {
-  .hero { --mo-canvas-op: 0.46; }
-
-  .hero:after {
-    background-image: linear-gradient(
-      180deg,
-      rgba(15, 18, 25, 0.60) 0%,
-      rgba(15, 18, 25, 0.38) 58%,
-      rgba(15, 18, 25, 0.52) 100%
-    );
+  .hero {
+    --mo-canvas-op: 0.30;
+    --mo-spot-op: 0.37;
   }
-
-  /* The dark accent-soft is already translucent, so the glow needs pulling
-     back rather than pushing up. 0-4-0 beats the 0-3-1 rule above. */
-  .hero .spotlight.is-active { opacity: 0.60; }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -286,10 +288,10 @@ html.js-motion [data-reveal].is-revealed {
 
 :root[data-theme="dark"] { @include mo-stage-dark; }
 
-/* Narrow viewports: the hero name wraps across the full column, so the canvas
-   is pulled back to roughly two thirds strength. Sets the multiplier, never
-   --mo-canvas-op, so it composes with the theme rules instead of losing to
-   them on specificity. */
+/* Narrow viewports: the hero name wraps across the full column and the canvas
+   has nowhere to sit that is not behind type, so it drops to roughly two
+   thirds strength. Sets the multiplier, never --mo-canvas-op, so it composes
+   with the theme rules instead of losing to them on specificity. */
 @media (max-width: 599px) {
   .hero { --mo-canvas-scale: 0.65; }
 }
@@ -412,6 +414,13 @@ html.js-motion [data-reveal].is-revealed {
    -------------------------------------------------------------------------- */
 
 .pub.is-filtering {
+  /* transition:none is load-bearing, not tidiness. _richer.scss gives every
+     .pub an ambient `transition: transform var(--dur)`, which would animate
+     the FLIP invert step -- the element would slide TO its old position
+     instead of being placed there instantly, and the whole illusion inverts.
+     .is-flipping below re-arms the transition for the play step, and outranks
+     this rule (0-3-1 vs 0-2-0). */
+  transition: none;
   will-change: transform, opacity;
 }
 
@@ -734,24 +743,27 @@ html.js-motion .copy-bib.is-copied {
 
   .magnetic:after { display: none !important; }
 
-  /* The canvas is a continuous animation by definition: remove it outright.
-     The scrim is page-background-over-page-background, so it leaves no trace
-     once the canvas is gone and can stay. */
+  /* The canvas is a continuous animation by definition: remove it outright,
+     rather than leaving a static frame of whatever it painted last. */
   #hero-canvas,
   .hero .spotlight,
   html.js-motion .hero .spotlight {
     display: none !important;
   }
 
-  /* No looping attention-seeking, ever. */
-  html.js-motion .ai-launcher[aria-expanded="false"]:after,
+  /* No looping attention-seeking, ever. The ring is a pseudo-element and is
+     hidden outright; the launcher and the copy button are real controls and
+     must only lose their animation, never their visibility. */
+  html.js-motion .ai-launcher[aria-expanded="false"]:after {
+    animation: none !important;
+    opacity: 0 !important;
+  }
+
   html.js-motion .ai-launcher.is-nudge,
   html.js-motion .copy-bib.is-copied {
     animation: none !important;
-    opacity: 0;
+    transform: none !important;
   }
-
-  html.js-motion .ai-launcher.is-nudge { transform: none !important; }
 
   /* The copy button stops being a hover reveal and is just present. */
   .copy-bib,
@@ -807,7 +819,6 @@ html.js-motion .copy-bib.is-copied {
   .progress-bar,
   #hero-canvas,
   .hero .spotlight,
-  .hero:after,
   .magnetic:after,
   .copy-bib {
     display: none !important;
@@ -824,11 +835,12 @@ html.js-motion .copy-bib.is-copied {
     forced-color-adjust: none;
   }
 
+  /* !important because the spotlight's positioning rule carries an ID inside
+     :not() and cannot be out-specified from here. */
   #hero-canvas,
   .hero .spotlight,
-  .hero:after,
   .magnetic:after {
-    display: none;
+    display: none !important;
   }
 
   html.js-motion .ai-launcher[aria-expanded="false"]:after {

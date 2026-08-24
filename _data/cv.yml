@@ -18,7 +18,7 @@ profile:
   name: "Bhanu Prakash Vangala"
   short_name: "Bhanu"
   initials: "BV"
-  role: "Doctoral Researcher, Agentic AI & LLM Systems"
+  role: "Ph.D. Candidate, Executable Reliability for AI Systems"
   affiliation: "University of Missouri"
   department: "Electrical Engineering & Computer Science"
   location: "Columbia, Missouri, USA"
@@ -31,15 +31,20 @@ profile:
   phone: "+1 (573) 639-3768"
   show_phone: false
   avatar: "images/Bhanu1.jpg"
-  tagline: "Making agentic AI systems that are efficient, trustworthy, and reproducible."
+  tagline: "When trust, reproducibility, and efficiency are the same problem."
   summary: >-
-    I am a doctoral researcher with 3+ years of NASA-, DoD-, and NSF-funded research
-    experience, plus industry research experience at Microsoft. My work asks whether
-    LLM-based agentic systems can be trusted and reproduced: how to route requests
-    across many self-hosted models without wasting GPUs, why code written by coding
-    agents runs for its author and fails for everyone else, and how to tell when a
-    model's output is faithful to its sources. I was a Google Ph.D. Fellowship
-    Nominee (NLP, 2025) and received the Outstanding Master's Student Award (2025).
+    I work where machine learning meets the messy reality of the systems that have
+    to run it. My research keeps returning to one question: when an AI pipeline
+    produces a claim or an artifact, what does it actually take to trust it?
+    Language models today are fluent, confident, routinely wrong in ways that are
+    hard to detect, and they produce artifacts that often cannot be reproduced even
+    by the person who generated them. My dissertation, executable reliability for
+    AI systems, argues that what an AI system claims about itself, whether about
+    its outputs, its dependencies, or its resource behaviour, should be testable by
+    anyone, not just by the team that built it.
+  dissertation: "Executable Reliability for AI Systems"
+  dissertation_sub: "When trust, reproducibility, and efficiency are the same problem"
+  area: "AI, Systems & Networking"
   interests:
     - "Agentic AI systems"
     - "Multi-model LLM orchestration"
@@ -62,6 +67,56 @@ stats:
   - { num: "5",     label: "Oral presentations" }
   - { num: "3",     label: "Federal funders" }
   - { num: "115+",  label: "Students taught" }
+
+# -----------------------------------------------------------------------------
+# THE THREE THREADS
+#   The spine of the dissertation. Rendered near the top of the homepage so a
+#   reader sees the argument before the list of papers.
+# -----------------------------------------------------------------------------
+threads:
+  - id: trustworthy
+    n: "01"
+    title: "Trustworthy outputs"
+    lead: "Catching hallucinations in scientific LLMs"
+    text: >-
+      A benchmark and a multi-stage detector for hallucination in materials-science
+      question answering, combining self-consistency checking, retrieval against
+      curated sources, and a knowledge graph that flags low-connectivity fact
+      fragments as likely fabrications. It cuts hallucination rates by about 30%
+      and reaches F1 0.95 on cross-domain inconsistency detection. What matters is
+      not the number but that the pipeline is auditable: a reviewer can ask why a
+      response was flagged and get a real answer rather than a confidence score.
+    refs: ["hallumat", "halluformer"]
+    tag: hallucination
+
+  - id: reproducible
+    n: "02"
+    title: "Reproducible artifacts"
+    lead: "Can anyone else actually run it?"
+    text: >-
+      100 standardised prompts given to Claude, Codex and Gemini agents, and the
+      300 resulting projects executed in clean containers. Only 68.3% ran out of
+      the box: Python 89%, Java 44%. The agents declared about three dependencies
+      per project; the projects pulled in around 49 at runtime, a 13.5x gap
+      absorbed by whoever debugs the code afterward. "It compiled on my machine"
+      is not the same as "it is reproducible", and the field's benchmarks have been
+      quietly measuring the wrong thing.
+    refs: ["not-reproducible", "env-gap", "beyond-functional-correctness"]
+    tag: reproducibility
+
+  - id: accountable
+    n: "03"
+    title: "Accountable systems at scale"
+    lead: "Serving LLMs efficiently and accountably"
+    text: >-
+      A Kubernetes-native multi-tenant serving framework that classifies queries by
+      complexity, routes them across nine models from 1B to 27B parameters using
+      Thompson Sampling, and manages warm pools through a custom cold-start state
+      machine. Across 310,190 inference requests on the NRP Nautilus cluster it
+      reached 61% GPU utilization against 31% for static deployment, cutting
+      GPU-hours by 46%.
+    refs: ["pick-and-spin", "multi-model-orchestration"]
+    tag: orchestration
 
 # -----------------------------------------------------------------------------
 # EDUCATION
@@ -148,23 +203,32 @@ experience:
 # PUBLICATIONS  (numbering follows the PDF CV)
 # -----------------------------------------------------------------------------
 publications:
-  - id: env-spec-gap
+  - id: env-gap
     ref: 1
     year: 2026
-    title: "The Environment Specification Gap: Dependency Misspecification in LLM-Generated Code"
-    authors: ["Bhanu Prakash Vangala", "Ashish Gehani", "Tanu Malik"]
-    venue: "TMLR"
-    venue_full: "Transactions on Machine Learning Research"
+    title: "Code That Works, Environments That Don't: Measuring Environment Reproducibility in AI-Generated Software"
+    authors: ["Bhanu Prakash Vangala", "Tanu Malik"]
+    venue: "AI Magazine"
+    venue_full: "AI Magazine (AAAI)"
     status: review
     tags: [reproducibility, agents, evaluation]
     image: "images/LLM-as-Service-portfolio-image.png"
     links: []
-    highlights: "Extended version of the AAAI '26 study: 1,000 instances, a three-layer dependency framework, and a phantom / hidden / bloat taxonomy of misspecification."
+    highlights: "Three agents, four languages, fifty tasks. Dependency-set agreement falls as low as 7% on identical tasks, and newer agents show no improvement."
     summary: >-
-      Scales the coding-agent reproducibility audit to a thousand instances and
-      formalises what "the environment is wrong" actually means: dependencies that
-      are hallucinated (phantom), silently relied upon but never declared (hidden),
-      or declared and never used (bloat).
+      Functional correctness says nothing about whether the environment a coding
+      agent declares is the environment its code actually needs. A three-layer
+      framework separates declared, runtime-installed, and necessary-and-sufficient
+      dependencies, and shows the failure is systematic rather than incidental:
+      the widest divergence sits between what an agent declares and what the code
+      pulls in at runtime, which points at environment priors learned during
+      training as the cause.
+    kb: >-
+      Keywords: LLM coding agents, dependency specification, environment gap, code
+      generation, software supply chain. Establishes environment specification as a
+      distinct, measurable axis of code-generation quality that current benchmarks
+      do not capture. This paper underpins the Dependency and Reproducibility
+      Checker demo on this site.
 
   - id: camp
     ref: 2
@@ -205,7 +269,7 @@ publications:
   - id: pick-and-spin
     ref: 4
     year: 2026
-    title: "Pick and Spin: Cold-Start-Aware Routing for Self-Hosted LLM Serving"
+    title: "Resource-Aware Multi-Model Serving for GPU Cloud Infrastructure (Pick-and-Spin)"
     authors: ["Bhanu Prakash Vangala", "Tanu Malik"]
     venue: "IEEE CLOUD 2026"
     venue_full: "IEEE International Conference on Cloud Computing 2026"
@@ -214,47 +278,51 @@ publications:
     tags: [orchestration, systems, inference]
     image: "images/AdaptiveLLMaaS.png"
     links: []
-    highlights: "Thompson Sampling routing plus a Cold-Start State Machine: 61% GPU utilization and a 46% GPU-hour reduction across 310K runs."
+    highlights: "Nine models from 1B to 27B routed by Thompson Sampling with a cold-start state machine. 310,190 requests on NRP Nautilus: 61% GPU utilization against 31% for static deployment, cutting GPU-hours by 46%."
     summary: >-
       Serving many fine-tuned models on a fixed GPU pool forces a choice between
       keeping everything warm (expensive) and cold-starting on demand (slow).
       Pick-and-Spin treats routing as a bandit problem and makes residency an
       explicit, learned decision rather than a static policy.
     kb: >-
-      Reduced cold-starts to 9.2% across 310K runs and raised GPU utilization from
-      31% to 61%. This is the system behind the Model Router demo on this site.
+      A Kubernetes-native multi-tenant serving framework. It classifies incoming
+      queries by complexity, routes them across nine models from 1B to 27B
+      parameters using Thompson Sampling, and manages warm pools on shared HPC
+      infrastructure through a custom cold-start state machine. Evaluated over
+      310,190 inference requests on the NRP Nautilus cluster. This is the system
+      behind the Model Router demo on this site.
 
   - id: not-reproducible
     ref: 5
     year: 2026
     title: "AI-Generated Code Is Not Reproducible (Yet): Dependency Gaps in Coding Agents"
     authors: ["Bhanu Prakash Vangala", "Ali Adibifar", "Tanu Malik", "Ashish Gehani"]
-    venue: "AAAI 2026"
-    venue_full: "AAAI Conference on Artificial Intelligence 2026"
+    venue: "AAAI 2026 RAI Workshop"
+    venue_full: "AAAI 2026 Workshop on Reproducible AI"
     status: accepted
     kind: "Oral"
     tags: [reproducibility, agents, evaluation]
     image: "images/LLM-as-Service-portfolio-image.png"
     links:
       - { label: "Paper", url: "https://arxiv.org/abs/2512.22387" }
-    highlights: "A 300-project audit of coding agents: 68.3% reproduction success and a 15× runtime dependency multiplier."
+    highlights: "100 prompts given to Claude, Codex and Gemini. Of the 300 resulting projects only 68.3% ran in a clean container: Python 89%, Java 44%. Agents declared about 3 dependencies per project; the projects pulled in around 49 at runtime, a 13.5x gap."
     summary: >-
       Code from coding agents runs where it was written and breaks everywhere else.
       We audited 300 projects generated by Claude, Gemini and Codex and measured how
       often the declared environment fails to match what the code actually needs.
     kb: >-
-      Presented at AAAI 2026 in Singapore on 26 January 2026, and earlier at the
-      RAI 2025 workshop. Projects were run via SLURM; the SciUnit ptrace harness was
-      extended to Java and JavaScript. This study underpins the live Dependency &
-      Reproducibility Checker demo on this site.
+      Oral at the AAAI 2026 Workshop on Reproducible AI. arXiv:2512.22387. The gap
+      is silently absorbed by whoever debugs the code afterward, which is the point:
+      "it compiled on my machine" is not the same as "it is reproducible", and
+      current benchmarks measure the wrong thing.
 
   - id: multi-model-orchestration
     ref: 6
     year: 2026
     title: "Efficient Multi-Model Orchestration for Self-Hosted LLMs"
     authors: ["Bhanu Prakash Vangala", "Tanu Malik", "Ashish Gehani"]
-    venue: "AAAI 2026"
-    venue_full: "AAAI Conference on Artificial Intelligence 2026"
+    venue: "AAAI 2026 DAI Workshop"
+    venue_full: "AAAI 2026 Workshop on Deployable AI"
     status: accepted
     kind: "Oral"
     tags: [orchestration, systems, inference, agents]
@@ -289,17 +357,17 @@ publications:
   - id: hallumat
     ref: 8
     year: 2025
-    title: "HalluMat: Hallucination Detection in LLMs for Materials Science"
+    title: "HalluMat: Detecting Hallucinations in LLM-Generated Materials Science Content Through Multi-Stage Verification"
     authors: ["Bhanu Prakash Vangala", "Syed Mahmud", "Prabhat Neupane", "Janani Selvaraj", "Jianlin Cheng"]
-    venue: "AAAI 2025"
-    venue_full: "AAAI Conference on Artificial Intelligence 2025"
+    venue: "AAAI 2025 Spring Symposium"
+    venue_full: "AAAI 2025 Spring Symposium on AI for Scientific Discovery"
     status: accepted
     kind: "Oral"
     tags: [hallucination, trustworthy-ai, benchmarks]
     image: "images/HalluMat-Portfolio Image.png"
     links:
       - { label: "Paper", url: "https://drive.google.com/file/d/1oMbe8br7-wm7NLkrOFbFGtT2vUlxdCTn/view" }
-    highlights: "The HalluMatData benchmark plus hybrid checks: a 30% hallucination reduction and the PHCS consistency metric."
+    highlights: "Self-consistency checking, retrieval against curated sources, and a knowledge graph that flags low-connectivity fact fragments. Cuts hallucination rates by about 30% and reaches F1 0.95 on cross-domain inconsistency detection."
     summary: >-
       A benchmark and detector for hallucination in materials-science LLMs,
       combining retrieval augmentation (IR, NER and semantic similarity) with
@@ -315,8 +383,8 @@ publications:
     year: 2025
     title: "HalluFormer: Detecting Hallucination in LLMs"
     authors: ["Syed Mahmud", "Prabhat Neupane", "Janani Selvaraj", "Bhanu Prakash Vangala", "Jianlin Cheng"]
-    venue: "AAAI 2025"
-    venue_full: "AAAI Conference on Artificial Intelligence 2025"
+    venue: "AAAI 2025 Spring Symposium"
+    venue_full: "AAAI 2025 Spring Symposium on AI for Scientific Discovery"
     status: accepted
     tags: [hallucination, trustworthy-ai]
     image: "images/HalluFormer-Portfolio Image.png"
@@ -378,35 +446,57 @@ publications:
       Convolutional autoencoder and GAN-based colorization with a combined
       perceptual and adversarial objective, applied to photograph restoration.
 
-  - id: brain-tumor
-    year: 2022
-    title: "Brain Tumor Classification in MRI Images Using Deep Learning"
-    authors: ["Bhanu Prakash Vangala"]
-    venue: "Research Project"
-    venue_full: "Undergraduate research project, VIT Vellore"
-    status: project
-    tags: [vision, medical]
+  - id: benchmarks-leak
+    ref: 10
+    year: 2026
+    title: "Scores That Hold, Benchmarks That Leak: Measuring Dataset Contamination in Public Brain-Tumor MRI Classification"
+    authors: ["Bhanu Prakash Vangala", "Sowmya Guda", "Latha Peddi", "Navya Vangala"]
+    venue: "IEEE JBHI"
+    venue_full: "IEEE Journal of Biomedical and Health Informatics"
+    status: review
+    tags: [evaluation, benchmarks, medical, vision]
     image: "images/Brain Tumor-Portfolio Image.png"
-    links:
-      - { label: "Report", url: "https://drive.google.com/file/d/1upCswGveonJPN2vmuXzKlhbKqE8tkGSA/view?usp=sharing" }
+    links: []
+    highlights: "28.8% of the dominant corpus's official test split has a near-twin in its own training split; a second corpus leaks 22.3% byte-identically; 95.5% of traceable test images share a patient with training; file headers containing no anatomy separate tumour from no-tumour at 0.959 balanced accuracy."
     summary: >-
-      Custom CNN and ResNet50V2 classifiers with augmentation and ensembling, plus
-      interpretable visualizations aimed at clinical readers.
+      Brain-tumour MRI classification routinely reports accuracies above 98% on a
+      handful of public corpora. A three-layer contamination framework covering
+      duplicate, patient and source-label leakage audits those corpora against a
+      chest-radiograph negative control, across nine architectures. The
+      uncomfortable finding is that removing every leaked test image leaves
+      balanced accuracy essentially unchanged: contamination this severe does not
+      show up as an inflated score, so deduplication repairs the number without
+      repairing the benchmark.
+    kb: >-
+      Releases the contaminated-file lists, recovered patient identifiers and
+      deduplicated splits. Argues dataset integrity is a distinct, measurable axis
+      of benchmark quality that a stable leaderboard cannot certify, and that
+      reported accuracy on these corpora is not yet evidence about tumour
+      recognition.
 
-  - id: pneumonia
-    year: 2022
-    title: "Pneumonia Detection in Chest X-rays Using Deep Learning"
+  - id: evaluation-choices
+    ref: 11
+    year: 2026
+    title: "Evaluation Choices Shape Biomedical ML Claims: A Pediatric Pneumonia Benchmark Case Study"
     authors: ["Bhanu Prakash Vangala"]
-    venue: "Research Project"
-    venue_full: "Undergraduate research project, VIT Vellore"
-    status: project
-    tags: [vision, medical]
+    venue: "NeurIPS RMLR"
+    venue_full: "NeurIPS, Reliable ML Research (under review)"
+    status: review
+    tags: [evaluation, benchmarks, medical, vision]
     image: "images/Pneumonia-Portfolio Image.png"
-    links:
-      - { label: "Report", url: "https://drive.google.com/file/d/1UJKKHXcFIvtjClUyrr6dhatMKN1svU7C/view?usp=sharing" }
+    links: []
+    highlights: "Eight pretrained backbones differ by only 0.026 AUROC, but freezing versus fine-tuning moves AUROC by 0.044 and changing the decision threshold moves balanced accuracy by 0.090. A file-properties-only classifier with no anatomy reaches 0.992 in the training pool and 0.496 on the official split."
     summary: >-
-      A five-architecture comparison (custom CNN, ResNet18, VGG16, ResNet50 with
-      k-fold cross-validation, EfficientNet) over 5,216 chest radiographs.
+      A biomedical paper is often remembered by one number, and that number reads
+      as a property of the model when it is really a property of the evaluation.
+      On the Kermany pediatric chest radiograph benchmark, the choice of split,
+      training policy, threshold, metric and calibration moves the headline more
+      than the choice of architecture does. Ends with a seven-item reporting
+      recommendation, each item tied to an effect measured in the study.
+    kb: >-
+      A partition classifier distinguishes the official test split from the
+      training pool at AUC 0.697, rising to 0.898 for normal radiographs, so the
+      split is measurably different rather than exchangeable.
 
 pub_filters:
   - { id: all,             label: "All" }
@@ -714,7 +804,7 @@ assistant:
         Reproducibility: code generated by AI coding agents usually runs for its author
         and fails for everyone else because the environment specification is incomplete.
         He audited 300 agent-generated projects and found 68.3% reproduction success and
-        a 15x runtime dependency multiplier. Trust: whether a model's output is faithful
+        a 13.5x dependency gap between what agents declare and what the code needs. Trust: whether a model's output is faithful
         to its sources, measured with benchmarks like HalluMatData and detectors like
         HalluFormer rather than by impression.
     - id: funding
