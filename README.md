@@ -1,6 +1,6 @@
 # bhanuprakashvangala.github.io
 
-Personal academic site for **Bhanu Prakash Vangala** — doctoral researcher in
+Personal academic site for **Bhanu Prakash Vangala**, doctoral researcher in
 agentic AI and LLM systems at the University of Missouri.
 Built with Jekyll, deployed by GitHub Pages.
 
@@ -8,7 +8,7 @@ Built with Jekyll, deployed by GitHub Pages.
 
 **`_data/cv.yml` is the single source of truth.** The homepage, the CV page and
 the AI assistant's knowledge base are all generated from it. To update the site
-— a new paper, a new role, a new award — edit that file and push. Nothing else
+(a new paper, a new role, a new award), edit that file and push. Nothing else
 needs touching.
 
 ```
@@ -25,8 +25,8 @@ _data/cv.yml
 |---|---|
 | `_data/cv.yml` | All content: profile, education, experience, publications, research programs, projects, awards, service, teaching, talks, coursework, skills, news |
 | `_pages/about.md` | Homepage |
-| `_pages/cv.md` | `/cv/` — full CV; the print button yields a clean one-column PDF |
-| `_pages/demos.md` | `/demos/` — three runnable demonstrations of published work |
+| `_pages/cv.md` | `/cv/`, full CV; the print button yields a clean one-column PDF |
+| `_pages/demos.md` | `/demos/`, three runnable demonstrations of published work |
 | `assets/data/kb.json` | Generated at build time; never edit by hand |
 | `assets/js/site.js` | Theme toggle, scroll-spy, publication filter, news collapse, lightbox |
 | `assets/js/assistant.js` | The research assistant: BM25 retrieval, offline answers, optional live model |
@@ -51,7 +51,7 @@ invent a paper that is not in the CV.
 Setting `assistant.endpoint` in `_config.yml` upgrades it to **live mode**: the
 same retrieval runs, then the passages are sent as grounding context to a
 self-hosted model through a proxy. If that call fails for any reason, the
-offline answer is served instead — the visitor never sees a dead end.
+offline answer is served instead, so the visitor never sees a dead end.
 
 > **The API key must never enter this repository.** GitHub Pages serves
 > everything publicly, so a key in the JavaScript or in `_config.yml` is a key
@@ -63,15 +63,15 @@ offline answer is served instead — the visitor never sees a dead end.
 `/demos/` runs real implementations of the published methods, entirely in the
 browser:
 
-1. **Dependency & reproducibility checker** — paste Python and an environment
+1. **Dependency & reproducibility checker**. Paste Python and an environment
    file; it resolves imports to distributions and reports hidden, bloat,
    unpinned and unverified dependencies. From *AI-Generated Code Is Not
    Reproducible (Yet)* (AAAI 2026) and *The Environment Specification Gap*.
-2. **Pick-and-Spin router** — Thompson Sampling over a model pool with a
+2. **Pick-and-Spin router**. Thompson Sampling over a model pool with a
    cold-start state machine governing GPU residency; utilisation and cold-start
    rate update as you send requests. From *Efficient Multi-Model Orchestration*
    (AAAI 2026) and *Pick and Spin* (IEEE CLOUD 2026).
-3. **Reproducibility agent** — plan / tool-call / result / answer loop that uses
+3. **Reproducibility agent**. A plan / tool-call / result / answer loop that uses
    demo 1 as its tool. Needs a configured endpoint; says so plainly if there
    isn't one.
 

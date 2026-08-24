@@ -22,7 +22,7 @@
       if (saved === 'dark' || saved === 'light') {
         document.documentElement.setAttribute('data-theme', saved);
       }
-    } catch (e) { /* private mode, blocked storage — fall through to system default */ }
+    } catch (e) { /* private mode, blocked storage; fall through to system default */ }
   })();
 </script>
 

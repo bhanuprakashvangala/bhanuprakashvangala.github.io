@@ -202,7 +202,7 @@ redirect_from:
 <h3>Invited talks &amp; presentations</h3>
 <dl class="kv-list">
 {%- for t in cv.talks %}
-<dt class="kv-key">{{ t.date }}</dt><dd class="kv-val"><strong>{{ t.title }}</strong> &mdash; {{ t.venue }}</dd>
+<dt class="kv-key">{{ t.date }}</dt><dd class="kv-val"><strong>{{ t.title }}</strong> &middot; {{ t.venue }}</dd>
 {%- endfor %}
 </dl>
 
@@ -222,7 +222,7 @@ redirect_from:
 <h3>Teaching</h3>
 <dl class="kv-list">
 {%- for t in cv.teaching %}
-<dt class="kv-key">{{ t.terms | join: ", " }}</dt><dd class="kv-val"><strong>{{ t.role }}, {{ t.course }}</strong> &mdash; {{ t.org }}. {{ t.note }}</dd>
+<dt class="kv-key">{{ t.terms | join: ", " }}</dt><dd class="kv-val"><strong>{{ t.role }}, {{ t.course }}</strong> &middot; {{ t.org }}. {{ t.note }}</dd>
 {%- endfor %}
 </dl>
 </section>
@@ -235,7 +235,7 @@ redirect_from:
 <a class="link-pill" href="{{ '/cv/' | relative_url }}"><i class="fas fa-file-alt" aria-hidden="true"></i> Full CV</a>
 <a class="link-pill" href="https://github.com/bhanuprakashvangala"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
 </div>
-<p class="muted">Or ask the assistant in the corner &mdash; it answers from this CV and cites the section it drew from.</p>
+<p class="muted">Or ask the assistant in the corner. It answers from this CV and cites the section it drew from.</p>
 </section>
 
 <div class="lightbox" id="lightbox" role="dialog" aria-label="Enlarged image" aria-modal="true">
