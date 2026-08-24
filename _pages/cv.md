@@ -39,7 +39,7 @@ author_profile: false
 {%- for e in cv.education %}
 <div class="cv-entry">
 <div class="cv-entry-head">
-<h3>{{ e.degree }} &mdash; {{ e.org }}</h3>
+<h3>{{ e.degree }} &middot; {{ e.org }}</h3>
 <span class="cv-entry-date">{{ e.start }} &ndash; {{ e.end }}</span>
 </div>
 <p class="muted">{{ e.location }}{% if e.gpa %} &middot; GPA {{ e.gpa }}{% endif %}</p>
@@ -65,7 +65,7 @@ author_profile: false
 <h3>Theses &amp; earlier work</h3>
 <ul class="plain-list">
 {%- for pub in cv.publications %}{% unless pub.ref %}
-<li><strong>{{ pub.title }}</strong> &mdash; {{ pub.venue_full }}{% for l in pub.links %} &middot; <a href="{{ l.url }}">{{ l.label }}</a>{% endfor %}</li>
+<li><strong>{{ pub.title }}</strong> &middot; {{ pub.venue_full }}{% for l in pub.links %} &middot; <a href="{{ l.url }}">{{ l.label }}</a>{% endfor %}</li>
 {%- endunless %}{% endfor %}
 </ul>
 </section>
@@ -90,7 +90,7 @@ author_profile: false
 {%- for x in cv.experience %}
 <div class="cv-entry">
 <div class="cv-entry-head">
-<h3>{{ x.title }} &mdash; {{ x.org }}</h3>
+<h3>{{ x.title }} &middot; {{ x.org }}</h3>
 <span class="cv-entry-date">{{ x.start }} &ndash; {{ x.end }}</span>
 </div>
 <p class="muted">{{ x.location }}{% if x.collaborators %} &middot; with {{ x.collaborators }}{% endif %}</p>
@@ -103,7 +103,7 @@ author_profile: false
 <h2>Honors &amp; awards</h2>
 <dl class="kv-list">
 {%- for a in cv.awards %}
-<dt class="kv-key">{{ a.year }}</dt><dd class="kv-val"><strong>{{ a.title }}</strong> &mdash; {{ a.org }}</dd>
+<dt class="kv-key">{{ a.year }}</dt><dd class="kv-val"><strong>{{ a.title }}</strong> &middot; {{ a.org }}</dd>
 {%- endfor %}
 </dl>
 </section>
@@ -112,7 +112,7 @@ author_profile: false
 <h2>Teaching</h2>
 <ul class="plain-list">
 {%- for t in cv.teaching %}
-<li><strong>{{ t.role }}, {{ t.course }}</strong> &mdash; {{ t.org }} ({{ t.terms | join: ", " }}). {{ t.note }}</li>
+<li><strong>{{ t.role }}, {{ t.course }}</strong> &middot; {{ t.org }} ({{ t.terms | join: ", " }}). {{ t.note }}</li>
 {%- endfor %}
 </ul>
 </section>
@@ -121,7 +121,7 @@ author_profile: false
 <h2>Invited talks &amp; presentations</h2>
 <dl class="kv-list">
 {%- for t in cv.talks %}
-<dt class="kv-key">{{ t.date }}</dt><dd class="kv-val"><strong>{{ t.title }}</strong> &mdash; {{ t.venue }}</dd>
+<dt class="kv-key">{{ t.date }}</dt><dd class="kv-val"><strong>{{ t.title }}</strong> &middot; {{ t.venue }}</dd>
 {%- endfor %}
 </dl>
 </section>

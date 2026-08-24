@@ -1,5 +1,5 @@
 /* =============================================================================
- * demos.js — three in-browser demonstrations of published work.
+ * demos.js: three in-browser demonstrations of published work.
  *
  *   1. Dependency & reproducibility checker
  *      Static analysis of Python imports against a declared environment,
@@ -74,7 +74,7 @@
   }
 
   /* ======================================================================= *
-   * DEMO 1 — dependency & reproducibility checker
+   * DEMO 1: dependency & reproducibility checker
    * ======================================================================= */
 
   // Python standard library (3.11). Imports resolving here need no declaration.
@@ -235,7 +235,7 @@
           title: '<code>' + esc(imp.module) + '</code> is imported but never declared',
           detail: 'Line ' + imp.line + ' imports <code>' + esc(imp.module) + '</code>, which ' +
             (DIST[imp.module]
-              ? 'is provided by the distribution <code>' + esc(dist) + '</code> — the import name and the package name differ, a frequent source of this gap.'
+              ? 'is provided by the distribution <code>' + esc(dist) + '</code>. The import name and the package name differ, a frequent source of this gap.'
               : 'is not in the standard library.') +
             ' A fresh environment built from this specification raises <code>ModuleNotFoundError</code>.'
         });
@@ -260,7 +260,7 @@
           tag: 'system',
           title: '<code>' + esc(dist) + '</code> also needs system libraries',
           detail: 'Requires ' + esc(SYSTEM_DEPS[dist]) + '. pip cannot install these, so the ' +
-            'environment file is complete and the build still fails — the runtime dependency ' +
+            'environment file is complete and the build still fails, the runtime dependency ' +
             'multiplier the paper measures at roughly 15x.'
         });
       }
@@ -283,7 +283,7 @@
           tag: 'unverified',
           title: '<code>' + esc(r.name) + '</code> is declared, never imported, and unrecognised',
           detail: 'It is not used by this code and does not match a package in the offline ' +
-            'reference list. Candidate <em>phantom</em> dependency — confirming that needs a ' +
+            'reference list. Candidate <em>phantom</em> dependency. Confirming that needs a ' +
             'live index lookup, which this in-browser demo deliberately does not make.'
         });
       }
@@ -481,7 +481,7 @@
   }
 
   /* ======================================================================= *
-   * DEMO 2 — Pick-and-Spin router
+   * DEMO 2: Pick-and-Spin router
    * ======================================================================= */
 
   // Capability profiles on [0,1]. Cost is relative GPU-hours, spin is cold-start
@@ -645,7 +645,7 @@
     var why = el('span', 'router-why',
       'Classified as ' + topIntent(res.weights) + '. ' +
       (res.spun
-        ? 'No warm replica — spun one up, about ' + res.pick.model.spin + 's cold start.'
+        ? 'No warm replica, so it spun one up, about ' + res.pick.model.spin + 's cold start.'
         : 'Served from a warm replica, no cold start.') +
       ' Capability fit ' + res.pick.fit.toFixed(2) +
       ', relative GPU cost ' + res.pick.model.cost.toFixed(2) + '.');
@@ -782,7 +782,7 @@
   }
 
   /* ======================================================================= *
-   * DEMO 3 — reproducibility agent
+   * DEMO 3: reproducibility agent
    * ======================================================================= */
 
   function endpoint() {
@@ -824,7 +824,7 @@
         box.innerHTML = 'No model endpoint is configured, so this demo is inactive. ' +
           'The other two demos run entirely in your browser and need no server. ' +
           'To enable this one, open the assistant in the corner, choose <strong>settings</strong>, ' +
-          'and paste a proxy URL — the API key stays on the server and never reaches this page.';
+          'and paste a proxy URL. The API key stays on the server and never reaches this page.';
         runBtn.disabled = true;
         if (status) status.textContent = 'Inactive: no endpoint configured.';
       }
@@ -861,7 +861,7 @@
       trace.appendChild(toolStep);
 
       var resultHtml = analysis
-        ? '<p>' + esc(analysis.verdict) + ' &mdash; ' + esc(analysis.sub) + '. ' +
+        ? '<p>' + esc(analysis.verdict) + ' &middot; ' + esc(analysis.sub) + '. ' +
           analysis.findings.length + ' finding' + (analysis.findings.length === 1 ? '' : 's') + '.</p>' +
           '<pre>' + esc(analysis.findings.slice(0, 5).map(function (f) {
             return '[' + f.tag + '] ' + f.title.replace(/<[^>]+>/g, '');
@@ -953,7 +953,7 @@
       }).catch(function (err) {
         done(err && err.name === 'AbortError'
           ? 'Stopped.'
-          : 'Could not reach the model endpoint. The static analysis above still stands — it ran locally.',
+          : 'Could not reach the model endpoint. The static analysis above still stands, because it ran locally.',
           true);
       });
     }

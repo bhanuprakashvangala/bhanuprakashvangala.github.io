@@ -1,5 +1,5 @@
 /* =============================================================================
- * site.js — behaviour for the academic homepage.
+ * site.js: behaviour for the academic homepage.
  *
  * No dependencies. Everything degrades gracefully: with JS off you still get
  * the full content, every publication visible, and working anchor links.
@@ -59,7 +59,7 @@
   /* ---------------------------------------------------------------------- *
    * External links open in a new tab.
    * This replaces a `<base target="_blank">` that used to sit in <head> and
-   * forced *every* link — including in-page anchors — into a new tab.
+   * forced *every* link, including in-page anchors, into a new tab.
    * ---------------------------------------------------------------------- */
   function initExternalLinks() {
     $$('a[href]').forEach(function (a) {
@@ -74,7 +74,7 @@
   }
 
   /* ---------------------------------------------------------------------- *
-   * Scroll spy — highlight the nav link for the section in view.
+   * Scroll spy: highlight the nav link for the section in view.
    * ---------------------------------------------------------------------- */
   function initScrollSpy() {
     var navLinks = $$('#site-nav a[data-spy]');
@@ -117,7 +117,7 @@
   }
 
   /* ---------------------------------------------------------------------- *
-   * News — collapse the long tail behind a toggle.
+   * News: collapse the long tail behind a toggle.
    * ---------------------------------------------------------------------- */
   function initNews() {
     var btn = $('#news-more');

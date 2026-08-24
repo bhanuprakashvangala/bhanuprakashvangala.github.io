@@ -1,5 +1,5 @@
 /* =============================================================================
- * Vercel serverless function — the assistant's model proxy.
+ * Vercel serverless function: the assistant's model proxy.
  *
  * WHY THIS EXISTS
  *   bhanuprakashvangala.github.io is a static site on GitHub Pages. Anything

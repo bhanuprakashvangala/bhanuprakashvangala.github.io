@@ -1,5 +1,5 @@
 /* =============================================================================
- * assistant.js — the "ask about my research" widget.
+ * assistant.js: the "ask about my research" widget.
  *
  * Two modes, decided at runtime:
  *
@@ -11,7 +11,7 @@
  *   live     (only when window.BV_ASSISTANT.endpoint is set)
  *       The same retrieval runs first, then the retrieved passages are sent as
  *       grounding context to a server-side proxy that holds the model API key.
- *       The key is NEVER present in this file or anywhere else in the site — a
+ *       The key is NEVER present in this file or anywhere else in the site, because a
  *       static site cannot keep a secret. See assistant-api/README.md.
  *
  * If a live call fails for any reason we serve the offline answer instead of
@@ -180,7 +180,7 @@
     if (!hits.length || hits[0].score < MIN_SCORE) {
       return {
         text: 'I do not have anything on that in Bhanu\'s CV, so I would rather not guess. ' +
-          'Try asking about his research, publications, experience, awards or teaching — ' +
+          'Try asking about his research, publications, experience, awards or teaching. Or ' +
           'or email him at [' + email + '](mailto:' + email + ').',
         sources: []
       };
@@ -204,7 +204,7 @@
   }
 
   /* ======================================================================= *
-   * 3. Markdown rendering (escape first — model output is untrusted)
+   * 3. Markdown rendering (escape first: model output is untrusted)
    * ======================================================================= */
 
   function escapeHtml(s) {
@@ -600,7 +600,7 @@
             bubble.innerHTML = renderMarkdown(acc);
             self.scroll();
           }
-        } catch (e) { /* partial frame — the rest arrives next read */ }
+        } catch (e) { /* partial frame; the rest arrives next read */ }
       }
 
       function done() {

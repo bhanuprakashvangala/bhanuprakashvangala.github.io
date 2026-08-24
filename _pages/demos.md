@@ -7,7 +7,7 @@ author_profile: false
 
 <div class="section">
 <h1>Live demos</h1>
-<p class="section-sub">Three of my research contributions, small enough to run in your browser. The first two are faithful, self-contained reimplementations of the published methods — they need no server and no API key. The third talks to a language model, so it only wakes up if an endpoint is configured.</p>
+<p class="section-sub">Three of my research contributions, small enough to run in your browser. The first two are faithful, self-contained reimplementations of the published methods: they need no server and no API key. The third talks to a language model, so it only wakes up if an endpoint is configured.</p>
 </div>
 
 <div class="demo-tabs" role="tablist" aria-label="Choose a demo">
@@ -19,7 +19,7 @@ author_profile: false
 <section class="demo demo-panel is-active" id="panel-repro" role="tabpanel" aria-labelledby="tab-repro" tabindex="0">
 <header class="demo-head">
 <h2 class="demo-title">Dependency &amp; reproducibility checker</h2>
-<p class="demo-desc">Paste Python source and the environment file that is supposed to accompany it. The checker resolves every import to the distribution that actually provides it, then reports the gap between what the code needs and what the environment declares — the same three-layer analysis used in the paper, with its phantom / hidden / bloat taxonomy.</p>
+<p class="demo-desc">Paste Python source and the environment file that is supposed to accompany it. The checker resolves every import to the distribution that actually provides it, then reports the gap between what the code needs and what the environment declares, using the same three-layer analysis used in the paper, with its phantom / hidden / bloat taxonomy.</p>
 <p class="demo-cite">Method from <a href="https://arxiv.org/abs/2512.22387"><em>AI-Generated Code Is Not Reproducible (Yet)</em></a>, AAAI 2026, and <em>The Environment Specification Gap</em> (under review, TMLR).</p>
 </header>
 
@@ -27,7 +27,7 @@ author_profile: false
 <div class="demo-col">
 <label class="demo-label" for="repro-code">Python source</label>
 <textarea class="code-input" id="repro-code" spellcheck="false" wrap="off" rows="16" aria-describedby="repro-code-help"></textarea>
-<p class="demo-hint" id="repro-code-help">Imports are parsed statically — nothing is executed.</p>
+<p class="demo-hint" id="repro-code-help">Imports are parsed statically. Nothing is executed.</p>
 
 <label class="demo-label" for="repro-reqs">Declared environment <span class="muted">(requirements.txt, pyproject, or environment.yml)</span></label>
 <textarea class="code-input is-compact" id="repro-reqs" spellcheck="false" wrap="off" rows="7"></textarea>
@@ -48,7 +48,7 @@ author_profile: false
 
 <section class="demo demo-panel" id="panel-router" role="tabpanel" aria-labelledby="tab-router" hidden tabindex="0">
 <header class="demo-head">
-<h2 class="demo-title">Pick-and-Spin — cold-start-aware model routing</h2>
+<h2 class="demo-title">Pick-and-Spin: cold-start-aware model routing</h2>
 <p class="demo-desc">A pool of self-hosted models shares a fixed set of GPUs. Describe a task and the router scores every model on capability fit, cost and latency, then decides whether to answer from a warm replica or pay a cold start to spin one up. Thompson Sampling drives the exploration; the cold-start state machine decides residency. Keep sending requests and watch utilization climb as the router learns.</p>
 <p class="demo-cite">Method from <a href="https://arxiv.org/abs/2512.22402"><em>Efficient Multi-Model Orchestration for Self-Hosted LLMs</em></a>, AAAI 2026, and <em>Pick and Spin</em>, IEEE CLOUD 2026.</p>
 </header>
@@ -81,7 +81,7 @@ author_profile: false
 <section class="demo demo-panel" id="panel-agent" role="tabpanel" aria-labelledby="tab-agent" hidden tabindex="0">
 <header class="demo-head">
 <h2 class="demo-title">Reproducibility agent</h2>
-<p class="demo-desc">An agent that plans, calls the reproducibility checker above as a tool, reads the findings, and writes a corrected environment file with a short explanation. Every step of its trace is shown, including the tool calls — this is the interaction pattern behind my work on evaluating agentic systems.</p>
+<p class="demo-desc">An agent that plans, calls the reproducibility checker above as a tool, reads the findings, and writes a corrected environment file with a short explanation. Every step of its trace is shown, including the tool calls. This is the interaction pattern behind my work on evaluating agentic systems.</p>
 <p class="demo-cite">Runs against a self-hosted model. Ships disabled: it needs a configured endpoint so no API key is ever exposed in this page.</p>
 </header>
 

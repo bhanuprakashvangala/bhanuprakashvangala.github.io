@@ -1,6 +1,6 @@
 # Assistant API proxy
 
-The chat assistant on the site works **with no backend at all** — it retrieves
+The chat assistant on the site works **with no backend at all**. It retrieves
 passages from a knowledge base generated at build time from `_data/cv.yml`, ranks
 them with BM25, and answers with citations. Zero cost, zero configuration.
 
@@ -60,7 +60,7 @@ Endpoint: the site URL plus `/api/chat` (the redirect in `netlify.toml` maps it
 to the function).
 
 Note: Netlify's classic function runtime buffers responses, so that variant
-returns one complete JSON reply rather than streaming. The site handles both —
+returns one complete JSON reply rather than streaming. The site handles both,
 you just do not get the token-by-token effect. Vercel streams.
 
 ## Point the site at it
@@ -75,7 +75,7 @@ assistant:
 ```
 
 Commit and push; GitHub Pages rebuilds. To try an endpoint without committing,
-open the assistant on the site, click the gear, paste the URL and save — it is
+open the assistant on the site, click the gear, paste the URL and save. It is
 kept in your browser's `localStorage` and overrides the config for you only.
 
 ## Available models
