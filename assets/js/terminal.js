@@ -94,8 +94,8 @@
 
     file(root, 'README.md',
       'Bhanu Prakash Vangala\n' + (kb.person ? kb.person.role : '') + '\n\n' +
-      'This is a small shell over my CV. The content is the same knowledge base\n' +
-      'the assistant answers from, so it cannot drift from the rest of the page.\n\n' +
+      'A small shell over my CV. It reads the same knowledge base the assistant\n' +
+      'does, so it cannot tell you anything the rest of the page does not.\n\n' +
       'Try:  ls   cat about.txt   cd papers   tree   neofetch   ask what is pick and spin\n' +
       'Type help for the full list.', '#about-me');
 

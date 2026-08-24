@@ -1,0 +1,304 @@
+/* ==========================================================================
+   FLUID
+   --------------------------------------------------------------------------
+   The layout was a breakpoint ladder: 600, 900, 1000, 1100, 1280, 1600. Every
+   monitor landed in a bucket and got the bucket's layout, so measuring the
+   real thing showed dead zones and waste:
+
+     1280 / 1366 / 1440 / 1512  ->  all 1216px of content, identical
+     1680 / 1920 / 2560 / 3440  ->  all 1316px, so an ultrawide ran 62% margin
+     390 (any phone)            ->  1012px of page in a 390px viewport
+
+   That last one was a real bug, not a preference. `.hero-grid` used a bare
+   `1fr`, which is `minmax(auto, 1fr)`, and the `auto` minimum resolves to the
+   widest item's min-content: 992px. The track could not shrink, so every
+   phone scrolled sideways. `minmax(0, 1fr)` is the fix, and this layer never
+   writes a bare `1fr` again.
+
+   The rest replaces stepped values with continuous ones:
+
+     - widths and type use clamp(), so a 1366 and a 1512 differ by the 146px
+       between them instead of rendering identically
+     - grids use auto-fit + minmax, so column count follows the space actually
+       available rather than a number picked in advance
+     - every clamp() keeps a rem term, so browser zoom and a user's own font
+       size still scale the page (a pure vw value silently defeats both)
+
+   libsass evaluates clamp/min/max arguments as Sass arithmetic and dies on
+   "Incompatible units: 'vw' and 'rem'", so every such value is interpolated
+   to pass through literally. ASCII only, and additive: no token is redefined.
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. The shell. Continuous from a phone to an ultrawide, with the gutter
+   growing alongside it so the text never sits against the window edge.
+   -------------------------------------------------------------------------- */
+
+/* `#main` already carries the gutter as padding, so this is the shell's cap,
+   not its width: it stays viewport-wide until 112rem and only then stops
+   growing. That removes the dead zone where 1280 through 1512 all rendered
+   an identical 1216px, and gives a 1920 monitor 1728px of content instead of
+   the 1316px it used to get. */
+:root {
+  --maxw-page: 112rem;
+}
+
+@media (min-width: 1600px) {
+  :root { --maxw-page: 112rem; }
+}
+
+
+/* --------------------------------------------------------------------------
+   2. Type. Every size interpolates, so widening the window changes something.
+   The rem term in each preferred value is what keeps zoom working.
+   -------------------------------------------------------------------------- */
+
+.hero-name {
+  font-size: #{"clamp(2.5rem, 1.4rem + 5.6vw, 6rem)"};
+  line-height: 0.98;
+  letter-spacing: -0.042em;
+}
+
+/* Neutralise the three stepped sizes this replaces. */
+@media (min-width: 900px)  { .hero-name { font-size: #{"clamp(2.5rem, 1.4rem + 5.6vw, 6rem)"}; } }
+@media (min-width: 1280px) { .hero-name { font-size: #{"clamp(2.5rem, 1.4rem + 5.6vw, 6rem)"}; } }
+@media (max-width: 600px)  { .hero-name { font-size: #{"clamp(2.5rem, 1.4rem + 5.6vw, 6rem)"}; } }
+
+.hero-role {
+  font-size: #{"clamp(1.15rem, 0.85rem + 0.95vw, 1.85rem)"};
+}
+
+.hero-thesis {
+  font-size: #{"clamp(1.05rem, 0.9rem + 0.55vw, 1.45rem)"};
+}
+
+.section-title {
+  font-size: #{"clamp(1.85rem, 1.15rem + 1.85vw, 3.25rem)"};
+}
+
+@media (min-width: 900px) {
+  .section-title { font-size: #{"clamp(1.85rem, 1.15rem + 1.85vw, 3.25rem)"}; }
+}
+
+/* Vertical rhythm scales with the page rather than stepping at 900px. */
+.section {
+  padding-top: #{"clamp(2.75rem, 1.5rem + 3.4vw, 6rem)"};
+}
+
+.hero {
+  min-height: #{"clamp(0px, 62vh, 46rem)"};
+  padding-top: #{"clamp(1rem, 2.5vw, 2.5rem)"};
+}
+
+
+/* Secondary type. Venues, dates, tags and counts were pinned at 12px, so on a
+   27-inch monitor they stayed exactly as small as on a phone while everything
+   around them grew. They scale now too, within a range that keeps them clearly
+   subordinate to body text and never below 12px. */
+.badge,
+.tag,
+.pub-tag,
+.pub-venue,
+.news-date,
+.timeline-date,
+.stat-label,
+.award-year,
+.kv-key,
+.filter-count {
+  font-size: #{"clamp(0.75rem, 0.705rem + 0.12vw, 0.875rem)"};
+}
+
+.term-title,
+.term-chip {
+  font-size: #{"clamp(0.6875rem, 0.65rem + 0.1vw, 0.8125rem)"};
+}
+
+
+/* --------------------------------------------------------------------------
+   3. The hero split. Two columns exactly when both halves fit, not at a
+   number chosen in advance. The explicit track minimum is also what stops
+   the terminal's min-content from forcing the page wider than the phone.
+   -------------------------------------------------------------------------- */
+
+/* The hero is capped tighter than the rest of the page. Left to the full
+   1728px shell its two tracks reached 840px each while the summary stopped at
+   its 58ch measure, leaving roughly 380px of dead air between the text and the
+   terminal on a 1920 monitor. Capping the grid keeps the text column close to
+   its measure and hands the surplus to the page margin instead of the gap. */
+.hero-grid {
+  grid-template-columns: repeat(auto-fit, minmax(#{"min(100%, 28rem)"}, 1fr));
+  gap: #{"clamp(1.75rem, 2.5vw, 3rem)"};
+  align-items: center;
+  max-width: 84rem;
+}
+
+/* A lead paragraph carries a slightly wider measure than body copy, which lets
+   it fill the column it now sits in rather than ending well short of it. */
+.hero-summary,
+.hero .hero-summary {
+  max-width: #{"min(100%, 64ch)"};
+}
+
+@media (min-width: 1100px) {
+  .hero-grid {
+    grid-template-columns: repeat(auto-fit, minmax(#{"min(100%, 28rem)"}, 1fr));
+    gap: #{"clamp(1.75rem, 2.5vw, 3rem)"};
+  }
+}
+
+/* A grid or flex child refuses to shrink below its content unless told. */
+.hero-col,
+.hero-col > *,
+.pub,
+.pub-body,
+.thread-card,
+.terminal {
+  min-width: 0;
+}
+
+
+/* --------------------------------------------------------------------------
+   3b. The prose measure belongs to prose. `.page__content > ol` (0,2,1) was
+   outranking `.thread-grid` (0,1,0), so the three-thread grid was capped at
+   74ch and rendered two-up in 605px inside a 1376px page. These selectors
+   match that specificity and come later, so the layout containers opt out
+   while paragraphs and real lists keep their measure.
+   -------------------------------------------------------------------------- */
+
+.page__content ol.thread-grid,
+.page__content ol.pub-list,
+.page__content ol.news-feed,
+.page__content ol.timeline,
+.page__content ul.project-grid,
+.page__content ul.stat-grid,
+.page__content ul.award-grid,
+.page__content ul.program-list,
+.page__content ol.program-list,
+.page__content p.tag-row,
+.page__content p.link-pills,
+.page__content div.tag-row,
+.page__content div.link-pills {
+  max-width: none;
+}
+
+
+/* --------------------------------------------------------------------------
+   4. Intrinsic grids. Column count follows the width available. A 1366 laptop
+   gets two publication columns, a 1512 gets three, an ultrawide gets four,
+   and a phone gets one, with nothing to keep in sync by hand.
+   -------------------------------------------------------------------------- */
+
+.pub-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(#{"min(100%, 28rem)"}, 1fr));
+  gap: #{"clamp(1rem, 1.6vw, 1.75rem)"};
+}
+
+@media (min-width: 1000px) {
+  .pub-list {
+    grid-template-columns: repeat(auto-fit, minmax(#{"min(100%, 28rem)"}, 1fr));
+  }
+}
+
+.pub-list .pub {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 0;
+}
+
+.thread-grid {
+  grid-template-columns: repeat(auto-fit, minmax(#{"min(100%, 17rem)"}, 1fr));
+  gap: #{"clamp(1rem, 1.8vw, 2rem)"};
+}
+
+@media (min-width: 1000px) {
+  .thread-grid {
+    grid-template-columns: repeat(auto-fit, minmax(#{"min(100%, 17rem)"}, 1fr));
+  }
+}
+
+.project-grid {
+  grid-template-columns: repeat(auto-fit, minmax(#{"min(100%, 19rem)"}, 1fr));
+  gap: #{"clamp(1rem, 1.6vw, 1.75rem)"};
+}
+
+@media (min-width: 1100px) {
+  .project-grid {
+    grid-template-columns: repeat(auto-fit, minmax(#{"min(100%, 19rem)"}, 1fr));
+  }
+}
+
+/* News flows into as many columns as fit rather than exactly two above
+   1100px, so it stops being one tall strip on a wide screen. */
+.news-feed {
+  -webkit-columns: 26rem;
+  columns: 26rem;
+  -webkit-column-gap: #{"clamp(1.5rem, 2.5vw, 2.5rem)"};
+  column-gap: #{"clamp(1.5rem, 2.5vw, 2.5rem)"};
+}
+
+@media (min-width: 1100px) {
+  .news-feed {
+    -webkit-column-count: auto;
+    column-count: auto;
+    -webkit-columns: 26rem;
+    columns: 26rem;
+  }
+}
+
+.news-feed .news-item {
+  -webkit-column-break-inside: avoid;
+  break-inside: avoid;
+}
+
+
+/* --------------------------------------------------------------------------
+   5. The terminal sizes to the window it is in, rather than stepping through
+   460 / 380 / 320. vh keeps it proportional on a short laptop and a tall
+   monitor alike; the rem bounds keep it usable at either extreme.
+   -------------------------------------------------------------------------- */
+
+.terminal {
+  height: #{"clamp(19rem, 44vh, 31rem)"};
+  font-size: #{"clamp(11.5px, 0.55rem + 0.32vw, 13.5px)"};
+}
+
+@media (max-width: 1099px) {
+  .terminal { height: #{"clamp(19rem, 44vh, 31rem)"}; }
+}
+
+@media (max-width: 600px) {
+  .terminal {
+    height: #{"clamp(17rem, 40vh, 24rem)"};
+    font-size: 11.5px;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   6. Nothing may push the document wider than the viewport. The hero grid was
+   the one real offender, but media and preformatted text are the usual
+   sources and cost nothing to pin down.
+   -------------------------------------------------------------------------- */
+
+#main img,
+#main svg,
+#main video,
+#main canvas,
+#main iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+#main pre,
+#main table {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}

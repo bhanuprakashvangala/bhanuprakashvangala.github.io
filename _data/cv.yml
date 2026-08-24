@@ -33,14 +33,14 @@ profile:
   tagline: "When trust, reproducibility, and efficiency are the same problem."
   summary: >-
     I work where machine learning meets the messy reality of the systems that have
-    to run it. My research keeps returning to one question: when an AI pipeline
-    produces a claim or an artifact, what does it actually take to trust it?
-    Language models today are fluent, confident, routinely wrong in ways that are
-    hard to detect, and they produce artifacts that often cannot be reproduced even
-    by the person who generated them. My dissertation, executable reliability for
-    AI systems, argues that what an AI system claims about itself, whether about
-    its outputs, its dependencies, or its resource behaviour, should be testable by
-    anyone, not just by the team that built it.
+    to run it. One question keeps pulling me back. When an AI pipeline hands you a
+    claim or an artifact, what does it take to actually trust it? Models today are
+    fluent and confident and often wrong, in ways that are genuinely hard to catch,
+    and the code they write tends to run on the machine that produced it and
+    nowhere else. My dissertation, executable reliability for AI systems, makes a
+    fairly plain argument: whatever a system says about itself, about its outputs,
+    its dependencies or its resource use, someone outside the team that built it
+    ought to be able to check.
   dissertation: "Executable Reliability for AI Systems"
   dissertation_sub: "When trust, reproducibility, and efficiency are the same problem"
   area: "AI, Systems & Networking"
@@ -61,9 +61,12 @@ links:
   - { id: linkedin, label: "LinkedIn",       url: "https://www.linkedin.com/in/vangalabhanuprakash/",             icon: "fab fa-linkedin" }
   - { id: cv,       label: "CV",             url: "/cv/",                                                         icon: "fas fa-file-alt" }
 
+# `count:` derives the figure from the publication list at build time, so it
+# cannot drift when a paper is added. `num:` is for figures with no source
+# elsewhere in this file.
 stats:
-  - { num: "9",     label: "Selected publications" }
-  - { num: "5",     label: "Oral presentations" }
+  - { count: "publications", label: "Selected publications" }
+  - { count: "orals",        label: "Oral presentations" }
   - { num: "3",     label: "Federal funders" }
   - { num: "115+",  label: "Students taught" }
 
@@ -76,15 +79,15 @@ threads:
   - id: trustworthy
     n: "01"
     title: "Trustworthy outputs"
-    lead: "Catching hallucinations in scientific LLMs"
+    lead: "Knowing when a scientific answer is invented"
     text: >-
       A benchmark and a multi-stage detector for hallucination in materials-science
       question answering, combining self-consistency checking, retrieval against
       curated sources, and a knowledge graph that flags low-connectivity fact
       fragments as likely fabrications. It cuts hallucination rates by about 30%
-      and reaches F1 0.95 on cross-domain inconsistency detection. What matters is
-      not the number but that the pipeline is auditable: a reviewer can ask why a
-      response was flagged and get a real answer rather than a confidence score.
+      and reaches F1 0.95 on cross-domain inconsistency detection. The number is
+      the least interesting part. What I wanted was a pipeline you can interrogate.
+      Ask why a response got flagged and you get a reason back, not a score.
     refs: ["hallumat", "halluformer"]
     tag: hallucination
 
@@ -96,24 +99,25 @@ threads:
       100 standardised prompts given to Claude, Codex and Gemini agents, and the
       300 resulting projects executed in clean containers. Only 68.3% ran out of
       the box: Python 89%, Java 44%. The agents declared about three dependencies
-      per project; the projects pulled in around 49 at runtime, a 13.5x gap
-      absorbed by whoever debugs the code afterward. "It compiled on my machine"
-      is not the same as "it is reproducible", and the field's benchmarks have been
-      quietly measuring the wrong thing.
+      per project; the projects pulled in around 49 at runtime. That 13.5x gap
+      does not disappear. It lands on whoever picks the code up next. "It ran on my
+      machine" and "it is reproducible" are two different claims, and our
+      benchmarks have quietly been scoring the first one.
     refs: ["not-reproducible", "env-gap", "beyond-functional-correctness"]
     tag: reproducibility
 
   - id: accountable
     n: "03"
     title: "Accountable systems at scale"
-    lead: "Serving LLMs efficiently and accountably"
+    lead: "Nine models, a fixed number of GPUs"
     text: >-
       A Kubernetes-native multi-tenant serving framework that classifies queries by
       complexity, routes them across nine models from 1B to 27B parameters using
       Thompson Sampling, and manages warm pools through a custom cold-start state
       machine. Across 310,190 inference requests on the NRP Nautilus cluster it
       reached 61% GPU utilization against 31% for static deployment, cutting
-      GPU-hours by 46%.
+      GPU-hours by 46%. Most of that comes from one decision: stop holding nine
+      models resident when the traffic does not call for them.
     refs: ["pick-and-spin", "multi-model-orchestration"]
     tag: orchestration
 
@@ -773,15 +777,15 @@ news:
 # -----------------------------------------------------------------------------
 assistant:
   greeting: >-
-    Hi, I'm an assistant grounded in Bhanu's CV, papers and projects. Ask about his
-    research on agentic AI, LLM orchestration or reproducibility, his background and
-    experience, or how to reach him.
+    Hi. I answer from Bhanu's CV, papers and projects, and from nothing else. Ask
+    about the research, where he has worked, or how to get hold of him. I will
+    point you at the section each answer came from so you can check it yourself.
   suggestions:
-    - "What is Bhanu's research about?"
-    - "What did he do at Microsoft?"
-    - "Summarise the AAAI 2026 workshop papers"
-    - "What is Pick-and-Spin?"
-    - "Is he available for collaboration?"
+    - "What is his research actually about?"
+    - "What did he build at Microsoft?"
+    - "What are the AAAI 2026 workshop papers?"
+    - "Explain Pick-and-Spin"
+    - "Is he open to collaborating?"
   facts:
     - id: contact
       title: "Contact & availability"

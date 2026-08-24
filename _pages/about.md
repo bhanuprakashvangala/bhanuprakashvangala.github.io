@@ -38,7 +38,6 @@ redirect_from:
 <p class="muted"><strong>Research interests:</strong> {{ p.interests | join: " &middot; " }}</p>
 </div>
 <div class="hero-col hero-col--term">
-
 <div class="terminal" id="terminal" role="group" aria-label="Interactive shell over the CV">
 <div class="term-bar" aria-hidden="true">
 <span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span>
@@ -59,17 +58,23 @@ redirect_from:
 </label>
 </div>
 </div>
-
+</div>
 <ul class="stat-grid">
 {%- for s in cv.stats %}
-<li class="stat"><span class="stat-num">{{ s.num }}</span><span class="stat-label">{{ s.label }}</span></li>
+{%- assign n = s.num -%}
+{%- if s.count == "publications" -%}
+  {%- assign n = cv.publications | where_exp: "p", "p.ref" | size -%}
+{%- elsif s.count == "orals" -%}
+  {%- assign n = cv.publications | where: "kind", "Oral" | size -%}
+{%- endif -%}
+<li class="stat"><span class="stat-num">{{ n }}</span><span class="stat-label">{{ s.label }}</span></li>
 {%- endfor %}
 </ul>
 </section>
 
 <section id="research-threads" class="section" aria-labelledby="threads-title">
 <div class="section-head"><h2 class="section-title" id="threads-title">The argument</h2></div>
-<p class="section-sub">Three threads that look different on the surface and answer the same question: how do we build AI systems whose correctness, efficiency and accountability are designed in from the start rather than patched on later?</p>
+<p class="section-sub">Three threads that look unrelated from the outside. They are one question asked three ways. Can anyone else check this?</p>
 
 <ol class="thread-grid">
 {%- for t in cv.threads %}
@@ -98,12 +103,36 @@ redirect_from:
 <button type="button" class="news-more" id="news-more" aria-expanded="false" aria-controls="news-feed">Show all {{ cv.news | size }} updates</button>
 </section>
 
+<section id="experience" class="section" aria-labelledby="exp-title">
+<div class="section-head"><h2 class="section-title" id="exp-title">Experience</h2></div>
+
+<ol class="timeline">
+{%- for x in cv.experience %}
+<li class="timeline-item{% if x.current %} is-current{% endif %}">
+<span class="timeline-marker" aria-hidden="true"></span>
+<p class="timeline-date">{{ x.start }} &ndash; {{ x.end }}</p>
+<h3 class="timeline-title">{{ x.title }}</h3>
+<p class="timeline-org">{{ x.org }} &middot; {{ x.location }}</p>
+{%- if x.collaborators %}
+<div class="timeline-body"><p class="muted">With {{ x.collaborators }}</p></div>
+{%- endif %}
+<ul class="timeline-bullets">
+{%- for b in x.bullets %}<li>{{ b | markdownify | remove: '<p>' | remove: '</p>' | strip }}</li>{% endfor %}
+</ul>
+{%- if x.tags %}
+<p class="tag-row">{% for t in x.tags %}<span class="tag">{{ t }}</span>{% endfor %}</p>
+{%- endif %}
+</li>
+{%- endfor %}
+</ol>
+</section>
+
 <section id="publications" class="section" aria-labelledby="pubs-title">
 <div class="section-head">
 <h2 class="section-title" id="pubs-title">Publications</h2>
 <a class="section-action" href="https://scholar.google.com/citations?user=qHBOnpkAAAAJ&amp;hl=en">Google Scholar &rarr;</a>
 </div>
-<p class="section-sub">My name is shown in <span class="me">bold</span>. Filter by topic below.</p>
+<p class="section-sub">Mine is the name in <span class="me">bold</span>. Filter by topic if you want a narrower slice.</p>
 
 <div class="filter-bar" role="group" aria-label="Filter publications by topic">
 {%- for f in cv.pub_filters %}
@@ -143,7 +172,7 @@ redirect_from:
 
 <section id="research" class="section" aria-labelledby="research-title">
 <div class="section-head"><h2 class="section-title" id="research-title">Research programs</h2></div>
-<p class="section-sub">The funded programs my work sits inside, and the people I build them with.</p>
+<p class="section-sub">The funded programs this work lives inside, and the people I do it with.</p>
 
 <ul class="project-grid">
 {%- for r in cv.research %}
@@ -218,30 +247,6 @@ redirect_from:
 </ol>
 </section>
 
-<section id="experience" class="section" aria-labelledby="exp-title">
-<div class="section-head"><h2 class="section-title" id="exp-title">Experience</h2></div>
-
-<ol class="timeline">
-{%- for x in cv.experience %}
-<li class="timeline-item{% if x.current %} is-current{% endif %}">
-<span class="timeline-marker" aria-hidden="true"></span>
-<p class="timeline-date">{{ x.start }} &ndash; {{ x.end }}</p>
-<h3 class="timeline-title">{{ x.title }}</h3>
-<p class="timeline-org">{{ x.org }} &middot; {{ x.location }}</p>
-{%- if x.collaborators %}
-<div class="timeline-body"><p class="muted">With {{ x.collaborators }}</p></div>
-{%- endif %}
-<ul class="timeline-bullets">
-{%- for b in x.bullets %}<li>{{ b | markdownify | remove: '<p>' | remove: '</p>' | strip }}</li>{% endfor %}
-</ul>
-{%- if x.tags %}
-<p class="tag-row">{% for t in x.tags %}<span class="tag">{{ t }}</span>{% endfor %}</p>
-{%- endif %}
-</li>
-{%- endfor %}
-</ol>
-</section>
-
 <section id="service" class="section" aria-labelledby="service-title">
 <div class="section-head"><h2 class="section-title" id="service-title">Talks, service &amp; teaching</h2></div>
 
@@ -275,13 +280,13 @@ redirect_from:
 
 <section class="section">
 <div class="section-head"><h2 class="section-title">Get in touch</h2></div>
-<p>I'm always glad to talk about agentic systems, reproducibility, or LLM serving, and I'm open to collaborations and speaking invitations.</p>
+<p>Happy to talk about agentic systems, reproducibility, or serving LLMs at scale. I'm open to collaborations and to speaking invitations.</p>
 <div class="link-pills">
 <a class="link-pill link-pill--primary" href="mailto:{{ p.email }}"><i class="fas fa-envelope" aria-hidden="true"></i> {{ p.email }}</a>
 <a class="link-pill" href="{{ '/cv/' | relative_url }}"><i class="fas fa-file-alt" aria-hidden="true"></i> Full CV</a>
 <a class="link-pill" href="https://github.com/bhanuprakashvangala"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
 </div>
-<p class="muted">Or ask the assistant in the corner. It answers from this CV and cites the section it drew from.</p>
+<p class="muted">Or ask the assistant in the corner. It only knows what's on this page, and it will tell you which section it took each answer from.</p>
 </section>
 
 <div class="lightbox" id="lightbox" role="dialog" aria-label="Enlarged image" aria-modal="true">
