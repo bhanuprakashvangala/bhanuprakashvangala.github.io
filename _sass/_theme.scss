@@ -1,0 +1,1265 @@
+/* ==========================================================================
+   THEME -- base elements + page shell
+   --------------------------------------------------------------------------
+   Imported LAST in assets/css/main.scss, i.e. after every Minimal Mistakes
+   partial and after main.scss's own inline rules. Most overrides therefore
+   win on source order at equal specificity; where MM used a heavier selector
+   the matching weight is reproduced and noted inline.
+
+   Components (cards, timelines, badges, chat UI, demos) are NOT defined here.
+
+   libsass-safe: classic @import/@include/nesting only.
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. Document
+   MM's _reset.scss pins html to 15px; restore a 16px root so the rem-based
+   token scale is predictable and body copy is readable.
+   -------------------------------------------------------------------------- */
+
+html {
+  font-size: 100%;
+  background-color: var(--c-bg);
+  scroll-behavior: smooth;
+  /* anchor jumps must clear the sticky masthead */
+  scroll-padding-top: var(--offset-anchor);
+  -webkit-tap-highlight-color: rgba(0, 54, 159, 0.15);
+}
+
+body {
+  margin: 0;
+  padding: 0;                       /* main.scss set `padding: 1rem`; the
+                                       masthead needs to run full-bleed */
+  background-color: var(--c-bg);
+  color: var(--c-text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  line-height: var(--lh-normal);
+  font-feature-settings: "kern" 1, "liga" 1, "cv05" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+
+/* --------------------------------------------------------------------------
+   2. Motion policy
+   MM blanket-applies `transition: all .2s` to p, span, img, h1, td, input...
+   which makes every theme switch flash. Narrow it back to the few elements
+   that actually need a transition.
+   -------------------------------------------------------------------------- */
+
+b, i, strong, em, blockquote, p, q, span, figure, img, h1, h2, header, input, tr, td {
+  -webkit-transition: none;
+  transition: none;
+}
+
+a {
+  -webkit-transition: color var(--dur-fast) var(--ease);
+  transition: color var(--dur-fast) var(--ease);
+}
+
+/* `!important` is required here and only here: MM/main.scss declare
+   `animation: intro .3s both` and `transition: all .2s` directly on elements
+   and this blanket kill has to outrank all of them at once. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    -webkit-animation-duration: 0.01ms !important;
+            animation-duration: 0.01ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+            animation-iteration-count: 1 !important;
+    -webkit-transition-duration: 0.01ms !important;
+            transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   3. Selection
+   -------------------------------------------------------------------------- */
+
+::-moz-selection {
+  color: var(--c-text);
+  background: var(--c-selection);
+}
+
+::selection {
+  color: var(--c-text);
+  background: var(--c-selection);
+}
+
+
+/* --------------------------------------------------------------------------
+   4. Focus
+   MM's %tab-focus paints a 5px orange outline on every `a:focus`, including
+   mouse clicks. Suppress it for non-keyboard focus, then paint one consistent
+   accent ring for :focus-visible. Outlines are replaced, never removed.
+   -------------------------------------------------------------------------- */
+
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible),
+input:focus:not(:focus-visible),
+select:focus:not(:focus-visible),
+textarea:focus:not(:focus-visible),
+summary:focus:not(:focus-visible),
+[tabindex]:focus:not(:focus-visible) {
+  outline: 0;
+  outline-offset: 0;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+
+/* --------------------------------------------------------------------------
+   5. Typography
+   main.scss set h1-h4 in Merriweather at #00369f. Headings go back to Inter:
+   at heading sizes the navy serif read as decorative rather than academic.
+   The serif survives in exactly one place -- .hero-name.
+   -------------------------------------------------------------------------- */
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 var(--space-3);
+  color: var(--c-text);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  line-height: var(--lh-tight);
+  letter-spacing: -0.011em;
+}
+
+h1 { font-size: var(--fs-2xl); letter-spacing: -0.018em; }
+h2 { font-size: var(--fs-xl); }
+h3 { font-size: var(--fs-lg); }
+h4 { font-size: var(--fs-base); }
+h5 { font-size: var(--fs-sm); }
+h6 { font-size: var(--fs-sm); color: var(--c-text-muted); }
+
+/* headings that follow flowing content need air above them */
+p + h2, ul + h2, ol + h2, blockquote + h2, figure + h2, table + h2 { margin-top: var(--space-9); }
+p + h3, ul + h3, ol + h3, blockquote + h3, figure + h3, table + h3 { margin-top: var(--space-7); }
+p + h4, ul + h4, ol + h4                                          { margin-top: var(--space-6); }
+
+p {
+  margin: 0 0 var(--space-4);
+  color: var(--c-text);
+}
+
+ul, ol {
+  margin: 0 0 var(--space-4);
+  padding-left: var(--space-6);
+}
+
+ul li, ol li {
+  margin-bottom: var(--space-2);
+}
+
+li > ul, li > ol {
+  margin-top: var(--space-2);
+  margin-bottom: 0;
+}
+
+strong, b {
+  font-weight: 600;
+  color: var(--c-text);
+}
+
+small, .small {
+  font-size: var(--fs-sm);
+  color: var(--c-text-muted);
+}
+
+blockquote {
+  margin: var(--space-6) 0;
+  padding: var(--space-1) 0 var(--space-1) var(--space-5);
+  color: var(--c-text-muted);
+  font-style: normal;
+  border-left: 2px solid var(--c-accent);
+
+  p:last-child { margin-bottom: 0; }
+
+  cite {
+    display: block;
+    margin-top: var(--space-2);
+    color: var(--c-text-faint);
+    font-size: var(--fs-sm);
+    font-style: normal;
+  }
+}
+
+hr {
+  display: block;
+  height: 0;
+  margin: var(--space-9) 0;
+  border: 0;
+  border-top: 1px solid var(--c-border);
+}
+
+abbr[title],
+abbr[data-original-title] {
+  border-bottom: 1px dotted var(--c-border-strong);
+}
+
+u, ins {
+  border-bottom-color: var(--c-border-strong);
+}
+
+figcaption {
+  color: var(--c-text-faint);
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
+}
+
+/* Measure. Applied to prose that is a direct child of the content wrapper,
+   a section, or an opt-in .prose block -- never blanket-applied to `p`, so
+   component internals (cards, tables, grids) keep their own widths. */
+.page__content > p,
+.page__content > ul,
+.page__content > ol,
+.page__content > blockquote,
+.section > p,
+.section > ul,
+.section > ol,
+.prose p,
+.prose ul,
+.prose ol {
+  max-width: var(--maxw-text);
+}
+
+
+/* --------------------------------------------------------------------------
+   6. Links
+   Quiet by default; body prose underlines for accessibility.
+   -------------------------------------------------------------------------- */
+
+a {
+  color: var(--c-accent);
+  text-decoration: none;
+
+  &:hover,
+  &:active {
+    color: var(--c-accent-hover);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+}
+
+/* MM already underlines content links -- retint and refine, don't undo. */
+.page__content a {
+  color: var(--c-accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+
+  &:hover {
+    color: var(--c-accent-hover);
+    text-decoration-thickness: 2px;
+  }
+}
+
+/* _custom.scss pins these to #2a6496 with an attribute selector (0,1,1),
+   so the same weight is needed to retint them for dark mode. */
+a[href*="drive.google"],
+a[href*="pdf"] {
+  color: var(--c-accent);
+}
+
+
+/* --------------------------------------------------------------------------
+   7. Code
+   -------------------------------------------------------------------------- */
+
+code, kbd, samp, pre, tt {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  font-feature-settings: normal;
+}
+
+p > code, a > code, li > code, td > code, figcaption > code, h1 > code, h2 > code, h3 > code {
+  padding: 0.12em 0.35em;
+  color: var(--c-text);
+  background: var(--c-code-bg);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  box-shadow: none;
+
+  &:before, &:after { content: none; }
+}
+
+pre {
+  margin: 0 0 var(--space-5);
+  padding: var(--space-4) var(--space-5);
+  overflow-x: auto;
+  color: var(--c-text);
+  background: var(--c-code-bg);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+  line-height: var(--lh-normal);
+
+  code {
+    padding: 0;
+    background: none;
+    border: 0;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   8. Skip link
+   Off-canvas until it takes focus, then pinned above the sticky masthead.
+   :focus-within also covers the `<ul class="skip-link"><li><a>` variant MM
+   ships in _utilities.scss.
+   -------------------------------------------------------------------------- */
+
+.skip-link {
+  position: fixed;
+  top: -6rem;
+  left: var(--space-4);
+  z-index: 100;
+  display: inline-block;
+  margin: 0;
+  padding: var(--space-3) var(--space-5);
+  color: var(--c-accent-contrast);
+  background: var(--c-accent);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  -webkit-transition: top var(--dur) var(--ease);
+  transition: top var(--dur) var(--ease);
+
+  &:hover {
+    color: var(--c-accent-contrast);
+    text-decoration: none;
+  }
+
+  &:focus,
+  &:focus-within {
+    top: var(--space-2);
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   9. Shell width
+   One shared measure for masthead, content and footer so the three columns
+   of chrome line up. `#main` needs id weight (1,0,0) to beat _page.scss.
+   -------------------------------------------------------------------------- */
+
+#main {
+  max-width: var(--maxw-page);
+  margin-top: var(--space-8);
+  padding-left: var(--space-5);
+  padding-right: var(--space-5);
+}
+
+.masthead__inner-wrap,
+.page__footer footer {
+  max-width: var(--maxw-page);
+}
+
+@media (min-width: 48em) {
+  #main {
+    padding-left: var(--space-7);
+    padding-right: var(--space-7);
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   10. Masthead -- slim, sticky, translucent
+   -------------------------------------------------------------------------- */
+
+.masthead {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background-color: var(--c-header-bg);   /* solid fallback */
+  border-bottom: 1px solid var(--c-border);
+  -webkit-animation: none;
+          animation: none;
+}
+
+/* Only go translucent where the blur actually renders; otherwise the solid
+   fallback above stands. Top-level @supports -- no nesting, libsass-safe. */
+@supports ((-webkit-backdrop-filter: blur(8px)) or (backdrop-filter: blur(8px))) {
+  .masthead {
+    background-color: var(--c-header-bg-blur);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+            backdrop-filter: saturate(180%) blur(12px);
+  }
+}
+
+.masthead__inner-wrap {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  padding: 0 var(--space-5);
+  font-family: var(--font-sans);
+}
+
+.masthead__menu {
+  -webkit-box-flex: 1;
+          flex: 1 1 auto;
+  min-width: 0;
+}
+
+@media (min-width: 48em) {
+  .masthead__inner-wrap {
+    padding: 0 var(--space-7);
+  }
+}
+
+/* Greedy nav ---------------------------------------------------------------
+   The visible-links / hidden-links display types (table, table-cell) are left
+   alone: the greedy-nav script measures those cells to decide what to hide. */
+.greedy-nav {
+  position: relative;
+  min-width: 0;
+  min-height: var(--h-header);
+  background: transparent;
+
+  .visible-links {
+    height: var(--h-header);
+  }
+
+  a {
+    margin: 0 var(--space-4);
+    padding: var(--space-3) 0;
+    color: var(--c-text-muted);
+    font-size: var(--fs-sm);
+    font-weight: 500;
+    letter-spacing: 0.005em;
+    text-decoration: none;
+
+    &:hover {
+      color: var(--c-text);
+      text-decoration: none;
+    }
+  }
+
+  /* 2px accent underline, revealed on hover, latched by .is-active */
+  .visible-links a:before {
+    height: 2px;
+    background: var(--c-accent);
+    -webkit-transition: -webkit-transform var(--dur) var(--ease);
+    transition: transform var(--dur) var(--ease);
+  }
+}
+
+/* Brand / home item reads as the wordmark */
+.masthead__menu-item--lg a {
+  color: var(--c-text);
+  font-weight: 600;
+  font-size: var(--fs-base);
+  letter-spacing: -0.01em;
+}
+
+/* Current page. Both hook shapes are supported so the HTML author can put
+   .is-active on the <li> or on the <a>. */
+.masthead__menu-item a.is-active,
+.masthead__menu-item.is-active a,
+.greedy-nav .visible-links a.is-active,
+.greedy-nav .visible-links .is-active a {
+  color: var(--c-accent);
+  font-weight: 600;
+}
+
+.greedy-nav .visible-links a.is-active:before,
+.greedy-nav .visible-links .is-active a:before {
+  -webkit-transform: scaleX(1);
+      -ms-transform: scaleX(1);
+          transform: scaleX(1);
+}
+
+/* Hamburger (theme JS toggles .close on this button) ---------------------- */
+.greedy-nav button {
+  right: 0;
+  width: 44px;
+  padding: 0;
+  background-color: transparent;
+  color: var(--c-text);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--c-surface-2);
+  }
+}
+
+.greedy-nav .navicon,
+.greedy-nav .navicon:before,
+.greedy-nav .navicon:after {
+  width: 20px;
+  height: 2px;
+  border-radius: 2px;
+}
+
+/* Scoped away from .close so MM's "hide the middle bar" X state still wins. */
+.greedy-nav button:not(.close) .navicon {
+  background: var(--c-text);
+}
+
+.greedy-nav .navicon:before,
+.greedy-nav .navicon:after {
+  background: var(--c-text);
+}
+
+/* Overflow dropdown ------------------------------------------------------- */
+.greedy-nav .hidden-links {
+  margin-top: var(--space-2);
+  padding: var(--space-2);
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+
+  &:before { border-color: var(--c-border) transparent; }
+  &:after  { border-color: var(--c-surface) transparent; }
+
+  li {
+    border-bottom: 0;
+  }
+
+  a {
+    margin: 0;
+    padding: var(--space-3) var(--space-4);
+    color: var(--c-text);
+    font-size: var(--fs-sm);
+    border-radius: var(--radius-sm);
+
+    &:hover {
+      color: var(--c-accent);
+      background: var(--c-accent-soft);
+    }
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   11. Theme toggle
+   Compact icon button for the masthead. Carries aria-pressed; the two icon
+   spans (.icon-moon / .icon-sun) are swapped from that same attribute so the
+   control never needs a class of its own.
+   -------------------------------------------------------------------------- */
+
+.theme-toggle {
+  -webkit-box-flex: 0;
+          flex: 0 0 auto;
+  display: -webkit-inline-box;
+  display: inline-flex;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+          justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin: 0 0 0 var(--space-2);
+  padding: 0;
+  color: var(--c-text-muted);
+  background: transparent;
+  border: 1px solid var(--c-border-strong);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  line-height: 1;
+  -webkit-transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease), background-color var(--dur-fast) var(--ease);
+  transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease), background-color var(--dur-fast) var(--ease);
+
+  &:hover {
+    color: var(--c-accent);
+    background: var(--c-accent-soft);
+    border-color: var(--c-accent);
+  }
+
+  svg {
+    display: block;
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .icon-sun  { display: none; }
+  .icon-moon { display: block; }
+}
+
+/* pressed == dark mode engaged */
+.theme-toggle[aria-pressed="true"] {
+  color: var(--c-accent);
+  border-color: var(--c-accent);
+  background: var(--c-accent-soft);
+
+  .icon-sun  { display: block; }
+  .icon-moon { display: none; }
+}
+
+
+/* --------------------------------------------------------------------------
+   12. Sidebar -> profile card
+   Below $large MM lays the profile out as a horizontal strip and turns
+   .author__urls into a JS-toggled dropdown (main.js calls .show()/.hide() on
+   it), so `display` is never touched here -- only box, colour and rhythm.
+   -------------------------------------------------------------------------- */
+
+.sidebar {
+  margin-bottom: var(--space-7);
+
+  p, li {
+    font-family: var(--font-sans);
+    font-size: var(--fs-sm);
+    line-height: var(--lh-normal);
+  }
+
+  /* clear the sticky masthead when the column pins */
+  &.sticky {
+    @include breakpoint($large) {
+      top: 5.5rem;
+    }
+  }
+}
+
+.sidebar .author__profile {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+
+  @include breakpoint($large) {
+    display: block;
+    padding: var(--space-4);
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-lg);
+  }
+}
+
+.sidebar .author__avatar {
+  -webkit-box-flex: 0;
+          flex: 0 0 auto;
+  width: 72px;
+
+  @include breakpoint($large) {
+    width: auto;
+  }
+}
+
+.sidebar .author__avatar img {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  max-width: 180px;
+  padding: 0;
+  background: var(--c-bg);
+  border: 1px solid var(--c-border);
+  border-radius: 50%;
+}
+
+.sidebar .author__content {
+  -webkit-box-flex: 1;
+          flex: 1 1 auto;
+  min-width: 0;
+  padding-left: var(--space-4);
+  line-height: var(--lh-normal);
+
+  @include breakpoint($large) {
+    padding-left: 0;
+  }
+}
+
+.sidebar .author__name {
+  margin: 0;
+  color: var(--c-text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-md);
+  font-weight: 600;
+  line-height: var(--lh-tight);
+  letter-spacing: -0.012em;
+
+  @include breakpoint($large) {
+    margin: var(--space-4) 0 var(--space-1);
+  }
+}
+
+.sidebar .author__bio {
+  margin: var(--space-1) 0 0;
+  color: var(--c-text-muted);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-normal);
+
+  @include breakpoint($large) {
+    margin: 0 0 var(--space-4);
+  }
+}
+
+.sidebar .author__urls-wrapper {
+  font-family: var(--font-sans);
+
+  button {
+    width: auto;
+    min-height: 40px;
+    padding: var(--space-2) var(--space-4);
+    color: var(--c-text);
+    background: transparent;
+    border: 1px solid var(--c-border-strong);
+    border-radius: var(--radius-pill);
+    font-size: var(--fs-sm);
+    font-weight: 500;
+
+    &:hover {
+      color: var(--c-accent);
+      border-color: var(--c-accent);
+      background: var(--c-accent-soft);
+    }
+  }
+}
+
+/* Small screens: floating panel. Large: plain vertical list. */
+.sidebar .author__urls {
+  margin-top: var(--space-3);
+  padding: var(--space-2);
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+
+  &:before { border-color: var(--c-border) transparent; }
+  &:after  { border-color: var(--c-surface) transparent; }
+
+  @include breakpoint($large) {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+}
+
+.sidebar .author__urls li {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  margin: 0;
+  color: var(--c-text-muted);
+  font-size: var(--fs-sm);
+  white-space: normal;     /* MM used nowrap; long emails must wrap */
+  word-break: break-word;
+}
+
+.sidebar .author__urls a {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-flex: 1;
+          flex: 1 1 auto;
+  min-height: 36px;
+  margin: 0;
+  padding: var(--space-2);
+  color: var(--c-text-muted);
+  font-size: var(--fs-sm);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  word-break: break-word;
+
+  &:hover {
+    color: var(--c-accent);
+    background: var(--c-accent-soft);
+    text-decoration: none;
+  }
+}
+
+/* fa-fw already fixes icon width; align and mute it */
+.sidebar .author__urls i,
+.sidebar .author__urls .fas,
+.sidebar .author__urls .fab,
+.sidebar .author__urls .far {
+  -webkit-box-flex: 0;
+          flex: 0 0 auto;
+  width: 1.25em;
+  margin-right: var(--space-2);
+  color: var(--c-text-faint);
+  text-align: center;
+}
+
+.sidebar .author__urls a:hover i,
+.sidebar .author__urls a:hover .fas,
+.sidebar .author__urls a:hover .fab,
+.sidebar .author__urls a:hover .far {
+  color: var(--c-accent);
+}
+
+
+/* --------------------------------------------------------------------------
+   13. Section rhythm
+   -------------------------------------------------------------------------- */
+
+.section {
+  margin: 0 0 var(--space-10);
+  scroll-margin-top: var(--offset-anchor);
+
+  &:last-child { margin-bottom: var(--space-8); }
+}
+
+.section-head {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-5);
+  margin: 0 0 var(--space-6);
+  border-bottom: 1px solid var(--c-border);
+}
+
+.section-title {
+  position: relative;
+  margin: 0;
+  padding-bottom: var(--space-3);
+  color: var(--c-text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-xl);
+  font-weight: 600;
+  line-height: var(--lh-tight);
+  letter-spacing: -0.014em;
+
+  /* the subtle accent rule: a 40px segment sitting on the head's hairline */
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 40px;
+    height: 2px;
+    background: var(--c-accent);
+    border-radius: 2px;
+  }
+}
+
+/* optional trailing action in .section-head ("All publications ->") */
+.section-action {
+  padding-bottom: var(--space-3);
+  color: var(--c-text-muted);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  white-space: nowrap;
+
+  a { color: inherit; }
+  a:hover { color: var(--c-accent); }
+}
+
+.section-sub {
+  max-width: var(--maxw-text);
+  margin: 0 0 var(--space-6);
+  color: var(--c-text-muted);
+  font-size: var(--fs-md);
+  line-height: var(--lh-loose);
+}
+
+
+/* --------------------------------------------------------------------------
+   14. Hero
+   The one place the serif is kept: a single large name, set once, reads as a
+   title page rather than as decoration.
+   -------------------------------------------------------------------------- */
+
+.hero {
+  margin: 0 0 var(--space-10);
+  padding: var(--space-6) 0 var(--space-9);
+  border-bottom: 1px solid var(--c-border);
+}
+
+.hero-name {
+  margin: 0 0 var(--space-4);
+  color: var(--c-text);
+  font-family: var(--font-serif);
+  font-size: var(--fs-3xl);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.022em;
+}
+
+.hero-role {
+  margin: 0 0 var(--space-1);
+  color: var(--c-accent);
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  line-height: var(--lh-tight);
+  letter-spacing: -0.008em;
+}
+
+.hero-affil {
+  margin: 0 0 var(--space-6);
+  color: var(--c-text-muted);
+  font-size: var(--fs-md);
+  line-height: var(--lh-normal);
+}
+
+.hero-summary {
+  max-width: var(--maxw-text);
+  margin: 0 0 var(--space-7);
+  color: var(--c-text-muted);
+  font-size: var(--fs-md);
+  line-height: var(--lh-loose);
+}
+
+.hero-actions {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+
+/* --------------------------------------------------------------------------
+   15. Link pills -- Email / Scholar / DBLP / GitHub / LinkedIn / CV
+   -------------------------------------------------------------------------- */
+
+.link-pills {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li { margin: 0; }
+}
+
+.link-pill {
+  display: -webkit-inline-box;
+  display: inline-flex;
+  -webkit-box-align: center;
+          align-items: center;
+  gap: var(--space-2);
+  min-height: 40px;
+  padding: var(--space-2) var(--space-4);
+  color: var(--c-text);
+  background: var(--c-bg);
+  border: 1px solid var(--c-border-strong);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  -webkit-transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease), background-color var(--dur-fast) var(--ease);
+  transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease), background-color var(--dur-fast) var(--ease);
+
+  i, svg { -webkit-box-flex: 0; flex: 0 0 auto; color: var(--c-text-faint); }
+  svg { width: 16px; height: 16px; }
+}
+
+.link-pill:hover,
+.link-pill:focus {
+  color: var(--c-accent);
+  background: var(--c-accent-soft);
+  border-color: var(--c-accent);
+  text-decoration: none;
+
+  i, svg { color: var(--c-accent); }
+}
+
+/* primary variant for the one action worth emphasising (usually CV) */
+.link-pill--primary {
+  color: var(--c-accent-contrast);
+  background: var(--c-accent);
+  border-color: var(--c-accent);
+
+  i, svg { color: var(--c-accent-contrast); }
+
+  &:hover,
+  &:focus {
+    color: var(--c-accent-contrast);
+    background: var(--c-accent-hover);
+    border-color: var(--c-accent-hover);
+
+    i, svg { color: var(--c-accent-contrast); }
+  }
+}
+
+/* .page__content styles every <a> at (0,1,1), which outranks the (0,1,0) pill
+   rules above: it both underlines pills and repaints the primary pill's label
+   accent-on-accent (invisible). Match the weight to restore both. */
+.page__content a.link-pill,
+.page__content a.link-pill:hover {
+  text-decoration: none;
+}
+
+.page__content a.link-pill--primary {
+  color: var(--c-accent-contrast);
+
+  i, svg { color: var(--c-accent-contrast); }
+
+  &:hover,
+  &:focus {
+    color: var(--c-accent-contrast);
+
+    i, svg { color: var(--c-accent-contrast); }
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   16. Back to top -- bottom LEFT (bottom right is reserved for the chat
+   launcher). Toggle .is-visible from JS past ~400px of scroll.
+   -------------------------------------------------------------------------- */
+
+.back-to-top {
+  position: fixed;
+  left: var(--space-5);
+  bottom: var(--space-5);
+  z-index: 50;
+  display: -webkit-inline-box;
+  display: inline-flex;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+          justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  color: var(--c-text-muted);
+  background: var(--c-surface);
+  border: 1px solid var(--c-border-strong);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  -webkit-transform: translateY(6px);
+      -ms-transform: translateY(6px);
+          transform: translateY(6px);
+  -webkit-transition: opacity var(--dur) var(--ease), -webkit-transform var(--dur) var(--ease), visibility var(--dur) var(--ease);
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease), visibility var(--dur) var(--ease);
+
+  svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+  &:hover {
+    color: var(--c-accent);
+    border-color: var(--c-accent);
+    text-decoration: none;
+  }
+
+  &.is-visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    -webkit-transform: none;
+        -ms-transform: none;
+            transform: none;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   17. Footer (shell chrome only)
+   -------------------------------------------------------------------------- */
+
+.page__footer {
+  margin-top: var(--space-10);
+  color: var(--c-text-muted);
+  background-color: var(--c-surface);
+  border-top: 1px solid var(--c-border);
+  -webkit-animation: none;
+          animation: none;
+
+  a {
+    color: var(--c-text-muted);
+
+    &:hover { color: var(--c-accent); }
+  }
+
+  .fas, .fab, .far, .fal { color: var(--c-text-faint); }
+}
+
+.page__footer-copyright {
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs);
+  color: var(--c-text-faint);
+}
+
+
+/* --------------------------------------------------------------------------
+   18. Retint / retire inherited hard-codes
+   _custom.scss and main.scss pin several greys and one anchor-offset hack to
+   light-mode literals. Matched at equal weight so dark mode is not broken.
+   -------------------------------------------------------------------------- */
+
+.page__content h1 {
+  margin-top: var(--space-9);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--c-border);
+}
+
+.page__content h3 {
+  margin-top: var(--space-7);
+  margin-bottom: var(--space-3);
+  color: var(--c-text);
+  font-size: var(--fs-lg);
+}
+
+.page__content em { color: inherit; }
+.page__content p strong:first-child { color: var(--c-text); }
+.page__content dd { color: var(--c-text-muted); font-size: var(--fs-sm); }
+.page__content p { margin: 0 0 var(--space-4); }
+
+/* main.scss ships `h1:before` / `.anchor:before` as a negative-margin scroll
+   offset and a -10em pull on #about-me. `scroll-padding-top` on <html> does
+   that job properly, so the hacks are retired. */
+h1:before,
+.anchor:before {
+  content: none;
+}
+
+.page__content #about-me {
+  margin-top: 0;
+
+  &:before { content: none; }
+}
+
+
+/* --------------------------------------------------------------------------
+   19. Responsive
+   Mobile-first everywhere above; these are the few places the shell needs to
+   change shape. Verified at 360 / 768 / 1024 / 1440.
+   -------------------------------------------------------------------------- */
+
+/* 360px -- keep nav links from crowding, shrink the floating button inset */
+@media (max-width: 25em) {
+  .greedy-nav a { margin: 0 var(--space-3); }
+
+  .masthead__inner-wrap { padding: 0 var(--space-4); }
+
+  #main {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+  }
+
+  .back-to-top {
+    left: var(--space-3);
+    bottom: var(--space-3);
+  }
+
+  .link-pill { padding: var(--space-2) var(--space-3); }
+}
+
+/* below the susy column switch the sidebar sits full width above the article */
+@media (max-width: 57.8em) {   /* just below $large (925px), where susy switches to two columns */
+  .sidebar {
+    width: 100%;
+    float: none;
+    margin-bottom: var(--space-7);
+    padding-bottom: var(--space-6);
+    border-bottom: 1px solid var(--c-border);
+  }
+}
+
+@media (min-width: 64em) {
+  .hero { padding-top: var(--space-8); }
+}
+
+
+/* --------------------------------------------------------------------------
+   20. Print
+   Force the light palette (a dark-mode visitor must not print white-on-black),
+   drop all chrome, and expose external URLs.
+   -------------------------------------------------------------------------- */
+
+@media print {
+  :root {
+    @include theme-light;
+  }
+
+  html { font-size: 11pt; }
+
+  body {
+    color: #000;
+    background: #fff;
+  }
+
+  .masthead,
+  .sidebar,
+  .back-to-top,
+  .theme-toggle,
+  .skip-link,
+  .page__footer,
+  .no-print {
+    display: none;
+  }
+
+  #main {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .page {
+    width: 100%;
+    float: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6,
+  p, li, blockquote, strong {
+    color: #000;
+  }
+
+  a { color: #000; text-decoration: underline; }
+
+  .section-title:after { background: #000; }
+
+  .section,
+  .hero {
+    page-break-inside: avoid;
+    border-bottom-color: #999;
+  }
+
+  h1, h2, h3, h4 { page-break-after: avoid; }
+
+  /* reveal destinations for links that leave the page */
+  .page__content a[href^="http"]:after,
+  .page__content a[href^="mailto"]:after {
+    content: " (" attr(href) ")";
+    font-size: 90%;
+    color: #444;
+    word-break: break-all;
+  }
+}

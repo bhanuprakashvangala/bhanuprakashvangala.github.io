@@ -1,17 +1,42 @@
-<!-- icons removed -->
-<link rel="manifest" href="images/site.webmanifest">
-<meta name="theme-color" content="#ffffff">
-<link rel="stylesheet" href="assets/css/academicons.css"/>
+<link rel="manifest" href="{{ '/images/site.webmanifest' | relative_url }}">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#11141a" media="(prefers-color-scheme: dark)">
+<link rel="stylesheet" href="{{ '/assets/css/academicons.css' | relative_url }}"/>
 
-<script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } }); </script>
+{%- comment -%} Structured data so search engines and LLM crawlers read the profile correctly. {%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": {{ site.data.cv.profile.name | jsonify }},
+  "jobTitle": {{ site.data.cv.profile.role | jsonify }},
+  "email": {{ site.data.cv.profile.email | prepend: "mailto:" | jsonify }},
+  "url": {{ site.url | default: "https://bhanuprakashvangala.github.io" | jsonify }},
+  "image": {{ site.data.cv.profile.avatar | prepend: "/" | absolute_url | jsonify }},
+  "affiliation": {
+    "@type": "CollegeOrUniversity",
+    "name": {{ site.data.cv.profile.affiliation | jsonify }}
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Columbia",
+    "addressRegion": "MO",
+    "addressCountry": "US"
+  },
+  "knowsAbout": {{ site.data.cv.profile.interests | jsonify }},
+  "sameAs": [
+    "https://scholar.google.com/citations?user=qHBOnpkAAAAJ&hl=en",
+    "https://github.com/bhanuprakashvangala",
+    "https://www.linkedin.com/in/vangalabhanuprakash/",
+    "https://dblp.org/pid/75/6568-6.html"
+  ]
+}
+</script>
+
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
+    TeX: { equationNumbers: { autoNumber: "all" } },
+    tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes: true }
   });
 </script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML' async></script>
-
-<!-- end custom head snippets -->

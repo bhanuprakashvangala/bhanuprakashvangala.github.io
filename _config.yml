@@ -1,6 +1,7 @@
 # Site Settings
 title                    : "Bhanu Prakash Vangala"
-description              : "Ph.D. Student in Computer Science"
+url                      : "https://bhanuprakashvangala.github.io"
+description              : "Doctoral researcher in agentic AI, LLM orchestration and reproducible machine learning at the University of Missouri."
 repository               : "bhanuprakashvangala/bhanuprakashvangala.github.io"
 
 # Google Analytics
@@ -13,13 +14,22 @@ google_site_verification : UT_lVOnAes50EAwbsIFw8BrxTnE8YPxiDLWzPE
 author:
   name             : "Bhanu Prakash Vangala"
   avatar           : "images/Bhanu1.jpg"
-  bio              : "Ph.D. Student, University of Missouri"
+  bio              : "Doctoral Researcher, University of Missouri"
   location         : "Columbia, MO"
-  email            : "bv3hz@missouri.edu"
+  email            : "bv3hz@umsystem.edu"
   github           : "bhanuprakashvangala"
   linkedin         : "vangalabhanuprakash"
-  cv               : "https://drive.google.com/file/d/1-PQcxeeRCEVOd4TO-rWToDhSfrdRVV1z/view?usp=sharing"
+  cv               : "/cv/"
   googlescholar    : "https://scholar.google.com/citations?user=qHBOnpkAAAAJ&hl=en"
+
+# AI assistant
+#   The site answers from a build-time knowledge base with no backend at all.
+#   Set `endpoint` to a deployed proxy (see assistant-api/README.md) for full
+#   generated answers. NEVER put an API key here -- this file is public.
+assistant:
+  enabled                : true
+  endpoint               : ""
+  model                  : "gpt-oss"
 
 # Reading Files
 include:
@@ -51,6 +61,7 @@ exclude:
   - tmp
   - vendor
   - google_scholar_crawler
+  - assistant-api
   - github_myprofile_updater
 keep_files:
   - .git

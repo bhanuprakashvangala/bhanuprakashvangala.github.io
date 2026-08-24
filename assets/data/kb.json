@@ -1,0 +1,123 @@
+---
+layout: null
+permalink: /assets/data/kb.json
+sitemap: false
+---
+{%- assign cv = site.data.cv -%}
+{%- assign p = cv.profile -%}
+{
+  "generated": {{ site.time | date_to_xmlschema | jsonify }},
+  "person": {
+    "name": {{ p.name | jsonify }},
+    "role": {{ p.role | jsonify }},
+    "affiliation": {{ p.affiliation | jsonify }},
+    "location": {{ p.location | jsonify }},
+    "email": {{ p.email | jsonify }},
+    "advisor": {{ p.advisor | jsonify }},
+    "graduation": "June 2027 (expected)"
+  },
+  "greeting": {{ cv.assistant.greeting | strip | jsonify }},
+  "suggestions": {{ cv.assistant.suggestions | jsonify }},
+  "chunks": [
+{%- assign sep = "" -%}
+
+{%- comment %} ---- Profile / who he is ---- {% endcomment -%}
+{%- capture t -%}
+{{ p.name }} is a {{ p.role }} in the {{ p.department }} at the {{ p.affiliation }}, based in {{ p.location }}.
+He is advised by {{ p.advisor }} and {{ p.coadvisor }}, and expects to complete his Ph.D. in June 2027.
+{{ p.summary }}
+His research interests are: {{ p.interests | join: ", " }}.
+He can be reached at {{ p.email }}.
+{%- endcapture -%}
+{{ sep }}{"id":"profile","type":"profile","title":"About Bhanu Prakash Vangala","section":"#about-me","text":{{ t | normalize_whitespace | strip | jsonify }}}
+{%- assign sep = "," -%}
+
+{%- comment %} ---- Publications ---- {% endcomment -%}
+{%- for pub in cv.publications -%}
+{%- capture t -%}
+Paper: "{{ pub.title }}".
+Authors: {{ pub.authors | join: ", " }}.
+Venue: {{ pub.venue_full }}{% if pub.kind %}, presented as a {{ pub.kind | downcase }}{% endif %}{% if pub.status == 'review' %} (currently under review){% elsif pub.status == 'accepted' %} (accepted){% endif %}.
+{% if pub.highlights %}Key results: {{ pub.highlights }}{% endif %}
+{% if pub.summary %}{{ pub.summary }}{% endif %}
+{% if pub.kb %}{{ pub.kb }}{% endif %}
+{% if pub.links and pub.links != empty %}Links: {% for l in pub.links %}{{ l.label }} at {{ l.url }}{% unless forloop.last %}, {% endunless %}{% endfor %}.{% endif %}
+Topics: {{ pub.tags | join: ", " }}.
+{%- endcapture -%}
+{{ sep }}{"id":{{ pub.id | prepend: "pub-" | jsonify }},"type":"publication","title":{{ pub.title | jsonify }},"section":{{ pub.id | prepend: "#pub-" | jsonify }},"year":{{ pub.year }},"venue":{{ pub.venue | jsonify }},"text":{{ t | normalize_whitespace | strip | jsonify }}}
+{%- endfor -%}
+
+{%- comment %} ---- Research programs ---- {% endcomment -%}
+{%- for r in cv.research -%}
+{%- capture t -%}
+Research program: {{ r.title }}, funded by {{ r.funder }}. Technology areas: {{ r.stack }}.
+Collaborators: {% for c in r.collaborators %}{{ c.name }} of {{ c.org }}{% unless forloop.last %}, {% endunless %}{% endfor %}.
+Workstreams: {% for th in r.threads %}{{ th.name }} — {{ th.text }} {% endfor %}
+{%- endcapture -%}
+{{ sep }}{"id":{{ r.id | prepend: "program-" | jsonify }},"type":"research","title":{{ r.title | jsonify }},"section":{{ r.id | prepend: "#program-" | jsonify }},"text":{{ t | normalize_whitespace | strip | jsonify }}}
+{%- endfor -%}
+
+{%- comment %} ---- Experience ---- {% endcomment -%}
+{%- for x in cv.experience -%}
+{%- capture t -%}
+Role: {{ x.title }} at {{ x.org }}, {{ x.location }}, from {{ x.start }} to {{ x.end }}.
+{% if x.collaborators %}Worked with {{ x.collaborators }}.{% endif %}
+{% for b in x.bullets %}{{ b | strip_html }} {% endfor %}
+{% if x.tags %}Technologies: {{ x.tags | join: ", " }}.{% endif %}
+{%- endcapture -%}
+{{ sep }}{"id":{{ x.id | prepend: "exp-" | jsonify }},"type":"experience","title":{{ x.title | append: " — " | append: x.org | jsonify }},"section":"#experience","text":{{ t | normalize_whitespace | strip | jsonify }}}
+{%- endfor -%}
+
+{%- comment %} ---- Education ---- {% endcomment -%}
+{%- for e in cv.education -%}
+{%- capture t -%}
+{{ e.degree }} at {{ e.org }}, {{ e.location }}, {{ e.start }} to {{ e.end }}. GPA {{ e.gpa }}.
+{% for d in e.details %}{{ d | strip_html }} {% endfor %}
+{%- endcapture -%}
+{{ sep }}{"id":{{ e.id | prepend: "edu-" | jsonify }},"type":"education","title":{{ e.degree | append: ", " | append: e.org | jsonify }},"section":"#educations","text":{{ t | normalize_whitespace | strip | jsonify }}}
+{%- endfor -%}
+
+{%- comment %} ---- Projects ---- {% endcomment -%}
+{%- for pr in cv.projects -%}
+{%- capture t -%}
+Project: {{ pr.title }}{% if pr.role %} ({{ pr.role }}){% endif %}. Status: {{ pr.status }}.{% if pr.stack %} Built with {{ pr.stack }}.{% endif %}
+{{ pr.desc }}
+{% if pr.links %}Link: {% for l in pr.links %}{{ l.url }}{% endfor %}{% endif %}
+{%- endcapture -%}
+{{ sep }}{"id":{{ pr.id | prepend: "proj-" | jsonify }},"type":"project","title":{{ pr.title | jsonify }},"section":"#projects","text":{{ t | normalize_whitespace | strip | jsonify }}}
+{%- endfor -%}
+
+{%- comment %} ---- Awards (one chunk) ---- {% endcomment -%}
+{%- capture t -%}
+Honors and awards received by {{ p.name }}:
+{% for a in cv.awards %}{{ a.year }} — {{ a.title }} ({{ a.org }}). {% endfor %}
+{%- endcapture -%}
+{{ sep }}{"id":"awards","type":"awards","title":"Honors and awards","section":"#honors-and-awards","text":{{ t | normalize_whitespace | strip | jsonify }}}
+
+{%- comment %} ---- Service, teaching, talks ---- {% endcomment -%}
+{%- capture t -%}
+Academic service and reviewing: {% for s in cv.service %}{{ s.items | join: ", " }}{% endfor %}.
+Teaching: {% for te in cv.teaching %}{{ te.role }} for {{ te.course }} at {{ te.org }} across {{ te.terms | join: ", " }}. {{ te.note }}{% endfor %}
+Invited talks and presentations: {% for tk in cv.talks %}{{ tk.date }} — "{{ tk.title }}" at {{ tk.venue }}. {% endfor %}
+{%- endcapture -%}
+{{ sep }}{"id":"service","type":"service","title":"Service, teaching and talks","section":"#service","text":{{ t | normalize_whitespace | strip | jsonify }}}
+
+{%- comment %} ---- Skills & coursework ---- {% endcomment -%}
+{%- capture t -%}
+Technical skills. {% for s in cv.skills %}{{ s.group }}: {{ s.items | join: ", " }}. {% endfor %}
+Featured coursework. {% for c in cv.coursework %}{{ c.group }}: {{ c.items | join: "; " }}. {% endfor %}
+{%- endcapture -%}
+{{ sep }}{"id":"skills","type":"skills","title":"Technical skills and coursework","section":"/cv/","text":{{ t | normalize_whitespace | strip | jsonify }}}
+
+{%- comment %} ---- Recent news ---- {% endcomment -%}
+{%- capture t -%}
+Recent updates. {% for n in cv.news limit: 14 %}{{ n.date }}: {{ n.text | strip_html }} {% endfor %}
+{%- endcapture -%}
+{{ sep }}{"id":"news","type":"news","title":"Recent news","section":"#news","text":{{ t | normalize_whitespace | strip | jsonify }}}
+
+{%- comment %} ---- Hand-written facts ---- {% endcomment -%}
+{%- for f in cv.assistant.facts -%}
+{{ sep }}{"id":{{ f.id | prepend: "fact-" | jsonify }},"type":"fact","title":{{ f.title | jsonify }},"section":{{ f.section | jsonify }},"text":{{ f.text | normalize_whitespace | strip | jsonify }}}
+{%- endfor -%}
+  ]
+}

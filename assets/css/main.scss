@@ -1,14 +1,21 @@
 ---
+# Front matter required so Jekyll processes this file.
 ---
 
 /*
- *    Minimal Mistakes Jekyll Theme
+ * Minimal Mistakes Jekyll Theme (Michael Rose, mademistakes.com)
+ * with a bespoke design layer for bhanuprakashvangala.github.io.
  *
- *  - Michael Rose
- *  - mademistakes.com
- *  - https://twitter.com/mmistakes
+ * Load order matters: vendor and theme partials first, then the design
+ * system (tokens -> theme -> components -> assistant -> demos) last so it
+ * can override the theme without !important.
  *
-*/
+ * Keep this file ASCII-only: Ruby Sass 3.7.x (via jekyll-sass-converter
+ * 1.5.2, which is what GitHub Pages runs) errors on non-ASCII bytes when
+ * the build locale is US-ASCII.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@700&display=swap');
 
 @import "vendor/breakpoint/breakpoint"; // media query mixins
 @import "variables";
@@ -40,231 +47,16 @@
 @import "vendor/magnific-popup/magnific-popup";
 @import "print";
 
-/* 1) Import Web Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:wght@700&display=swap');
-
-/* 2) Color & Typography Variables */
-$font-sans:     'Inter', sans-serif !default;
-$font-serif:    'Merriweather', serif !default;
-
-$color-primary:   #00369f !default;
-$color-secondary: #00369f !default;
-$color-accent:    #00369f !default;
-$color-bg:        #ffffff !default;
-$color-text:      #333333 !default;
-
-$primary-color: $color-primary;
-$info-color:    $color-primary;
-$link-color:    $color-secondary;
-
-@import "custom";
-
-/* 3) Global Base Styles */
-body {
-  font-family: $font-sans;
-  font-size: 1rem;
-  line-height: 1.6;
-  background-color: $color-bg;
-  color: $color-text;
-  padding: 1rem;
-}
-
-h1, h2, h3, h4 {
-  font-family: $font-serif;
-  color: $color-primary;
-  margin: 1.5rem 0 0.5rem;
-  line-height: 1.25;
-}
-h1 { font-size: 2.5rem; }
-h2 { font-size: 2rem; }
-
-.paper-box {
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-    border-bottom: 1px #efefef solid;
-    padding: 2em 0 2em 0;
-    
-
-    .paper-box-image{
-        justify-content: center;
-        display: flex;
-        width: 100%;
-        order: 2;
-        img {
-            max-width: 400px;
-            box-shadow: 3px 3px 6px #888;
-            object-fit: cover;
-        }
-    }
-    
-    .paper-box-text{
-        max-width: 100%;
-        order: 1;
-    }
-    
-    @include breakpoint($medium) {
-        .paper-box-image{
-            justify-content: left;
-            min-width: 200px;
-            max-width: 40%;
-            order: 1;
-        }
-        
-        .paper-box-text{
-            justify-content: left;
-            padding-left: 2em;
-            max-width: 60%;
-            order: 2;
-        }
-
-    }
-
-
-}
-
-$scroll_offset : 2em;
-h1:before, .anchor:before { 
-    content: ''; 
-    display: block; 
-    position: relative; 
-    width: 0; 
-    height: $scroll_offset; 
-    margin-top: -$scroll_offset;
-}
-
-.badge {
-    padding-left: 1rem;
-    padding-right: 1rem;
-    position: absolute;
-    margin-top: .5em;
-    margin-left: -.5em;
-    color: white;
-    background-color: #00369f;
-    font-size: .8em;
-}
-
-/* Honors and Awards Section */
-.honors-section {
-  font-size: 0.95rem;
-  line-height: 1.5;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.honors-section li {
-  margin-bottom: 1rem;
-}
-
-.honor-images {
-  display: flex;
-  gap: 1rem;
-  margin-top: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.honor-images img {
-  width: 120px;
-  height: auto;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-}
-/* Homepage content blocks */
-.quick-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .6rem;
-  margin: 1rem 0 1.75rem;
-}
-
-.quick-links a {
-  border: 1px solid #d9dfec;
-  border-radius: 999px;
-  padding: .35rem .8rem;
-  background: #f8faff;
-  font-size: .9rem;
-  text-decoration: none;
-}
-
-.pub-card {
-  display: flex;
-  gap: 1rem;
-  background: #f8f9fa;
-  border-radius: 8px;
-  margin-bottom: 1.25rem;
-  overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, .08);
-}
-
-.pub-card:hover { box-shadow: 0 2px 8px rgba(0, 0, 0, .14); }
-
-.pub-img {
-  width: 200px;
-  min-width: 200px;
-  padding: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #fff;
-}
-
-.pub-img img { max-width: 100%; max-height: 150px; object-fit: contain; }
-.pub-content { padding: 15px 20px; flex: 1; }
-.pub-title { font-size: 1.05rem; font-weight: 600; margin-bottom: .65rem; }
-.pub-authors { color: #555; margin-bottom: .8rem; font-size: .95rem; }
-.pub-desc { color: #555; font-size: .9rem; margin-bottom: .8rem; line-height: 1.5; }
-.pub-links { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; }
-.pub-link-disabled { color: #777; font-size: .92rem; }
-.pub-venue { margin-left: auto; color: #666; font-weight: 600; }
-
-.award-item, .exp-item {
-  margin-bottom: 1.25rem;
-  padding: 15px;
-  background: #f8f9fa;
-  border-radius: 8px;
-  border-left: 3px solid #2a6496;
-}
-
-.award-date, .exp-item .date, .edu-item .date {
-  color: #666;
-  font-size: .9rem;
-  margin-bottom: .4rem;
-}
-
-.award-images { display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
-.award-images img {
-  height: 80px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: transform .2s;
-  border: 1px solid #ddd;
-}
-.award-images img:hover { transform: scale(1.05); }
-
-.lightbox {
-  display: none;
-  position: fixed;
-  z-index: 9999;
-  inset: 0;
-  background: rgba(0, 0, 0, .9);
-  justify-content: center;
-  align-items: center;
-}
-.lightbox.active { display: flex; }
-.lightbox img { max-width: 90%; max-height: 90%; border-radius: 8px; }
-.lightbox-close { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 40px; cursor: pointer; }
-
-.edu-item {
-  margin-bottom: 1.25rem;
-  padding-left: 20px;
-  border-left: 3px solid #2a6496;
-}
-
-@media (max-width: 600px) {
-  .pub-card { flex-direction: column; }
-  .pub-img { width: 100%; min-width: auto; }
-  .pub-venue { margin-left: 0; width: 100%; }
-}
+/* ---------------------------------------------------------------------------
+ * Design layer. Order is load-bearing:
+ *   tokens     - custom properties for both colour schemes
+ *   theme      - base typography, page shell, masthead, sidebar, hero
+ *   components - publications, timeline, news, awards, projects, CV
+ *   assistant  - the floating research assistant
+ *   demos      - the interactive demo page
+ * ------------------------------------------------------------------------ */
+@import "tokens";
+@import "theme";
+@import "components";
+@import "assistant";
+@import "demos";

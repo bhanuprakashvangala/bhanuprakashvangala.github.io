@@ -1,0 +1,1122 @@
+/* ==========================================================================
+   DEMOS  --  interactive research demonstrations (/demos/)
+   --------------------------------------------------------------------------
+   Clean academic minimal: hairline borders, calm surfaces, accent used
+   sparingly, semantic colour reserved for verdicts and severities.
+
+   CONTRACT NOTES
+   - This file CONSUMES design tokens declared by `_tokens.scss` on :root
+     (light) with dark overrides. Every token reference carries a literal
+     fallback so the page still renders if the token layer is unavailable.
+   - Imported LAST from assets/css/main.scss, so it sits inside Minimal
+     Mistakes' cascade. MM forces `color`/`border` with !important on `.btn`,
+     and styles `.page__content h3 / p / li / a / p > code`; the overrides
+     below are deliberate, not decorative.
+   - Compiles under Ruby Sass 3.7 / libsass: no @use, no module functions,
+     no min()/max(), no space-separated colour syntax.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Local geometry constants. Deliberately literal (not tokens) wherever a
+   pseudo-element has to line up with a box -- token scales are owned by
+   another file and must not be able to break the rails.
+   -------------------------------------------------------------------------- */
+$demo-wide          : 900px;   // two-column threshold for .demo-io
+$demo-mid           : 560px;   // findings / router rows go wide
+$demo-tall          : 780px;   // min viewport height before sticky input
+$demo-tap           : 2.75rem; // 44px minimum touch target
+$demo-badge         : 1.375rem; // trace step number badge diameter
+$demo-badge-center  : 0.6875rem; // == $demo-badge / 2
+$demo-rail-indent   : 2.125rem; // trace step text indent, clears the badge
+$demo-icon          : 1.25rem; // finding severity icon box
+
+/* --------------------------------------------------------------------------
+   1. Tab strip
+   Horizontally scrollable on narrow viewports with the scrollbar suppressed
+   (so the strip does not jump height when it appears). Focus rings are drawn
+   INSIDE the tab because the scroll container would clip an outer ring.
+   -------------------------------------------------------------------------- */
+.demo-tabs {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  gap: 0.125rem;
+  margin: 0 0 var(--space-6, 1.5rem);
+  padding: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;            /* Firefox */
+  -ms-overflow-style: none;         /* old Edge */
+  border-bottom: 1px solid var(--c-border, #e3e8ef);
+  scroll-snap-type: x proximity;
+
+  &::-webkit-scrollbar { width: 0; height: 0; display: none; }
+}
+
+.demo-tab {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: $demo-tap;
+  margin: 0;
+  padding: 0 var(--space-4, 1rem);
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: var(--radius-sm, 4px) var(--radius-sm, 4px) 0 0;
+  background: transparent;
+  color: var(--c-text-muted, #4d5769);
+  font-family: var(--font-sans, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+  font-size: var(--fs-sm, 0.875rem);
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: color var(--dur-fast, 120ms) var(--ease, cubic-bezier(0.2, 0.6, 0.3, 1)),
+              border-color var(--dur-fast, 120ms) var(--ease, cubic-bezier(0.2, 0.6, 0.3, 1)),
+              background-color var(--dur-fast, 120ms) var(--ease, cubic-bezier(0.2, 0.6, 0.3, 1));
+
+  &:hover {
+    color: var(--c-text, #1a1f2b);
+    background-color: var(--c-surface-2, #eef2f7);
+  }
+
+  &:focus { outline: none; }
+
+  &:focus-visible {
+    outline: 2px solid var(--c-accent, #00369f);
+    outline-offset: -3px;
+    color: var(--c-text, #1a1f2b);
+  }
+
+  /* Active state is carried by BOTH the class and the ARIA attribute so the
+     strip is correct even if one of the two is momentarily out of sync. */
+  &.is-active,
+  &[aria-selected="true"] {
+    color: var(--c-accent, #00369f);
+    border-bottom-color: var(--c-accent, #00369f);
+    font-weight: 600;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. Panel shell
+   A demo is a quiet card: hairline border, surface fill, no drop shadow.
+   -------------------------------------------------------------------------- */
+.demo {
+  margin: 0 0 var(--space-8, 2rem);
+  padding: var(--space-5, 1.25rem);
+  background-color: var(--c-surface, #f8fafc);
+  border: 1px solid var(--c-border, #e3e8ef);
+  border-radius: var(--radius-lg, 14px);
+  color: var(--c-text, #1a1f2b);
+  font-family: var(--font-sans, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+
+  /* Any node the JS marks [hidden] stays hidden, even where this file sets a
+     display value on that class (grid/flex would otherwise win). */
+  [hidden] { display: none !important; }
+
+  @media (min-width: $demo-mid) {
+    padding: var(--space-6, 1.5rem);
+  }
+}
+
+/* Panels are inert until selected. Both the class and the [hidden] attribute
+   are honoured; the attribute rule is last so it always wins. */
+.demo-panel { display: none; }
+.demo-panel.is-active { display: block; }
+.demo-panel[hidden] { display: none; }
+
+/* --------------------------------------------------------------------------
+   3. Panel header -- title, one-paragraph description, provenance line
+   Overrides MM's global h3 (serif, #555) and its p sibling margins.
+   -------------------------------------------------------------------------- */
+.demo-head {
+  margin: 0 0 var(--space-5, 1.25rem);
+  padding-bottom: var(--space-4, 1rem);
+  border-bottom: 1px solid var(--c-border, #e3e8ef);
+}
+
+.demo .demo-title {
+  margin: 0 0 var(--space-2, 0.5rem);
+  padding: 0;
+  border: 0;
+  color: var(--c-text, #1a1f2b);
+  font-family: var(--font-sans, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+  font-size: var(--fs-lg, 1.3125rem);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.demo .demo-desc {
+  margin: 0 0 var(--space-3, 0.75rem);
+  max-width: var(--maxw-text, 68ch);
+  color: var(--c-text-muted, #4d5769);
+  font-size: var(--fs-base, 1rem);
+  line-height: 1.6;
+  text-indent: 0;
+}
+
+.demo .demo-cite {
+  margin: 0;
+  max-width: var(--maxw-text, 68ch);
+  color: var(--c-text-muted, #4d5769);
+  font-size: var(--fs-sm, 0.875rem);
+  line-height: 1.5;
+  text-indent: 0;
+
+  a {
+    color: var(--c-accent, #00369f);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+
+    &:hover { color: var(--c-accent-hover, #002a7d); }
+
+    &:focus-visible {
+      outline: 2px solid var(--c-accent, #00369f);
+      outline-offset: 2px;
+      border-radius: var(--radius-sm, 4px);
+    }
+  }
+}
+
+/* --------------------------------------------------------------------------
+   4. Input / output grid
+   One column by default, two equal columns from 900px. minmax(0, 1fr) is
+   what stops a long code line from widening the grid and side-scrolling the
+   page -- do not replace it with plain 1fr.
+   -------------------------------------------------------------------------- */
+.demo-io {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-6, 1.5rem);
+  align-items: start;
+
+  @media (min-width: $demo-wide) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--space-6, 1.5rem);
+  }
+}
+
+.demo-col {
+  min-width: 0;   /* grid child must be allowed to shrink */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3, 0.75rem);
+}
+
+/* Sticky input column only when there is genuinely room for it. No
+   max-height and no inner overflow, so the column can never trap the
+   page scroll -- it simply parks once its bottom edge is reached. */
+@media (min-width: 1024px) and (min-height: $demo-tall) {
+  .demo-io > .demo-col:first-child {
+    position: sticky;
+    top: var(--space-5, 1.25rem);
+    align-self: start;
+  }
+}
+
+.demo .demo-label {
+  display: block;
+  margin: 0;
+  color: var(--c-text-muted, #4d5769);
+  font-size: var(--fs-sm, 0.875rem);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+}
+
+/* --------------------------------------------------------------------------
+   5. Code input
+   Wrapping is OFF and the field owns its horizontal scrollbar, so the page
+   itself never scrolls sideways at any breakpoint.
+   -------------------------------------------------------------------------- */
+.demo .code-input {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-height: 13.75rem;    /* ~220px */
+  margin: 0;
+  padding: var(--space-3, 0.75rem);
+  background-color: var(--c-code-bg, #f4f6f9);
+  color: var(--c-text, #1a1f2b);
+  border: 1px solid var(--c-border, #e3e8ef);
+  border-radius: var(--radius, 8px);
+  box-shadow: none;
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace);
+  font-size: var(--fs-sm, 0.875rem);
+  line-height: 1.6;
+  tab-size: 2;
+  -moz-tab-size: 2;
+  white-space: pre;
+  overflow: auto;
+  overflow-wrap: normal;
+  resize: vertical;
+  transition: border-color var(--dur-fast, 120ms) var(--ease, cubic-bezier(0.2, 0.6, 0.3, 1));
+
+  &::placeholder {
+    color: var(--c-text-muted, #4d5769);
+    opacity: 1;
+  }
+
+  &:hover { border-color: var(--c-border-strong, #7f8a9c); }
+
+  &:focus {
+    outline: 2px solid var(--c-accent, #00369f);
+    outline-offset: -1px;
+    border-color: var(--c-accent, #00369f);
+  }
+
+  /* Short secondary field (e.g. requirements.txt) */
+  &.is-compact { min-height: 6.5rem; }
+}
+
+/* --------------------------------------------------------------------------
+   6. Toolbar, buttons, keyboard hint
+   MM's .btn declares `color: #fff !important` and `border: 0 !important`;
+   those two properties MUST be re-declared with !important here or the
+   buttons render as white-on-white. Everything else wins on specificity.
+   -------------------------------------------------------------------------- */
+.demo-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2, 0.5rem);
+  margin: 0;
+}
+
+.demo .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2, 0.5rem);
+  min-height: $demo-tap;
+  min-width: $demo-tap;
+  margin: 0;
+  padding: 0 var(--space-4, 1rem);
+  border: 1px solid transparent !important;
+  border-radius: var(--radius, 8px);
+  background-color: transparent;
+  color: var(--c-text, #1a1f2b) !important;
+  font-family: var(--font-sans, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+  font-size: var(--fs-sm, 0.875rem);
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: background-color var(--dur-fast, 120ms) var(--ease, cubic-bezier(0.2, 0.6, 0.3, 1)),
+              border-color var(--dur-fast, 120ms) var(--ease, cubic-bezier(0.2, 0.6, 0.3, 1)),
+              color var(--dur-fast, 120ms) var(--ease, cubic-bezier(0.2, 0.6, 0.3, 1));
+
+  &:focus { outline: none; }
+
+  &:focus-visible {
+    outline: 2px solid var(--c-accent, #00369f);
+    outline-offset: 2px;
+  }
+
+  /* Neutralises MM's global `.btn:hover` (a near-black fill) for any button
+     that reaches this file without a modifier class. */
+  &:hover { background-color: var(--c-surface-2, #eef2f7); }
+
+  /* Solid navy -- the single "do it" action per demo. */
+  &.is-primary {
+    background-color: var(--c-accent, #00369f);
+    border-color: var(--c-accent, #00369f) !important;
+    color: var(--c-accent-contrast, #ffffff) !important;
+
+    &:hover {
+      background-color: var(--c-accent-hover, #002a7d);
+      border-color: var(--c-accent-hover, #002a7d) !important;
+    }
+  }
+
+  /* Hairline outline -- secondary actions. The text label, not the border,
+     is what identifies the control, so the border stays quiet. */
+  &.is-ghost {
+    background-color: var(--c-surface, #f8fafc);
+    border-color: var(--c-border-strong, #7f8a9c) !important;
+    color: var(--c-text, #1a1f2b) !important;
+
+    &:hover {
+      background-color: var(--c-surface-2, #eef2f7);
+      border-color: var(--c-accent, #00369f) !important;
+      color: var(--c-accent, #00369f) !important;
+    }
+  }
+
+  &:disabled,
+  &[aria-disabled="true"] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+.demo .demo-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--c-text-muted, #4d5769);
+  font-size: var(--fs-xs, 0.75rem);
+  line-height: 1.4;
+
+  @media (min-width: $demo-mid) {
+    margin-left: auto;   /* trails the buttons once there is room */
+  }
+}
+
+.demo .kbd {
+  display: inline-block;
+  min-width: 1.5rem;
+  padding: 0.1rem 0.35rem;
+  background-color: var(--c-surface-2, #eef2f7);
+  color: var(--c-text, #1a1f2b);
+  border: 1px solid var(--c-border, #e3e8ef);
+  border-bottom-width: 2px;
+  border-radius: var(--radius-sm, 4px);
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace);
+  font-size: var(--fs-xs, 0.75rem);
+  font-weight: 500;
+  line-height: 1.4;
+  text-align: center;
+  white-space: nowrap;
+  box-shadow: none;
+}
+
+/* --------------------------------------------------------------------------
+   7. Empty state -- output column before a run, and the "backend not
+   configured" state of the coding-agent panel.
+   -------------------------------------------------------------------------- */
+.demo .empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2, 0.5rem);
+  min-height: 8.75rem;
+  padding: var(--space-6, 1.5rem);
+  background-color: var(--c-surface-2, #eef2f7);
+  border: 1px dashed var(--c-border-strong, #7f8a9c);
+  border-radius: var(--radius, 8px);
+  color: var(--c-text-muted, #4d5769);
+  font-size: var(--fs-sm, 0.875rem);
+  line-height: 1.6;
+  text-align: center;
+  text-indent: 0;
+
+  code {
+    background-color: var(--c-code-bg, #f4f6f9);
+    border: 1px solid var(--c-border, #e3e8ef);
+    border-radius: var(--radius-sm, 4px);
+    padding: 0.05rem 0.3rem;
+    font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace);
+    font-size: 0.95em;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   8. Result card, verdict chip and confidence meter
+   Verdict severity is carried by THREE independent channels: a glyph
+   (x / ! / check), the wording of the label itself, and colour. Never colour
+   alone.
+   -------------------------------------------------------------------------- */
+.demo .result-card {
+  padding: var(--space-4, 1rem);
+  background-color: var(--c-surface, #f8fafc);
+  border: 1px solid var(--c-border, #e3e8ef);
+  border-radius: var(--radius, 8px);
+}
+
+.demo .result-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2, 0.5rem) var(--space-3, 0.75rem);
+  margin: 0 0 var(--space-3, 0.75rem);
+}
+
+.demo .verdict {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.6rem;
+  background-color: var(--c-surface-2, #eef2f7);
+  border: 1px solid var(--c-border-strong, #7f8a9c);
+  border-radius: var(--radius-pill, 999px);
+  color: var(--c-text, #1a1f2b);
+  font-size: var(--fs-sm, 0.875rem);
+  font-weight: 600;
+  line-height: 1.3;
+
+  /* Shape channel. Content is set here, not by the JS, so the glyph can
+     never disagree with the modifier class. */
+  &:before {
+    content: "\2022";
+    font-size: 0.875em;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  &.is-pass {
+    color: var(--c-success, #146c43);
+    border-color: var(--c-success, #146c43);
+    &:before { content: "\2713"; }
+  }
+
+  &.is-warn {
+    color: var(--c-warn, #8a5300);
+    border-color: var(--c-warn, #8a5300);
+    &:before { content: "\0021"; }
+  }
+
+  &.is-fail {
+    color: var(--c-danger, #b3261e);
+    border-color: var(--c-danger, #b3261e);
+    &:before { content: "\00d7"; }
+  }
+}
+
+.demo .result-sub {
+  color: var(--c-text-muted, #4d5769);
+  font-size: var(--fs-sm, 0.875rem);
+  line-height: 1.4;
+  overflow-wrap: break-word;
+}
+
+.demo .meter {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 0.375rem;
+  margin: 0 0 var(--space-4, 1rem);
+  background-color: var(--c-surface-2, #eef2f7);
+  border-radius: var(--radius-pill, 999px);
+  box-shadow: inset 0 0 0 1px var(--c-border, #e3e8ef);
+}
+
+.demo .meter-fill {
+  display: block;
+  width: 0;
+  height: 100%;
+  min-width: 0.125rem;
+  border-radius: var(--radius-pill, 999px);
+  background-color: var(--c-text-muted, #4d5769);
+  transition: width 200ms var(--ease, cubic-bezier(0.2, 0.6, 0.3, 1));
+
+  &.is-pass { background-color: var(--c-success, #146c43); }
+  &.is-warn { background-color: var(--c-warn, #8a5300); }
+  &.is-fail { background-color: var(--c-danger, #b3261e); }
+}
+
+/* --------------------------------------------------------------------------
+   9. Findings list
+   Dense three-slot row: severity icon / body / tag. Below 560px the tag
+   drops to a second row rather than squeezing the body.
+   -------------------------------------------------------------------------- */
+.demo .finding-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--c-border, #e3e8ef);
+}
+
+.demo .finding {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: var(--space-3, 0.75rem);
+  row-gap: var(--space-1, 0.25rem);
+  margin: 0;
+  padding: var(--space-3, 0.75rem) 0 var(--space-3, 0.75rem) var(--space-3, 0.75rem);
+  border-bottom: 1px solid var(--c-border, #e3e8ef);
+  border-left: 2px solid transparent;
+  font-size: var(--fs-sm, 0.875rem);
+
+  @media (min-width: $demo-mid) {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+}
+
+/* Severity icon: an outlined square or circle carrying a glyph. The inner
+   text node supplied by the JS is collapsed to zero so the shape/glyph pair
+   is always consistent with the modifier class; it still shows if CSS fails
+   to load. */
+.demo .finding-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  grid-column: 1;
+  grid-row: 1;
+  width: $demo-icon;
+  height: $demo-icon;
+  margin-top: 0.1rem;
+  border: 1.5px solid var(--c-text-muted, #4d5769);
+  border-radius: 50%;
+  color: var(--c-text-muted, #4d5769);
+  font-size: 0;
+  line-height: 0;
+  user-select: none;
+
+  &:before {
+    content: "\2022";
+    font-family: var(--font-sans, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+}
+
+.demo .finding-body {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+}
+
+.demo .finding-title {
+  margin: 0;
+  color: var(--c-text, #1a1f2b);
+  font-size: var(--fs-base, 1rem);
+  font-weight: 600;
+  line-height: 1.5;
+  text-indent: 0;
+  overflow-wrap: break-word;
+
+  /* MM decorates `p > code` with a background, a border and non-breaking
+     space pseudo-elements. Strip the pseudo-elements, keep a quiet chip. */
+  code {
+    padding: 0.05rem 0.3rem;
+    background-color: var(--c-code-bg, #f4f6f9);
+    border: 1px solid var(--c-border, #e3e8ef);
+    border-radius: var(--radius-sm, 4px);
+    box-shadow: none;
+    color: var(--c-text, #1a1f2b);
+    font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace);
+    font-size: 0.925em;
+
+    &:before,
+    &:after { content: none; letter-spacing: normal; }
+  }
+}
+
+.demo .finding-detail {
+  margin: 0.2rem 0 0;
+  color: var(--c-text-muted, #4d5769);
+  font-size: var(--fs-sm, 0.875rem);
+  font-weight: 400;
+  line-height: 1.55;
+  text-indent: 0;
+  overflow-wrap: break-word;
+
+  code {
+    padding: 0.05rem 0.3rem;
+    background-color: var(--c-code-bg, #f4f6f9);
+    border: 1px solid var(--c-border, #e3e8ef);
+    border-radius: var(--radius-sm, 4px);
+    box-shadow: none;
+    color: var(--c-text-muted, #4d5769);
+    font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace);
+    font-size: 0.94em;
+
+    &:before,
+    &:after { content: none; letter-spacing: normal; }
+  }
+}
+
+/* The word-label channel -- this is what makes the list readable with no
+   colour perception at all. */
+.demo .finding-tag {
+  grid-column: 2;
+  grid-row: 2;
+  justify-self: start;
+  align-self: start;
+  padding: 0.1rem 0.4rem;
+  background-color: var(--c-surface-2, #eef2f7);
+  border: 1px solid var(--c-border-strong, #7f8a9c);
+  border-radius: var(--radius-sm, 4px);
+  color: var(--c-text-muted, #4d5769);
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace);
+  font-size: var(--fs-xs, 0.75rem);
+  line-height: 1.5;
+  white-space: nowrap;
+
+  @media (min-width: $demo-mid) {
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
+    margin-top: 0.1rem;
+  }
+}
+
+/* Severity variants: colour + glyph + outline shape, on top of the tag word. */
+.demo .finding.is-error {
+  border-left-color: var(--c-danger, #b3261e);
+
+  .finding-icon {
+    color: var(--c-danger, #b3261e);
+    border-color: var(--c-danger, #b3261e);
+    border-radius: 50%;
+    &:before { content: "\00d7"; font-size: 0.875rem; }
+  }
+  .finding-tag { border-color: var(--c-danger, #b3261e); }
+}
+
+.demo .finding.is-warn {
+  border-left-color: var(--c-warn, #8a5300);
+
+  .finding-icon {
+    color: var(--c-warn, #8a5300);
+    border-color: var(--c-warn, #8a5300);
+    border-radius: 2px;              /* square -- distinct from error/info */
+    &:before { content: "\0021"; }
+  }
+  .finding-tag { border-color: var(--c-warn, #8a5300); }
+}
+
+.demo .finding.is-info {
+  border-left-color: var(--c-accent, #00369f);
+
+  .finding-icon {
+    color: var(--c-accent, #00369f);
+    border-color: var(--c-accent, #00369f);
+    border-radius: 50%;
+    &:before { content: "i"; font-style: italic; font-family: Georgia, 'Times New Roman', serif; }
+  }
+  .finding-tag { border-color: var(--c-accent, #00369f); }
+}
+
+.demo .finding.is-ok {
+  border-left-color: var(--c-success, #146c43);
+
+  .finding-icon {
+    color: var(--c-success, #146c43);
+    border-color: var(--c-success, #146c43);
+    border-radius: 50%;
+    &:before { content: "\2713"; font-size: 0.75rem; }
+  }
+  .finding-tag { border-color: var(--c-success, #146c43); }
+}
+
+/* --------------------------------------------------------------------------
+   10. Router visualisation
+   Score rows stack on narrow screens (name + score on one line, bar below)
+   and become a three-column table from 560px.
+   -------------------------------------------------------------------------- */
+.demo .router-viz {
+  display: block;
+}
+
+.demo .router-pick {
+  margin: 0 0 var(--space-4, 1rem);
+  padding: var(--space-3, 0.75rem) var(--space-4, 1rem);
+  background-color: var(--c-surface-2, #eef2f7);
+  border: 1px solid var(--c-border, #e3e8ef);
+  border-left: 3px solid var(--c-accent, #00369f);
+  border-radius: var(--radius, 8px);
+  color: var(--c-text, #1a1f2b);
+  font-size: var(--fs-sm, 0.875rem);
+  line-height: 1.5;
+  overflow-wrap: break-word;
+
+  strong {
+    font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace);
+    font-weight: 600;
+  }
+}
+
+.demo .router-why {
+  display: block;
+  margin-top: 0.3rem;
+  color: var(--c-text-muted, #4d5769);
+  font-size: var(--fs-sm, 0.875rem);
+  line-height: 1.55;
+}
+
+.demo .router-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.demo .router-model {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: var(--space-3, 0.75rem);
+  row-gap: 0.35rem;
+  align-items: center;
+  margin: 0;
+  padding: var(--space-2, 0.5rem) var(--space-2, 0.5rem);
+  border-bottom: 1px solid var(--c-border, #e3e8ef);
+  border-left: 2px solid transparent;
+  border-radius: var(--radius-sm, 4px);
+
+  &:last-child { border-bottom-color: transparent; }
+
+  /* The winner is marked by a fill, a left rule, a bolder name and the
+     "Selected:" sentence above -- not by bar colour alone. */
+  &.is-picked {
+    background-color: var(--c-accent-soft, #eaf0fb);
+    border-left-color: var(--c-accent, #00369f);
+
+    .router-name { font-weight: 700; color: var(--c-text, #1a1f2b); }
+    .router-score { color: var(--c-text, #1a1f2b); font-weight: 700; }
+    .router-bar-fill { background-color: var(--c-accent, #00369f); }
+
+    /* The tinted row background sits close to --c-surface-2, so the track
+       needs a firmer ring to stay legible against it. */
+    .router-bar {
+      background-color: var(--c-surface, #f8fafc);
+      box-shadow: inset 0 0 0 1px var(--c-border-strong, #7f8a9c);
+    }
+  }
+
+  @media (min-width: $demo-mid) {
+    grid-template-columns: 8.5rem minmax(0, 1fr) 3rem;
+  }
+}
+
+.demo .router-name {
+  grid-column: 1;
+  grid-row: 1;
+  min-width: 0;
+  color: var(--c-text, #1a1f2b);
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace);
+  font-size: var(--fs-sm, 0.875rem);
+  font-weight: 500;
+  line-height: 1.4;
+  overflow-wrap: break-word;
+}
+
+.demo .router-bar {
+  display: block;
+  grid-column: 1 / -1;
+  grid-row: 2;
+  overflow: hidden;
+  width: 100%;
+  height: 0.375rem;
+  background-color: var(--c-surface-2, #eef2f7);
+  border-radius: var(--radius-pill, 999px);
+  box-shadow: inset 0 0 0 1px var(--c-border, #e3e8ef);
+
+  @media (min-width: $demo-mid) {
+    grid-column: 2;
+    grid-row: 1;
+  }
+}
+
+.demo .router-bar-fill {
+  display: block;
+  width: 0;
+  height: 100%;
+  min-width: 0.125rem;
+  background-color: var(--c-text-muted, #4d5769);
+  border-radius: var(--radius-pill, 999px);
+  transition: width 200ms var(--ease, cubic-bezier(0.2, 0.6, 0.3, 1));
+}
+
+.demo .router-score {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: end;
+  color: var(--c-text-muted, #4d5769);
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace);
+  font-size: var(--fs-sm, 0.875rem);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.4;
+
+  @media (min-width: $demo-mid) {
+    grid-column: 3;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   11. Agent trace
+   Numbered vertical rail. The number badge and the connector are
+   pseudo-elements on each step, so the rail never desynchronises from the
+   list when steps stream in.
+   -------------------------------------------------------------------------- */
+.demo .agent-trace {
+  list-style: none;
+  counter-reset: demo-trace;
+  margin: 0;
+  padding: 0;
+}
+
+.demo .trace-step {
+  position: relative;
+  counter-increment: demo-trace;
+  margin: 0;
+  padding: 0 0 var(--space-4, 1rem) $demo-rail-indent;
+
+  &:last-child { padding-bottom: 0; }
+
+  /* connector */
+  &:before {
+    content: "";
+    position: absolute;
+    left: $demo-badge-center;
+    top: 1.625rem;
+    bottom: 0;
+    width: 1px;
+    margin-left: -0.5px;
+    background-color: var(--c-border, #e3e8ef);
+  }
+
+  &:last-child:before { display: none; }
+
+  /* number badge */
+  &:after {
+    content: counter(demo-trace);
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $demo-badge;
+    height: $demo-badge;
+    background-color: var(--c-surface, #f8fafc);
+    border: 1px solid var(--c-border-strong, #7f8a9c);
+    border-radius: 50%;
+    color: var(--c-text-muted, #4d5769);
+    font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  &.is-running:after {
+    border-color: var(--c-accent, #00369f);
+    color: var(--c-accent, #00369f);
+  }
+
+  &.is-done:after {
+    border-color: var(--c-success, #146c43);
+    color: var(--c-success, #146c43);
+  }
+
+  /* Failed steps swap the number for an exclamation: a shape difference, not
+     just a colour one. */
+  &.is-failed:after {
+    content: "\0021";
+    border-color: var(--c-danger, #b3261e);
+    color: var(--c-danger, #b3261e);
+    font-weight: 700;
+  }
+
+  &.is-running .trace-body { color: var(--c-text-muted, #4d5769); }
+  &.is-failed .trace-body { color: var(--c-danger, #b3261e); }
+}
+
+/* Tiny uppercase label chip naming the step kind. */
+.demo .trace-kind {
+  display: inline-block;
+  margin: 0.15rem 0 0.4rem;
+  padding: 0.1rem 0.4rem;
+  background-color: var(--c-surface-2, #eef2f7);
+  border: 1px solid var(--c-border-strong, #7f8a9c);
+  border-radius: var(--radius-sm, 4px);
+  color: var(--c-text-muted, #4d5769);
+  font-family: var(--font-sans, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+  font-size: var(--fs-xs, 0.75rem);
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  &.is-plan {
+    color: var(--c-accent, #00369f);
+    border-color: var(--c-accent, #00369f);
+  }
+
+  &.is-tool {
+    color: var(--c-text, #1a1f2b);
+    border-color: var(--c-border-strong, #7f8a9c);
+    font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace);
+    letter-spacing: 0.03em;
+  }
+
+  &.is-result {
+    color: var(--c-success, #146c43);
+    border-color: var(--c-success, #146c43);
+  }
+
+  &.is-answer {
+    background-color: var(--c-accent-soft, #eaf0fb);
+    color: var(--c-accent, #00369f);
+    border-color: var(--c-accent, #00369f);
+  }
+}
+
+.demo .trace-body {
+  min-width: 0;
+  color: var(--c-text, #1a1f2b);
+  font-size: var(--fs-sm, 0.875rem);
+  line-height: 1.6;
+  overflow-wrap: break-word;
+
+  p {
+    margin: 0 0 0.4rem;
+    font-size: inherit;
+    text-indent: 0;
+
+    &:last-child { margin-bottom: 0; }
+  }
+
+  /* Tool payloads keep their own horizontal scrollbar; the page must not
+     scroll sideways because a step echoed a long command. */
+  pre {
+    overflow-x: auto;
+    max-width: 100%;
+    margin: 0.4rem 0 0;
+    padding: var(--space-3, 0.75rem);
+    background-color: var(--c-code-bg, #f4f6f9);
+    border: 1px solid var(--c-border, #e3e8ef);
+    border-radius: var(--radius, 8px);
+    color: var(--c-text, #1a1f2b);
+    font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace);
+    font-size: var(--fs-sm, 0.875rem);
+    line-height: 1.55;
+    tab-size: 2;
+    -moz-tab-size: 2;
+  }
+
+  code {
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+    font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace);
+
+    &:before,
+    &:after { content: none; letter-spacing: normal; }
+  }
+
+  p > code,
+  li > code {
+    padding: 0.05rem 0.3rem;
+    background-color: var(--c-code-bg, #f4f6f9);
+    border: 1px solid var(--c-border, #e3e8ef);
+    border-radius: var(--radius-sm, 4px);
+    font-size: 0.94em;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   12. Spinner -- shown while an LLM-backed panel is working.
+   Visible whenever it is in the DOM and not [hidden]/.is-hidden.
+   -------------------------------------------------------------------------- */
+.demo .spinner {
+  display: inline-block;
+  width: 1.125rem;
+  height: 1.125rem;
+  margin: var(--space-2, 0.5rem) 0;
+  border: 2px solid var(--c-border-strong, #7f8a9c);
+  border-top-color: var(--c-accent, #00369f);
+  border-radius: 50%;
+  animation: demo-spin 700ms linear infinite;
+
+  &.is-hidden { display: none; }
+}
+
+@keyframes demo-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* --------------------------------------------------------------------------
+   13. Reduced motion -- remove every transition and animation. The spinner
+   keeps its shape (a static ring with an accent cap) so "busy" is still
+   legible without spinning.
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .demo-tab,
+  .demo .btn,
+  .demo .code-input,
+  .demo .meter-fill,
+  .demo .router-bar-fill {
+    transition: none !important;
+  }
+
+  .demo .spinner {
+    animation: none !important;
+    border-top-color: var(--c-accent, #00369f);
+    opacity: 0.85;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   14. Print -- collapse to a single readable column, drop the tab chrome and
+   let the code field print in full instead of clipping to its scroll box.
+   -------------------------------------------------------------------------- */
+@media print {
+  .demo-tabs,
+  .demo .demo-toolbar,
+  .demo .spinner,
+  .demo .empty-state {
+    display: none !important;
+  }
+
+  .demo {
+    padding: 0;
+    border: 0;
+    border-top: 1px solid #999999;
+    border-radius: 0;
+    background: transparent;
+    page-break-inside: avoid;
+  }
+
+  .demo-panel { display: none; }
+  .demo-panel.is-active { display: block; }
+
+  .demo-io {
+    display: block;
+  }
+
+  .demo-io > .demo-col {
+    position: static;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .demo .code-input {
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    overflow: visible;
+    white-space: pre-wrap;
+    background: transparent;
+    border: 1px solid #999999;
+    resize: none;
+  }
+
+  .demo .result-card,
+  .demo .router-pick,
+  .demo .finding,
+  .demo .trace-step {
+    page-break-inside: avoid;
+  }
+
+  .demo .verdict,
+  .demo .finding-tag,
+  .demo .trace-kind {
+    border-color: #666666;
+  }
+
+  .demo .demo-cite a:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    word-break: break-all;
+  }
+}

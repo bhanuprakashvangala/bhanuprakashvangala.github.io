@@ -15,6 +15,14 @@ jobs:
         sudo apt-get install python3-setuptools
     - name: Run
       run: |
+        if [ ! -d "./google_scholar_crawler" ]; then
+          echo "Skipping: ./google_scholar_crawler is not present in this repository."
+          exit 0
+        fi
+        if [ -z "${{ secrets.GOOGLE_SCHOLAR_ID }}" ]; then
+          echo "Skipping: GOOGLE_SCHOLAR_ID secret is not configured."
+          exit 0
+        fi
         cd ./google_scholar_crawler
         pip3 install -r requirements.txt
         python3 main.py

@@ -1,38 +1,27 @@
-{% if page.author and site.data.authors[page.author] %}
-  {% assign author = site.data.authors[page.author] %}{% else %}{% assign author = site.author %}
-{% endif %}
-
-<div itemscope itemtype="http://schema.org/Person" class="author__profile">
+{%- assign cv = site.data.cv -%}
+<div itemscope itemtype="https://schema.org/Person" class="author__profile">
 
   <div class="author__avatar">
-    <img src="{{ author.avatar }}" alt="{{ author.name }}">
+    <img src="{{ cv.profile.avatar | prepend: '/' | relative_url }}"
+         alt="Portrait of {{ cv.profile.name }}" width="220" height="220" loading="lazy">
   </div>
 
   <div class="author__content">
-    <h3 class="author__name">{{ author.name }}</h3>
-    {% if author.bio %}<p class="author__bio">{{ author.bio }}</p>{% endif %}
+    <h2 class="author__name" itemprop="name">{{ cv.profile.name }}</h2>
+    <p class="author__bio" itemprop="jobTitle">{{ cv.profile.role }}</p>
+    <p class="author__org">{{ cv.profile.affiliation }}</p>
   </div>
 
   <div class="author__urls-wrapper">
     <ul class="author__urls social-icons">
-      {% if author.location %}
-        <li><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> {{ author.location }}</li>
-      {% endif %}
-      {% if author.email %}
-        <li><a href="mailto:{{ author.email }}"><i class="fas fa-fw fa-envelope" aria-hidden="true"></i> {{ author.email }}</a></li>
-      {% endif %}
-      {% if author.googlescholar %}
-        <li><a href="{{ author.googlescholar }}"><i class="fas fa-fw fa-graduation-cap"></i> Google Scholar</a></li>
-      {% endif %}
-      {% if author.github %}
-        <li><a href="https://github.com/{{ author.github }}"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
-      {% endif %}
-      {% if author.linkedin %}
-        <li><a href="https://www.linkedin.com/in/{{ author.linkedin }}"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
-      {% endif %}
-      {% if author.cv %}
-        <li><a href="{{ author.cv }}"><i class="fas fa-fw fa-file-alt" aria-hidden="true"></i> CV</a></li>
-      {% endif %}
+      <li><i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> {{ cv.profile.location }}</li>
+      {%- for l in cv.links %}
+      <li>
+        <a href="{% if l.url contains '://' or l.url contains 'mailto:' %}{{ l.url }}{% else %}{{ l.url | relative_url }}{% endif %}">
+          <i class="{{ l.icon }} fa-fw" aria-hidden="true"></i> {{ l.label }}
+        </a>
+      </li>
+      {%- endfor %}
     </ul>
   </div>
 </div>

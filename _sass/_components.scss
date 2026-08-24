@@ -1,0 +1,1893 @@
+/* ==========================================================================
+   COMPONENTS -- bespoke academic UI
+   --------------------------------------------------------------------------
+   Imported LAST in assets/css/main.scss, after the Minimal Mistakes partials
+   and after the legacy bespoke rules at the bottom of main.scss. Everything
+   here consumes the design tokens defined in _tokens.scss via var() with a
+   hard-coded light-mode fallback, so the file still renders sanely if a token
+   is ever missing. No token is DEFINED here.
+
+   Build target: jekyll-sass-converter 1.5.2 (libsass / Sass 3.x).
+   Classic SCSS only -- @import, nesting, $vars, @mixin, lighten/darken/rgba/mix.
+   No @use, no @forward, no math.div, no color.adjust, no modern hsl() syntax.
+
+   NOTE ON UNITS: _theme.scss resets `html { font-size: 100% }`, so 1rem = 16px
+   and the --fs- and --space- token scales mean what their comments say.
+   Touch-target minimums are still expressed in px so they cannot drift if the
+   root size is ever changed again.
+
+   CONTENTS
+     0.  Local helpers (mixins -- not exported as CSS)
+     1.  Stats strip .......... .stat-grid
+     2.  Filter bar ........... .filter-bar
+     3.  Publications ......... .pub-list
+     4.  Timeline ............. .timeline
+     5.  News feed ............ .news-feed
+     6.  Awards + lightbox .... .award-list / .lightbox
+     7.  Projects ............. .project-grid
+     8.  Teaching / service ... .plain-list / .kv-list
+     9.  Small utilities ...... .tag / .badge / .callout / .divider
+     10. CV page .............. .cv-page
+     11. Reduced motion
+     12. Print
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   0. LOCAL HELPERS
+   Mixins only -- prefixed `cmp-` so they cannot collide with the theme's
+   _mixins.scss (clearfix, em(), %tab-focus).
+   -------------------------------------------------------------------------- */
+
+/* Visible, high-contrast focus indicator. Accent on page background measures
+   10.35:1 (light) and ~9.6:1 (dark) -- comfortably past the 3:1 required of a
+   non-text UI indicator by WCAG 1.4.11 / 2.4.11. */
+@mixin cmp-focus-ring($offset: 2px) {
+  outline: 2px solid var(--c-accent, #00369f);
+  outline-offset: $offset;
+}
+
+/* Applies the ring on keyboard focus, and on plain :focus for browsers with no
+   :focus-visible support (they simply drop the middle rule as an unknown
+   selector, which leaves the always-on ring -- the safe degradation). */
+@mixin cmp-focus-visible($offset: 2px) {
+  &:focus {
+    @include cmp-focus-ring($offset);
+  }
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+  &:focus-visible {
+    @include cmp-focus-ring($offset);
+  }
+}
+
+/* Small-caps metadata label used for stat labels, dates, section eyebrows. */
+@mixin cmp-eyebrow {
+  font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  font-size: var(--fs-xs, 0.75rem);
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  line-height: var(--lh-tight, 1.25);
+}
+
+/* Guarantees a 44px hit area on touch pointers without inflating the mouse UI. */
+@mixin cmp-touch-target($h: 44px) {
+  @media (pointer: coarse) {
+    min-height: $h;
+  }
+}
+
+/* Hairline card surface shared by projects, callouts, CV entries. */
+@mixin cmp-hairline-box {
+  background: var(--c-surface, #f7f8fa);
+  border: 1px solid var(--c-border, #e4e7ee);
+  border-radius: var(--radius, 6px);
+}
+
+
+/* --------------------------------------------------------------------------
+   1. STATS STRIP
+   A quiet row of 3-4 figures under the intro. Figures are prominent and
+   tabular; labels are muted small-caps. Deliberately no animated counters and
+   no card chrome -- just a hairline-ruled band.
+   -------------------------------------------------------------------------- */
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
+  gap: var(--space-5, 1.25rem) var(--space-4, 1rem);
+  margin: var(--space-6, 1.5rem) 0 var(--space-7, 2rem);
+  padding: var(--space-5, 1.25rem) 0;
+  border-top: 1px solid var(--c-border, #e4e7ee);
+  border-bottom: 1px solid var(--c-border, #e4e7ee);
+  padding-inline-start: 0;
+  list-style: none;
+}
+
+.stat {
+  min-width: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.stat .stat-num {
+  display: block;
+  color: var(--c-text, #1c1f26);
+  font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  font-size: var(--fs-2xl, 1.75rem);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.015em;
+  line-height: var(--lh-tight, 1.15);
+}
+
+.stat .stat-label {
+  display: block;
+  margin-top: var(--space-1, 0.25rem);
+  color: var(--c-text-muted, #5a6473);
+  @include cmp-eyebrow;
+}
+
+
+/* --------------------------------------------------------------------------
+   2. FILTER BAR
+   Chips are real <button>s. On narrow screens the row scrolls horizontally
+   with the scrollbar suppressed (so the strip does not shift height when the
+   bar appears/disappears); from $medium up it simply wraps. Active state is
+   carried by .is-active AND mirrored from aria-pressed so the two can never
+   drift apart.
+   -------------------------------------------------------------------------- */
+
+.filter-bar {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: var(--space-2, 0.5rem);
+  /* The negative side margin cancels the padding, so chips stay flush with the
+     text column while the scroll box still has room for a 2px focus ring at
+     2px offset (4px) on every edge instead of clipping it. */
+  margin: var(--space-5, 1.25rem) -4px;
+  padding: 4px 4px 6px;
+  padding-inline-start: 4px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* legacy Edge */
+
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
+}
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2, 0.5rem);
+  flex: 0 0 auto;
+  min-height: 34px;
+  margin: 0;
+  padding: 0 var(--space-4, 0.85rem);
+  color: var(--c-text-muted, #5a6473);
+  font-family: inherit;
+  font-size: var(--fs-sm, 0.875rem);
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-decoration: none;
+  background: var(--c-bg, #ffffff);
+  border: 1px solid var(--c-border-strong, #c8cedb);
+  border-radius: var(--radius-pill, 999px);
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: color var(--dur-fast, 120ms) var(--ease, ease),
+              background-color var(--dur-fast, 120ms) var(--ease, ease),
+              border-color var(--dur-fast, 120ms) var(--ease, ease);
+
+  @include cmp-touch-target(44px);
+  @include cmp-focus-visible(2px);
+
+  &:hover {
+    color: var(--c-text, #1c1f26);
+    background: var(--c-surface, #f7f8fa);
+    border-color: var(--c-text-faint, #616a79);
+  }
+
+  /* Active: filled, not merely outlined -- the fill is a 10.35:1 change against
+     the page, so state is never conveyed by border alone. */
+  &.is-active,
+  &[aria-pressed="true"] {
+    color: var(--c-accent-contrast, #ffffff);
+    background: var(--c-accent, #00369f);
+    border-color: var(--c-accent, #00369f);
+
+    &:hover {
+      background: var(--c-accent-hover, #002a7d);
+      border-color: var(--c-accent-hover, #002a7d);
+    }
+
+    .filter-count {
+      color: var(--c-accent-contrast, #ffffff);
+      background: rgba(255, 255, 255, 0.22);
+    }
+  }
+}
+
+.filter-count {
+  display: inline-block;
+  min-width: 1.5em;
+  padding: 0 0.4em;
+  color: var(--c-text-muted, #5a6473);
+  font-size: var(--fs-xs, 0.75rem);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.5;
+  text-align: center;
+  background: var(--c-surface-2, #eef1f6);
+  border-radius: var(--radius-pill, 999px);
+}
+
+
+/* --------------------------------------------------------------------------
+   3. PUBLICATIONS
+   Two columns (fixed-ratio thumb + body) from $small up, stacked below.
+   Rows are separated by hairlines rather than boxed in cards -- closer to a
+   printed CV and much quieter than the old .pub-card treatment.
+   -------------------------------------------------------------------------- */
+
+.pub-list {
+  margin: var(--space-5, 1.25rem) 0 var(--space-7, 2rem);
+  padding: 0;
+  padding-inline-start: 0;
+  list-style: none;
+}
+
+.pub {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4, 1rem);
+  margin: 0;
+  padding: var(--space-6, 1.5rem) 0;
+  list-style: none;
+  border-top: 1px solid var(--c-border, #e4e7ee);
+
+  &:first-child {
+    border-top: 0;
+    padding-top: var(--space-2, 0.5rem);
+  }
+
+  @media (min-width: 600px) {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--space-5, 1.25rem);
+  }
+
+  /* Thumb is optional: with no .pub-thumb present the body simply fills the
+     row, because the body is the flexible track. */
+  .pub-thumb {
+    position: relative;
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 260px;
+    padding-top: 62%;               /* fixed ratio, no aspect-ratio needed */
+    overflow: hidden;
+    background: var(--c-surface, #f7f8fa);
+    border: 1px solid var(--c-border, #e4e7ee);
+    border-radius: var(--radius-sm, 4px);
+
+    @media (min-width: 600px) {
+      width: 176px;
+      max-width: 176px;
+      padding-top: 109px;           /* 176 x 109 ~ 1.6:1 */
+    }
+
+    /* Missing / broken image: the neutral panel remains, and any alt text is
+       centred and legible instead of spilling out of the box. */
+    img {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      padding: var(--space-2, 0.5rem);
+      object-fit: contain;
+      color: var(--c-text-muted, #5a6473);
+      font-size: var(--fs-xs, 0.75rem);
+      text-align: center;
+      border-radius: 0;
+      box-shadow: none;
+      transition: none;
+    }
+  }
+
+  .pub-body {
+    flex: 1 1 auto;
+    min-width: 0; /* lets long titles wrap instead of stretching the row */
+  }
+
+  .pub-title {
+    margin: 0 0 var(--space-2, 0.5rem);
+    color: var(--c-text, #1c1f26);
+    font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+    font-size: var(--fs-md, 1.125rem);
+    font-weight: 600;
+    line-height: var(--lh-tight, 1.3);
+    letter-spacing: -0.005em;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--dur-fast, 120ms) var(--ease, ease);
+
+      &:hover {
+        border-bottom-color: var(--c-accent, #00369f);
+      }
+
+      @include cmp-focus-visible(2px);
+    }
+  }
+
+  .pub-authors {
+    margin: 0 0 var(--space-2, 0.5rem);
+    color: var(--c-text-muted, #5a6473);
+    font-size: var(--fs-sm, 0.9rem);
+    line-height: var(--lh-normal, 1.55);
+
+    /* Self-citation. Must be a <span class="me">, not <strong>, so the visual
+       emphasis carries no unintended semantic weight in a long author list. */
+    .me {
+      color: var(--c-text, #1c1f26);
+      font-weight: 600;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid var(--c-border-strong, #c8cedb);
+
+      &:hover {
+        color: var(--c-accent, #00369f);
+        border-bottom-color: var(--c-accent, #00369f);
+      }
+    }
+  }
+
+  .pub-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2, 0.5rem) var(--space-3, 0.75rem);
+    margin: 0 0 var(--space-3, 0.75rem);
+    color: var(--c-text-faint, #616a79);
+    font-size: var(--fs-sm, 0.875rem);
+    line-height: var(--lh-normal, 1.5);
+  }
+
+  .pub-summary {
+    margin: var(--space-3, 0.75rem) 0 0;
+  }
+
+  .pub-actions {
+    margin-top: var(--space-3, 0.75rem);
+  }
+
+  &.is-hidden {
+    display: none;
+  }
+}
+
+/* Venue badge. Text carries the semantic colour on a neutral ground, so every
+   variant is verified against both the page and surface backgrounds -- no
+   coloured fill whose contrast would have to be re-checked per theme. */
+.pub-venue {
+  display: inline-block;
+  padding: 0.15em 0.55em;
+  color: var(--c-text-muted, #5a6473);
+  font-size: var(--fs-xs, 0.72rem);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  vertical-align: baseline;
+  background: transparent;
+  border: 1px solid var(--c-border-strong, #c8cedb);
+  border-radius: var(--radius-sm, 4px);
+
+  &.is-accepted {
+    color: var(--c-accent, #00369f);
+    border-color: var(--c-accent, #00369f);
+  }
+
+  &.is-review {
+    color: var(--c-warn, #8a5a00);
+    border-color: var(--c-warn, #8a5a00);
+  }
+
+  &.is-preprint {
+    color: var(--c-success, #166534);
+    border-color: var(--c-success, #166534);
+  }
+
+  &.is-thesis {
+    color: var(--c-text-muted, #5a6473);
+    border-color: var(--c-border-strong, #c8cedb);
+    border-style: dashed;
+  }
+}
+
+.pub-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2, 0.4rem);
+  margin: var(--space-3, 0.75rem) 0 0;
+  padding: 0;
+  padding-inline-start: 0;
+  list-style: none;
+
+  li {
+    margin: 0;
+    font-size: var(--fs-xs, 0.75rem);
+    list-style: none;
+  }
+}
+
+.pub-tags .pub-tag {
+  display: inline-block;
+  margin: 0;
+  padding: 0.12em 0.5em;
+  color: var(--c-text-muted, #5a6473);
+  font-size: var(--fs-xs, 0.75rem);
+  line-height: 1.5;
+  text-decoration: none;
+  list-style: none;
+  background: var(--c-surface-2, #eef1f6);
+  border-radius: var(--radius-sm, 4px);
+}
+
+/* Action row: text-weight links, not filled buttons. */
+.pub-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2, 0.5rem) var(--space-3, 0.75rem);
+  padding-inline-start: 0;
+}
+
+.btn-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  min-height: 30px;
+  padding: 0 var(--space-3, 0.7rem);
+  color: var(--c-accent, #00369f);
+  font-family: inherit;
+  font-size: var(--fs-sm, 0.875rem);
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: none;
+  background: transparent;
+  border: 1px solid var(--c-border-strong, #c8cedb);
+  border-radius: var(--radius-sm, 4px);
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: color var(--dur-fast, 120ms) var(--ease, ease),
+              background-color var(--dur-fast, 120ms) var(--ease, ease),
+              border-color var(--dur-fast, 120ms) var(--ease, ease);
+
+  @include cmp-touch-target(44px);
+  @include cmp-focus-visible(2px);
+
+  &:hover {
+    color: var(--c-accent-hover, #002a7d);
+    background: var(--c-accent-soft, #eef2fb);
+    border-color: var(--c-accent, #00369f);
+  }
+
+  /* "coming soon" -- legible (5.99:1), obviously inert, still readable in print */
+  &.is-disabled {
+    color: var(--c-text-muted, #5a6473);
+    background: transparent;
+    border-style: dashed;
+    border-color: var(--c-border, #e4e7ee);
+    cursor: default;
+    pointer-events: none;
+
+    &:hover {
+      color: var(--c-text-muted, #5a6473);
+      background: transparent;
+      border-color: var(--c-border, #e4e7ee);
+    }
+  }
+}
+
+/* Collapsible one-paragraph gloss. <details class="pub-summary"><summary>. */
+.pub-summary {
+  font-size: var(--fs-sm, 0.9rem);
+
+  > summary {
+    display: block; /* kills the native disclosure triangle in Firefox/Chrome */
+    position: relative;
+    padding: var(--space-1, 0.25rem) 0 var(--space-1, 0.25rem) 1.15em;
+    color: var(--c-text-muted, #5a6473);
+    font-size: var(--fs-sm, 0.875rem);
+    font-weight: 500;
+    line-height: 1.5;
+    list-style: none;
+    cursor: pointer;
+
+    @include cmp-touch-target(44px);
+    @include cmp-focus-visible(2px);
+
+    &::-webkit-details-marker { display: none; }
+    &::marker { content: ""; }
+
+    &:hover {
+      color: var(--c-accent, #00369f);
+    }
+
+    /* Chevron: a rotated corner, so no icon font or SVG dependency. */
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0.62em;
+      left: 0.1em;
+      width: 0.4em;
+      height: 0.4em;
+      border-right: 1.5px solid currentColor;
+      border-bottom: 1.5px solid currentColor;
+      -webkit-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+      -webkit-transform-origin: 50% 50%;
+      transform-origin: 50% 50%;
+      transition: transform var(--dur, 180ms) var(--ease, ease);
+    }
+  }
+
+  &[open] > summary::before {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  p {
+    margin: var(--space-2, 0.5rem) 0 0;
+    padding-left: 1.15em;
+    color: var(--c-text-muted, #5a6473);
+    font-size: var(--fs-sm, 0.9rem);
+    line-height: var(--lh-loose, 1.65);
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   4. TIMELINE  (experience + education)
+   A hairline rail with small markers. The rail is drawn on the container and
+   inset top/bottom, so it reads correctly with two items or with ten.
+   -------------------------------------------------------------------------- */
+
+.timeline {
+  position: relative;
+  margin: var(--space-5, 1.25rem) 0 var(--space-7, 2rem);
+  padding: 0;
+  padding-inline-start: 0; /* neutralises the theme's `ul { padding-inline-start: 2em }` */
+  list-style: none;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0.75em;
+    bottom: 0.75em;
+    left: 4px;
+    width: 1px;
+    background: var(--c-border, #e4e7ee);
+  }
+}
+
+.timeline .timeline-item {
+  position: relative;
+  margin: 0 0 var(--space-6, 1.5rem);
+  padding-left: var(--space-6, 1.65rem);
+  list-style: none;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* Dot punches through the rail: it carries a page-coloured fill so the line
+   visually stops behind it. */
+.timeline-item .timeline-marker {
+  position: absolute;
+  top: 0.45em;
+  left: 0;
+  width: 9px;
+  height: 9px;
+  box-sizing: border-box;
+  background: var(--c-bg, #ffffff);
+  border: 2px solid var(--c-border-strong, #c8cedb);
+  border-radius: 50%;
+}
+
+.timeline-item .timeline-date {
+  display: block;
+  margin-bottom: var(--space-1, 0.2rem);
+  color: var(--c-text-muted, #5a6473);
+  font-variant-numeric: tabular-nums;
+  @include cmp-eyebrow;
+}
+
+.timeline-item .timeline-title {
+  margin: 0 0 0.15em;
+  color: var(--c-text, #1c1f26);
+  font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  font-size: var(--fs-base, 1rem);
+  font-weight: 600;
+  line-height: var(--lh-tight, 1.3);
+}
+
+.timeline-item .timeline-org {
+  display: block;
+  margin-bottom: var(--space-2, 0.5rem);
+  color: var(--c-text-muted, #5a6473);
+  font-size: var(--fs-sm, 0.9rem);
+  line-height: var(--lh-normal, 1.5);
+}
+
+.timeline-item .timeline-body {
+  margin: 0;
+  color: var(--c-text, #1c1f26);
+  font-size: var(--fs-sm, 0.9rem);
+  line-height: var(--lh-loose, 1.6);
+
+  p {
+    margin: 0 0 var(--space-2, 0.5rem);
+
+    &:last-child { margin-bottom: 0; }
+  }
+}
+
+.timeline-item .timeline-bullets {
+  margin: var(--space-2, 0.5rem) 0 0;
+  padding: 0;
+  padding-inline-start: 0;
+  list-style: none;
+
+  li {
+    position: relative;
+    margin: 0 0 var(--space-2, 0.4rem);
+    padding-left: 1em;
+    color: var(--c-text, #1c1f26);
+    font-size: var(--fs-sm, 0.9rem);
+    line-height: var(--lh-loose, 1.6);
+    list-style: none;
+
+    &:last-child { margin-bottom: 0; }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0.72em;
+      left: 0.05em;
+      width: 3px;
+      height: 3px;
+      background: var(--c-text-faint, #616a79);
+      border-radius: 50%;
+    }
+  }
+}
+
+/* Live role. */
+.timeline-item.is-current {
+  .timeline-marker {
+    background: var(--c-accent, #00369f);
+    border-color: var(--c-accent, #00369f);
+  }
+
+  .timeline-date {
+    color: var(--c-accent, #00369f);
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   5. NEWS FEED
+   ~30 dated entries. Collapsed by default via .is-collapsed on the feed: rows
+   past the 8th are hidden in CSS (no JS needed beyond toggling one class), and
+   the visible tail is softly masked so it obviously continues.
+   -------------------------------------------------------------------------- */
+
+.news-feed {
+  position: relative;
+  margin: var(--space-5, 1.25rem) 0 var(--space-4, 1rem);
+  padding: 0;
+  padding-inline-start: 0;
+  list-style: none;
+}
+
+.news-item {
+  display: block;
+  margin: 0;
+  padding: var(--space-3, 0.7rem) 0;
+  list-style: none;
+  border-top: 1px solid var(--c-border, #e4e7ee);
+
+  &:first-child {
+    border-top: 0;
+  }
+
+  @media (min-width: 600px) {
+    display: grid;
+    grid-template-columns: 5.6rem 1fr;
+    gap: var(--space-4, 1rem);
+    align-items: baseline;
+  }
+
+  &.is-hidden {
+    display: none;
+  }
+}
+
+.news-item .news-date {
+  display: block;
+  margin-bottom: var(--space-1, 0.15rem);
+  color: var(--c-text-faint, #616a79);
+  font-size: var(--fs-xs, 0.78rem);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+
+  @media (min-width: 600px) {
+    margin-bottom: 0;
+  }
+}
+
+.news-item .news-body {
+  margin: 0;
+  color: var(--c-text, #1c1f26);
+  font-size: var(--fs-sm, 0.92rem);
+  line-height: var(--lh-loose, 1.6);
+
+  strong {
+    font-weight: 600;
+  }
+
+  a {
+    color: var(--c-accent, #00369f);
+    text-decoration: none;
+    border-bottom: 1px solid var(--c-border-strong, #c8cedb);
+
+    &:hover { border-bottom-color: var(--c-accent, #00369f); }
+  }
+}
+
+/* Collapsed state: rows 9+ are dropped from the flow. */
+.news-feed.is-collapsed {
+  .news-item:nth-child(n + 9) {
+    display: none;
+  }
+
+  /* Fades the final visible row rather than painting a gradient over it, so it
+     is correct in both themes with no colour maths. Progressive enhancement --
+     without mask support the feed just ends on a hairline. */
+  @supports ((-webkit-mask-image: linear-gradient(#000, transparent)) or (mask-image: linear-gradient(#000, transparent))) {
+    .news-item:nth-child(8) {
+      -webkit-mask-image: linear-gradient(to bottom, #000 35%, rgba(0, 0, 0, 0.15) 100%);
+      mask-image: linear-gradient(to bottom, #000 35%, rgba(0, 0, 0, 0.15) 100%);
+    }
+  }
+}
+
+.news-more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45em;
+  width: 100%;
+  min-height: 44px;
+  margin: 0 0 var(--space-7, 2rem);
+  padding: var(--space-2, 0.5rem) var(--space-4, 1rem);
+  color: var(--c-accent, #00369f);
+  font-family: inherit;
+  font-size: var(--fs-sm, 0.875rem);
+  font-weight: 500;
+  text-decoration: none;
+  background: var(--c-surface, #f7f8fa);
+  border: 1px solid var(--c-border, #e4e7ee);
+  border-radius: var(--radius, 6px);
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: background-color var(--dur-fast, 120ms) var(--ease, ease),
+              border-color var(--dur-fast, 120ms) var(--ease, ease);
+
+  @include cmp-focus-visible(2px);
+
+  &:hover {
+    background: var(--c-surface-2, #eef1f6);
+    border-color: var(--c-border-strong, #c8cedb);
+  }
+
+  /* Chevron rotates to point up once the feed is expanded. */
+  &::after {
+    content: "";
+    width: 0.42em;
+    height: 0.42em;
+    margin-top: -0.22em;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    transition: transform var(--dur, 180ms) var(--ease, ease);
+  }
+
+  &[aria-expanded="true"]::after {
+    margin-top: 0.14em;
+    -webkit-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   6. AWARDS + LIGHTBOX
+   Year in a left rail from $small up. Thumbnails are uniform-height, wrapped
+   in focusable anchors, and open the full-screen viewer.
+   -------------------------------------------------------------------------- */
+
+.award-list {
+  margin: var(--space-5, 1.25rem) 0 var(--space-7, 2rem);
+  padding: 0;
+  padding-inline-start: 0;
+  list-style: none;
+}
+
+.award {
+  display: block;
+  margin: 0;
+  padding: var(--space-4, 1rem) 0;
+  list-style: none;
+  border-top: 1px solid var(--c-border, #e4e7ee);
+
+  &:first-child { border-top: 0; }
+
+  @media (min-width: 600px) {
+    display: grid;
+    grid-template-columns: 5.6rem 1fr;
+    gap: var(--space-4, 1rem);
+    align-items: baseline;
+  }
+
+  &.is-hidden { display: none; }
+
+  .award-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2, 0.5rem);
+    margin: var(--space-3, 0.75rem) 0 0;
+    padding: 0;
+    list-style: none;
+
+    a {
+      display: block;
+      overflow: hidden;
+      line-height: 0;
+      border: 1px solid var(--c-border, #e4e7ee);
+      border-radius: var(--radius-sm, 4px);
+      transition: border-color var(--dur-fast, 120ms) var(--ease, ease);
+
+      @include cmp-focus-visible(2px);
+
+      &:hover {
+        border-color: var(--c-accent, #00369f);
+      }
+    }
+
+    img {
+      display: block;
+      width: auto;
+      height: 68px;
+      margin: 0;
+      object-fit: cover;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+  }
+}
+
+.award .award-year {
+  display: block;
+  margin-bottom: var(--space-1, 0.15rem);
+  color: var(--c-text-faint, #616a79);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  @include cmp-eyebrow;
+
+  @media (min-width: 600px) {
+    margin-bottom: 0;
+  }
+}
+
+.award .award-title {
+  display: block;
+  margin: 0 0 0.1em;
+  color: var(--c-text, #1c1f26);
+  font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  font-size: var(--fs-base, 1rem);
+  font-weight: 600;
+  line-height: var(--lh-tight, 1.3);
+}
+
+.award .award-org {
+  display: block;
+  color: var(--c-text-muted, #5a6473);
+  font-size: var(--fs-sm, 0.9rem);
+  line-height: var(--lh-normal, 1.55);
+}
+
+/* Full-screen viewer. The backdrop is intentionally theme-independent: an
+   image viewer should be dark in both themes. White-on-#1a1a1a = 15.6:1. */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6, 1.5rem);
+  background: rgba(12, 12, 14, 0.92);
+
+  &.is-open {
+    display: flex;
+  }
+
+  .lightbox-img {
+    display: block;
+    max-width: 92vw;
+    max-height: 86vh;
+    margin: 0;
+    object-fit: contain;
+    background: #ffffff;
+    border-radius: var(--radius-sm, 4px);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: var(--space-3, 0.75rem);
+    right: var(--space-3, 0.75rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 1.6rem;
+    line-height: 1;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: var(--radius-pill, 999px);
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    transition: background-color var(--dur-fast, 120ms) var(--ease, ease);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.14);
+    }
+
+    /* White ring, because the accent navy would not clear 3:1 on this backdrop. */
+    &:focus {
+      outline: 2px solid #ffffff;
+      outline-offset: 2px;
+    }
+    &:focus:not(:focus-visible) {
+      outline: none;
+    }
+    &:focus-visible {
+      outline: 2px solid #ffffff;
+      outline-offset: 2px;
+    }
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   7. PROJECTS
+   Auto-fit grid, equal heights, hairline borders. Links pin to the bottom so
+   cards of unequal text length still align.
+   -------------------------------------------------------------------------- */
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-4, 1rem);
+  margin: var(--space-5, 1.25rem) 0 var(--space-7, 2rem);
+  padding: 0;
+  padding-inline-start: 0;
+  list-style: none;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  margin: 0;
+  padding: var(--space-5, 1.15rem);
+  list-style: none;
+  @include cmp-hairline-box;
+  transition: border-color var(--dur-fast, 120ms) var(--ease, ease);
+
+  &:hover {
+    border-color: var(--c-border-strong, #c8cedb);
+  }
+
+  &.is-hidden { display: none; }
+}
+
+.project-card .project-title {
+  margin: 0 0 var(--space-2, 0.5rem);
+  color: var(--c-text, #1c1f26);
+  font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  font-size: var(--fs-base, 1rem);
+  font-weight: 600;
+  line-height: var(--lh-tight, 1.3);
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+
+    &:hover { border-bottom-color: var(--c-accent, #00369f); }
+  }
+}
+
+.project-card .project-desc {
+  margin: 0 0 var(--space-4, 1rem);
+  color: var(--c-text-muted, #5a6473);
+  font-size: var(--fs-sm, 0.9rem);
+  line-height: var(--lh-loose, 1.6);
+}
+
+.project-card .project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2, 0.4rem);
+  margin: 0 0 var(--space-3, 0.75rem);
+  padding: 0;
+  padding-inline-start: 0;
+  list-style: none;
+
+  li { margin: 0; list-style: none; }
+}
+
+/* margin-top:auto keeps the link row flush with the bottom of every card. */
+.project-card .project-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2, 0.5rem) var(--space-4, 1rem);
+  margin-top: auto;
+  padding: 0;
+  padding-inline-start: 0;
+  list-style: none;
+
+  li { margin: 0; list-style: none; }
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+    color: var(--c-accent, #00369f);
+    font-size: var(--fs-sm, 0.875rem);
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+
+    @include cmp-touch-target(44px);
+    @include cmp-focus-visible(2px);
+
+    &:hover {
+      color: var(--c-accent-hover, #002a7d);
+      border-bottom-color: var(--c-accent-hover, #002a7d);
+    }
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   8. TEACHING / SERVICE LISTS
+   .plain-list  -- unbulleted, hairline-separated rows.
+   .kv-list     -- definition-style rows: two columns on desktop, stacked below.
+   -------------------------------------------------------------------------- */
+
+.plain-list {
+  margin: var(--space-4, 1rem) 0 var(--space-6, 1.5rem);
+  padding: 0;
+  padding-inline-start: 0;
+  list-style: none;
+
+  li {
+    margin: 0;
+    padding: var(--space-3, 0.7rem) 0;
+    color: var(--c-text, #1c1f26);
+    font-size: var(--fs-sm, 0.92rem);
+    line-height: var(--lh-loose, 1.6);
+    list-style: none;
+    border-top: 1px solid var(--c-border, #e4e7ee);
+
+    &:first-child { border-top: 0; }
+  }
+
+  strong { font-weight: 600; }
+}
+
+.kv-list {
+  display: block;
+  margin: var(--space-4, 1rem) 0 var(--space-6, 1.5rem);
+  padding: 0;
+
+  @media (min-width: 600px) {
+    display: grid;
+    grid-template-columns: minmax(9rem, 12rem) 1fr;
+    gap: 0 var(--space-5, 1.25rem);
+    align-items: baseline;
+  }
+}
+
+.kv-list .kv-key {
+  display: block;
+  margin: var(--space-3, 0.7rem) 0 0;
+  padding: 0;
+  color: var(--c-text-muted, #5a6473);
+  @include cmp-eyebrow;
+
+  @media (min-width: 600px) {
+    padding-top: var(--space-3, 0.7rem);
+    border-top: 1px solid var(--c-border, #e4e7ee);
+
+    &:first-of-type { border-top: 0; }
+  }
+}
+
+.kv-list .kv-val {
+  display: block;
+  margin: var(--space-1, 0.2rem) 0 0;
+  padding: 0 0 var(--space-3, 0.7rem);
+  color: var(--c-text, #1c1f26);
+  font-size: var(--fs-sm, 0.92rem);
+  line-height: var(--lh-loose, 1.6);
+
+  @media (min-width: 600px) {
+    margin: 0;
+    padding-top: var(--space-3, 0.7rem);
+    border-top: 1px solid var(--c-border, #e4e7ee);
+
+    &:first-of-type { border-top: 0; }
+  }
+
+  a {
+    color: var(--c-accent, #00369f);
+    text-decoration: none;
+    border-bottom: 1px solid var(--c-border-strong, #c8cedb);
+
+    &:hover { border-bottom-color: var(--c-accent, #00369f); }
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   9. SMALL UTILITIES
+   -------------------------------------------------------------------------- */
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2, 0.4rem);
+  margin: var(--space-3, 0.75rem) 0;
+  padding: 0;
+  padding-inline-start: 0;
+  list-style: none;
+
+  li {
+    margin: 0;
+    font-size: var(--fs-xs, 0.78rem);
+    list-style: none;
+  }
+}
+
+.tag,
+.tag-row .tag {
+  display: inline-block;
+  padding: 0.12em 0.55em;
+  color: var(--c-text-muted, #5a6473);
+  font-size: var(--fs-xs, 0.78rem);
+  font-weight: 500;
+  line-height: 1.55;
+  text-decoration: none;
+  white-space: nowrap;
+  background: var(--c-surface-2, #eef1f6);
+  border-radius: var(--radius-sm, 4px);
+}
+
+/* Anchors used as tags get the interactive affordances. */
+a.tag {
+  transition: color var(--dur-fast, 120ms) var(--ease, ease),
+              background-color var(--dur-fast, 120ms) var(--ease, ease);
+
+  @include cmp-focus-visible(2px);
+
+  &:hover {
+    color: var(--c-accent, #00369f);
+    background: var(--c-accent-soft, #eef2fb);
+  }
+}
+
+/* Overrides the legacy absolutely-positioned .badge from main.scss -- position
+   and margin are reset explicitly so no legacy declaration leaks through. */
+.badge {
+  position: static;
+  display: inline-block;
+  margin: 0;
+  padding: 0.15em 0.55em;
+  color: var(--c-text-muted, #5a6473);
+  font-size: var(--fs-xs, 0.75rem);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  white-space: nowrap;
+  vertical-align: baseline;
+  background: var(--c-surface-2, #eef1f6);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm, 4px);
+
+  &.is-accent {
+    color: var(--c-accent, #00369f);
+    background: var(--c-accent-soft, #eef2fb);
+    border-color: var(--c-accent-soft, #eef2fb);
+  }
+
+  &.is-muted {
+    color: var(--c-text-muted, #5a6473);
+    background: transparent;
+    border-color: var(--c-border-strong, #c8cedb);
+  }
+
+  &.is-success {
+    color: var(--c-success, #166534);
+    background: transparent;
+    border-color: var(--c-success, #166534);
+  }
+
+  &.is-warn {
+    color: var(--c-warn, #8a5a00);
+    background: transparent;
+    border-color: var(--c-warn, #8a5a00);
+  }
+}
+
+/* Callout: an accent/warn rule on the leading edge, no tinted fill, so body
+   text keeps the verified --c-text-on-surface contrast in both themes. */
+.callout {
+  margin: var(--space-5, 1.25rem) 0;
+  padding: var(--space-4, 1rem) var(--space-5, 1.15rem);
+  color: var(--c-text, #1c1f26);
+  font-size: var(--fs-sm, 0.92rem);
+  line-height: var(--lh-loose, 1.6);
+  background: var(--c-surface, #f7f8fa);
+  border: 1px solid var(--c-border, #e4e7ee);
+  border-left: 3px solid var(--c-border-strong, #c8cedb);
+  border-radius: 0 var(--radius, 6px) var(--radius, 6px) 0;
+
+  > :first-child { margin-top: 0; }
+  > :last-child { margin-bottom: 0; }
+
+  p { margin: 0 0 var(--space-2, 0.5rem); }
+  p:last-child { margin-bottom: 0; }
+
+  &.is-note {
+    border-left-color: var(--c-accent, #00369f);
+  }
+
+  &.is-warn {
+    border-left-color: var(--c-warn, #8a5a00);
+  }
+}
+
+.muted {
+  color: var(--c-text-muted, #5a6473);
+}
+
+.divider {
+  height: 0;
+  margin: var(--space-7, 2rem) 0;
+  border: 0;
+  border-top: 1px solid var(--c-border, #e4e7ee);
+}
+
+/* .no-print has no screen styling by design -- it is a print-only hook.
+   See the @media print block at the end of this file. */
+
+/* The theme already ships a .visually-hidden with !important declarations that
+   cannot be overridden without matching them; these are additive properties it
+   omits (stops a long label being read as one wrapped 1px column). */
+.visually-hidden {
+  padding: 0;
+  margin: -1px;
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+/* Generic filter state. Also declared inside each component at higher
+   specificity so it beats that component's own display value. */
+.is-hidden {
+  display: none;
+}
+
+
+/* --------------------------------------------------------------------------
+   10. CV PAGE
+   Designed to survive "Save as PDF" -- see the print block for the rest.
+   -------------------------------------------------------------------------- */
+
+.cv-page {
+  /* Deliberately NOT --maxw-text (68ch): that is a running-prose measure and is
+     too narrow for .cv-entry-head, which sets a title and a date on one line. */
+  max-width: 46rem;
+  margin: 0 auto;
+  color: var(--c-text, #1c1f26);
+
+  h1, h2, h3, h4 {
+    color: var(--c-text, #1c1f26);
+    font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  }
+
+  a {
+    color: var(--c-accent, #00369f);
+    text-decoration: none;
+    border-bottom: 1px solid var(--c-border-strong, #c8cedb);
+
+    &:hover { border-bottom-color: var(--c-accent, #00369f); }
+  }
+}
+
+.cv-header {
+  margin: 0 0 var(--space-6, 1.5rem);
+  padding-bottom: var(--space-4, 1rem);
+  border-bottom: 2px solid var(--c-text, #1c1f26);
+  text-align: center;
+
+  h1 {
+    margin: 0 0 var(--space-2, 0.5rem);
+    padding: 0;
+    font-size: var(--fs-2xl, 1.875rem);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: var(--lh-tight, 1.15);
+    border-bottom: 0; /* the theme underlines every .page__content h1 */
+  }
+}
+
+.cv-contact {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35em var(--space-3, 0.75rem);
+  margin: 0;
+  padding: 0;
+  padding-inline-start: 0;
+  color: var(--c-text-muted, #5a6473);
+  font-size: var(--fs-sm, 0.9rem);
+  line-height: var(--lh-normal, 1.5);
+  list-style: none;
+
+  li {
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+    list-style: none;
+  }
+
+  /* Middle dot separators, drawn rather than typed so they never end up in a
+     copy-paste of the contact line. */
+  li + li::before {
+    content: "\00b7";
+    margin-right: var(--space-3, 0.7rem);
+    color: var(--c-text-faint, #616a79);
+  }
+
+  a {
+    color: inherit;
+    border-bottom: 1px solid var(--c-border, #e4e7ee);
+
+    @include cmp-focus-visible(2px);
+
+    &:hover {
+      color: var(--c-accent, #00369f);
+      border-bottom-color: var(--c-accent, #00369f);
+    }
+  }
+}
+
+.cv-section {
+  margin: 0 0 var(--space-7, 2rem);
+
+  > h2 {
+    margin: 0 0 var(--space-4, 1rem);
+    padding: 0 0 var(--space-2, 0.4rem);
+    color: var(--c-text, #1c1f26);
+    font-size: var(--fs-sm, 0.875rem);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    line-height: var(--lh-tight, 1.25);
+    border-bottom: 1px solid var(--c-border-strong, #c8cedb);
+  }
+}
+
+.cv-entry {
+  margin: 0 0 var(--space-5, 1.15rem);
+  page-break-inside: avoid;
+  break-inside: avoid;
+
+  &:last-child { margin-bottom: 0; }
+
+  p {
+    margin: 0 0 var(--space-2, 0.4rem);
+    color: var(--c-text, #1c1f26);
+    font-size: var(--fs-sm, 0.92rem);
+    line-height: var(--lh-loose, 1.6);
+  }
+
+  ul {
+    margin: var(--space-2, 0.4rem) 0 0;
+    padding: 0;
+    padding-inline-start: 1.1em;
+
+    li {
+      margin: 0 0 var(--space-1, 0.2rem);
+      font-size: var(--fs-sm, 0.92rem);
+      line-height: var(--lh-loose, 1.6);
+    }
+  }
+}
+
+/* Title left, date right on one baseline; stacks under 600px. */
+.cv-entry-head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1em;
+  margin: 0 0 var(--space-1, 0.2rem);
+
+  @media (min-width: 600px) {
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-4, 1rem);
+  }
+
+  h3, h4, strong, .cv-entry-title {
+    margin: 0;
+    color: var(--c-text, #1c1f26);
+    font-size: var(--fs-base, 1rem);
+    font-weight: 600;
+    line-height: var(--lh-tight, 1.3);
+  }
+}
+
+.cv-entry-date {
+  flex: 0 0 auto;
+  color: var(--c-text-muted, #5a6473);
+  font-size: var(--fs-sm, 0.85rem);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.cv-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  min-height: 44px;
+  margin: 0 0 var(--space-6, 1.5rem);
+  padding: 0 var(--space-5, 1.15rem);
+  color: var(--c-accent-contrast, #ffffff);
+  font-family: inherit;
+  font-size: var(--fs-sm, 0.9rem);
+  font-weight: 600;
+  text-decoration: none;
+  background: var(--c-accent, #00369f);
+  border: 1px solid var(--c-accent, #00369f);
+  border-radius: var(--radius, 6px);
+  cursor: pointer;
+  transition: background-color var(--dur-fast, 120ms) var(--ease, ease);
+
+  @include cmp-focus-visible(2px);
+
+  &:hover {
+    color: var(--c-accent-contrast, #ffffff);
+    background: var(--c-accent-hover, #002a7d);
+    border-color: var(--c-accent-hover, #002a7d);
+  }
+}
+
+
+/* _theme.scss caps direct-child <ul>/<ol> of .page__content at the prose
+   measure (`.page__content > ul { max-width: var(--maxw-text) }`, 0-1-1).
+   These containers are components, not prose, so they opt out at matching
+   specificity -- element-qualified so they win on source order, not weight. */
+ul.stat-grid, ol.stat-grid,
+ul.filter-bar,
+ul.pub-list, ol.pub-list,
+ul.pub-tags,
+ul.pub-actions,
+ul.timeline, ol.timeline,
+ul.timeline-bullets,
+ul.news-feed, ol.news-feed,
+ul.award-list, ol.award-list,
+ul.award-images,
+ul.project-grid, ol.project-grid,
+ul.project-tags,
+ul.project-links,
+ul.plain-list, ol.plain-list,
+ul.tag-row,
+ul.cv-contact,
+dl.kv-list {
+  max-width: none;
+}
+
+/* _theme.scss retints every content link (`.page__content a { color: accent }`,
+   0-1-1). These two are filled/neutral chrome whose own colour is set at only
+   0-1-0, so they are restated element-qualified. Without this the CV button
+   would print navy-on-navy. */
+a.cv-download,
+a.cv-download:hover {
+  color: var(--c-accent-contrast, #ffffff);
+}
+
+a.tag {
+  color: var(--c-text-muted, #4d5769);
+}
+
+
+/* The theme underlines every anchor inside the page body via
+   `.page__content a { text-decoration: underline }` (specificity 0-1-1) and
+   again on :hover (0-2-1). The anchors below are UI chrome, not prose links,
+   so they are re-declared here at matching-or-higher specificity and win on
+   source order -- which is why no !important is needed. */
+.pub .pub-title a,
+.pub .pub-title a:hover,
+.pub .pub-authors a,
+.pub .pub-authors a:hover,
+.project-title a,
+.project-title a:hover,
+.project-links a,
+.project-links a:hover,
+.news-body a,
+.news-body a:hover,
+.kv-val a,
+.kv-val a:hover,
+.cv-page a,
+.cv-page a:hover,
+.cv-contact a,
+.cv-contact a:hover,
+.award .award-images a,
+.award .award-images a:hover,
+a.btn-link,
+a.btn-link:hover,
+a.cv-download,
+a.cv-download:hover,
+a.tag,
+a.tag:hover,
+a.pub-tag,
+a.pub-tag:hover,
+a.filter-chip,
+a.filter-chip:hover,
+a.news-more,
+a.news-more:hover {
+  text-decoration: none;
+}
+
+
+/* --------------------------------------------------------------------------
+   11. REDUCED MOTION
+   Everything in this file animates only colour, border-colour and a chevron
+   rotation; all of it is switched off here.
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .filter-chip,
+  .btn-link,
+  .news-more,
+  .news-more::after,
+  .project-card,
+  .project-links a,
+  .pub-title a,
+  .pub-summary > summary::before,
+  .award-images a,
+  .lightbox-close,
+  .cv-download,
+  a.tag {
+    -webkit-transition: none;
+    transition: none;
+    -webkit-animation: none;
+    animation: none;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   12. PRINT
+   Goal: browser "Save as PDF" of /cv (or any page) produces a clean
+   one-column document. The theme's screen chrome is float/susy based, so the
+   layout containers have to be un-floated explicitly.
+
+   !important is used ONLY in this block. It is required because the theme sets
+   colours with equal-or-higher specificity (e.g. `.btn { color: #fff !important }`,
+   `.page__content a`) that would otherwise print as pale ink or invisible white.
+   -------------------------------------------------------------------------- */
+
+@media print {
+
+  @page {
+    margin: 0.6in 0.65in;
+  }
+
+  body {
+    padding: 0 !important;
+    margin: 0 !important;
+    color: #000 !important;
+    background: #fff !important;
+    font-size: 10.5pt;
+    line-height: 1.42;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Screen chrome, navigation, floating widgets. */
+  .masthead,
+  .greedy-nav,
+  #site-nav,
+  .sidebar,
+  .author__avatar,
+  .author__urls-wrapper,
+  .page__footer,
+  .page__share,
+  .page__related,
+  .page__comments,
+  .back-to-top,
+  .skip-link,
+  .filter-bar,
+  .news-more,
+  .lightbox,
+  .cv-download,
+  .no-print,
+  [data-no-print] {
+    display: none !important;
+  }
+
+  /* Un-float the susy grid so content runs full width. */
+  #main,
+  .page,
+  .page__inner-wrap,
+  .page__content,
+  .cv-page {
+    float: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    animation: none !important;
+  }
+
+  /* Black ink everywhere; links stay black with a rule so they read as links. */
+  .cv-page,
+  .cv-page h1,
+  .cv-page h2,
+  .cv-page h3,
+  .cv-page h4,
+  .cv-page p,
+  .cv-page li,
+  .page__content,
+  .page__content p,
+  .page__content li,
+  .stat-num,
+  .stat-label,
+  .pub-title,
+  .pub-authors,
+  .pub-authors .me,
+  .pub-meta,
+  .pub-venue,
+  .timeline-title,
+  .timeline-org,
+  .timeline-date,
+  .timeline-body,
+  .news-date,
+  .news-body,
+  .award-title,
+  .award-org,
+  .award-year,
+  .project-title,
+  .project-desc,
+  .kv-key,
+  .kv-val,
+  .cv-entry-date,
+  .muted {
+    color: #000 !important;
+    background: transparent !important;
+  }
+
+  a,
+  .page__content a,
+  .cv-page a {
+    color: #000 !important;
+    text-decoration: none !important;
+    border-bottom: 1px solid #000 !important;
+  }
+
+  /* Reveal destinations for external links only -- internal anchors and
+     mailto: would just add noise. */
+  .cv-page a[href^="http"]::after,
+  .page__content a[href^="http"]::after {
+    content: " <" attr(href) ">";
+    font-size: 8.5pt;
+    font-weight: 400;
+    word-break: break-all;
+  }
+
+  .cv-page a[href^="#"]::after,
+  .page__content a[href^="#"]::after,
+  .cv-page a[href^="mailto:"]::after,
+  .cv-contact a::after {
+    content: "" !important;
+  }
+
+  /* Keep records whole across page boundaries. */
+  .cv-entry,
+  .pub,
+  .timeline-item,
+  .award,
+  .project-card,
+  .news-item,
+  .stat-grid {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  h1, h2, h3, h4,
+  .cv-section > h2,
+  .timeline-title,
+  .award-title,
+  .pub-title {
+    page-break-after: avoid;
+    break-after: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .cv-section {
+    margin-bottom: 14pt;
+  }
+
+  .cv-section > h2 {
+    margin: 0 0 6pt;
+    padding-bottom: 2pt;
+    font-size: 9.5pt;
+    letter-spacing: 0.09em;
+    border-bottom: 0.75pt solid #000 !important;
+  }
+
+  .cv-header {
+    margin-bottom: 12pt;
+    padding-bottom: 6pt;
+    border-bottom: 1pt solid #000 !important;
+
+    h1 { font-size: 17pt; }
+  }
+
+  .cv-contact {
+    font-size: 9pt;
+  }
+
+  .cv-entry {
+    margin-bottom: 8pt;
+
+    p, li { font-size: 10pt; line-height: 1.38; }
+  }
+
+  .cv-entry-head {
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1em;
+  }
+
+  .cv-entry-date {
+    font-size: 9.5pt;
+  }
+
+  /* Components that carry screen-only decoration. */
+  .pub-thumb,
+  .award-images,
+  .timeline-marker,
+  .filter-count {
+    display: none !important;
+  }
+
+  .timeline::before {
+    display: none;
+  }
+
+  /* Matches the scoped screen selector `.timeline .timeline-item` (0-2-0). */
+  .timeline .timeline-item {
+    padding-left: 0;
+    margin-bottom: 8pt;
+  }
+
+  .pub,
+  .pub:first-child {
+    padding: 6pt 0;
+    border-top: 0.5pt solid #999 !important;
+  }
+
+  .pub-summary {
+    /* Print the gloss whether or not the reader expanded it. */
+    > summary { display: none !important; }
+    p { padding-left: 0; }
+  }
+
+  .pub-venue,
+  .badge,
+  .tag,
+  .pub-tag {
+    border-color: #000 !important;
+    background: transparent !important;
+  }
+
+  .btn-link {
+    min-height: 0;
+    padding: 0 0.3em;
+    border: 0 !important;
+  }
+
+  .stat-grid,
+  .news-feed,
+  .plain-list li,
+  .award,
+  .news-item {
+    border-color: #999 !important;
+  }
+
+  .project-card,
+  .callout {
+    border: 0.5pt solid #999 !important;
+    background: transparent !important;
+  }
+
+  /* Expanded news in print: the collapse is a screen affordance only. */
+  .news-feed.is-collapsed .news-item:nth-child(n + 9) {
+    display: block !important;
+  }
+
+  .news-feed.is-collapsed .news-item:nth-child(8) {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
