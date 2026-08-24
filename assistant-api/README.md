@@ -30,18 +30,49 @@ variable. The browser talks to the proxy; the proxy talks to the model.
 
 ## Deploy on Vercel
 
+**Point the project at this folder, not at the repository root.** This directory
+is the whole deployment; the website itself is built and served by GitHub Pages.
+
+If you import the repository root, Vercel detects Jekyll and tries to build the
+site, which fails. The failure is not your configuration: Vercel runs Ruby 3.3,
+Ruby 3.2 removed `Object#tainted?`, and the pinned `liquid 4.0.3` that comes with
+the `github-pages` gem still calls it. The build dies with
+`undefined method 'tainted?' for an instance of Hash`. GitHub Pages is unaffected
+because it builds on its own pinned stack.
+
+In the Vercel project settings:
+
+| Setting | Value |
+|---|---|
+| Root Directory | `assistant-api` |
+| Framework Preset | **Other** (not Jekyll) |
+| Build Command | leave blank, with Override on |
+| Output Directory | leave blank, with Override on |
+| Install Command | leave blank, with Override on |
+
+Then add two environment variables, for Production and Preview:
+
+| Key | Value |
+|---|---|
+| `NRP_API_KEY` | your NRP token |
+| `ALLOWED_ORIGINS` | `https://bhanuprakashvangala.github.io` |
+
+Redeploy. Your endpoint is the deployment URL plus `/api/chat`, for example
+`https://bhanuprakashvangala-github-io.vercel.app/api/chat`.
+
+Note that `assistant-api/` has to exist on the branch Vercel is building. If the
+project is set to `main`, merge the branch first, or change the production branch
+in Settings, Git.
+
+Or do the same from the CLI:
+
 ```bash
 cd assistant-api
-npx vercel login
-npx vercel link                    # create a new project
-
-npx vercel env add NRP_API_KEY production      # paste your NRP token
-npx vercel env add ALLOWED_ORIGINS production  # https://bhanuprakashvangala.github.io
-
+npx vercel link
+npx vercel env add NRP_API_KEY production
+npx vercel env add ALLOWED_ORIGINS production
 npx vercel deploy --prod
 ```
-
-Vercel prints a URL. Your endpoint is that URL plus `/api/chat`.
 
 ## Deploy on Netlify
 
