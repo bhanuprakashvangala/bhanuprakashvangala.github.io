@@ -715,6 +715,14 @@ pre {
   }
 }
 
+/* .author__org is markup added after my first pass and was never styled, so
+   it was rendering in full-strength body ink directly under a muted role
+   line. Colour only -- font-size and margins already resolve to
+   `.sidebar p` / base `p`, so the card's box is byte-for-byte unchanged. */
+.sidebar .author__org {
+  color: var(--c-text-faint);
+}
+
 .sidebar .author__urls-wrapper {
   font-family: var(--font-sans);
 
@@ -929,6 +937,16 @@ pre {
   line-height: var(--lh-loose);
 }
 
+/* The hero H1 sits inside .page__content, where the markdown-page rule
+   `.page__content h1` (0-1-1) outranks `.hero-name` (0-1-0) and was lending
+   it a 48px top margin, 12px of padding and the h1 underline. A hero name is
+   not a markdown page heading: strip that chrome at matching weight. */
+.page__content h1.hero-name {
+  margin-top: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
 .hero-actions {
   display: -webkit-box;
   display: flex;
@@ -1140,11 +1158,12 @@ pre {
 .page__content dd { color: var(--c-text-muted); font-size: var(--fs-sm); }
 .page__content p { margin: 0 0 var(--space-4); }
 
-/* main.scss ships `h1:before` / `.anchor:before` as a negative-margin scroll
-   offset and a -10em pull on #about-me. `scroll-padding-top` on <html> does
-   that job properly, so the hacks are retired. */
-h1:before,
-.anchor:before {
+/* main.scss ships `h1:before` as a negative-margin scroll offset and a -10em
+   pull on #about-me. `scroll-padding-top` on <html> does that job properly,
+   so the hacks are retired. (The matching `.anchor:before` half is not
+   neutralised here any more: `<span class="anchor">` no longer exists in the
+   markup, so there is nothing left to hit.) */
+h1:before {
   content: none;
 }
 
@@ -1180,14 +1199,42 @@ h1:before,
   .link-pill { padding: var(--space-2) var(--space-3); }
 }
 
-/* below the susy column switch the sidebar sits full width above the article */
+/* Below the susy column switch the sidebar stacks full width directly above
+   the article, so the profile card and the hero collide.
+   The sidebar renders on the homepage only (cv.md and demos.md set
+   `author_profile: false`), and on the homepage the hero already carries the
+   name as its H1, the role, the affiliation, the location and -- in
+   .link-pills -- the very same cv.links the profile lists. Everything in the
+   stacked card is therefore a verbatim repeat except the portrait.
+   So below the breakpoint the card collapses to the portrait alone and the
+   H1 owns the identity: one H1, no repeated name or role, nothing lost. */
 @media (max-width: 57.8em) {   /* just below $large (925px), where susy switches to two columns */
   .sidebar {
     width: 100%;
     float: none;
-    margin-bottom: var(--space-7);
-    padding-bottom: var(--space-6);
-    border-bottom: 1px solid var(--c-border);
+    /* was: 32px margin + 24px padding + a full-width rule, all of which read
+       as dead space once the card is just a portrait */
+    margin-bottom: var(--space-6);
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+
+  /* name + bio(role) + org all live in .author__content -- hiding the wrapper
+     rather than the three children also removes its padding-left, so no
+     phantom box is left beside the portrait. */
+  .sidebar .author__content {
+    display: none;
+  }
+
+  /* standing alone the portrait needs a little more presence */
+  .sidebar .author__avatar {
+    width: 80px;
+  }
+
+  /* #main already contributes 40px above the portrait; the hero's own top
+     padding on top of that is what pushed the H1 down a further screen. */
+  .hero {
+    padding-top: 0;
   }
 }
 

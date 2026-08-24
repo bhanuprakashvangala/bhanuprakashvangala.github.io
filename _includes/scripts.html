@@ -4,6 +4,7 @@
 <script>
   window.BV_ASSISTANT = {
     kb:       {{ '/assets/data/kb.json' | relative_url | jsonify }},
+    home:     {{ '/' | relative_url | jsonify }},
     endpoint: {{ site.assistant.endpoint | default: '' | jsonify }},
     model:    {{ site.assistant.model | default: 'gpt-oss' | jsonify }},
     email:    {{ site.data.cv.profile.email | jsonify }}

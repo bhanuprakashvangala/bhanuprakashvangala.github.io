@@ -64,12 +64,23 @@
   }
 
   function tokenize(str) {
-    return String(str).toLowerCase()
+    var out = [];
+    String(str).toLowerCase()
       .replace(/[^a-z0-9+#.\- ]+/g, ' ')
       .split(/\s+/)
-      .map(function (w) { return w.replace(/[.\-]+$/, ''); })
-      .filter(function (w) { return w.length > 1 && !STOPSET[w]; })
-      .map(stem);
+      .forEach(function (raw) {
+        var w = raw.replace(/^[.\-]+|[.\-]+$/g, '');
+        if (!w) return;
+        // Index a hyphenated compound BOTH whole and in parts, so a query for
+        // "Pick-and-Spin" still reaches a document that writes "Pick and Spin".
+        if (w.indexOf('-') !== -1) {
+          w.split('-').forEach(function (part) {
+            if (part.length > 1 && !STOPSET[part]) out.push(stem(part));
+          });
+        }
+        if (w.length > 1 && !STOPSET[w]) out.push(stem(w));
+      });
+    return out;
   }
 
   /** Minimal BM25 index over the knowledge-base chunks. */
