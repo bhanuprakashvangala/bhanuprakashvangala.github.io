@@ -24,7 +24,7 @@ sitemap: false
 {%- comment %} ---- Profile / who he is ---- {% endcomment -%}
 {%- capture t -%}
 {{ p.name }} is a {{ p.role }} in the {{ p.department }} at the {{ p.affiliation }}, based in {{ p.location }}.
-He is advised by {{ p.advisor }} and {{ p.coadvisor }}, and expects to complete his Ph.D. in June 2027.
+He is advised by {{ p.advisor }} and expects to complete his Ph.D. in June 2027.
 {{ p.summary }}
 His research interests are: {{ p.interests | join: ", " }}.
 He can be reached at {{ p.email }}.
@@ -74,7 +74,7 @@ Role: {{ x.title }} at {{ x.org }}, {{ x.location }}, from {{ x.start }} to {{ x
 {{ e.degree }} at {{ e.org }}, {{ e.location }}, {{ e.start }} to {{ e.end }}. GPA {{ e.gpa }}.
 {% for d in e.details %}{{ d | strip_html }} {% endfor %}
 {%- endcapture -%}
-{{ sep }}{"id":{{ e.id | prepend: "edu-" | jsonify }},"type":"education","title":{{ e.degree | append: ", " | append: e.org | jsonify }},"section":"#educations","text":{{ t | normalize_whitespace | strip | jsonify }}}
+{{ sep }}{"id":{{ e.id | prepend: "edu-" | jsonify }},"type":"education",{% if e.current %}"current":true,{% endif %}"title":{{ e.degree | append: ", " | append: e.org | jsonify }},"section":"#educations","text":{{ t | normalize_whitespace | strip | jsonify }}}
 {%- endfor -%}
 
 {%- comment %} ---- Projects ---- {% endcomment -%}

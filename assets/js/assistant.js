@@ -78,6 +78,14 @@
             if (part.length > 1 && !STOPSET[part]) out.push(stem(part));
           });
         }
+        // Same idea for interior periods. The CV writes "Ph.D.", "M.S." and
+        // "B.Tech"; people type "phd", "ms", "btech". Without this a question
+        // about the Ph.D. cannot outrank the M.S. entry, because the one token
+        // that distinguishes them never matches.
+        if (w.indexOf('.') !== -1) {
+          var flat = w.replace(/\./g, '');
+          if (flat.length > 1 && !STOPSET[flat]) out.push(stem(flat));
+        }
         if (w.length > 1 && !STOPSET[w]) out.push(stem(w));
       });
     return out;
@@ -124,6 +132,11 @@
         var idf = Math.log(1 + (N - df + 0.5) / (df + 0.5));
         score += idf * (f * (k1 + 1)) / (f + k1 * (1 - b + b * doc.len / self.avgLen));
       });
+      // An unqualified question about an ongoing situation ("who is your
+      // advisor") means the current one. Where a query does not name a
+      // specific record, this tips a tie toward the one still true today,
+      // without ever outweighing a query that does name one ("my MS thesis").
+      if (score > 0 && self.chunks[i].current) score *= 1.25;
       if (score > 0) scored.push({ chunk: self.chunks[i], score: score });
     });
 
