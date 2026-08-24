@@ -1,469 +1,244 @@
 ---
 permalink: /
 title: ""
-excerpt: ""
+excerpt: "Doctoral researcher in agentic AI and LLM systems at the University of Missouri."
 author_profile: true
 redirect_from:
   - /about/
   - /about.html
 ---
 
-<span class='anchor' id='about-me'></span>
+{%- assign cv = site.data.cv -%}
+{%- assign p = cv.profile -%}
 
-# About Me
+<section id="about-me" class="section hero" aria-labelledby="hero-name">
+<h1 class="hero-name" id="hero-name">{{ p.name }}</h1>
+<p class="hero-role">{{ p.role }}</p>
+<p class="hero-affil">{{ p.department }} &middot; <a href="https://engineering.missouri.edu/departments/eecs/">{{ p.affiliation }}</a> &middot; {{ p.location }}</p>
 
-I am a Doctoral Researcher in Computer Science at the [University of Missouri](https://engineering.missouri.edu/departments/eecs/), advised by [Dr. Tanu Malik](https://engineering.missouri.edu/faculty/tanu-malik/). My research focuses on **agentic AI systems**, **multi-model LLM orchestration**, and **trustworthy/reproducible machine learning systems**. I build and evaluate end-to-end platforms that reason, plan, and act autonomously across HPC and cloud environments.
+<p class="hero-summary">{{ p.summary }}</p>
 
-I completed my M.S. in Computer Science at Missouri (GPA 4.0/4.0), where my thesis studied deploying LLMs as a service on Kubernetes-based HPC clusters. I received my B.Tech in CSE (Data Analytics) from VIT, where I worked on multilingual sentiment analysis with collaborators at IIIT Hyderabad.
+<p class="muted">Advised by <a href="{{ p.advisor_url }}">{{ p.advisor }}</a> and {{ p.coadvisor }}. Ph.D. expected June 2027.</p>
 
-Recent recognitions include **Google PhD Fellowship Nominee (NLP, 2025)**, **Outstanding Master's Student Award (2025)**, and **EECS Graduate Travel Fellowship (2026)**.
+<p class="tag-row" aria-label="Highlights">
+{%- for b in p.badges %}<span class="badge is-accent">{{ b }}</span>{% endfor %}
+</p>
 
-**Research Interests:** Agentic AI systems, LLM orchestration, reproducibility, provenance, distributed inference systems, and evaluation science
-
-<div class="quick-links">
-  <a href="mailto:bv3hz@umsystem.edu">Email</a>
-  <a href="https://scholar.google.com/citations?user=qHBOnpkAAAAJ&hl=en">Google Scholar</a>
-  <a href="https://dblp.org/pid/75/6568-6.html">DBLP</a>
-  <a href="https://github.com/bhanuprakashvangala">GitHub</a>
-  <a href="https://www.linkedin.com/in/vangalabhanuprakash/">LinkedIn</a>
+<div class="link-pills hero-actions">
+{%- for l in cv.links %}
+<a class="link-pill{% if l.id == 'cv' %} link-pill--primary{% endif %}" href="{% if l.url contains '://' or l.url contains 'mailto:' %}{{ l.url }}{% else %}{{ l.url | relative_url }}{% endif %}"><i class="{{ l.icon }}" aria-hidden="true"></i> {{ l.label }}</a>
+{%- endfor %}
+<a class="link-pill" href="{{ '/demos/' | relative_url }}"><i class="fas fa-flask" aria-hidden="true"></i> Live demos</a>
 </div>
 
----
+<p class="muted"><strong>Research interests:</strong> {{ p.interests | join: " &middot; " }}</p>
 
-<span class='anchor' id='news'></span>
-# News
+<ul class="stat-grid">
+{%- for s in cv.stats %}
+<li class="stat"><span class="stat-num">{{ s.num }}</span><span class="stat-label">{{ s.label }}</span></li>
+{%- endfor %}
+</ul>
+</section>
 
-- *2026.04*: Received the **EECS Graduate Travel Fellowship** from the University of Missouri College of Engineering
-- *2026.04*: Awarded a **Chameleon Cloud Travel Award** (Top 10 proposals) for the Sixth Chameleon User Meeting
-- *2026.02*: My presentation on **"Evaluating Dependency Gaps in LLM-Generated Code"** was selected for the **Sixth Chameleon User Meeting** (April 15–16, 2026) at NCAR’s Mesa Lab in Boulder, Colorado
-- *2026.01*: I presented **"AI-Generated Code Is Not Reproducible (Yet): An Empirical Study of Dependency Gaps in LLM-Based Coding Agents"** (Jan 26) and **"Efficient Multi-Model Orchestration for Self-Hosted Large Language Models"** (Jan 27) at **AAAI 2026** in Singapore
-- *2026.01*: Submitted **"The Environment Specification Gap"** (extended 1,000-instance study) to **TMLR**
-- *2026.01*: Submitted **"Resource-Aware Multi-Model Serving for GPU Cloud Infrastructure"** to **IEEE CLOUD 2026**
-- *2026.01*: Submitted **"Beyond Functional Correctness: Evaluating AI-Generated Software Services"** to **ACM REP 2026**
-- *2025.12*: Our paper **"AI-Generated Code Is Not Reproducible (Yet): An Empirical Study of Dependency Gaps in LLM-Based Coding Agents"** was accepted at the **RAI 2025 workshop**
-- *2025.11*: Our paper **"Efficient Multi-Model Orchestration for Self-Hosted Large Language Models"** was accepted at the **Deployable Artificial Intelligence (DAI2025) Workshop**
-- *2025.11*: Received an offer from **Microsoft** for Research Data Science Internship (Summer 2026)
-- *2025.05*: Graduated with my **M.S. in Computer Science** and continued to pursue my **Ph.D. in Computer Science at Mizzou**
-- *2025.04*: Selected as a **Google PhD Fellowship Nominee (NLP)** — one of three nominees from the University of Missouri
-- *2025.04*: Presented our work on hallucination detection at the **AAAI Spring Symposium 2025 (AI for Scientific Discovery track)**
-- *2025.03*: Received the **Outstanding Master's Student Award** at the Mizzou Engineering Awards Banquet 2025
-- *2025.03*: Started development of **ReflectMemory**, focused on persistent memory control for long-context LLM reasoning
-- *2025.03*: Deployed an updated **KubeLLM** framework for multi-tenant LLM inference on GPU-based HPC clusters
-- *2025.01*: Two papers accepted at **AAAI 2025**, including **HalluMat** and **HalluFormer**
-- *2025.01*: Released benchmarking tools for **hallucination detection in scientific LLMs**
-- *2024.09*: Initiated documentation work on scalable **LLM-as-a-Service infrastructure** using Helm charts and node affinity scheduling
-- *2024.01*: Working as a TA for over 100 students in a web development course, guiding full-stack app development
-- *2023.12*: Led deployment of GPU-efficient LLM inference systems in the university’s Kubernetes-based HPC environment (Nautilus)
-- *2023.08*: Began research on **faithfulness, interpretability, and robustness** in large generative language models
-- *2023.06*: Admitted to the Ph.D. program in Computer Science at the University of Missouri
-- *2023.05*: Graduated with a B.Tech in CSE (Data Analytics) from VIT Vellore
-- *2023.04*: Honored with the **Excellence in Research** Award at VIT for multilingual NLP and social media analytics contributions
-- *2023.03*: Volunteered as an **AI Community Evangelist** at Adobe, contributing to community education and developer engagement
-- *2022.11*: Served as an **Internshala Student Partner (ISP)**, leading brand campaigns and peer mentoring on campus
-- *2021*: Collaborated with the **Synergy Team** at VIT, supporting student experience initiatives and university development programs
-- *2020*: Joined the **Brandiverse** team as a creative contributor, working on outreach and media strategy
+<section id="news" class="section" aria-labelledby="news-title">
+<div class="section-head"><h2 class="section-title" id="news-title">News</h2></div>
 
----
+<ol class="news-feed" id="news-feed">
+{%- for n in cv.news %}
+<li class="news-item"><span class="news-date">{{ n.date }}</span><span class="news-body">{{ n.text | markdownify | remove: '<p>' | remove: '</p>' | strip }}</span></li>
+{%- endfor %}
+</ol>
 
-<span class='anchor' id='publications'></span>
-# Publications
+<button type="button" class="news-more" id="news-more" aria-expanded="false" aria-controls="news-feed">Show all {{ cv.news | size }} updates</button>
+</section>
 
+<section id="publications" class="section" aria-labelledby="pubs-title">
+<div class="section-head">
+<h2 class="section-title" id="pubs-title">Publications</h2>
+<a class="section-action" href="https://scholar.google.com/citations?user=qHBOnpkAAAAJ&amp;hl=en">Google Scholar &rarr;</a>
+</div>
+<p class="section-sub">My name is shown in <span class="me">bold</span>. Filter by topic below.</p>
 
-### 2026
-
-<div class="pub-card">
-  <div class="pub-img">
-    <img src="images/AdaptiveLLMaaS.png" alt="Efficient Multi-Model Orchestration">
-  </div>
-  <div class="pub-content">
-    <div class="pub-title">Efficient Multi-Model Orchestration for Self-Hosted Large Language Models</div>
-    <div class="pub-authors"><a href="#">Bhanu Prakash Vangala</a>, Tanu Malik</div>
-    <div class="pub-links">
-      <a href="https://arxiv.org/abs/2512.22402">Paper</a>
-      <span class="pub-link-disabled">Code (coming soon)</span>
-      <span class="pub-venue">AAAI 2026</span>
-    </div>
-  </div>
+<div class="filter-bar" role="group" aria-label="Filter publications by topic">
+{%- for f in cv.pub_filters %}
+<button type="button" class="filter-chip{% if f.id == 'all' %} is-active{% endif %}" data-filter="{{ f.id }}" aria-pressed="{% if f.id == 'all' %}true{% else %}false{% endif %}">{{ f.label }}</button>
+{%- endfor %}
+<span class="filter-count" id="filter-count" aria-live="polite"></span>
 </div>
 
-<div class="pub-card">
-  <div class="pub-img">
-    <img src="images/LLM-as-Service-portfolio-image.png" alt="AI-Generated Code Reproducibility">
-  </div>
-  <div class="pub-content">
-    <div class="pub-title">AI-Generated Code Is Not Reproducible (Yet): An Empirical Study of Dependency Gaps in LLM-Based Coding Agents</div>
-    <div class="pub-authors"><a href="#">Bhanu Prakash Vangala</a>, Ali Adibifar, Ashish Gehani, Tanu Malik</div>
-    <div class="pub-links">
-      <a href="https://arxiv.org/abs/2512.22387">Paper</a>
-      <span class="pub-link-disabled">Code (coming soon)</span>
-      <span class="pub-venue">AAAI 2026</span>
-    </div>
-  </div>
+<ol class="pub-list" id="pub-list">
+{%- for pub in cv.publications %}
+<li class="pub" data-tags="{{ pub.tags | join: ' ' }}" data-year="{{ pub.year }}" id="pub-{{ pub.id }}">
+{%- if pub.image %}
+<div class="pub-thumb"><img src="{{ pub.image | prepend: '/' | relative_url }}" alt="" loading="lazy" decoding="async"></div>
+{%- endif %}
+<div class="pub-body">
+<h3 class="pub-title">{{ pub.title }}</h3>
+<p class="pub-authors">{% for a in pub.authors %}{% if a contains 'Bhanu' %}<span class="me">{{ a }}</span>{% else %}{{ a }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}</p>
+{%- if pub.highlights %}
+<p>{{ pub.highlights }}</p>
+{%- endif %}
+<p class="pub-meta">
+<span class="pub-venue is-{{ pub.status }}">{% if pub.status == 'review' %}Under review &middot; {% endif %}{{ pub.venue }}{% if pub.kind %} &middot; {{ pub.kind }}{% endif %}</span>
+<span class="pub-tags">{% for t in pub.tags %}<span class="pub-tag">{{ t }}</span>{% endfor %}</span>
+</p>
+{%- if pub.summary %}
+<details class="pub-summary"><summary>What it's about</summary><p>{{ pub.summary }}</p></details>
+{%- endif %}
+{%- if pub.links and pub.links != empty %}
+<p class="pub-actions">{% for l in pub.links %}<a class="btn-link" href="{{ l.url }}">{{ l.label }}</a>{% endfor %}</p>
+{%- endif %}
 </div>
+</li>
+{%- endfor %}
+</ol>
+<p class="callout is-note is-hidden" id="pub-empty">No publications match that filter.</p>
+</section>
 
-### 2025
+<section id="research" class="section" aria-labelledby="research-title">
+<div class="section-head"><h2 class="section-title" id="research-title">Research programs</h2></div>
+<p class="section-sub">The funded programs my work sits inside, and the people I build them with.</p>
 
-<div class="pub-card">
-  <div class="pub-img">
-    <img src="images/HalluMat-Portfolio%20Image.png" alt="HalluMat">
-  </div>
-  <div class="pub-content">
-    <div class="pub-title">HalluMat: A Benchmark Dataset and Framework for Hallucination Detection in LLMs for Materials Science</div>
-    <div class="pub-authors"><a href="#">Bhanu Prakash Vangala</a>, Syed Mahmud, Prabhat Neupane, Janani Selvaraj, Jianlin Cheng</div>
-    <div class="pub-links">
-      <a href="https://drive.google.com/file/d/1oMbe8br7-wm7NLkrOFbFGtT2vUlxdCTn/view">Paper</a>
-      <span class="pub-link-disabled">Code (coming soon)</span>
-      <span class="pub-venue">AAAI 2025</span>
-    </div>
-  </div>
+<ul class="project-grid">
+{%- for r in cv.research %}
+<li class="project-card" id="program-{{ r.id }}">
+<h3 class="project-title">{{ r.title }}</h3>
+<p class="project-meta"><span class="badge is-accent">{{ r.funder }}</span><span class="badge is-muted">{{ r.stack }}</span></p>
+<p class="project-desc"><strong>With</strong> {% for c in r.collaborators %}{{ c.name }} ({{ c.org }}){% unless forloop.last %}, {% endunless %}{% endfor %}</p>
+<dl class="kv-list">
+{%- for t in r.threads %}
+<dt class="kv-key">{{ t.name }}</dt><dd class="kv-val">{{ t.text }}</dd>
+{%- endfor %}
+</dl>
+</li>
+{%- endfor %}
+</ul>
+</section>
+
+<section id="projects" class="section" aria-labelledby="projects-title">
+<div class="section-head"><h2 class="section-title" id="projects-title">Projects</h2></div>
+
+<ul class="project-grid">
+{%- for pr in cv.projects %}
+<li class="project-card">
+<h3 class="project-title">{{ pr.title }}</h3>
+<p class="project-meta">{% if pr.role %}<span class="badge is-accent">{{ pr.role }}</span>{% endif %}<span class="badge is-muted">{{ pr.status }}</span></p>
+<p class="project-desc">{{ pr.desc }}</p>
+{%- if pr.stack %}
+<p class="project-tags">{% assign bits = pr.stack | split: "|" %}{% for b in bits %}<span class="tag">{{ b | strip }}</span>{% endfor %}</p>
+{%- endif %}
+{%- if pr.links %}
+<p class="project-links">{% for l in pr.links %}<a class="btn-link" href="{{ l.url }}">{{ l.label }}</a>{% endfor %}</p>
+{%- endif %}
+</li>
+{%- endfor %}
+</ul>
+</section>
+
+<section id="honors-and-awards" class="section" aria-labelledby="awards-title">
+<div class="section-head"><h2 class="section-title" id="awards-title">Honors &amp; awards</h2></div>
+
+<ul class="award-list">
+{%- for a in cv.awards %}
+<li class="award">
+<span class="award-year">{{ a.year }}</span>
+<p class="award-title">{{ a.title }}</p>
+<p class="award-org">{{ a.org }}</p>
+{%- if a.images %}
+<div class="award-images">
+{%- for img in a.images %}<a class="lightbox-trigger" href="{{ img | prepend: '/' | relative_url }}"><img src="{{ img | prepend: '/' | relative_url }}" alt="{{ a.title }}" loading="lazy"></a>{% endfor %}
 </div>
+{%- endif %}
+</li>
+{%- endfor %}
+</ul>
+</section>
 
-<div class="pub-card">
-  <div class="pub-img">
-    <img src="images/HalluFormer-Portfolio%20Image.png" alt="HalluFormer">
-  </div>
-  <div class="pub-content">
-    <div class="pub-title">HalluFormer: A Transformer-Based Framework for Detecting Hallucination in LLMs</div>
-    <div class="pub-authors">Syed Mahmud, Prabhat Neupane, Janani Selvaraj, <a href="#">Bhanu Prakash Vangala</a>, Jianlin Cheng</div>
-    <div class="pub-links">
-      <a href="https://drive.google.com/file/d/1o6tqCJdhiCTAR4AEM59fV4t2VSdvS4yt/view">Paper</a>
-      <span class="pub-link-disabled">Code (coming soon)</span>
-      <span class="pub-venue">AAAI 2025</span>
-    </div>
-  </div>
+<section id="educations" class="section" aria-labelledby="edu-title">
+<div class="section-head"><h2 class="section-title" id="edu-title">Education</h2></div>
+
+<ol class="timeline">
+{%- for e in cv.education %}
+<li class="timeline-item{% if e.current %} is-current{% endif %}">
+<span class="timeline-marker" aria-hidden="true"></span>
+<p class="timeline-date">{{ e.start }} &ndash; {{ e.end }}</p>
+<h3 class="timeline-title">{{ e.degree }}</h3>
+<p class="timeline-org">{{ e.org }} &middot; {{ e.location }}{% if e.gpa %} &middot; GPA {{ e.gpa }}{% endif %}</p>
+<ul class="timeline-bullets">
+{%- for d in e.details %}<li>{{ d | markdownify | remove: '<p>' | remove: '</p>' | strip }}</li>{% endfor %}
+</ul>
+</li>
+{%- endfor %}
+</ol>
+</section>
+
+<section id="experience" class="section" aria-labelledby="exp-title">
+<div class="section-head"><h2 class="section-title" id="exp-title">Experience</h2></div>
+
+<ol class="timeline">
+{%- for x in cv.experience %}
+<li class="timeline-item{% if x.current %} is-current{% endif %}">
+<span class="timeline-marker" aria-hidden="true"></span>
+<p class="timeline-date">{{ x.start }} &ndash; {{ x.end }}</p>
+<h3 class="timeline-title">{{ x.title }}</h3>
+<p class="timeline-org">{{ x.org }} &middot; {{ x.location }}</p>
+{%- if x.collaborators %}
+<div class="timeline-body"><p class="muted">With {{ x.collaborators }}</p></div>
+{%- endif %}
+<ul class="timeline-bullets">
+{%- for b in x.bullets %}<li>{{ b | markdownify | remove: '<p>' | remove: '</p>' | strip }}</li>{% endfor %}
+</ul>
+{%- if x.tags %}
+<p class="tag-row">{% for t in x.tags %}<span class="tag">{{ t }}</span>{% endfor %}</p>
+{%- endif %}
+</li>
+{%- endfor %}
+</ol>
+</section>
+
+<section id="service" class="section" aria-labelledby="service-title">
+<div class="section-head"><h2 class="section-title" id="service-title">Talks, service &amp; teaching</h2></div>
+
+<h3>Invited talks &amp; presentations</h3>
+<dl class="kv-list">
+{%- for t in cv.talks %}
+<dt class="kv-key">{{ t.date }}</dt><dd class="kv-val"><strong>{{ t.title }}</strong> &mdash; {{ t.venue }}</dd>
+{%- endfor %}
+</dl>
+
+{%- assign talk_img = cv.talks | where_exp: "t", "t.image" | first %}
+{%- if talk_img %}
+<div class="award-images">
+<a class="lightbox-trigger" href="{{ talk_img.image | prepend: '/' | relative_url }}"><img src="{{ talk_img.image | prepend: '/' | relative_url }}" alt="Presenting at {{ talk_img.venue }}" loading="lazy"></a>
 </div>
+<p class="muted">Presenting hallucination-detection work at the AAAI Spring Symposium 2025.</p>
+{%- endif %}
 
-<div class="pub-card">
-  <div class="pub-img">
-    <img src="images/AdaptiveLLMaaS.png" alt="Adaptive Inference">
-  </div>
-  <div class="pub-content">
-    <div class="pub-title">Adaptive Inference: Orchestrating Fine-Tuned LLMs with Serverless GPUs in HPC Environments</div>
-    <div class="pub-authors"><a href="#">Bhanu Prakash Vangala</a>, Tanu Malik</div>
-    <div class="pub-links">
-      <span class="pub-link-disabled">Poster (coming soon)</span>
-      <span class="pub-link-disabled">Code (coming soon)</span>
-      <span class="pub-venue">ACM SC 2025</span>
-    </div>
-  </div>
+<h3>Reviewing</h3>
+{%- for s in cv.service %}
+<p class="tag-row">{% for i in s.items %}<span class="tag">{{ i }}</span>{% endfor %}</p>
+{%- endfor %}
+
+<h3>Teaching</h3>
+<dl class="kv-list">
+{%- for t in cv.teaching %}
+<dt class="kv-key">{{ t.terms | join: ", " }}</dt><dd class="kv-val"><strong>{{ t.role }}, {{ t.course }}</strong> &mdash; {{ t.org }}. {{ t.note }}</dd>
+{%- endfor %}
+</dl>
+</section>
+
+<section class="section">
+<div class="section-head"><h2 class="section-title">Get in touch</h2></div>
+<p>I'm always glad to talk about agentic systems, reproducibility, or LLM serving, and I'm open to collaborations and speaking invitations.</p>
+<div class="link-pills">
+<a class="link-pill link-pill--primary" href="mailto:{{ p.email }}"><i class="fas fa-envelope" aria-hidden="true"></i> {{ p.email }}</a>
+<a class="link-pill" href="{{ '/cv/' | relative_url }}"><i class="fas fa-file-alt" aria-hidden="true"></i> Full CV</a>
+<a class="link-pill" href="https://github.com/bhanuprakashvangala"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
 </div>
+<p class="muted">Or ask the assistant in the corner &mdash; it answers from this CV and cites the section it drew from.</p>
+</section>
 
-### Under Review (2026)
-
-<div class="pub-card">
-  <div class="pub-img">
-    <img src="images/LLM-as-Service-portfolio-image.png" alt="Environment Specification Gap">
-  </div>
-  <div class="pub-content">
-    <div class="pub-title">The Environment Specification Gap: An Empirical Study of Dependency Misspecification in LLM-Generated Code</div>
-    <div class="pub-authors"><a href="#">Bhanu Prakash Vangala</a>, Ashish Gehani, Tanu Malik</div>
-    <div class="pub-links">
-      <span class="pub-link-disabled">Preprint (coming soon)</span>
-      <span class="pub-link-disabled">Code (coming soon)</span>
-      <span class="pub-venue">Under Review at TMLR</span>
-    </div>
-  </div>
-</div>
-
-<div class="pub-card">
-  <div class="pub-img">
-    <img src="images/AdaptiveLLMaaS.png" alt="Resource-Aware Multi-Model Serving">
-  </div>
-  <div class="pub-content">
-    <div class="pub-title">Resource-Aware Multi-Model Serving for GPU Cloud Infrastructure</div>
-    <div class="pub-authors"><a href="#">Bhanu Prakash Vangala</a>, Tanu Malik</div>
-    <div class="pub-links">
-      <span class="pub-link-disabled">Preprint (coming soon)</span>
-      <span class="pub-link-disabled">Code (coming soon)</span>
-      <span class="pub-venue">Under Review at IEEE CLOUD 2026</span>
-    </div>
-  </div>
-</div>
-
-<div class="pub-card">
-  <div class="pub-img">
-    <img src="images/AdaptiveLLMaaS.png" alt="Beyond Functional Correctness">
-  </div>
-  <div class="pub-content">
-    <div class="pub-title">Beyond Functional Correctness: Evaluating AI-Generated Software Services</div>
-    <div class="pub-authors"><a href="#">Bhanu Prakash Vangala</a>, Ashish Gehani, Tanu Malik</div>
-    <div class="pub-links">
-      <span class="pub-link-disabled">Preprint (coming soon)</span>
-      <span class="pub-link-disabled">Code (coming soon)</span>
-      <span class="pub-venue">Under Review at ACM REP 2026</span>
-    </div>
-  </div>
-</div>
-
-### Thesis & Earlier Work
-
-<div class="pub-card">
-  <div class="pub-img">
-    <img src="images/LLM-as-Service-portfolio-image.png" alt="LLM-as-a-Service">
-  </div>
-  <div class="pub-content">
-    <div class="pub-title">Deploying LLMs as a Service in Kubernetes HPC Cluster</div>
-    <div class="pub-authors"><a href="#">Bhanu Prakash Vangala</a>, Grant Scott, Jianlin Cheng</div>
-    <div class="pub-links">
-      <span class="pub-link-disabled">Thesis link (coming soon)</span>
-      <span class="pub-venue">M.S. Thesis 2025</span>
-    </div>
-  </div>
-</div>
-
-<div class="pub-card">
-  <div class="pub-img">
-    <img src="images/KOO-Portfolio%20Image.png" alt="KOO Sentiment Analysis">
-  </div>
-  <div class="pub-content">
-    <div class="pub-title">KOO: Multilingual Sentiment Analysis on Social Media</div>
-    <div class="pub-authors"><a href="#">Bhanu Prakash Vangala</a></div>
-    <div class="pub-links">
-      <a href="https://drive.google.com/file/d/1a2Xan4sDdC7ib7Hj5HODcjPyztmTee4k/view">Paper</a>
-      <span class="pub-venue">B.Tech Thesis 2023</span>
-    </div>
-  </div>
-</div>
-
-<div class="pub-card">
-  <div class="pub-img">
-    <img src="images/Brain%20Tumor-Portfolio%20Image.png" alt="Brain Tumor Detection">
-  </div>
-  <div class="pub-content">
-    <div class="pub-title">Brain Tumor Detection in MRI Images Using Deep Learning</div>
-    <div class="pub-authors"><a href="#">Bhanu Prakash Vangala</a></div>
-    <div class="pub-links">
-      <a href="https://drive.google.com/file/d/1upCswGveonJPN2vmuXzKlhbKqE8tkGSA/view?usp=sharing">Project Report</a>
-      <a href="https://github.com/bhanuprakashvangala">Code</a>
-      <span class="pub-venue">Research Project</span>
-    </div>
-  </div>
-</div>
-
-<div class="pub-card">
-  <div class="pub-img">
-    <img src="images/Pneumonia-Portfolio%20Image.png" alt="Pneumonia Detection">
-  </div>
-  <div class="pub-content">
-    <div class="pub-title">Pneumonia Detection in Chest X-rays Using Deep Learning</div>
-    <div class="pub-authors"><a href="#">Bhanu Prakash Vangala</a></div>
-    <div class="pub-links">
-      <a href="https://drive.google.com/file/d/1UJKKHXcFIvtjClUyrr6dhatMKN1svU7C/view?usp=sharing">Project Report</a>
-      <span class="pub-venue">Research Project</span>
-    </div>
-  </div>
-</div>
-
----
-
-<span class='anchor' id='projects'></span>
-# Projects
-
-<div class="pub-card">
-  <div class="pub-content">
-    <div class="pub-title">FlexiFlow: Bandit-based Model Switching in ML Workflows</div>
-    <div class="pub-desc">Building a dataflow system that dynamically switches between ML models at runtime using multi-armed bandit strategies to improve accuracy and efficiency across multi-step ML pipelines.</div>
-  </div>
-</div>
-
-<div class="pub-card">
-  <div class="pub-content">
-    <div class="pub-title">TRACE: A Programmable Cloud Laboratory for Autonomous Experimentation</div>
-    <div class="pub-desc">Developing a closed-loop autonomous experimentation platform across volume electron microscopy, neutron scattering, and microscale manufacturing using agentic architectures and Bayesian experiment planners.</div>
-  </div>
-</div>
-
-<div class="pub-card">
-  <div class="pub-content">
-    <div class="pub-title">Reproducible Containers for Advancing Process-oriented Collaborative Analytics</div>
-    <div class="pub-desc">Developing data-savvy reproducible containers that automatically encapsulate scientific applications with provenance tracking. Studying dependency issues in AI-generated code, multi-model orchestration (Pick-and-Spin) for LLM inference, and reproducibility challenges in LLM-based coding agents.</div>
-  </div>
-</div>
-
-<div class="pub-card">
-  <div class="pub-content">
-    <div class="pub-title">LearnLLM.dev — Learn to Build with Large Language Models</div>
-    <div class="pub-desc">Building an educational platform with 83+ lessons and 30+ hands-on challenges teaching LLM development — from prompt engineering to production-grade AI agents. Serving 10,000+ active learners.</div>
-    <div class="pub-links">
-      <a href="https://learnllm.dev">Website</a>
-    </div>
-  </div>
-</div>
-
-<div class="pub-card">
-  <div class="pub-content">
-    <div class="pub-title">VisionAI: AI-Powered Assistance for the Visually Impaired</div>
-    <div class="pub-desc">Built a multimodal AI system for hazard detection and accessibility using fine-tuned vision-language models. Runner-up at the IBM/MUIDSI Generative AI for Social Good Hackathon 2025.</div>
-  </div>
-</div>
-
-<div class="pub-card">
-  <div class="pub-content">
-    <div class="pub-title">Autonomous Indoor Navigation System</div>
-    <div class="pub-desc">Built an indoor navigation system using BLE beacons and Raspberry Pi with A* and Dijkstra pathfinding, paired with a Kotlin mobile app for turn-by-turn guidance.</div>
-  </div>
-</div>
-
----
-
-<span class='anchor' id='honors-and-awards'></span>
-# Honors and Awards
-
-<div class="award-item">
-  <div class="award-date">2025</div>
-  <strong>Outstanding Reviewer Award</strong>, NeurIPS 2025 (AI for Accelerated Materials Design Track)
-</div>
-
-<div class="award-item">
-  <div class="award-date">May 2025</div>
-  <strong>Outstanding Master's Student Award</strong>, College of Engineering, University of Missouri
-  <div class="award-images">
-    <a href="images/image%20with%20dean.jpg" class="lightbox-trigger"><img src="images/image%20with%20dean.jpg" alt="Award with Dean"></a>
-    <a href="images/Outstanding%20Student.jpeg" class="lightbox-trigger"><img src="images/Outstanding%20Student.jpeg" alt="Certificate"></a>
-  </div>
-</div>
-
-<div class="award-item">
-  <div class="award-date">April 2025</div>
-  <strong>Google PhD Fellowship Nominee (NLP)</strong> — one of three nominees from the University of Missouri
-</div>
-
-<div class="award-item">
-  <div class="award-date">March 2025</div>
-  <strong>Runner-Up – MUIDSI AI Hackathon</strong> for VisionAI: AI-Powered Assistance for the Visually Impaired ($1,000 prize)
-  <div class="award-images">
-    <a href="images/Hackathon%20Winner.jpeg" class="lightbox-trigger"><img src="images/Hackathon%20Winner.jpeg" alt="Hackathon Award"></a>
-    <a href="images/Hackathon%20Winner%202.jpg" class="lightbox-trigger"><img src="images/Hackathon%20Winner%202.jpg" alt="Hackathon Team"></a>
-  </div>
-</div>
-
-<div class="award-item">
-  <div class="award-date">2023</div>
-  <strong>Dean's Research Excellence Award</strong>, Vellore Institute of Technology
-</div>
-
-<div class="award-item">
-  <div class="award-date">2023</div>
-  <strong>Best Department Thesis Award</strong>, VIT for B.Tech thesis on multilingual sentiment analysis
-</div>
-
-<div class="award-item">
-  <div class="award-date">2022</div>
-  <strong>Runner-Up</strong>, VIT AI Tech-Thon
-</div>
-
-<!-- Lightbox for image enlargement -->
-<div class="lightbox" id="lightbox">
-  <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-  <img id="lightbox-img" src="" alt="">
-</div>
-
-<script>
-// Lightbox functionality
-document.querySelectorAll('.lightbox-trigger').forEach(function(trigger) {
-  trigger.addEventListener('click', function(e) {
-    e.preventDefault();
-    var imgSrc = this.getAttribute('href');
-    document.getElementById('lightbox-img').src = imgSrc;
-    document.getElementById('lightbox').classList.add('active');
-  });
-});
-
-function closeLightbox() {
-  document.getElementById('lightbox').classList.remove('active');
-}
-
-document.getElementById('lightbox').addEventListener('click', function(e) {
-  if (e.target === this) {
-    closeLightbox();
-  }
-});
-
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    closeLightbox();
-  }
-});
-</script>
-
----
-
-<span class='anchor' id='educations'></span>
-# Education
-
-<div class="edu-item">
-  <h4>Ph.D. in Computer Science, University of Missouri</h4>
-  <div class="date">2023 - 2027 (expected)</div>
-  <p>Advisor: Dr. Tanu Malik | GPA: 3.9/4.0<br>
-  Research: Agentic AI Systems, Trustworthy AI, Autonomous Experimentation, Reproducibility<br>
-  Funded by NASA, NSF, and Department of Defense</p>
-</div>
-
-<div class="edu-item">
-  <h4>M.S. in Computer Science, University of Missouri</h4>
-  <div class="date">2023 - 2025</div>
-  <p>Advisors: Dr. Jianlin Cheng, Dr. Grant Scott | GPA: 4.0/4.0<br>
-  Thesis: Deploying LLM-as-a-Service in Kubernetes HPC Clusters</p>
-</div>
-
-<div class="edu-item">
-  <h4>B.Tech in Computer Science (Data Analytics), VIT Vellore</h4>
-  <div class="date">2019 - 2023</div>
-  <p>Thesis: Multilingual Sentiment Analysis on KOO platform<br>
-  Awards: Dean's Research Excellence Award, Best Thesis Award</p>
-</div>
-
----
-
-<span class='anchor' id='professional-experience'></span>
-# Experience
-
-<div class="exp-item">
-  <h4>Microsoft — Research Data Science Intern (Offer Received)</h4>
-  <div class="date">Summer 2026</div>
-</div>
-
-<div class="exp-item">
-  <h4>University of Missouri, Radiant Lab — Research Assistant</h4>
-  <div class="date">Jan 2024 - Present</div>
-  <p>NASA-funded research on reproducible scientific containers, AI-generated code reproducibility, and multi-model orchestration (Pick-and-Spin); work on bandit-based model switching (FlexiFlow) and autonomous experimentation (TRACE)<br>
-  Advisor: Dr. Tanu Malik</p>
-</div>
-
-<div class="exp-item">
-  <h4>University of Missouri, Data Intensive Computing Lab — Research & Teaching Assistant</h4>
-  <div class="date">Feb 2024 - Present</div>
-  <p>DoD/ERDC-funded research on hallucination detection in LLMs (30% improvement); NSF-funded work on LLM-as-a-Service infrastructure<br>
-  TA for Web Development: mentored 115+ students<br>
-  Advisors: Dr. Grant Scott, Dr. Jianlin Cheng</p>
-</div>
-
-<div class="exp-item">
-  <h4>Adobe — Volunteer Research Intern</h4>
-  <div class="date">May 2022 - Jan 2023</div>
-  <p>Web scraping and information extraction for NLP team</p>
-</div>
-
----
-
-<span class='anchor' id='academic-service'></span>
-# Academic Service
-
-**Reviewer:** NeurIPS (Outstanding Reviewer — AI4MAT Track), NeurIPS (Main Track), ICLR, ICML, ACL, AAAI, CIKM, IEEE
-
----
-
-# Teaching
-
-- **Teaching Assistant**, Web Development (MERN Stack) — Fall 2025, Fall 2024, Spring 2024, Fall 2023
-
----
-
-<div style="text-align: center; margin-top: 3rem; color: #666;">
-  <p>Thanks for visiting! Feel free to reach out.</p>
-  <p>
-    <a href="mailto:bv3hz@umsystem.edu">Email</a> ·
-    <a href="https://github.com/bhanuprakashvangala">GitHub</a> ·
-    <a href="https://www.linkedin.com/in/vangalabhanuprakash/">LinkedIn</a>
-  </p>
+<div class="lightbox" id="lightbox" role="dialog" aria-label="Enlarged image" aria-modal="true">
+<img class="lightbox-img" id="lightbox-img" src="" alt="">
+<button type="button" class="lightbox-close" id="lightbox-close" aria-label="Close image">&times;</button>
 </div>

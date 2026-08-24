@@ -1,25 +1,25 @@
-# main links links
+# Main navigation. Anchor targets live on the homepage; /demos/ and /cv/ are
+# standalone pages. `spy: true` opts a link into scroll-spy highlighting.
 main:
-  - title: "About Me"
+  - title: "About"
     url: "/#about-me"
-
+    spy: true
   - title: "News"
     url: "/#news"
-
+    spy: true
   - title: "Publications"
     url: "/#publications"
-
+    spy: true
   - title: "Projects"
     url: "/#projects"
-
-  - title: "Honors & Awards"
+    spy: true
+  - title: "Awards"
     url: "/#honors-and-awards"
-
-  - title: "Education"
-    url: "/#educations"
-
-  - title: "Academic Service"
-    url: "/#academic-service"
-
+    spy: true
   - title: "Experience"
-    url: "/#professional-experience"
+    url: "/#experience"
+    spy: true
+  - title: "Demos"
+    url: "/demos/"
+  - title: "CV"
+    url: "/cv/"

@@ -1,0 +1,219 @@
+/* ==========================================================================
+   DESIGN TOKENS
+   --------------------------------------------------------------------------
+   Single source of truth for colour, elevation, radius, type, space, layout
+   and motion. Everything downstream (_theme.scss, _components.scss,
+   _assistant.scss, _demos.scss) should read these custom properties and never
+   hard-code a raw value.
+
+   libsass / jekyll-sass-converter 1.5.2 safe:
+   classic @import + @mixin/@include only. No @use, no math.div, no modern
+   colour-module functions, no space-separated hsl().
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. Palettes as mixins
+   The light palette and the dark palette are each authored ONCE, here, and
+   then replayed by the three selectors in section 2 (and by @media print in
+   _theme.scss, which force-restores the light palette on paper).
+   -------------------------------------------------------------------------- */
+
+@mixin theme-light {
+  color-scheme: light;
+
+  /* Surfaces */
+  --c-bg:             #ffffff;
+  --c-surface:        #f8fafc;
+  --c-surface-2:      #eef2f7;
+
+  /* Lines. --c-border is a decorative hairline (dividers, card edges).
+     --c-border-strong is the interactive-control border and clears 3:1
+     against bg, surface and surface-2 (WCAG 1.4.11). */
+  --c-border:         #e3e8ef;
+  --c-border-strong:  #7f8a9c;
+
+  /* Ink */
+  --c-text:           #1a1f2b;
+  --c-text-muted:     #4d5769;
+  --c-text-faint:     #646e80;
+
+  /* Accent -- the site's existing navy identity, plus derived tints */
+  --c-accent:         #00369f;
+  --c-accent-hover:   #002a7d;
+  --c-accent-soft:    #eaf0fb;
+  --c-accent-contrast: #ffffff;
+
+  /* Semantic */
+  --c-success:        #146c43;
+  --c-warn:           #8a5300;
+  --c-danger:         #b3261e;
+
+  /* Incidentals */
+  --c-code-bg:        #f4f6f9;
+  --c-selection:      rgba(0, 54, 159, 0.14);
+
+  /* Sticky masthead: solid fallback + translucent variant used only when
+     backdrop-filter is supported (see _theme.scss). */
+  --c-header-bg:      #ffffff;
+  --c-header-bg-blur: rgba(255, 255, 255, 0.78);
+
+  /* Elevation -- low, cool, and deliberately shallow. */
+  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.05);
+  --shadow-md: 0 1px 2px rgba(16, 24, 40, 0.05), 0 4px 12px rgba(16, 24, 40, 0.07);
+  --shadow-lg: 0 2px 4px rgba(16, 24, 40, 0.04), 0 12px 32px rgba(16, 24, 40, 0.10);
+}
+
+@mixin theme-dark {
+  color-scheme: dark;
+
+  /* Surfaces */
+  --c-bg:             #0f1219;
+  --c-surface:        #161b24;
+  --c-surface-2:      #1e2531;
+
+  /* Lines */
+  --c-border:         #2a3240;
+  --c-border-strong:  #6a7488;
+
+  /* Ink */
+  --c-text:           #e6eaf2;
+  --c-text-muted:     #a8b2c3;
+  --c-text-faint:     #8892a4;
+
+  /* Accent -- #00369f is far too dark to sit on a dark ground, so the dark
+     theme uses a light tint of the same hue. --c-accent-contrast flips to
+     near-black because the accent is now the light surface of the pair. */
+  --c-accent:         #8fb4ff;
+  --c-accent-hover:   #b8d0ff;
+  --c-accent-soft:    rgba(143, 180, 255, 0.16);
+  --c-accent-contrast: #0b1220;
+
+  /* Semantic */
+  --c-success:        #5fd39a;
+  --c-warn:           #e5ab3f;
+  --c-danger:         #ff8983;
+
+  /* Incidentals */
+  --c-code-bg:        #161b24;
+  --c-selection:      rgba(143, 180, 255, 0.24);
+
+  --c-header-bg:      #0f1219;
+  --c-header-bg-blur: rgba(15, 18, 25, 0.78);
+
+  /* Elevation -- on dark grounds shadow reads as depth only when it is much
+     denser, so the alphas roughly quintuple. */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.50);
+  --shadow-md: 0 1px 2px rgba(0, 0, 0, 0.50), 0 4px 12px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 2px 4px rgba(0, 0, 0, 0.50), 0 12px 32px rgba(0, 0, 0, 0.55);
+}
+
+
+/* --------------------------------------------------------------------------
+   2. Theme-switching contract
+   a) :root                                     -> light is the written default
+   b) prefers-color-scheme: dark, no attribute  -> follow the OS
+   c) [data-theme="dark"]                       -> explicit user choice wins
+   The :not([data-theme="light"]) guard in (b) is what lets a toggle force
+   light on a machine whose OS is dark.
+   -------------------------------------------------------------------------- */
+
+:root {
+  @include theme-light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    @include theme-dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  @include theme-dark;
+}
+
+
+/* --------------------------------------------------------------------------
+   3. Theme-invariant tokens
+   Shape, type, space, layout and motion do not change between light and dark,
+   so they live on a plain :root and are declared once.
+   -------------------------------------------------------------------------- */
+
+:root {
+
+  /* Radii ---------------------------------------------------------------- */
+  --radius-sm:   4px;
+  --radius:      8px;
+  --radius-lg:   14px;
+  --radius-pill: 999px;
+
+  /* Type families -------------------------------------------------------- */
+  --font-sans:  "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Merriweather", Georgia, "Times New Roman", serif;
+  --font-mono:  ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+  /* Type scale -- ~1.2 modular, expressed in rem against a 16px root ------- */
+  --fs-xs:   0.75rem;    /* 12px  micro-labels, captions      */
+  --fs-sm:   0.875rem;   /* 14px  nav, pills, meta            */
+  --fs-base: 1rem;       /* 16px  body                        */
+  --fs-md:   1.125rem;   /* 18px  lead paragraph, hero summary*/
+  --fs-lg:   1.3125rem;  /* 21px  h3 / card titles            */
+  --fs-xl:   1.5rem;     /* 24px  section titles              */
+  --fs-2xl:  1.875rem;   /* 30px  page titles                 */
+  --fs-3xl:  2.5rem;     /* 40px  hero name                   */
+
+  --lh-tight:  1.2;
+  --lh-normal: 1.55;
+  --lh-loose:  1.7;
+
+  /* Space -- 4px base ----------------------------------------------------- */
+  --space-1:  0.25rem;   /*  4px */
+  --space-2:  0.5rem;    /*  8px */
+  --space-3:  0.75rem;   /* 12px */
+  --space-4:  1rem;      /* 16px */
+  --space-5:  1.25rem;   /* 20px */
+  --space-6:  1.5rem;    /* 24px */
+  --space-7:  2rem;      /* 32px */
+  --space-8:  2.5rem;    /* 40px */
+  --space-9:  3rem;      /* 48px */
+  --space-10: 4rem;      /* 64px */
+  --space-11: 5rem;      /* 80px */
+  --space-12: 6rem;      /* 96px */
+
+  /* Layout --------------------------------------------------------------- */
+  --maxw-text: 68ch;     /* comfortable measure for running prose */
+  --maxw-page: 1140px;   /* shell width: #main, masthead, footer  */
+
+  /* Sticky-header geometry. Kept as flat values (not calc) so that anything
+     reading them -- scroll-padding, scroll-margin, sticky offsets -- stays
+     libsass-safe and trivially overridable per breakpoint. */
+  --h-header:      56px;
+  --offset-anchor: 80px; /* header height + breathing room for anchor jumps */
+
+  /* Motion -- short, quiet, opacity/transform only ------------------------- */
+  --ease:     cubic-bezier(0.2, 0.6, 0.3, 1);
+  --dur-fast: 120ms;
+  --dur:      180ms;
+}
+
+
+/* --------------------------------------------------------------------------
+   4. Responsive token nudges
+   Only the top of the type scale and the anchor offset change with viewport;
+   everything else holds. Declared after section 3 so these win.
+   -------------------------------------------------------------------------- */
+
+@media (min-width: 48em) {   /* 768px */
+  :root {
+    --fs-2xl: 2.125rem;      /* 34px */
+    --fs-3xl: 3rem;          /* 48px */
+    --h-header: 64px;
+    --offset-anchor: 88px;
+  }
+}
+
+@media (min-width: 64em) {   /* 1024px */
+  :root {
+    --fs-3xl: 3.25rem;       /* 52px */
+  }
+}

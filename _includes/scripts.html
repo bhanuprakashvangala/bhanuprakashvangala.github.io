@@ -1,3 +1,14 @@
-<script src="assets/js/main.min.js"></script>
-
+<script src="{{ '/assets/js/main.min.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
+{%- if site.assistant.enabled != false %}
+<script>
+  window.BV_ASSISTANT = {
+    kb:       {{ '/assets/data/kb.json' | relative_url | jsonify }},
+    endpoint: {{ site.assistant.endpoint | default: '' | jsonify }},
+    model:    {{ site.assistant.model | default: 'gpt-oss' | jsonify }},
+    email:    {{ site.data.cv.profile.email | jsonify }}
+  };
+</script>
+<script src="{{ '/assets/js/assistant.js' | relative_url }}" defer></script>
+{%- endif %}
 {% include analytics.html %}
