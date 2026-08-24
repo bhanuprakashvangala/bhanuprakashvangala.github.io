@@ -22,7 +22,7 @@ redirect_from:
 
 <p class="hero-summary">{{ p.summary }}</p>
 
-<p class="muted">Advised by <a href="{{ p.advisor_url }}">{{ p.advisor }}</a> and {{ p.coadvisor }}. Ph.D. expected June 2027.</p>
+<p class="muted">Advised by <a href="{{ p.advisor_url }}">{{ p.advisor }}</a>. Ph.D. expected June 2027.</p>
 
 <p class="tag-row" aria-label="Highlights">
 {%- for b in p.badges %}<span class="badge is-accent">{{ b }}</span>{% endfor %}

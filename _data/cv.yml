@@ -24,7 +24,6 @@ profile:
   location: "Columbia, Missouri, USA"
   advisor: "Dr. Tanu Malik"
   advisor_url: "https://engineering.missouri.edu/faculty/tanu-malik/"
-  coadvisor: "Dr. Jianlin Cheng"
   email: "bv3hz@umsystem.edu"
   # Present on the PDF CV. Left off the public site by default. A phone number on
   # a public page is a spam magnet. Flip to true if you want it rendered.
@@ -132,7 +131,7 @@ education:
     gpa: "3.9 / 4.0"
     details:
       - "Thesis area: trustworthy and reproducible LLM-based agentic systems; multi-model orchestration; provenance tracing."
-      - "Advised by Dr. Tanu Malik (Radiant Lab) and Dr. Jianlin Cheng."
+      - "Advised by Dr. Tanu Malik (Radiant Lab)."
       - "Google Ph.D. Fellowship Nominee (NLP track, 2025); EECS Travel Fellowship '26; Chameleon top-10 presentation '26."
 
   - id: ms
