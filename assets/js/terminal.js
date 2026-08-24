@@ -36,6 +36,23 @@
   function slug(s) {
     return String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   }
+  /* Short, readable filename. The section anchor is already a hand-written
+     short id (#pub-pick-and-spin), so prefer it and only fall back to the
+     title, trimmed on a word boundary so nothing reads as "...-measur". */
+  function fileName(chunk, prefix, limit, ext) {
+    var anchor = String(chunk.section || '');
+    if (anchor.indexOf('#' + prefix + '-') === 0) return anchor.slice(prefix.length + 2) + ext;
+    var s = slug(chunk.title);
+    if (s.length > limit) {
+      s = s.slice(0, limit);
+      var cut = s.lastIndexOf('-');
+      if (cut > limit * 0.5) s = s.slice(0, cut);
+    }
+    /* Never end on a dangling connective ("visionai-ai-assistance-for"). */
+    var stop = /-(for|and|of|the|in|to|a|on|with|from|at|as|via|an|by)$/;
+    while (stop.test(s)) s = s.replace(stop, '');
+    return s + ext;
+  }
 
   /* ------------------------------------------------------ the filesystem - */
   var fs = null;
@@ -56,11 +73,11 @@
     }
 
     var groups = {
-      publication: ['papers', function (c) { return slug(c.title).slice(0, 46) + '.md'; }],
-      research:    ['research', function (c) { return slug(c.title).slice(0, 40) + '.md'; }],
-      experience:  ['experience', function (c) { return slug(c.title).slice(0, 40) + '.md'; }],
-      education:   ['education', function (c) { return slug(c.title).slice(0, 40) + '.md'; }],
-      project:     ['projects', function (c) { return slug(c.title).slice(0, 40) + '.md'; }]
+      publication: ['papers', function (c) { return fileName(c, 'pub', 38, '.md'); }],
+      research:    ['research', function (c) { return fileName(c, 'research', 34, '.md'); }],
+      experience:  ['experience', function (c) { return fileName(c, 'experience', 34, '.md'); }],
+      education:   ['education', function (c) { return fileName(c, 'education', 34, '.md'); }],
+      project:     ['projects', function (c) { return fileName(c, 'program', 34, '.md'); }]
     };
 
     (kb.chunks || []).forEach(function (c) {
@@ -72,7 +89,7 @@
       var flat = { profile: 'about.txt', awards: 'awards.txt', service: 'service.txt',
                    skills: 'skills.txt', news: 'news.txt' };
       if (flat[c.type]) { file(root, flat[c.type], c.text, c.section); return; }
-      if (c.type === 'fact') { file(dir(['notes']), slug(c.title).slice(0, 34) + '.txt', c.text, c.section); }
+      if (c.type === 'fact') { file(dir(['notes']), fileName(c, 'note', 30, '.txt'), c.text, c.section); }
     });
 
     file(root, 'README.md',

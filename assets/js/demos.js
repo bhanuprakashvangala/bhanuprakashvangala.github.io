@@ -4,14 +4,15 @@
  *   1. Dependency & reproducibility checker
  *      Static analysis of Python imports against a declared environment,
  *      reporting hidden / bloat / unpinned dependencies. Faithful to the
- *      taxonomy in "AI-Generated Code Is Not Reproducible (Yet)" (AAAI 2026)
- *      and "The Environment Specification Gap" (under review, TMLR).
+ *      taxonomy in "AI-Generated Code Is Not Reproducible (Yet)" (AAAI 2026 RAI Workshop)
+ *      and "Code That Works, Environments That Don't" (under review, AI Magazine).
  *      Nothing is executed and nothing leaves the browser.
  *
  *   2. Pick-and-Spin router
  *      Thompson Sampling over a model pool plus a cold-start state machine
  *      governing GPU residency, from "Efficient Multi-Model Orchestration for
- *      Self-Hosted LLMs" (AAAI 2026) and "Pick and Spin" (IEEE CLOUD 2026).
+ *      Self-Hosted LLMs" (AAAI 2026 DAI Workshop) and "Pick-and-Spin" (IEEE
+ *      CLOUD 2026).
  *
  *   3. Reproducibility agent
  *      Plan / tool-call / result / answer loop that calls demo 1 as its tool.
