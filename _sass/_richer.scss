@@ -1,0 +1,231 @@
+/* ==========================================================================
+   RICHER
+   --------------------------------------------------------------------------
+   The restrained pass read as plain. This layer puts the visual weight back:
+   publications and projects become real cards again, section headings carry
+   more presence, and hover states have somewhere to go.
+
+   Additive only. It never redefines a token and never touches a component's
+   internal structure; it restyles the outer surfaces the eye reads first.
+
+   ASCII only (Ruby Sass errors on non-ASCII bytes in a US-ASCII locale) and
+   libsass-safe: classic @import syntax, no @use, no math.div, no modern
+   colour-module functions.
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. Publications as cards
+   The list previously separated entries with a hairline. A filled surface with
+   its own edge gives each paper a body, which is what carries visual weight
+   down a long page.
+   -------------------------------------------------------------------------- */
+
+.pub-list {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  gap: var(--space-5, 1.25rem);
+}
+
+.pub-list .pub {
+  padding: var(--space-5, 1.25rem);
+  background: var(--c-surface, #f8fafc);
+  border: 1px solid var(--c-border, #e3e8ef);
+  border-top: 1px solid var(--c-border, #e3e8ef);
+  border-radius: var(--radius-lg, 14px);
+  box-shadow: var(--shadow-sm, 0 1px 2px rgba(16, 24, 40, .05));
+  transition: box-shadow var(--dur, 180ms) var(--ease, ease),
+              border-color var(--dur, 180ms) var(--ease, ease),
+              -webkit-transform var(--dur, 180ms) var(--ease, ease);
+  transition: transform var(--dur, 180ms) var(--ease, ease),
+              box-shadow var(--dur, 180ms) var(--ease, ease),
+              border-color var(--dur, 180ms) var(--ease, ease);
+}
+
+/* the first-child reset in the base layer removed the padding; restore it */
+.pub-list .pub:first-child {
+  padding-top: var(--space-5, 1.25rem);
+  border-top: 1px solid var(--c-border, #e3e8ef);
+}
+
+.pub-list .pub:hover,
+.pub-list .pub:focus-within {
+  border-color: var(--c-border-strong, #7f8a9c);
+  box-shadow: var(--shadow-md, 0 1px 2px rgba(16, 24, 40, .05), 0 4px 12px rgba(16, 24, 40, .07));
+}
+
+/* Larger plate. The old site ran roughly 200px wide artwork and it is the
+   single biggest contributor to the page feeling populated. */
+@media (min-width: 600px) {
+  .pub-list .pub .pub-thumb {
+    width: 218px;
+    max-width: 218px;
+    padding-top: 136px;               /* 218 x 136, about 1.6:1 */
+    border-radius: var(--radius, 8px);
+  }
+}
+
+.pub-list .pub .pub-thumb img {
+  transition: -webkit-transform 320ms var(--ease, ease);
+  transition: transform 320ms var(--ease, ease);
+}
+
+.pub-list .pub:hover .pub-thumb img {
+  -webkit-transform: scale(1.035);
+  transform: scale(1.035);
+}
+
+/* Venue badge: an accent-tinted chip reads at a glance where an outline did
+   not. Under-review keeps the quieter neutral treatment on purpose. */
+.pub-venue.is-accepted {
+  color: var(--c-accent, #00369f);
+  background: var(--c-accent-soft, #eaf0fb);
+  border-color: transparent;
+}
+
+.pub-title {
+  letter-spacing: -0.011em;
+}
+
+
+/* --------------------------------------------------------------------------
+   2. Projects and programs
+   -------------------------------------------------------------------------- */
+
+.project-grid .project-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--c-surface, #f8fafc);
+  border-radius: var(--radius-lg, 14px);
+  box-shadow: var(--shadow-sm, 0 1px 2px rgba(16, 24, 40, .05));
+  transition: box-shadow var(--dur, 180ms) var(--ease, ease),
+              border-color var(--dur, 180ms) var(--ease, ease);
+}
+
+/* A hairline of accent along the top edge, drawn in on hover. Cheap to paint
+   (transform only) and it gives the grid a pulse as the cursor crosses it. */
+.project-grid .project-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--c-accent, #00369f);
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transform-origin: left center;
+  transform-origin: left center;
+  transition: -webkit-transform 320ms var(--ease, ease);
+  transition: transform 320ms var(--ease, ease);
+}
+
+.project-grid .project-card:hover::before,
+.project-grid .project-card:focus-within::before {
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+.project-grid .project-card:hover,
+.project-grid .project-card:focus-within {
+  border-color: var(--c-border-strong, #7f8a9c);
+  box-shadow: var(--shadow-md, 0 1px 2px rgba(16, 24, 40, .05), 0 4px 12px rgba(16, 24, 40, .07));
+}
+
+
+/* --------------------------------------------------------------------------
+   3. Awards and the timeline
+   -------------------------------------------------------------------------- */
+
+.award-list .award {
+  padding: var(--space-4, 1rem) var(--space-5, 1.25rem);
+  background: var(--c-surface, #f8fafc);
+  border: 1px solid var(--c-border, #e3e8ef);
+  border-left: 3px solid var(--c-accent, #00369f);
+  border-radius: var(--radius, 8px);
+  transition: box-shadow var(--dur, 180ms) var(--ease, ease);
+}
+
+.award-list .award:hover {
+  box-shadow: var(--shadow-sm, 0 1px 2px rgba(16, 24, 40, .05));
+}
+
+.timeline .timeline-item.is-current .timeline-marker {
+  box-shadow: 0 0 0 4px var(--c-accent-soft, #eaf0fb);
+}
+
+
+/* --------------------------------------------------------------------------
+   4. Section headings with more presence
+   -------------------------------------------------------------------------- */
+
+.section-title {
+  font-size: var(--fs-2xl, 1.875rem);
+  letter-spacing: -0.018em;
+}
+
+.stat-grid .stat-num {
+  font-size: var(--fs-3xl, 2.5rem);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+
+/* --------------------------------------------------------------------------
+   5. Hero
+   The canvas sits behind the content, so the hero needs a stacking context and
+   a little more room to breathe around it.
+   -------------------------------------------------------------------------- */
+
+.hero {
+  position: relative;
+  z-index: 0;
+  padding-bottom: var(--space-8, 2.5rem);
+}
+
+.hero > *:not(#hero-canvas) {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-name {
+  letter-spacing: -0.035em;
+}
+
+/* Defensive floor for the canvas: if the motion layer is ever absent, this
+   still keeps it behind the text and out of the flow rather than pushing the
+   hero down the page. */
+#hero-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+
+/* --------------------------------------------------------------------------
+   6. Print: undo every card treatment. Paper wants none of it.
+   -------------------------------------------------------------------------- */
+
+@media print {
+  .pub-list .pub,
+  .project-grid .project-card,
+  .award-list .award {
+    background: none !important;
+    border: 0 !important;
+    border-bottom: 1px solid #ccc !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .project-grid .project-card::before { display: none !important; }
+  #hero-canvas { display: none !important; }
+}

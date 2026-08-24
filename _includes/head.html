@@ -26,6 +26,20 @@
   })();
 </script>
 
+{%- comment -%}
+  Arm the motion layer before first paint. Every hidden-start reveal is scoped
+  under html.js-motion, so with JS off or reduced motion requested the page
+  renders in its finished state instead of staying blank.
+{%- endcomment -%}
+<script>
+  (function () {
+    try {
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!reduce) document.documentElement.classList.add('js-motion');
+    } catch (e) { /* leave motion off */ }
+  })();
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
