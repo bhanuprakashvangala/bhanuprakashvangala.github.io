@@ -1,11 +1,17 @@
 # Main navigation. Anchor targets live on the homepage; /demos/ and /cv/ are
 # standalone pages. `spy: true` opts a link into scroll-spy highlighting.
+#
+# The order here has to match the order the sections appear on the homepage,
+# or the scroll-spy highlight jumps backwards as you scroll.
 main:
   - title: "About"
     url: "/#about-me"
     spy: true
   - title: "News"
     url: "/#news"
+    spy: true
+  - title: "Experience"
+    url: "/#experience"
     spy: true
   - title: "Publications"
     url: "/#publications"
@@ -15,9 +21,6 @@ main:
     spy: true
   - title: "Awards"
     url: "/#honors-and-awards"
-    spy: true
-  - title: "Experience"
-    url: "/#experience"
     spy: true
   - title: "Demos"
     url: "/demos/"
