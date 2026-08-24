@@ -1,8 +1,10 @@
 {
-    "name": "",
-    "short_name": "",
-    "icons": [],
-    "theme_color": "#FFFFFF",
-    "background_color": "#FFFFFF",
-    "display": "standalone"
- }
+  "name": "Bhanu Prakash Vangala",
+  "short_name": "Bhanu",
+  "icons": [
+    { "src": "/images/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ],
+  "theme_color": "#00369f",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}
