@@ -285,6 +285,6 @@ redirect_from:
 </section>
 
 <div class="lightbox" id="lightbox" role="dialog" aria-label="Enlarged image" aria-modal="true">
-<img class="lightbox-img" id="lightbox-img" src="" alt="">
+<img class="lightbox-img" id="lightbox-img" alt="">
 <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Close image">&times;</button>
 </div>
