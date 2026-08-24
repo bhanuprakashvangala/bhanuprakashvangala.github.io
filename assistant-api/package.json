@@ -1,0 +1,7 @@
+{
+  "name": "bhanu-assistant-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Server-side proxy that holds the model API key for the assistant on bhanuprakashvangala.github.io",
+  "engines": { "node": ">=20" }
+}
