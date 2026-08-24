@@ -1,0 +1,837 @@
+/* ==========================================================================
+   MOTION LAYER
+   --------------------------------------------------------------------------
+   The kinetic layer for the site: scroll reveals, a reading-progress rail, a
+   hero canvas stage, magnetic controls, a FLIP publication filter, counting
+   stats, an icon crossfade, a self-drawing section rule, an assistant nudge,
+   a copy-to-clipboard affordance and a cursor spotlight.
+
+   Imported LAST from assets/css/main.scss, so every rule here wins on equal
+   specificity against _theme / _components / _assistant / _demos. Nothing in
+   this file redefines a design token; it only consumes them, always with a
+   literal fallback so a var() failure can never blank an element.
+
+   THREE RULES THIS FILE OBEYS ABSOLUTELY
+   1. The RESTING state is the VISIBLE state. Anything that starts hidden for
+      a reveal is scoped under `html.js-motion`, a class an inline head script
+      sets only when JS is live AND the visitor has not asked for reduced
+      motion. No JS -> no hidden state. Reduced motion -> no hidden state.
+   2. Section 13 collapses every effect under prefers-reduced-motion: reduce,
+      including the static hidden states, with !important, as a second net.
+   3. Only transform / opacity / filter are animated, so everything stays on
+      the compositor. The one exception the brief allows is the progress fill.
+
+   libsass / jekyll-sass-converter 1.5.2 (Ruby Sass 3.x) safe: classic
+   @import-era SCSS only -- no @use, no math.div, no colour-module functions,
+   no space-separated hsl(). PURE ASCII, including comments: the GitHub Pages
+   build runs in a US-ASCII locale and errors on any high byte.
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   0. Local values
+   Private to this file. These are NOT tokens and nothing else should read
+   them; the shared vocabulary stays in _tokens.scss.
+   -------------------------------------------------------------------------- */
+
+/* Literal copies of the two motion tokens, used only as var() fallbacks. */
+$mo-ease:        cubic-bezier(0.2, 0.6, 0.3, 1);   /* mirrors --ease   */
+$mo-dur:         180ms;                            /* mirrors --dur    */
+$mo-dur-fast:    120ms;                            /* mirrors --dur-fast */
+
+/* A longer, softer out-curve for the big travelling moves (reveals, FLIP).
+   Decelerates harder than --ease, which reads as weight rather than speed. */
+$mo-ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+
+$mo-reveal-dur:  620ms;   /* reveal travel                                  */
+$mo-reveal-y:    14px;    /* default reveal offset, per the JS contract     */
+$mo-reveal-x:    18px;    /* left / right variant offset                    */
+$mo-flip-dur:    360ms;   /* FLIP glide for surviving publications          */
+
+/* Stacking. The masthead is 60 and the skip link is 100 (_theme.scss), so
+   the reading rail sits at 70: over the sticky header, under the skip link. */
+$mo-z-progress:  70;
+
+
+/* --------------------------------------------------------------------------
+   1. SCROLL REVEALS
+   Contract: elements carry `data-reveal`; the JS adds `.is-revealed` once
+   they intersect the viewport, and NEVER removes it (reveals are one-way --
+   a two-way rule would replay the transition-delay backwards).
+
+   Note the direction of the logic. The bare `[data-reveal]` element has NO
+   rule of its own: it is simply visible. Only `html.js-motion` opts it into
+   the hidden state. That is what makes this safe with JS off, with JS broken,
+   for reduced motion, for print and for crawlers.
+   -------------------------------------------------------------------------- */
+
+html.js-motion [data-reveal] {
+  /* Declared, not just defaulted, so `var(--reveal-delay)` inside calc() is
+     always resolvable. The JS overwrites it inline, in ms, with the unit. */
+  --reveal-delay: 0ms;
+
+  opacity: 0;
+  transform: translate3d(0, $mo-reveal-y, 0);
+  transition:
+    opacity   $mo-reveal-dur var(--ease, #{$mo-ease}),
+    transform $mo-reveal-dur $mo-ease-out;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+/* Direction variants. Same specificity as the base rule (0-1-0), so source
+   order decides -- these must stay below it. */
+html.js-motion [data-reveal="up"]    { transform: translate3d(0, $mo-reveal-y, 0); }
+html.js-motion [data-reveal="left"]  { transform: translate3d(-1 * $mo-reveal-x, 0, 0); }
+html.js-motion [data-reveal="right"] { transform: translate3d($mo-reveal-x, 0, 0); }
+html.js-motion [data-reveal="scale"] { transform: scale(0.965); }
+html.js-motion [data-reveal="fade"]  { transform: none; }
+
+/* The resting state. 0-2-0 beats every variant above regardless of order. */
+html.js-motion [data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* will-change is deliberately absent here: opacity and transform transitions
+   are composited without the hint, and a page can hold dozens of unrevealed
+   elements at once -- promoting them all would cost more memory than it buys
+   in smoothness. It is spent instead on the few genuinely hot elements
+   (magnetic hover, the filtering list, the scaled progress fill). */
+
+
+/* --------------------------------------------------------------------------
+   2. READING PROGRESS RAIL
+   A 3px fixed rail across the very top of the viewport, above the sticky
+   masthead. position: fixed, so it can never shift layout.
+
+   Two drive modes, pick ONE in the JS:
+   a) default -- set `style.width` on .progress-bar-fill as a percentage
+      string ("42.7%"), every animation frame. No transition, so it tracks
+      the scroll exactly.
+   b) .progress-bar-fill--scaled -- set `--progress` (unitless 0..1) on
+      .progress-bar and the fill rides transform: scaleX(), which never
+      touches layout. Preferred on low-end hardware.
+   -------------------------------------------------------------------------- */
+
+.progress-bar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: $mo-z-progress;
+  height: 3px;
+  pointer-events: none;
+  background: transparent;    /* no rail: the fill is the only mark */
+  opacity: 1;                 /* visible resting state; JS opts into hiding */
+  transition: opacity var(--dur, #{$mo-dur}) var(--ease, #{$mo-ease});
+}
+
+/* Optional: JS adds .is-idle at scrollTop 0 so the rail is not a permanent
+   stripe over the masthead. Opt-IN, so a dead script leaves it visible. */
+.progress-bar.is-idle { opacity: 0; }
+
+.progress-bar-fill {
+  display: block;
+  width: 0;                   /* JS writes a percentage here */
+  height: 100%;
+  background-image: linear-gradient(
+    90deg,
+    var(--c-accent, #00369f) 0%,
+    var(--c-accent-hover, #002a7d) 100%
+  );
+  border-radius: 0 var(--radius-pill, 999px) var(--radius-pill, 999px) 0;
+  transform-origin: 0 50%;
+}
+
+/* Mode (b). width is pinned at 100% and the scale does the work. */
+.progress-bar-fill--scaled {
+  width: 100%;
+  transform: scaleX(var(--progress, 0));
+  will-change: transform;     /* one element, permanently hot: earns it */
+}
+
+
+/* --------------------------------------------------------------------------
+   3. HERO STAGE -- canvas, scrim, spotlight
+   The hero becomes an isolated stacking context with four bands:
+
+     z 0  #hero-canvas   JS paints it; this file owns only placement
+     z 1  .spotlight     cursor-follow glow (fine pointers only)
+     z 2  .hero:after    readability scrim
+     z 3  .hero > *      all real hero content
+
+   The scrim is painted in the PAGE BACKGROUND COLOUR at partial alpha. That
+   is the trick that makes this safe: over a blank hero it is literally
+   invisible (bg over bg), and it can only ever dilute the canvas back toward
+   the ground colour, never tint it. It is what guarantees the contrast floor.
+   -------------------------------------------------------------------------- */
+
+.hero {
+  position: relative;
+  isolation: isolate;          /* keeps the four bands out of the page's z war */
+
+  /* Canvas strength. Split into a theme value and a viewport multiplier so
+     the small-screen reduction (which cannot raise specificity) never has to
+     fight the [data-theme] selectors that set --mo-canvas-op. */
+  --mo-canvas-op: 0.42;
+  --mo-canvas-scale: 1;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 3;
+}
+
+#hero-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;                  /* ID beats `.hero > *` on both properties */
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.42;                                              /* no-calc fallback */
+  opacity: calc(var(--mo-canvas-op) * var(--mo-canvas-scale));
+
+  /* Soft elliptical vignette so the paint has no hard edge on any side: the
+     gradient reaches zero alpha inside the box on all four edges. Single
+     layer on purpose -- multi-layer mask compositing is not portable. */
+  -webkit-mask-image: radial-gradient(
+    ellipse 55% 78% at 50% 35%,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.72) 48%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 55% 78% at 50% 35%,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.72) 48%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+/* Readability scrim. Strongest at the top (the 40-52px serif name), lightest
+   through the middle where the canvas should breathe, firming up again over
+   the stat strip. rgba values are the literal --c-bg of each theme; they must
+   be kept in step with _tokens.scss if that ever changes. */
+.hero:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  pointer-events: none;
+  background-image: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.55) 0%,
+    rgba(255, 255, 255, 0.32) 58%,
+    rgba(255, 255, 255, 0.46) 100%
+  );
+}
+
+/* Cursor spotlight. Off by default and off for good on coarse pointers; only
+   a live script plus a fine pointer switches it on. --sx / --sy are px, with
+   the unit, measured inside the hero's padding box. */
+.hero .spotlight {
+  display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html.js-motion .hero .spotlight {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 360ms var(--ease, #{$mo-ease});
+    background-image: radial-gradient(
+      220px 220px at var(--sx, 50%) var(--sy, 0%),
+      var(--c-accent-soft, #eaf0fb) 0%,
+      transparent 72%
+    );
+  }
+
+  html.js-motion .hero .spotlight.is-active { opacity: 0.85; }
+}
+
+/* Dark-theme stage values, replayed through the same three-selector contract
+   _tokens.scss uses, so an explicit light choice on a dark OS still wins. */
+@mixin mo-stage-dark {
+  .hero { --mo-canvas-op: 0.46; }
+
+  .hero:after {
+    background-image: linear-gradient(
+      180deg,
+      rgba(15, 18, 25, 0.60) 0%,
+      rgba(15, 18, 25, 0.38) 58%,
+      rgba(15, 18, 25, 0.52) 100%
+    );
+  }
+
+  /* The dark accent-soft is already translucent, so the glow needs pulling
+     back rather than pushing up. 0-4-0 beats the 0-3-1 rule above. */
+  .hero .spotlight.is-active { opacity: 0.60; }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { @include mo-stage-dark; }
+}
+
+:root[data-theme="dark"] { @include mo-stage-dark; }
+
+/* Narrow viewports: the hero name wraps across the full column, so the canvas
+   is pulled back to roughly two thirds strength. Sets the multiplier, never
+   --mo-canvas-op, so it composes with the theme rules instead of losing to
+   them on specificity. */
+@media (max-width: 599px) {
+  .hero { --mo-canvas-scale: 0.65; }
+}
+
+
+/* --------------------------------------------------------------------------
+   4. MAGNETIC CONTROLS -- .link-pill.magnetic, .project-card.magnetic
+   A raise on hover, a directional tilt driven by the cursor, a cursor-tracked
+   sheen and a press. --mx / --my are unitless 0..1 (cursor position inside
+   the element). They are DECLARED here, so the transforms resolve to a
+   neutral pose with no JS and no commas ever appear inside a calc().
+
+   The lift itself is plain CSS hover and needs no script; only the tilt and
+   the sheen position respond to --mx / --my. Section 13 removes the transform
+   entirely for reduced motion and keeps the colour feedback.
+   -------------------------------------------------------------------------- */
+
+.magnetic {
+  --mx: 0.5;
+  --my: 0.5;
+  position: relative;
+  isolation: isolate;          /* lets the sheen sit above the fill, below the text */
+}
+
+/* Cursor-tracked sheen. z-index -1 inside the element's own stacking context
+   paints it over the control's background but under its label, so the text is
+   never washed. border-radius: inherit keeps it inside the pill. */
+.magnetic:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 240ms var(--ease, #{$mo-ease});
+  background-image: radial-gradient(
+    140px 140px at calc(var(--mx) * 100%) calc(var(--my) * 100%),
+    var(--c-accent-soft, #eaf0fb) 0%,
+    transparent 70%
+  );
+}
+
+.magnetic:hover:after,
+.magnetic:focus-within:after,
+.magnetic:focus-visible:after { opacity: 1; }
+
+/* Pills: restate the theme's colour transitions, because this rule ties on
+   specificity and would otherwise replace that shorthand wholesale. */
+.link-pill.magnetic {
+  transition:
+    color            var(--dur-fast, #{$mo-dur-fast}) var(--ease, #{$mo-ease}),
+    background-color var(--dur-fast, #{$mo-dur-fast}) var(--ease, #{$mo-ease}),
+    border-color     var(--dur-fast, #{$mo-dur-fast}) var(--ease, #{$mo-ease}),
+    box-shadow       260ms var(--ease, #{$mo-ease}),
+    transform        260ms $mo-ease-out;
+}
+
+/* Max tilt: 0.5 * 6deg = 3deg on X and 0.5 * 7deg = 3.5deg on Y, both inside
+   the 4deg ceiling. With no JS both terms are 0 and only the lift remains. */
+.link-pill.magnetic:hover,
+.link-pill.magnetic:focus-visible {
+  transform:
+    perspective(600px)
+    translate3d(0, -2px, 0)
+    rotateX(calc((var(--my) - 0.5) * -6deg))
+    rotateY(calc((var(--mx) - 0.5) * 7deg));
+  box-shadow: var(--shadow-md, 0 1px 2px rgba(16, 24, 40, 0.05), 0 4px 12px rgba(16, 24, 40, 0.07));
+}
+
+.link-pill.magnetic:active {
+  transform: translate3d(0, 0, 0) scale(0.975);
+  box-shadow: var(--shadow-sm, 0 1px 2px rgba(16, 24, 40, 0.05));
+  transition-duration: 90ms;
+}
+
+/* Cards: bigger surface, so a smaller tilt (2.5deg max) and a deeper lift. */
+.project-card.magnetic {
+  transition:
+    border-color var(--dur-fast, #{$mo-dur-fast}) var(--ease, #{$mo-ease}),
+    box-shadow   280ms var(--ease, #{$mo-ease}),
+    transform    280ms $mo-ease-out;
+}
+
+.project-card.magnetic:hover,
+.project-card.magnetic:focus-within {
+  transform:
+    perspective(900px)
+    translate3d(0, -4px, 0)
+    rotateX(calc((var(--my) - 0.5) * -5deg))
+    rotateY(calc((var(--mx) - 0.5) * 5deg));
+  box-shadow: var(--shadow-lg, 0 2px 4px rgba(16, 24, 40, 0.04), 0 12px 32px rgba(16, 24, 40, 0.10));
+  border-color: var(--c-border-strong, #7f8a9c);
+}
+
+.project-card.magnetic:active {
+  transform: translate3d(0, -1px, 0) scale(0.995);
+  box-shadow: var(--shadow-md, 0 1px 2px rgba(16, 24, 40, 0.05), 0 4px 12px rgba(16, 24, 40, 0.07));
+  transition-duration: 100ms;
+}
+
+/* Promote only while the pointer or focus is actually on the control, so the
+   hint disappears the moment it stops being useful. */
+.magnetic:hover,
+.magnetic:focus-within { will-change: transform; }
+
+
+/* --------------------------------------------------------------------------
+   5. PUBLICATION FILTER -- FLIP
+   .is-out   leaving   (fades, still in flow; JS then adds .is-hidden)
+   .is-in    entering  (fades up; self-clearing -- the fill state is VISIBLE)
+   .is-filtering       the whole list is mid-transition (compositor hint only)
+   .is-flipping        transform transition armed for the invert-and-play step
+
+   Both keyframe states end on the visible/at-rest frame or are removed by the
+   JS on animationend, so a script that dies mid-filter cannot strand an item.
+   -------------------------------------------------------------------------- */
+
+.pub.is-filtering {
+  will-change: transform, opacity;
+}
+
+/* Armed on the frame AFTER the inline invert transform is written, then the
+   inline transform is cleared and the item glides to its new slot. */
+html.js-motion .pub.is-flipping {
+  transition: transform $mo-flip-dur $mo-ease-out;
+}
+
+html.js-motion .pub.is-out {
+  animation: mo-pub-out 160ms var(--ease, #{$mo-ease}) both;
+  pointer-events: none;
+}
+
+html.js-motion .pub.is-in {
+  animation: mo-pub-in 340ms $mo-ease-out both;
+}
+
+
+/* --------------------------------------------------------------------------
+   6. COUNTING STATS
+   Tabular figures are already set by _components.scss; they are restated here
+   with an explicit feature-settings fallback because Inter only locks digit
+   advance widths when "tnum" is on, and a jittering counter is the single
+   most obvious tell of a cheap odometer.
+   -------------------------------------------------------------------------- */
+
+.stat-num {
+  transition: color 420ms var(--ease, #{$mo-ease});
+}
+
+.stat-num.is-counting {
+  color: var(--c-accent, #00369f);          /* 10.35:1 light, 9.05:1 dark */
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+  font-kerning: none;                       /* no reflow as digits change */
+}
+
+
+/* --------------------------------------------------------------------------
+   7. THEME TOGGLE -- icon crossfade and rotation
+   _theme.scss swaps the two icons with display:none, which cannot animate.
+   Both icons are stacked here instead and crossfaded from aria-pressed, so
+   the button still needs no class of its own and the attribute stays the
+   single source of truth. Both SVGs are aria-hidden in the markup, so keeping
+   the inactive one in the box costs nothing to assistive tech.
+   -------------------------------------------------------------------------- */
+
+.theme-toggle {
+  position: relative;
+  overflow: hidden;                          /* clips the rotating icons */
+  transition:
+    color            var(--dur-fast, #{$mo-dur-fast}) var(--ease, #{$mo-ease}),
+    background-color var(--dur-fast, #{$mo-dur-fast}) var(--ease, #{$mo-ease}),
+    border-color     var(--dur-fast, #{$mo-dur-fast}) var(--ease, #{$mo-ease}),
+    transform        var(--dur-fast, #{$mo-dur-fast}) var(--ease, #{$mo-ease});
+}
+
+.theme-toggle:active { transform: scale(0.94); }
+
+.theme-toggle .icon-sun,
+.theme-toggle .icon-moon {
+  display: block;                            /* beats the theme's display:none */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  margin: -9px 0 0 -9px;
+  pointer-events: none;
+  transition:
+    opacity   200ms var(--ease, #{$mo-ease}),
+    transform 380ms $mo-ease-out;
+}
+
+/* aria-pressed="false" == light scheme showing, offering the moon. */
+.theme-toggle .icon-moon { opacity: 1; transform: rotate(0deg) scale(1); }
+.theme-toggle .icon-sun  { opacity: 0; transform: rotate(-90deg) scale(0.5); }
+
+/* aria-pressed="true" == dark scheme engaged, offering the sun. */
+.theme-toggle[aria-pressed="true"] .icon-sun  { opacity: 1; transform: rotate(0deg) scale(1); }
+.theme-toggle[aria-pressed="true"] .icon-moon { opacity: 0; transform: rotate(90deg) scale(0.5); }
+
+
+/* --------------------------------------------------------------------------
+   8. SECTION RULE THAT DRAWS ITSELF
+   _theme.scss already paints a 40px accent segment on .section-title:after.
+   Here it is collapsed along its own axis and released on reveal, slightly
+   behind the heading so the two moves read as one gesture.
+
+   The hidden state is the :not(.is-revealed) branch, so the plain rule stays
+   the drawn one -- same inversion as section 1.
+   -------------------------------------------------------------------------- */
+
+html.js-motion .section-title[data-reveal]:after {
+  transform: scaleX(1);
+  transform-origin: 0 50%;
+  transition: transform 560ms $mo-ease-out;
+  transition-delay: calc(var(--reveal-delay, 0ms) + 140ms);
+}
+
+html.js-motion .section-title[data-reveal]:not(.is-revealed):after {
+  transform: scaleX(0);
+}
+
+
+/* --------------------------------------------------------------------------
+   9. ASSISTANT LAUNCHER -- attention ring and nudge
+   The pulse is a ring on :after rather than a transform on the button, so it
+   never fights the launcher's own hover, :active and [aria-expanded] states
+   in _assistant.scss. Three iterations, then it stops for good: `both` holds
+   the final keyframe, which is fully transparent.
+   -------------------------------------------------------------------------- */
+
+html.js-motion .ai-launcher[aria-expanded="false"]:after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  bottom: -1px;
+  left: -1px;
+  border: 2px solid var(--c-accent, #00369f);
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  animation: mo-ring 2600ms var(--ease, #{$mo-ease}) 1600ms 3 both;
+}
+
+/* Escape hatch: JS adds .is-quiet for a returning visitor who has already
+   used the assistant, and the ring never plays. */
+html.js-motion .ai-launcher.is-quiet:after { animation: none; }
+
+/* One-shot wave, e.g. after a long dwell on a publication. */
+html.js-motion .ai-launcher.is-nudge {
+  animation: mo-nudge 720ms var(--ease, #{$mo-ease}) 1 both;
+}
+
+
+/* --------------------------------------------------------------------------
+   10. COPY BIBTEX
+   Lives in .pub-actions permanently, so revealing it costs no layout and the
+   row never jumps. Hidden by opacity only, which keeps it in the tab order
+   and, because :focus-within fires on the .pub, makes it visible the instant
+   a keyboard reaches it. Always visible where there is no hover to speak of.
+   -------------------------------------------------------------------------- */
+
+.copy-bib {
+  opacity: 0;
+  transform: translate3d(0, 2px, 0);
+  transition:
+    opacity          var(--dur, #{$mo-dur}) var(--ease, #{$mo-ease}),
+    transform        var(--dur, #{$mo-dur}) var(--ease, #{$mo-ease}),
+    color            var(--dur-fast, #{$mo-dur-fast}) var(--ease, #{$mo-ease}),
+    background-color var(--dur-fast, #{$mo-dur-fast}) var(--ease, #{$mo-ease}),
+    border-color     var(--dur-fast, #{$mo-dur-fast}) var(--ease, #{$mo-ease});
+}
+
+.pub:hover .copy-bib,
+.pub:focus-within .copy-bib,
+.copy-bib:focus-visible,
+.copy-bib.is-copied {
+  opacity: 1;
+  transform: none;
+}
+
+/* Confirmation. --c-success is 6.45:1 on the light ground and 10.06:1 on the
+   dark one, so the label and its border both clear AA and 1.4.11. */
+.copy-bib.is-copied {
+  color: var(--c-success, #146c43);
+  border-color: var(--c-success, #146c43);
+}
+
+.copy-bib.is-copied:hover {
+  color: var(--c-success, #146c43);
+  border-color: var(--c-success, #146c43);
+}
+
+html.js-motion .copy-bib.is-copied {
+  animation: mo-pop 320ms var(--ease, #{$mo-ease}) 1 both;
+}
+
+/* No hover, no reveal to wait for. */
+@media (hover: none), (pointer: coarse) {
+  .copy-bib {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   11. KEYFRAMES
+   All namespaced mo- so they cannot collide with the theme's `intro`, the
+   assistant's ai-* or the demo page's demo-*.
+   -------------------------------------------------------------------------- */
+
+@keyframes mo-pub-out {
+  from { opacity: 1; transform: none; }
+  to   { opacity: 0; transform: translate3d(0, -6px, 0) scale(0.985); }
+}
+
+@keyframes mo-pub-in {
+  from { opacity: 0; transform: translate3d(0, 10px, 0) scale(0.985); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes mo-ring {
+  0%   { opacity: 0;    transform: scale(1); }
+  10%  { opacity: 0.55; }
+  70%  { opacity: 0;    transform: scale(1.32); }
+  100% { opacity: 0;    transform: scale(1.32); }
+}
+
+@keyframes mo-nudge {
+  0%   { transform: translate3d(0, 0, 0)   rotate(0deg); }
+  20%  { transform: translate3d(0, -5px, 0) rotate(-2.5deg); }
+  45%  { transform: translate3d(0, -1px, 0) rotate(1.5deg); }
+  70%  { transform: translate3d(0, -3px, 0) rotate(-1deg); }
+  100% { transform: translate3d(0, 0, 0)   rotate(0deg); }
+}
+
+@keyframes mo-pop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.07); }
+  100% { transform: scale(1); }
+}
+
+
+/* --------------------------------------------------------------------------
+   12. VIEWPORT HOLDS
+   Checked at 360, 768 and 1440. Only two things actually need to change: the
+   travel distance of a reveal (a 14px lift is proportionally much larger on a
+   360px screen) and the tilt, which is distracting on a touch-sized target.
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 599px) {
+  html.js-motion [data-reveal]        { transform: translate3d(0, 10px, 0); }
+  html.js-motion [data-reveal="up"]   { transform: translate3d(0, 10px, 0); }
+  html.js-motion [data-reveal="left"] { transform: translate3d(-12px, 0, 0); }
+  html.js-motion [data-reveal="right"]{ transform: translate3d(12px, 0, 0); }
+  html.js-motion [data-reveal="fade"] { transform: none; }
+  html.js-motion [data-reveal].is-revealed { transform: none; }
+}
+
+/* Coarse pointers get the press and the colour feedback, never the tilt: a
+   thumb has no meaningful --mx / --my and the sheen just smears. */
+@media (hover: none), (pointer: coarse) {
+  .link-pill.magnetic:hover,
+  .link-pill.magnetic:focus-visible,
+  .project-card.magnetic:hover,
+  .project-card.magnetic:focus-within { transform: none; }
+
+  .magnetic:after { display: none; }
+}
+
+
+/* --------------------------------------------------------------------------
+   13. REDUCED MOTION -- the whole layer collapses to nothing
+   _theme.scss already crushes durations to 0.01ms globally, but a duration of
+   zero does NOT undo a static `opacity: 0`, and that is exactly how a motion
+   layer blanks a page for the people who most need it not to. So every
+   start-hidden state is force-restored here, and every loop is stopped.
+
+   `html.js-motion` should never exist in this mode (the head script checks
+   the same query before setting it) -- this block is the second net, and it
+   carries !important so it beats the js-motion selectors on any specificity.
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+  /* Reveals: always visible, wherever they are in their lifecycle. */
+  [data-reveal],
+  html.js-motion [data-reveal],
+  html.js-motion [data-reveal="up"],
+  html.js-motion [data-reveal="left"],
+  html.js-motion [data-reveal="right"],
+  html.js-motion [data-reveal="scale"],
+  html.js-motion [data-reveal="fade"],
+  html.js-motion [data-reveal].is-revealed {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* The self-drawing rule is simply drawn. */
+  html.js-motion .section-title[data-reveal]:after,
+  html.js-motion .section-title[data-reveal]:not(.is-revealed):after {
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* Filtering becomes an instant state change; nothing is left mid-fade. */
+  html.js-motion .pub.is-out,
+  html.js-motion .pub.is-in,
+  html.js-motion .pub.is-flipping,
+  .pub.is-filtering {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    will-change: auto !important;
+  }
+
+  /* No tilt, no lift, no sheen. Colour and shadow feedback survive, because
+     they communicate state without moving anything. */
+  .magnetic,
+  .magnetic:hover,
+  .magnetic:focus-within,
+  .magnetic:focus-visible,
+  .magnetic:active,
+  .link-pill.magnetic:hover,
+  .link-pill.magnetic:focus-visible,
+  .link-pill.magnetic:active,
+  .project-card.magnetic:hover,
+  .project-card.magnetic:focus-within,
+  .project-card.magnetic:active {
+    transform: none !important;
+    will-change: auto !important;
+  }
+
+  .magnetic:after { display: none !important; }
+
+  /* The canvas is a continuous animation by definition: remove it outright.
+     The scrim is page-background-over-page-background, so it leaves no trace
+     once the canvas is gone and can stay. */
+  #hero-canvas,
+  .hero .spotlight,
+  html.js-motion .hero .spotlight {
+    display: none !important;
+  }
+
+  /* No looping attention-seeking, ever. */
+  html.js-motion .ai-launcher[aria-expanded="false"]:after,
+  html.js-motion .ai-launcher.is-nudge,
+  html.js-motion .copy-bib.is-copied {
+    animation: none !important;
+    opacity: 0;
+  }
+
+  html.js-motion .ai-launcher.is-nudge { transform: none !important; }
+
+  /* The copy button stops being a hover reveal and is just present. */
+  .copy-bib,
+  .pub:hover .copy-bib,
+  .pub:focus-within .copy-bib,
+  .copy-bib.is-copied {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* Icons swap instantly instead of rotating; both stay correctly stacked. */
+  .theme-toggle,
+  .theme-toggle:active,
+  .theme-toggle .icon-sun,
+  .theme-toggle .icon-moon,
+  .theme-toggle[aria-pressed="true"] .icon-sun,
+  .theme-toggle[aria-pressed="true"] .icon-moon {
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* The rail still reports position -- it just does not fade. */
+  .progress-bar { transition: none !important; }
+  .progress-bar-fill--scaled { will-change: auto !important; }
+}
+
+
+/* --------------------------------------------------------------------------
+   14. PRINT AND FORCED COLOURS
+   On paper an unrevealed element is invisible content, which is the same
+   failure as the reduced-motion case. Restore everything and drop the
+   decorative layers.
+   -------------------------------------------------------------------------- */
+
+@media print {
+  [data-reveal],
+  html.js-motion [data-reveal],
+  html.js-motion [data-reveal].is-revealed,
+  .copy-bib,
+  .pub.is-in,
+  .pub.is-out {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  html.js-motion .section-title[data-reveal]:not(.is-revealed):after {
+    transform: none !important;
+  }
+
+  .progress-bar,
+  #hero-canvas,
+  .hero .spotlight,
+  .hero:after,
+  .magnetic:after,
+  .copy-bib {
+    display: none !important;
+  }
+}
+
+/* In a forced-colours mode the user's palette replaces ours: keep the rail
+   readable as a system colour and drop the purely tonal layers, which would
+   otherwise render as flat blocks of Canvas. */
+@media (forced-colors: active) {
+  .progress-bar-fill,
+  .progress-bar-fill--scaled {
+    background: Highlight;
+    forced-color-adjust: none;
+  }
+
+  #hero-canvas,
+  .hero .spotlight,
+  .hero:after,
+  .magnetic:after {
+    display: none;
+  }
+
+  html.js-motion .ai-launcher[aria-expanded="false"]:after {
+    border-color: Highlight;
+  }
+}
