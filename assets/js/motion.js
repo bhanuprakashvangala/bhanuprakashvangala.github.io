@@ -38,7 +38,8 @@
     function update() {
       var h = document.documentElement.scrollHeight - window.innerHeight;
       var p = h > 0 ? Math.min(1, Math.max(0, window.pageYOffset / h)) : 0;
-      fill.style.transform = 'scaleX(' + p + ')';
+      fill.style.width = (p * 100).toFixed(2) + '%';
+      bar.classList.toggle('is-idle', window.pageYOffset < 8);
       ticking = false;
     }
     window.addEventListener('scroll', function () {
@@ -133,44 +134,48 @@
       chip.addEventListener('click', function () {
         var items = $$('.pub', list);
 
-        // FIRST: where is everything now
+        // FIRST, before site.js has repainted
         var first = items.map(function (el) {
           var r = el.getBoundingClientRect();
-          return { el: el, top: r.top, hidden: el.classList.contains('is-hidden') };
+          return { el: el, x: r.left, y: r.top, was: el.classList.contains('is-hidden') };
         });
 
-        // site.js has already applied the filter by the time this listener
-        // runs, so read the new state on the next frame.
+        items.forEach(function (el) { el.classList.add('is-filtering'); });
+
         requestAnimationFrame(function () {
+          var moved = [];
           first.forEach(function (rec) {
             var el = rec.el;
-            var nowHidden = el.classList.contains('is-hidden');
-
-            if (nowHidden && !rec.hidden) { el.classList.add('is-out'); return; }
-            if (nowHidden) return;
+            var now = el.classList.contains('is-hidden');
+            if (now) { el.classList.remove('is-in'); return; }
 
             var r = el.getBoundingClientRect();
-            var dy = rec.top - r.top;
-
-            el.classList.remove('is-out');
-            if (rec.hidden) {
+            if (rec.was) {                       // entering
               el.classList.add('is-in');
-              requestAnimationFrame(function () { el.classList.remove('is-in'); });
+              el.addEventListener('animationend', function h() {
+                el.classList.remove('is-in');
+                el.removeEventListener('animationend', h);
+              });
               return;
             }
-            if (Math.abs(dy) < 1) return;
+            var dx = rec.x - r.left, dy = rec.y - r.top;
+            if (Math.abs(dx) < 1 && Math.abs(dy) < 1) return;
+            el.style.transform = 'translate3d(' + dx + 'px,' + dy + 'px,0)';
+            moved.push(el);
+          });
 
-            // INVERT
-            el.style.transform = 'translateY(' + dy + 'px)';
-            el.classList.remove('is-flipping');
-            // PLAY
-            requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            moved.forEach(function (el) {
               el.classList.add('is-flipping');
               el.style.transform = '';
-              setTimeout(function () {
-                el.classList.remove('is-flipping');
-              }, 420);
             });
+            setTimeout(function () {
+              items.forEach(function (el) {
+                el.classList.remove('is-flipping');
+                el.classList.remove('is-filtering');
+                el.style.transform = '';
+              });
+            }, 500);
           });
         });
       });
@@ -181,7 +186,7 @@
    * 5. Magnetic hover: cursor position drives a small lift and sheen
    * ======================================================================= */
   function initMagnetic() {
-    if (!window.matchMedia || !window.matchMedia('(hover: hover)').matches) return;
+    if (!window.matchMedia || window.matchMedia('(pointer: coarse)').matches) return;
     var els = $$('.link-pill, .project-card');
     els.forEach(function (el) {
       el.classList.add('magnetic');
@@ -201,14 +206,28 @@
    * 6. Hero spotlight
    * ======================================================================= */
   function initSpotlight() {
-    if (!window.matchMedia || !window.matchMedia('(hover: hover)').matches) return;
+    if (!window.matchMedia || window.matchMedia('(pointer: coarse)').matches) return;
     var hero = $('.hero');
     if (!hero) return;
-    hero.classList.add('spotlight');
+
+    var spot = document.createElement('div');
+    spot.className = 'spotlight';
+    spot.setAttribute('aria-hidden', 'true');
+    hero.insertBefore(spot, hero.firstChild);
+
+    var queued = false, cx = 0, cy = 0;
+    function paint() {
+      spot.style.setProperty('--sx', cx + 'px');
+      spot.style.setProperty('--sy', cy + 'px');
+      queued = false;
+    }
+    hero.addEventListener('pointerenter', function () { spot.classList.add('is-active'); });
+    hero.addEventListener('pointerleave', function () { spot.classList.remove('is-active'); });
     hero.addEventListener('pointermove', function (e) {
       var r = hero.getBoundingClientRect();
-      hero.style.setProperty('--sx', (e.clientX - r.left) + 'px');
-      hero.style.setProperty('--sy', (e.clientY - r.top) + 'px');
+      cx = e.clientX - r.left;
+      cy = e.clientY - r.top;
+      if (!queued) { requestAnimationFrame(paint); queued = true; }
     });
   }
 
@@ -307,7 +326,7 @@
     function palette() {
       var cs = getComputedStyle(document.documentElement);
       return {
-        line: cs.getPropertyValue('--c-border-strong').trim() || '#7f8a9c',
+        line: cs.getPropertyValue('--c-text-faint').trim() || '#646e80',
         warm: cs.getPropertyValue('--c-accent').trim() || '#00369f',
         text: cs.getPropertyValue('--c-text-muted').trim() || '#4d5769'
       };
@@ -374,7 +393,7 @@
       ctx.lineWidth = 0.7;
       models.forEach(function (m) {
         ctx.strokeStyle = pal.line;
-        ctx.globalAlpha = m.warm ? 0.20 : 0.09;
+        ctx.globalAlpha = m.warm ? 0.18 : 0.08;
         ctx.beginPath();
         ctx.moveTo(ex, ey);
         ctx.quadraticCurveTo((ex + m.x) / 2, (ey + m.y) / 2 - 18, m.x, m.y);
@@ -386,21 +405,21 @@
         m.heat += ((m.warm ? 1 : 0) - m.heat) * 0.02;
         if (m.spin > 0) m.spin = Math.max(0, m.spin - dt / 900);
 
-        ctx.globalAlpha = 0.18 + 0.5 * m.heat;
+        ctx.globalAlpha = 0.16 + 0.30 * m.heat;
         ctx.strokeStyle = m.heat > 0.5 ? pal.warm : pal.line;
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.arc(m.x, m.y, m.r + 5.5, 0, Math.PI * 2);
         ctx.stroke();
 
-        ctx.globalAlpha = 0.25 + 0.65 * m.heat;
+        ctx.globalAlpha = 0.20 + 0.30 * m.heat;
         ctx.fillStyle = m.heat > 0.5 ? pal.warm : pal.line;
         ctx.beginPath();
         ctx.arc(m.x, m.y, m.r, 0, Math.PI * 2);
         ctx.fill();
 
         if (m.spin > 0) {          // cold start: an expanding ring
-          ctx.globalAlpha = 0.42 * m.spin;
+          ctx.globalAlpha = 0.34 * m.spin;
           ctx.strokeStyle = pal.warm;
           ctx.lineWidth = 1.1;
           ctx.beginPath();
@@ -410,7 +429,7 @@
       });
 
       // entry point
-      ctx.globalAlpha = 0.30;
+      ctx.globalAlpha = 0.26;
       ctx.fillStyle = pal.text;
       ctx.beginPath();
       ctx.arc(ex, ey, 2.4, 0, Math.PI * 2);
@@ -425,7 +444,7 @@
         var my = (ey + pk.target.y) / 2 - 18;
         var x = (1 - e) * (1 - e) * ex + 2 * (1 - e) * e * mx + e * e * pk.target.x;
         var y = (1 - e) * (1 - e) * ey + 2 * (1 - e) * e * my + e * e * pk.target.y;
-        ctx.globalAlpha = 0.75 * Math.sin(Math.PI * pk.p);
+        ctx.globalAlpha = 0.48 * Math.sin(Math.PI * pk.p);
         ctx.fillStyle = pal.warm;
         ctx.beginPath();
         ctx.arc(x, y, 1.9, 0, Math.PI * 2);
@@ -477,7 +496,8 @@
   function tagReveals() {
     var groups = [
       ['.hero-name, .hero-role, .hero-affil, .hero-summary, .tag-row, .link-pills, .stat-grid', 'up'],
-      ['.section-head, .section-sub', 'up'],
+      ['.section-title', 'up'],
+      ['.section-sub', 'up'],
       ['#pub-list .pub', 'up'],
       ['.project-card', 'scale'],
       ['.timeline-item', 'left'],

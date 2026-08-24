@@ -2,7 +2,7 @@
 permalink: /
 title: ""
 excerpt: "Doctoral researcher in agentic AI and LLM systems at the University of Missouri."
-author_profile: true
+author_profile: false
 redirect_from:
   - /about/
   - /about.html
@@ -12,8 +12,12 @@ redirect_from:
 {%- assign p = cv.profile -%}
 
 <section id="about-me" class="section hero" aria-labelledby="hero-name">
+<div class="hero-grid">
+<div class="hero-col">
+<img class="hero-portrait" src="{{ p.avatar | prepend: '/' | relative_url }}" alt="Portrait of {{ p.name }}" width="132" height="132" fetchpriority="high">
 <h1 class="hero-name" id="hero-name">{{ p.name }}</h1>
 <p class="hero-role">{{ p.role }}</p>
+<p class="hero-thesis">{{ p.dissertation_sub }}</p>
 <p class="hero-affil">{{ p.department }} &middot; <a href="https://engineering.missouri.edu/departments/eecs/">{{ p.affiliation }}</a> &middot; {{ p.location }}</p>
 
 <p class="hero-summary">{{ p.summary }}</p>
@@ -32,12 +36,54 @@ redirect_from:
 </div>
 
 <p class="muted"><strong>Research interests:</strong> {{ p.interests | join: " &middot; " }}</p>
+</div>
+<div class="hero-col hero-col--term">
+
+<div class="terminal" id="terminal" role="group" aria-label="Interactive shell over the CV">
+<div class="term-bar" aria-hidden="true">
+<span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span>
+<span class="term-title">bhanu@nautilus: ~</span>
+</div>
+<div class="term-out" id="term-out" role="log" aria-live="polite"></div>
+<div class="term-chips">
+<button type="button" class="term-chip" data-cmd="ls">ls</button>
+<button type="button" class="term-chip" data-cmd="cat about.txt">cat about.txt</button>
+<button type="button" class="term-chip" data-cmd="cd papers">cd papers</button>
+<button type="button" class="term-chip" data-cmd="tree">tree</button>
+<button type="button" class="term-chip" data-cmd="help">help</button>
+</div>
+<label class="term-row" for="term-input">
+<span class="term-prompt"><span class="t-prompt">bhanu@nautilus</span> <span class="term-prompt-path t-path">~/</span> <span class="t-caret">$</span></span>
+<input class="term-input" id="term-input" type="text" autocomplete="off" autocapitalize="off"
+       autocorrect="off" spellcheck="false" aria-label="Terminal input">
+</label>
+</div>
+</div>
 
 <ul class="stat-grid">
 {%- for s in cv.stats %}
 <li class="stat"><span class="stat-num">{{ s.num }}</span><span class="stat-label">{{ s.label }}</span></li>
 {%- endfor %}
 </ul>
+</section>
+
+<section id="research-threads" class="section" aria-labelledby="threads-title">
+<div class="section-head"><h2 class="section-title" id="threads-title">The argument</h2></div>
+<p class="section-sub">Three threads that look different on the surface and answer the same question: how do we build AI systems whose correctness, efficiency and accountability are designed in from the start rather than patched on later?</p>
+
+<ol class="thread-grid">
+{%- for t in cv.threads %}
+<li class="thread-card" id="thread-{{ t.id }}" data-thread="{{ t.tag }}">
+<span class="thread-n" aria-hidden="true">{{ t.n }}</span>
+<h3 class="thread-title">{{ t.title }}</h3>
+<p class="thread-lead">{{ t.lead }}</p>
+<p class="thread-text">{{ t.text }}</p>
+<p class="thread-refs">
+{%- for r in t.refs %}{% assign pub = cv.publications | where: "id", r | first %}{% if pub %}<a class="btn-link" href="#pub-{{ pub.id }}">{{ pub.venue }}</a>{% endif %}{% endfor %}
+</p>
+</li>
+{%- endfor %}
+</ol>
 </section>
 
 <section id="news" class="section" aria-labelledby="news-title">
