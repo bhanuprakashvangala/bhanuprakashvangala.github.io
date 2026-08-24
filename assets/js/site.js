@@ -206,7 +206,7 @@
     function close() {
       box.classList.remove('is-open');
       document.body.classList.remove('has-lightbox');
-      img.setAttribute('src', '');
+      img.removeAttribute('src');
       if (lastFocus && lastFocus.focus) lastFocus.focus();
     }
 
