@@ -8,7 +8,8 @@
  *
  * The hero canvas is not decoration. It is a live, ambient run of the
  * Pick-and-Spin router from "Efficient Multi-Model Orchestration for
- * Self-Hosted LLMs" (AAAI 2026): requests arrive, the router picks a model,
+ * Self-Hosted LLMs" (AAAI 2026 DAI Workshop): requests arrive, the router
+ * picks a model,
  * cold replicas spin up and warm ones serve immediately.
  * ========================================================================== */
 (function () {

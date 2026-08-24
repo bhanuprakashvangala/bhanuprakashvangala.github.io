@@ -20,7 +20,7 @@ author_profile: false
 <header class="demo-head">
 <h2 class="demo-title">Dependency &amp; reproducibility checker</h2>
 <p class="demo-desc">Paste Python source and the environment file that is supposed to accompany it. The checker resolves every import to the distribution that actually provides it, then reports the gap between what the code needs and what the environment declares, using the same three-layer analysis used in the paper, with its phantom / hidden / bloat taxonomy.</p>
-<p class="demo-cite">Method from <a href="https://arxiv.org/abs/2512.22387"><em>AI-Generated Code Is Not Reproducible (Yet)</em></a>, AAAI 2026, and <em>The Environment Specification Gap</em> (under review, TMLR).</p>
+<p class="demo-cite">Method from <a href="https://arxiv.org/abs/2512.22387"><em>AI-Generated Code Is Not Reproducible (Yet)</em></a>, AAAI 2026 RAI Workshop, and <em>Code That Works, Environments That Don't</em> (under review, AI Magazine).</p>
 </header>
 
 <div class="demo-io">
@@ -50,7 +50,7 @@ author_profile: false
 <header class="demo-head">
 <h2 class="demo-title">Pick-and-Spin: cold-start-aware model routing</h2>
 <p class="demo-desc">A pool of self-hosted models shares a fixed set of GPUs. Describe a task and the router scores every model on capability fit, cost and latency, then decides whether to answer from a warm replica or pay a cold start to spin one up. Thompson Sampling drives the exploration; the cold-start state machine decides residency. Keep sending requests and watch utilization climb as the router learns.</p>
-<p class="demo-cite">Method from <a href="https://arxiv.org/abs/2512.22402"><em>Efficient Multi-Model Orchestration for Self-Hosted LLMs</em></a>, AAAI 2026, and <em>Pick and Spin</em>, IEEE CLOUD 2026.</p>
+<p class="demo-cite">Method from <a href="https://arxiv.org/abs/2512.22402"><em>Efficient Multi-Model Orchestration for Self-Hosted LLMs</em></a>, AAAI 2026 DAI Workshop, and <em>Pick-and-Spin</em>, IEEE CLOUD 2026.</p>
 </header>
 
 <div class="demo-io">

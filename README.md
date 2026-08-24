@@ -66,11 +66,12 @@ browser:
 1. **Dependency & reproducibility checker**. Paste Python and an environment
    file; it resolves imports to distributions and reports hidden, bloat,
    unpinned and unverified dependencies. From *AI-Generated Code Is Not
-   Reproducible (Yet)* (AAAI 2026) and *The Environment Specification Gap*.
+   Reproducible (Yet)* (AAAI 2026 RAI Workshop) and *Code That Works, Environments
+   That Don't*.
 2. **Pick-and-Spin router**. Thompson Sampling over a model pool with a
    cold-start state machine governing GPU residency; utilisation and cold-start
    rate update as you send requests. From *Efficient Multi-Model Orchestration*
-   (AAAI 2026) and *Pick and Spin* (IEEE CLOUD 2026).
+   (AAAI 2026 DAI Workshop) and *Pick-and-Spin* (IEEE CLOUD 2026).
 3. **Reproducibility agent**. A plan / tool-call / result / answer loop that uses
    demo 1 as its tool. Needs a configured endpoint; says so plainly if there
    isn't one.
