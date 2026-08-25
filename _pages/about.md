@@ -19,23 +19,16 @@ redirect_from:
 <p class="hero-role">{{ p.role }}</p>
 <p class="hero-thesis">{{ p.dissertation_sub }}</p>
 <p class="hero-affil">{{ p.department }} &middot; <a href="https://engineering.missouri.edu/departments/eecs/">{{ p.affiliation }}</a> &middot; {{ p.location }}</p>
-
-<p class="hero-summary">{{ p.summary }}</p>
-
 <p class="muted">Advised by <a href="{{ p.advisor_url }}">{{ p.advisor }}</a>. Ph.D. expected June 2027.</p>
-
 <p class="tag-row" aria-label="Highlights">
 {%- for b in p.badges %}<span class="badge is-accent">{{ b }}</span>{% endfor %}
 </p>
-
 <div class="link-pills hero-actions">
 {%- for l in cv.links %}
 <a class="link-pill{% if l.id == 'cv' %} link-pill--primary{% endif %}" href="{% if l.url contains '://' or l.url contains 'mailto:' %}{{ l.url }}{% else %}{{ l.url | relative_url }}{% endif %}"><i class="{{ l.icon }}" aria-hidden="true"></i> {{ l.label }}</a>
 {%- endfor %}
 <a class="link-pill" href="{{ '/demos/' | relative_url }}"><i class="fas fa-flask" aria-hidden="true"></i> Live demos</a>
 </div>
-
-<p class="muted"><strong>Research interests:</strong> {{ p.interests | join: " &middot; " }}</p>
 </div>
 <div class="hero-col hero-col--term">
 <div class="terminal" id="terminal" role="group" aria-label="Interactive shell over the CV">
@@ -59,6 +52,12 @@ redirect_from:
 </div>
 </div>
 </div>
+
+<div class="hero-below">
+<p class="hero-summary">{{ p.summary }}</p>
+<p class="muted"><strong>Research interests:</strong> {{ p.interests | join: " &middot; " }}</p>
+</div>
+
 <ul class="stat-grid">
 {%- for s in cv.stats %}
 {%- assign n = s.num -%}

@@ -129,15 +129,40 @@
 .hero-grid {
   grid-template-columns: repeat(auto-fit, minmax(#{"min(100%, 28rem)"}, 1fr));
   gap: #{"clamp(1.75rem, 2.5vw, 3rem)"};
-  align-items: center;
+  align-items: stretch;
   max-width: 84rem;
 }
 
-/* A lead paragraph carries a slightly wider measure than body copy, which lets
-   it fill the column it now sits in rather than ending well short of it. */
+/* The terminal was a fixed 418px box centred against a 1013px text column, so
+   `align-items: center` split the 595px difference in half and left about
+   300px of dead space above it and another 300px below. It fills the column
+   now, which removes both gaps and gives the shell more room to print into.
+   In one-column layouts the row has no surplus height to take, so the
+   min-height governs and nothing stretches. */
+.hero-col--term {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* The summary and the interests line sit below the grid rather than inside the
+   left column. Stacked in the column they made it 1013px tall against a 418px
+   terminal, and no amount of aligning fixes a 595px difference: one side has to
+   pad. Below the grid the prose gets a proper measure and the two columns end
+   up close enough in height to sit together. */
+.hero-below {
+  margin-top: #{"clamp(1.5rem, 2.2vw, 2.75rem)"};
+}
+
+.hero-below > * + * {
+  margin-top: #{"clamp(0.75rem, 1vw, 1.15rem)"};
+}
+
 .hero-summary,
-.hero .hero-summary {
-  max-width: #{"min(100%, 64ch)"};
+.hero .hero-summary,
+.hero-below .hero-summary {
+  max-width: #{"min(100%, 78ch)"};
+  margin-bottom: 0;
 }
 
 @media (min-width: 1100px) {
@@ -260,18 +285,28 @@
    monitor alike; the rem bounds keep it usable at either extreme.
    -------------------------------------------------------------------------- */
 
+/* Fills its column exactly, so there is no gap above it or below it. This is
+   only reasonable because the column is around 700px now: when the summary
+   still sat in the left column it was 1013px, and a terminal that tall is a
+   wall of empty black rather than a window. */
 .terminal {
-  height: #{"clamp(19rem, 44vh, 31rem)"};
+  height: auto;
+  flex: 1 1 auto;
+  min-height: #{"clamp(19rem, 44vh, 31rem)"};
   font-size: #{"clamp(11.5px, 0.55rem + 0.32vw, 13.5px)"};
 }
 
 @media (max-width: 1099px) {
-  .terminal { height: #{"clamp(19rem, 44vh, 31rem)"}; }
+  .terminal {
+    height: auto;
+    min-height: #{"clamp(19rem, 44vh, 31rem)"};
+  }
 }
 
 @media (max-width: 600px) {
   .terminal {
-    height: #{"clamp(17rem, 40vh, 24rem)"};
+    height: auto;
+    min-height: #{"clamp(17rem, 40vh, 24rem)"};
     font-size: 11.5px;
   }
 }
