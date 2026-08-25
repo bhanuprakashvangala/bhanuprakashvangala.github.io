@@ -97,24 +97,61 @@
 }
 
 .hero-lede {
-  max-width: #{"min(100%, 34rem)"};
+  max-width: none;
+}
+
+.hero-lede-text {
+  max-width: #{"min(100%, 36rem)"};
+}
+
+/* The portrait is a square 997x997 source, so it can run large with no crop.
+   On a phone it stays a small rounded square above the name. */
+.hero-lede .hero-portrait {
+  display: block;
+  width: #{"clamp(7rem, 22vw, 9rem)"};
+  height: auto;
+  aspect-ratio: 1 / 1;
+  margin: 0 0 var(--space-4, 1rem);
+  object-fit: cover;
+  border-radius: var(--radius-lg, 14px);
 }
 
 /* The lede owns the fold on a desktop screen. Without this the supporting
    column rose beside it and put seven credential chips back above the fold,
    which is the thing the rebuild was meant to stop. Width-scoped, because on a
-   phone a viewport-tall lede is just a long empty scroll. */
+   phone a viewport-tall lede is just a long empty scroll.
+
+   The right half of the fold was empty once the terminal moved out, so the
+   portrait fills it: a large square beside the text rather than a thumbnail
+   above it. Explicit grid placement, because the image comes first in the
+   markup so that the phone layout stacks it on top without needing `order`. */
 @media (min-width: 900px) {
   .hero-lede {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    display: grid;
+    /* The image track flexes and the image centres inside it, rather than the
+       track being fixed and all the slack collecting as a hole in the middle.
+       At 1440 that took the visual gap between text and portrait from about
+       390px to about 130px, split either side of the image. */
+    grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+    gap: #{"clamp(2rem, 4vw, 4rem)"};
+    align-items: center;
     min-height: #{"calc(100vh - 11rem)"};
   }
-}
 
-.hero-lede .hero-portrait {
-  margin-bottom: var(--space-4, 1rem);
+  .hero-lede-text {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .hero-lede .hero-portrait {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: center;
+    width: 100%;
+    max-width: #{"clamp(18rem, 32vw, 30rem)"};
+    margin: 0;
+    border-radius: var(--radius-lg, 18px);
+  }
 }
 
 /* Two lines at most. The old cap let it break into three at wide widths and

@@ -14,7 +14,8 @@ redirect_from:
 <section id="about-me" class="section hero" aria-labelledby="hero-name">
 
 <div class="hero-lede">
-<img class="hero-portrait" src="{{ p.avatar | prepend: '/' | relative_url }}" alt="Portrait of {{ p.name }}" width="132" height="132" fetchpriority="high">
+<img class="hero-portrait" src="{{ p.avatar | prepend: '/' | relative_url }}" alt="Portrait of {{ p.name }}" width="997" height="997" fetchpriority="high">
+<div class="hero-lede-text">
 <h1 class="hero-name" id="hero-name">{{ p.name }}</h1>
 <p class="hero-role">{{ p.role }}</p>
 <p class="hero-thesis">{{ p.dissertation_sub }}.</p>
@@ -23,6 +24,7 @@ redirect_from:
 {%- for id in primary %}{% assign l = cv.links | where: "id", id | first %}{% if l %}
 <a class="link-pill{% if l.id == 'cv' %} link-pill--primary{% endif %}" href="{% if l.url contains '://' or l.url contains 'mailto:' %}{{ l.url }}{% else %}{{ l.url | relative_url }}{% endif %}"><i class="{{ l.icon }}" aria-hidden="true"></i> {{ l.label }}</a>
 {%- endif %}{% endfor %}
+</div>
 </div>
 </div>
 
