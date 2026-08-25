@@ -28,7 +28,7 @@ author:
 #   generated answers. NEVER put an API key here -- this file is public.
 assistant:
   enabled                : true
-  endpoint               : ""
+  endpoint               : "https://bhanuprakashvangala-github-io.vercel.app/api/chat"
   model                  : "gpt-oss"
 
 # Reading Files

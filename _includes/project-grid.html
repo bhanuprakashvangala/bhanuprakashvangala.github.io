@@ -1,0 +1,18 @@
+{%- comment -%}
+  Project cards. include.items is the list to render.
+{%- endcomment -%}
+<ul class="project-grid">
+{%- for pr in include.items %}
+<li class="project-card">
+<h3 class="project-title">{{ pr.title }}</h3>
+<p class="project-meta">{% if pr.role %}<span class="badge is-accent">{{ pr.role }}</span>{% endif %}<span class="badge is-muted">{{ pr.status }}</span></p>
+<p class="project-desc">{{ pr.desc }}</p>
+{%- if pr.stack %}
+<p class="project-tags">{% assign bits = pr.stack | split: "|" %}{% for b in bits %}<span class="tag">{{ b | strip }}</span>{% endfor %}</p>
+{%- endif %}
+{%- if pr.links %}
+<p class="project-links">{% for l in pr.links %}<a class="btn-link" href="{{ l.url }}">{{ l.label }}</a>{% endfor %}</p>
+{%- endif %}
+</li>
+{%- endfor %}
+</ul>

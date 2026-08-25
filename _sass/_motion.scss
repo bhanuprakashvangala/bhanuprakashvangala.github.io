@@ -55,7 +55,12 @@ $mo-z-progress:  70;
 
 /* --------------------------------------------------------------------------
    1. SCROLL REVEALS
-   Contract: elements carry `data-reveal`; the JS adds `.is-revealed` once
+   Contract: the JS adds `.is-armed` to hide an element, then `.is-revealed`
+   to show it. The bare `data-reveal` attribute hides NOTHING on its own, so a
+   script that never runs, or an observer that misses an element, leaves that
+   element visible rather than blank. Previously the attribute did the hiding
+   and whole sections rendered as white space when the observer missed them.
+   Historic note: elements carry `data-reveal`; the JS adds `.is-revealed` once
    they intersect the viewport, and NEVER removes it (reveals are one-way --
    a two-way rule would replay the transition-delay backwards).
 
@@ -65,7 +70,7 @@ $mo-z-progress:  70;
    for reduced motion, for print and for crawlers.
    -------------------------------------------------------------------------- */
 
-html.js-motion [data-reveal] {
+html.js-motion [data-reveal].is-armed {
   /* Declared, not just defaulted, so `var(--reveal-delay)` inside calc() is
      always resolvable. The JS overwrites it inline, in ms, with the unit. */
   --reveal-delay: 0ms;
@@ -80,11 +85,11 @@ html.js-motion [data-reveal] {
 
 /* Direction variants. Same specificity as the base rule (0-1-0), so source
    order decides -- these must stay below it. */
-html.js-motion [data-reveal="up"]    { transform: translate3d(0, $mo-reveal-y, 0); }
-html.js-motion [data-reveal="left"]  { transform: translate3d(-1 * $mo-reveal-x, 0, 0); }
-html.js-motion [data-reveal="right"] { transform: translate3d($mo-reveal-x, 0, 0); }
-html.js-motion [data-reveal="scale"] { transform: scale(0.965); }
-html.js-motion [data-reveal="fade"]  { transform: none; }
+html.js-motion [data-reveal="up"].is-armed    { transform: translate3d(0, $mo-reveal-y, 0); }
+html.js-motion [data-reveal="left"].is-armed  { transform: translate3d(-1 * $mo-reveal-x, 0, 0); }
+html.js-motion [data-reveal="right"].is-armed { transform: translate3d($mo-reveal-x, 0, 0); }
+html.js-motion [data-reveal="scale"].is-armed { transform: scale(0.965); }
+html.js-motion [data-reveal="fade"].is-armed  { transform: none; }
 
 /* The resting state. 0-2-0 beats every variant above regardless of order. */
 html.js-motion [data-reveal].is-revealed {
@@ -522,7 +527,7 @@ html.js-motion .section-title[data-reveal]:after {
   transition-delay: calc(var(--reveal-delay, 0ms) + 140ms);
 }
 
-html.js-motion .section-title[data-reveal]:not(.is-revealed):after {
+html.js-motion .section-title[data-reveal].is-armed:not(.is-revealed):after {
   transform: scaleX(0);
 }
 
@@ -567,8 +572,12 @@ html.js-motion .ai-launcher.is-nudge {
    a keyboard reaches it. Always visible where there is no hover to speak of.
    -------------------------------------------------------------------------- */
 
+/* Faint rather than absent. This is a hover affordance, but "invisible until
+   you happen to hover" is both undiscoverable and indistinguishable from a
+   rendering fault, so it rests at a legible low contrast and comes forward on
+   hover, focus and touch. */
 .copy-bib {
-  opacity: 0;
+  opacity: 0.55;
   transform: translate3d(0, 2px, 0);
   transition:
     opacity          var(--dur, #{$mo-dur}) var(--ease, #{$mo-ease}),
@@ -657,11 +666,11 @@ html.js-motion .copy-bib.is-copied {
    -------------------------------------------------------------------------- */
 
 @media (max-width: 599px) {
-  html.js-motion [data-reveal]        { transform: translate3d(0, 10px, 0); }
-  html.js-motion [data-reveal="up"]   { transform: translate3d(0, 10px, 0); }
-  html.js-motion [data-reveal="left"] { transform: translate3d(-12px, 0, 0); }
-  html.js-motion [data-reveal="right"]{ transform: translate3d(12px, 0, 0); }
-  html.js-motion [data-reveal="fade"] { transform: none; }
+  html.js-motion [data-reveal].is-armed        { transform: translate3d(0, 10px, 0); }
+  html.js-motion [data-reveal="up"].is-armed   { transform: translate3d(0, 10px, 0); }
+  html.js-motion [data-reveal="left"].is-armed { transform: translate3d(-12px, 0, 0); }
+  html.js-motion [data-reveal="right"].is-armed{ transform: translate3d(12px, 0, 0); }
+  html.js-motion [data-reveal="fade"].is-armed { transform: none; }
   html.js-motion [data-reveal].is-revealed { transform: none; }
 }
 

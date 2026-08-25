@@ -53,14 +53,26 @@
   /* ======================================================================= *
    * 2. Scroll reveals, staggered within each group
    * ======================================================================= */
+  /* The reveal is progressive enhancement, and the CSS reflects that: an
+     element is hidden only while it carries `.is-armed`, a class this function
+     adds. Nothing is hidden by markup, by the `data-reveal` attribute alone,
+     or by a stylesheet loading before the script. If this function never runs,
+     the page renders in full.
+     
+     The previous version hid on the attribute itself and relied entirely on
+     one IntersectionObserver to undo it, so anything the observer missed
+     stayed invisible permanently. Publications rendered as blank white space.
+     Three things stop that from recurring:
+     
+       1. Anything already at or above the fold is revealed outright and never
+          armed, so a first paint can never be blank.
+       2. A throttled scroll and resize pass reveals armed elements that have
+          come into view, independently of the observer.
+       3. A final timer reveals whatever is left. Late is survivable;
+          invisible is not. */
   function initReveals() {
     var targets = $$('[data-reveal]');
     if (!targets.length) return;
-
-    if (!('IntersectionObserver' in window)) {
-      targets.forEach(function (el) { el.classList.add('is-revealed'); });
-      return;
-    }
 
     // Stagger by position within the parent, capped so long lists do not
     // leave the reader waiting on the last item.
@@ -72,15 +84,96 @@
       el.style.setProperty('--reveal-delay', Math.min(i, 8) * 55 + 'ms');
     });
 
+    var armed = [];
+
+    function reveal(el) {
+      el.classList.remove('is-armed');
+      el.classList.add('is-revealed');
+    }
+
+    function revealAll() {
+      armed.forEach(reveal);
+      armed.length = 0;
+    }
+
+    // Only arm what is genuinely below the fold. Everything else is shown as
+    // it is: there is no animation to be had for content the reader is
+    // already looking at, and no way for it to be missed.
+    var fold = window.innerHeight || document.documentElement.clientHeight;
+    targets.forEach(function (el) {
+      // Strictly below the fold. An element merely touching the bottom edge
+      // is on screen at first paint, and arming it makes the first thing the
+      // reader sees a gap.
+      if (el.getBoundingClientRect().top < fold) { el.classList.add('is-revealed'); return; }
+      el.classList.add('is-armed');
+      armed.push(el);
+    });
+
+    if (!armed.length) return;
+
+    if (!('IntersectionObserver' in window)) { revealAll(); return; }
+
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (!e.isIntersecting) return;
-        e.target.classList.add('is-revealed');
+        reveal(e.target);
+        var i = armed.indexOf(e.target);
+        if (i !== -1) armed.splice(i, 1);
         io.unobserve(e.target);
       });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
 
-    targets.forEach(function (el) { io.observe(el); });
+    armed.slice().forEach(function (el) { io.observe(el); });
+
+    // Second, independent pass. The observer is the nice path; this is the
+    // one that guarantees the reader never meets a blank screen.
+    var ticking = false;
+    function sweep() {
+      ticking = false;
+      if (!armed.length) { teardown(); return; }
+      var h = window.innerHeight || document.documentElement.clientHeight;
+      for (var i = armed.length - 1; i >= 0; i--) {
+        var r = armed[i].getBoundingClientRect();
+        if (r.top < h && r.bottom > 0) {
+          io.unobserve(armed[i]);
+          reveal(armed[i]);
+          armed.splice(i, 1);
+        }
+      }
+    }
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(sweep);
+    }
+    function teardown() {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      if (timer) { clearTimeout(timer); timer = null; }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+
+    // One sweep on the next frame. Layout can still shift between arming and
+    // first paint (a late web font, an image settling), and this catches
+    // anything that ended up on screen after it did.
+    window.requestAnimationFrame(sweep);
+
+    // Last resort. If the reader has not reached them by now something is
+    // wrong with our assumptions, and showing them plainly beats hiding them.
+    var timer = setTimeout(function () {
+      io.disconnect();
+      revealAll();
+      teardown();
+    }, 8000);
+
+    // Printing and find-in-page must never hit hidden text.
+    if (window.matchMedia) {
+      var pm = window.matchMedia('print');
+      if (pm.addEventListener) pm.addEventListener('change', revealAll);
+    }
+    window.addEventListener('beforeprint', revealAll);
   }
 
   /* ======================================================================= *
