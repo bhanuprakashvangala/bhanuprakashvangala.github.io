@@ -95,6 +95,21 @@ exports.handler = async (event) => {
   const context = String(body.context || '').slice(0, MAX_CONTEXT);
   const model = MODEL_ALLOWLIST.has(body.model) ? body.model : MODEL_DEFAULT;
 
+  const payload = {
+    model,
+    stream: false,
+    temperature: 0.2,
+    max_tokens: 700,
+    messages: [
+      { role: 'system', content: SYSTEM_PROMPT + '\n\nCONTEXT\n' + (context || '(no passages retrieved)') },
+      ...messages
+    ]
+  };
+
+  if (THINKING_TOGGLE.has(model)) {
+    payload.chat_template_kwargs = { enable_thinking: false };
+  }
+
   // Netlify's classic function runtime buffers the response, so we ask the
   // upstream for a complete reply and hand back JSON. The site handles both
   // JSON and SSE, so this is a supported shape -- it just does not stream.
@@ -103,16 +118,7 @@ exports.handler = async (event) => {
     upstream = await fetch(`${UPSTREAM}/chat/completions`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${key}` },
-      body: JSON.stringify({
-        model,
-        stream: false,
-        temperature: 0.2,
-        max_tokens: 700,
-        messages: [
-          { role: 'system', content: SYSTEM_PROMPT + '\n\nCONTEXT\n' + (context || '(no passages retrieved)') },
-          ...messages
-        ]
-      })
+      body: JSON.stringify(payload)
     });
   } catch {
     return json(502, { error: 'Model backend unreachable' }, origin);
@@ -124,6 +130,17 @@ exports.handler = async (event) => {
   }
 
   const data = await upstream.json();
-  const content = data?.choices?.[0]?.message?.content || '';
+  const choice = data?.choices?.[0];
+  const content = choice?.message?.content || '';
+
+  // A reasoning model that spent its whole budget thinking returns null
+  // content with finish_reason "length". Returning '' for that renders an
+  // empty bubble and looks like a bug in the page, so say what happened.
+  if (!content) {
+    console.error('empty completion', model, choice?.finish_reason,
+      JSON.stringify(choice?.message || {}).slice(0, 300));
+    return json(502, { error: 'Model returned no text' }, origin);
+  }
+
   return json(200, { content }, origin);
 };
