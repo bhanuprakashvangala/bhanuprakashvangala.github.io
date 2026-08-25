@@ -30,7 +30,7 @@ profile:
   phone: "+1 (573) 639-3768"
   show_phone: false
   avatar: "images/Bhanu1.jpg"
-  tagline: "When trust, reproducibility, and efficiency are the same problem."
+  tagline: "Trust, reproducibility and efficiency turn out to be one problem."
   summary: >-
     I work where machine learning meets the messy reality of the systems that have
     to run it. One question keeps pulling me back. When an AI pipeline hands you a
@@ -42,7 +42,7 @@ profile:
     its dependencies or its resource use, someone outside the team that built it
     ought to be able to check.
   dissertation: "Executable Reliability for AI Systems"
-  dissertation_sub: "When trust, reproducibility, and efficiency are the same problem"
+  dissertation_sub: "Trust, reproducibility and efficiency turn out to be one problem"
   area: "AI, Systems & Networking"
   interests:
     - "Agentic AI systems"
@@ -270,6 +270,7 @@ publications:
       works.
 
   - id: pick-and-spin
+    featured: true
     ref: 4
     year: 2026
     title: "Resource-Aware Multi-Model Serving for GPU Cloud Infrastructure (Pick-and-Spin)"
@@ -296,6 +297,7 @@ publications:
       behind the Model Router demo on this site.
 
   - id: not-reproducible
+    featured: true
     ref: 5
     year: 2026
     title: "AI-Generated Code Is Not Reproducible (Yet): Dependency Gaps in Coding Agents"
@@ -358,6 +360,7 @@ publications:
       instead of holding hardware indefinitely.
 
   - id: hallumat
+    featured: true
     ref: 8
     year: 2025
     title: "HalluMat: Detecting Hallucinations in LLM-Generated Materials Science Content Through Multi-Stage Verification"
@@ -569,6 +572,7 @@ research:
 # -----------------------------------------------------------------------------
 projects:
   - id: learnllm
+    featured: true
     title: "LearnLLM.dev"
     role: "Founder"
     status: "Live"
@@ -592,6 +596,7 @@ projects:
       Hackathon 2025.
 
   - id: reflectmemory
+    featured: true
     title: "ReflectMemory: persistent memory for long-context reasoning"
     status: "Prototype"
     tags: [agents, memory]
@@ -609,6 +614,7 @@ projects:
       with a Kotlin app giving turn-by-turn guidance indoors where GPS fails.
 
   - id: chatmed
+    featured: true
     title: "ChatMed: grounded medical question answering"
     status: "Completed"
     tags: [nlp, medical]

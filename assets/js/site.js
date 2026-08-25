@@ -101,6 +101,19 @@
         if (!visible[el.getAttribute('data-spy-for')]) return;
         if (!best || el.getBoundingClientRect().top < best.getBoundingClientRect().top) best = el;
       });
+
+      // Nothing spied is on screen. Since the nav was trimmed to four items,
+      // only two of them point at homepage sections, and both sit near the
+      // top: without this the highlight simply vanished for most of the page.
+      // Fall back to the last section the reader has scrolled past, which is
+      // still the section they are nearest to in the document.
+      if (!best) {
+        targets.forEach(function (el) {
+          if (el.getBoundingClientRect().top > 0) return;
+          if (!best || el.getBoundingClientRect().top > best.getBoundingClientRect().top) best = el;
+        });
+      }
+
       navLinks.forEach(function (a) { a.classList.remove('is-active'); });
       var key = best && best.getAttribute('data-spy-for');
       if (key && byId[key]) byId[key].classList.add('is-active');

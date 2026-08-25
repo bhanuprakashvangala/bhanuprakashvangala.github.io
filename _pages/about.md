@@ -12,63 +12,38 @@ redirect_from:
 {%- assign p = cv.profile -%}
 
 <section id="about-me" class="section hero" aria-labelledby="hero-name">
-<div class="hero-grid">
-<div class="hero-col">
+
+<div class="hero-lede">
 <img class="hero-portrait" src="{{ p.avatar | prepend: '/' | relative_url }}" alt="Portrait of {{ p.name }}" width="132" height="132" fetchpriority="high">
 <h1 class="hero-name" id="hero-name">{{ p.name }}</h1>
 <p class="hero-role">{{ p.role }}</p>
-<p class="hero-thesis">{{ p.dissertation_sub }}</p>
-<p class="hero-affil">{{ p.department }} &middot; <a href="https://engineering.missouri.edu/departments/eecs/">{{ p.affiliation }}</a> &middot; {{ p.location }}</p>
-<p class="muted">Advised by <a href="{{ p.advisor_url }}">{{ p.advisor }}</a>. Ph.D. expected June 2027.</p>
-<p class="tag-row" aria-label="Highlights">
-{%- for b in p.badges %}<span class="badge is-accent">{{ b }}</span>{% endfor %}
-</p>
+<p class="hero-thesis">{{ p.dissertation_sub }}.</p>
 <div class="link-pills hero-actions">
-{%- for l in cv.links %}
+{%- assign primary = "scholar,github,cv" | split: "," %}
+{%- for id in primary %}{% assign l = cv.links | where: "id", id | first %}{% if l %}
 <a class="link-pill{% if l.id == 'cv' %} link-pill--primary{% endif %}" href="{% if l.url contains '://' or l.url contains 'mailto:' %}{{ l.url }}{% else %}{{ l.url | relative_url }}{% endif %}"><i class="{{ l.icon }}" aria-hidden="true"></i> {{ l.label }}</a>
-{%- endfor %}
-<a class="link-pill" href="{{ '/demos/' | relative_url }}"><i class="fas fa-flask" aria-hidden="true"></i> Live demos</a>
-</div>
-</div>
-<div class="hero-col hero-col--term">
-<div class="terminal" id="terminal" role="group" aria-label="Interactive shell over the CV">
-<div class="term-bar" aria-hidden="true">
-<span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span>
-<span class="term-title">bhanu@nautilus: ~</span>
-</div>
-<div class="term-out" id="term-out" role="log" aria-live="polite"></div>
-<div class="term-chips">
-<button type="button" class="term-chip" data-cmd="ls">ls</button>
-<button type="button" class="term-chip" data-cmd="cat about.txt">cat about.txt</button>
-<button type="button" class="term-chip" data-cmd="cd papers">cd papers</button>
-<button type="button" class="term-chip" data-cmd="tree">tree</button>
-<button type="button" class="term-chip" data-cmd="help">help</button>
-</div>
-<label class="term-row" for="term-input">
-<span class="term-prompt"><span class="t-prompt">bhanu@nautilus</span> <span class="term-prompt-path t-path">~/</span> <span class="t-caret">$</span></span>
-<input class="term-input" id="term-input" type="text" autocomplete="off" autocapitalize="off"
-       autocorrect="off" spellcheck="false" aria-label="Terminal input">
-</label>
-</div>
+{%- endif %}{% endfor %}
 </div>
 </div>
 
 <div class="hero-below">
+<div class="hero-below-main">
 <p class="hero-summary">{{ p.summary }}</p>
-<p class="muted"><strong>Research interests:</strong> {{ p.interests | join: " &middot; " }}</p>
 </div>
-
-<ul class="stat-grid">
-{%- for s in cv.stats %}
-{%- assign n = s.num -%}
-{%- if s.count == "publications" -%}
-  {%- assign n = cv.publications | where_exp: "p", "p.ref" | size -%}
-{%- elsif s.count == "orals" -%}
-  {%- assign n = cv.publications | where: "kind", "Oral" | size -%}
-{%- endif -%}
-<li class="stat"><span class="stat-num">{{ n }}</span><span class="stat-label">{{ s.label }}</span></li>
-{%- endfor %}
-</ul>
+<div class="hero-below-meta">
+<p class="hero-affil">{{ p.department }} &middot; <a href="https://engineering.missouri.edu/departments/eecs/">{{ p.affiliation }}</a> &middot; {{ p.location }}. Advised by <a href="{{ p.advisor_url }}">{{ p.advisor }}</a>. Ph.D. expected June 2027.</p>
+<p class="muted"><strong>Research interests:</strong> {{ p.interests | join: " &middot; " }}</p>
+<p class="tag-row" aria-label="Funders and honours">
+{%- for b in p.badges %}<span class="badge is-accent">{{ b }}</span>{% endfor %}
+</p>
+<div class="link-pills">
+{%- for l in cv.links %}{% unless l.id == 'scholar' or l.id == 'github' or l.id == 'cv' %}
+<a class="link-pill" href="{% if l.url contains '://' or l.url contains 'mailto:' %}{{ l.url }}{% else %}{{ l.url | relative_url }}{% endif %}"><i class="{{ l.icon }}" aria-hidden="true"></i> {{ l.label }}</a>
+{%- endunless %}{% endfor %}
+<a class="link-pill" href="{{ '/demos/' | relative_url }}"><i class="fas fa-flask" aria-hidden="true"></i> Live demos</a>
+</div>
+</div>
+</div>
 </section>
 
 <section id="research-threads" class="section" aria-labelledby="threads-title">
@@ -90,16 +65,40 @@ redirect_from:
 </ol>
 </section>
 
+<section id="explore" class="section" aria-labelledby="explore-title">
+<div class="section-head"><h2 class="section-title" id="explore-title">Poke around yourself</h2></div>
+<p class="section-sub">A real shell over this CV. It reads the same knowledge base the assistant answers from, so it cannot tell you anything the rest of the site does not. Try <code>ls</code>, <code>cat papers/pick-and-spin.md</code>, or <code>ask what is pick and spin</code>.</p>
+
+<div class="terminal" id="terminal" role="group" aria-label="Interactive shell over the CV">
+<div class="term-bar" aria-hidden="true">
+<span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span>
+<span class="term-title">bhanu@nautilus: ~</span>
+</div>
+<div class="term-out" id="term-out" role="log" aria-live="polite"></div>
+<div class="term-chips">
+<button type="button" class="term-chip" data-cmd="ls">ls</button>
+<button type="button" class="term-chip" data-cmd="cat about.txt">cat about.txt</button>
+<button type="button" class="term-chip" data-cmd="cd papers">cd papers</button>
+<button type="button" class="term-chip" data-cmd="tree">tree</button>
+<button type="button" class="term-chip" data-cmd="help">help</button>
+</div>
+<label class="term-row" for="term-input">
+<span class="term-prompt"><span class="t-prompt">bhanu@nautilus</span> <span class="term-prompt-path t-path">~/</span> <span class="t-caret">$</span></span>
+<input class="term-input" id="term-input" type="text" autocomplete="off" autocapitalize="off"
+       autocorrect="off" spellcheck="false" aria-label="Terminal input">
+</label>
+</div>
+</section>
+
+
 <section id="news" class="section" aria-labelledby="news-title">
-<div class="section-head"><h2 class="section-title" id="news-title">News</h2></div>
+<div class="section-head">
+<h2 class="section-title" id="news-title">News</h2>
+<a class="section-action" href="{{ '/news/' | relative_url }}">All {{ cv.news | size }} updates &rarr;</a>
+</div>
 
-<ol class="news-feed" id="news-feed">
-{%- for n in cv.news %}
-<li class="news-item"><span class="news-date">{{ n.date }}</span><span class="news-body">{{ n.text | markdownify | remove: '<p>' | remove: '</p>' | strip }}</span></li>
-{%- endfor %}
-</ol>
-
-<button type="button" class="news-more" id="news-more" aria-expanded="false" aria-controls="news-feed">Show all {{ cv.news | size }} updates</button>
+{%- assign recent_news = cv.news | slice: 0, 5 %}
+{% include news-feed.html items=recent_news %}
 </section>
 
 <section id="experience" class="section" aria-labelledby="exp-title">
@@ -128,45 +127,13 @@ redirect_from:
 
 <section id="publications" class="section" aria-labelledby="pubs-title">
 <div class="section-head">
-<h2 class="section-title" id="pubs-title">Publications</h2>
-<a class="section-action" href="https://scholar.google.com/citations?user=qHBOnpkAAAAJ&amp;hl=en">Google Scholar &rarr;</a>
+<h2 class="section-title" id="pubs-title">Selected papers</h2>
+<a class="section-action" href="{{ '/publications/' | relative_url }}">All {{ cv.publications | size }} publications &rarr;</a>
 </div>
-<p class="section-sub">Mine is the name in <span class="me">bold</span>. Filter by topic if you want a narrower slice.</p>
+<p class="section-sub">One per thread. Mine is the name in <span class="me">bold</span>.</p>
 
-<div class="filter-bar" role="group" aria-label="Filter publications by topic">
-{%- for f in cv.pub_filters %}
-<button type="button" class="filter-chip{% if f.id == 'all' %} is-active{% endif %}" data-filter="{{ f.id }}" aria-pressed="{% if f.id == 'all' %}true{% else %}false{% endif %}">{{ f.label }}</button>
-{%- endfor %}
-<span class="filter-count" id="filter-count" aria-live="polite"></span>
-</div>
-
-<ol class="pub-list" id="pub-list">
-{%- for pub in cv.publications %}
-<li class="pub" data-tags="{{ pub.tags | join: ' ' }}" data-year="{{ pub.year }}" id="pub-{{ pub.id }}">
-{%- if pub.image %}
-<div class="pub-thumb"><img src="{{ pub.image | prepend: '/' | relative_url }}" alt="" loading="lazy" decoding="async"></div>
-{%- endif %}
-<div class="pub-body">
-<h3 class="pub-title">{{ pub.title }}</h3>
-<p class="pub-authors">{% for a in pub.authors %}{% if a contains 'Bhanu' %}<span class="me">{{ a }}</span>{% else %}{{ a }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}</p>
-{%- if pub.highlights %}
-<p>{{ pub.highlights }}</p>
-{%- endif %}
-<p class="pub-meta">
-<span class="pub-venue is-{{ pub.status }}">{% if pub.status == 'review' %}Under review &middot; {% endif %}{{ pub.venue }}{% if pub.kind %} &middot; {{ pub.kind }}{% endif %}</span>
-<span class="pub-tags">{% for t in pub.tags %}<span class="pub-tag">{{ t }}</span>{% endfor %}</span>
-</p>
-{%- if pub.summary %}
-<details class="pub-summary"><summary>What it's about</summary><p>{{ pub.summary }}</p></details>
-{%- endif %}
-{%- if pub.links and pub.links != empty %}
-<p class="pub-actions">{% for l in pub.links %}<a class="btn-link" href="{{ l.url }}">{{ l.label }}</a>{% endfor %}</p>
-{%- endif %}
-</div>
-</li>
-{%- endfor %}
-</ol>
-<p class="callout is-note is-hidden" id="pub-empty">No publications match that filter.</p>
+{%- assign featured_pubs = cv.publications | where: "featured", true %}
+{% include pub-list.html items=featured_pubs %}
 </section>
 
 <section id="research" class="section" aria-labelledby="research-title">
@@ -190,23 +157,13 @@ redirect_from:
 </section>
 
 <section id="projects" class="section" aria-labelledby="projects-title">
-<div class="section-head"><h2 class="section-title" id="projects-title">Projects</h2></div>
+<div class="section-head">
+<h2 class="section-title" id="projects-title">Selected projects</h2>
+<a class="section-action" href="{{ '/projects/' | relative_url }}">All projects &rarr;</a>
+</div>
 
-<ul class="project-grid">
-{%- for pr in cv.projects %}
-<li class="project-card">
-<h3 class="project-title">{{ pr.title }}</h3>
-<p class="project-meta">{% if pr.role %}<span class="badge is-accent">{{ pr.role }}</span>{% endif %}<span class="badge is-muted">{{ pr.status }}</span></p>
-<p class="project-desc">{{ pr.desc }}</p>
-{%- if pr.stack %}
-<p class="project-tags">{% assign bits = pr.stack | split: "|" %}{% for b in bits %}<span class="tag">{{ b | strip }}</span>{% endfor %}</p>
-{%- endif %}
-{%- if pr.links %}
-<p class="project-links">{% for l in pr.links %}<a class="btn-link" href="{{ l.url }}">{{ l.label }}</a>{% endfor %}</p>
-{%- endif %}
-</li>
-{%- endfor %}
-</ul>
+{%- assign featured_projects = cv.projects | where: "featured", true %}
+{% include project-grid.html items=featured_projects %}
 </section>
 
 <section id="honors-and-awards" class="section" aria-labelledby="awards-title">

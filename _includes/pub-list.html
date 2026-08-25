@@ -1,0 +1,45 @@
+{%- comment -%}
+  Publication list. Shared by the homepage (a featured subset) and /publications/
+  (everything), so the two can never drift apart.
+
+  include.items   the publications to render
+  include.filters truthy to render the topic filter bar (full page only)
+{%- endcomment -%}
+{%- if include.filters %}
+<div class="filter-bar" role="group" aria-label="Filter publications by topic">
+{%- for f in site.data.cv.pub_filters %}
+<button type="button" class="filter-chip{% if f.id == 'all' %} is-active{% endif %}" data-filter="{{ f.id }}" aria-pressed="{% if f.id == 'all' %}true{% else %}false{% endif %}">{{ f.label }}</button>
+{%- endfor %}
+<span class="filter-count" id="filter-count" aria-live="polite"></span>
+</div>
+{%- endif %}
+
+<ol class="pub-list" id="pub-list">
+{%- for pub in include.items %}
+<li class="pub" data-tags="{{ pub.tags | join: ' ' }}" data-year="{{ pub.year }}" id="pub-{{ pub.id }}">
+{%- if pub.image %}
+<div class="pub-thumb"><img src="{{ pub.image | prepend: '/' | relative_url }}" alt="" loading="lazy" decoding="async"></div>
+{%- endif %}
+<div class="pub-body">
+<h3 class="pub-title">{{ pub.title }}</h3>
+<p class="pub-authors">{% for a in pub.authors %}{% if a contains 'Bhanu' %}<span class="me">{{ a }}</span>{% else %}{{ a }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}</p>
+{%- if pub.highlights %}
+<p>{{ pub.highlights }}</p>
+{%- endif %}
+<p class="pub-meta">
+<span class="pub-venue is-{{ pub.status }}">{% if pub.status == 'review' %}Under review &middot; {% endif %}{{ pub.venue }}{% if pub.kind %} &middot; {{ pub.kind }}{% endif %}</span>
+<span class="pub-tags">{% for t in pub.tags %}<span class="pub-tag">{{ t }}</span>{% endfor %}</span>
+</p>
+{%- if pub.summary %}
+<details class="pub-summary"><summary>What it's about</summary><p>{{ pub.summary }}</p></details>
+{%- endif %}
+{%- if pub.links and pub.links != empty %}
+<p class="pub-actions">{% for l in pub.links %}<a class="btn-link" href="{{ l.url }}">{{ l.label }}</a>{% endfor %}</p>
+{%- endif %}
+</div>
+</li>
+{%- endfor %}
+</ol>
+{%- if include.filters %}
+<p class="callout is-note is-hidden" id="pub-empty">No publications match that filter.</p>
+{%- endif %}
