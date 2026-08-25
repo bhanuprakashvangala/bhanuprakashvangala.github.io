@@ -32,10 +32,25 @@ const ALLOWED = (process.env.ALLOWED_ORIGINS ||
 
 // Models the site is allowed to ask for, so a crafted request cannot select
 // an expensive model that was never intended to be exposed.
+// Restricted to models NRP lists as status "main". The rest of the catalogue
+// is marked "evaluating", which the docs say may change or be withdrawn, and a
+// public page should not depend on one of those disappearing. An unlisted
+// model in a request falls back to MODEL_DEFAULT rather than failing.
+// qwen3-embedding is deliberately absent: it is an embedding model and the
+// docs say explicitly not to use it for chat.
 const MODEL_ALLOWLIST = new Set([
-  'gpt-oss', 'qwen3', 'qwen3-small', 'gemma4-12b', 'gemma-small',
-  'glm-5', 'kimi', 'minimax-m2', 'deepseek-v4-flash'
+  'gpt-oss', 'qwen3', 'qwen3-small', 'gemma'
 ]);
+
+// Models whose reasoning mode is on by default AND that document the
+// enable_thinking switch. Left alone, these spend the whole token budget
+// thinking and return content: null, so the assistant renders nothing.
+//
+// This is deliberately a per-model set rather than a blanket flag. Sending
+// chat_template_kwargs to gpt-oss corrupts its output: it replies with a raw
+// "<|start|>" special token instead of text. Only models documented as
+// supporting the switch may receive it.
+const THINKING_TOGGLE = new Set(['qwen3', 'qwen3-small', 'gemma']);
 
 const MAX_MESSAGES = 16;
 const MAX_CHARS = 4000;      // per message
@@ -137,6 +152,10 @@ module.exports = async function handler(req, res) {
       ...messages
     ]
   };
+
+  if (THINKING_TOGGLE.has(model)) {
+    payload.chat_template_kwargs = { enable_thinking: false };
+  }
 
   let upstream;
   try {

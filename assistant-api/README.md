@@ -111,10 +111,46 @@ kept in your browser's `localStorage` and overrides the config for you only.
 
 ## Available models
 
-The NRP catalogue rotates. Current entries include `gpt-oss` (a good
-general-purpose default), `qwen3` (strongest reasoning and longest context),
-`kimi`, `glm-5` and `minimax-m2` (agentic coding), `gemma4-12b` and
-`qwen3-small` (fast and cheap). Check the live list with:
+`gpt-oss` is the default and the right one for this site. NRP lists it as
+status `main` and an LTS candidate, so it is pinnable and will not be
+withdrawn from under a public page, and its own docs put "general-purpose chat
+and assistants" first. Measured against this proxy's settings it answers a
+grounded CV question in about four seconds using 113 to 223 completion tokens.
+
+The proxy only accepts models NRP lists as `main`:
+
+| Model | Params | Context | Note |
+|---|---|---|---|
+| `gpt-oss` | 120B | 131K | Default. Text only. Highest throughput here. |
+| `qwen3` | 397B | 1.01M | Frontier reasoning. Slower, heaviest footprint. |
+| `qwen3-small` | 27B | 1.01M | Lower latency than `qwen3`. |
+| `gemma` | 31B | 262K | Multimodal, compact. |
+
+Everything else in the catalogue (`kimi`, `glm-5`, `minimax-m2`,
+`deepseek-v4-flash`, `gemma-small`) is marked `evaluating`, which the NRP docs
+say may change or be withdrawn. They are also all coding-focused, which this
+page has no use for. `qwen3-embedding` is an embedding model and the docs say
+explicitly not to use it for chat.
+
+### Reasoning modes, and why the toggle is per model
+
+Every model here reasons before answering, and that reasoning spends tokens
+from the same budget as the reply. Two consequences the proxy already handles:
+
+`qwen3`, `qwen3-small` and `gemma` have reasoning **on by default** and return
+`content: null` with `finish_reason: "length"` if it eats the whole budget.
+The proxy sends them `chat_template_kwargs: {enable_thinking: false}`.
+
+`gpt-oss` has no such switch, and sending it one **corrupts the reply**: it
+answers with a raw `<|start|>` token instead of text. So the toggle is applied
+from an explicit per-model set, never as a blanket option. If you add a model,
+check its card for `enable_thinking` before adding it to `THINKING_TOGGLE`.
+
+`max_tokens` is 700 for this reason. It is roughly three times the largest
+completion observed, which leaves room for the thinking pass. Lowering it is
+how you get empty answers: `gpt-oss` returns nothing at all at 150.
+
+Check the live catalogue with:
 
 ```bash
 curl -H "Authorization: Bearer $NRP_API_KEY" https://ellm.nrp-nautilus.io/v1/models
