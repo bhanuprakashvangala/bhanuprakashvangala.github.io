@@ -360,9 +360,16 @@
       fs = buildFs(kb);
       syncPrompt();
       mount.classList.add('is-ready');
-      COMMANDS.neofetch();
+      // Boot into `ls` rather than the neofetch card. The card restated the
+      // role, lab, thesis, paper count, stack, funders and contact, all of
+      // which the page already says twice over, and it left most of the panel
+      // empty. Showing the filesystem instead proves in one line that this is
+      // a real shell over the CV and gives the reader somewhere to go.
+      COMMANDS.ls();
       write('&nbsp;');
-      write('Type <span class="t-accent">help</span>, or <span class="t-accent">ls</span> to look around.', 'is-dim');
+      write('Directories hold the full entries. <span class="t-accent">cat</span> one, ' +
+            '<span class="t-accent">find</span> a phrase, <span class="t-accent">open</span> a section, ' +
+            'or <span class="t-accent">ask</span> a question. <span class="t-accent">help</span> lists everything.', 'is-dim');
     })
     .catch(function () {
       write('could not load the knowledge base', 'is-err');

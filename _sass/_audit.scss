@@ -1,0 +1,173 @@
+/* ==========================================================================
+   AUDIT
+   --------------------------------------------------------------------------
+   Fixes from a review of the deployed site. Loaded last, so it can correct
+   earlier layers without editing them.
+
+   ASCII only. libsass evaluates clamp/min/max arguments as Sass arithmetic
+   and fails on mixed vw and rem units, so those values are interpolated to
+   pass through literally.
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. Floating widgets stop sitting on the text.
+
+   Measured at 1440: the content column ran 32..1408, the assistant launcher
+   was a 182px pill at 1234..1416 and the back-to-top button sat at 20..64.
+   Both were inside the column, and the launcher covered thread copy by
+   roughly 7,000 square pixels at several scroll positions.
+
+   Two changes. The launcher keeps the compact circular form it already used
+   below 640px, at every width, which takes it from 182px to 56px. And the
+   page reserves a gutter wider than either widget, so no line of text ever
+   enters the band they occupy.
+   -------------------------------------------------------------------------- */
+
+@media (min-width: 640px) {
+  .ai-launcher {
+    width: 56px;
+    min-width: 56px;
+    height: 56px;
+    min-height: 56px;
+    padding: 0;
+    gap: 0;
+  }
+
+  /* The label is what made it a pill. The button keeps its accessible name
+     from aria-label, so removing the visible text costs nothing to a screen
+     reader. */
+  .ai-launcher .ai-launcher-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+}
+
+/* A flat 88px, not a clamp. The launcher needs 80px of clearance (56px wide,
+   24px from the edge) at every width, and a vw-based value dipped to 72px at
+   1440 and 77px at 1280, which put the button back over the last few pixels
+   of the column. A fixed value is the only one that always clears. */
+@media (min-width: 900px) {
+  #main {
+    padding-left: 5.5rem;
+    padding-right: 5.5rem;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   2. News is a single column.
+
+   It was flowing into as many 26rem columns as fit, which with five items
+   left four on the left and one stranded on the right. A dated list reads
+   top to bottom; balancing it across columns fights that.
+   -------------------------------------------------------------------------- */
+
+.news-feed,
+.page__content ol.news-feed {
+  -webkit-columns: auto;
+  columns: auto;
+  -webkit-column-count: 1;
+  column-count: 1;
+}
+
+
+/* --------------------------------------------------------------------------
+   3. The hero.
+
+   What used to be above the fold: a three-line serif name, seven credential
+   chips, seven link buttons and a terminal panel that was mostly empty. A
+   reader met fourteen pills before a single sentence saying what the work is,
+   and the fold cut through the affiliation line.
+
+   The lede is now name, role, one thesis sentence and three links. Everything
+   else moved below it, and the terminal moved out of the hero entirely into
+   its own section, where it boots into `ls` instead of restating the chips.
+   -------------------------------------------------------------------------- */
+
+.hero {
+  min-height: 0;
+}
+
+.hero-lede {
+  max-width: #{"min(100%, 34rem)"};
+}
+
+/* The lede owns the fold on a desktop screen. Without this the supporting
+   column rose beside it and put seven credential chips back above the fold,
+   which is the thing the rebuild was meant to stop. Width-scoped, because on a
+   phone a viewport-tall lede is just a long empty scroll. */
+@media (min-width: 900px) {
+  .hero-lede {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: #{"calc(100vh - 11rem)"};
+  }
+}
+
+.hero-lede .hero-portrait {
+  margin-bottom: var(--space-4, 1rem);
+}
+
+/* Two lines at most. The old cap let it break into three at wide widths and
+   pushed everything under it past the fold. */
+.hero-lede .hero-name {
+  font-size: #{"clamp(2.25rem, 1.1rem + 4vw, 4.25rem)"};
+  margin-bottom: var(--space-3, 0.75rem);
+  text-wrap: balance;
+}
+
+.hero-lede .hero-role {
+  margin-bottom: var(--space-2, 0.5rem);
+}
+
+.hero-lede .hero-thesis {
+  max-width: #{"min(100%, 46ch)"};
+  margin-bottom: var(--space-5, 1.25rem);
+}
+
+.hero-lede .hero-actions {
+  margin: 0;
+}
+
+/* The supporting material. It reads as a second beat rather than competing
+   with the lede for the fold, and it runs in two columns on a wide screen so
+   the width the lede does not use is filled with substance instead of a gap. */
+.hero-below {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(#{"min(100%, 24rem)"}, 1fr));
+  gap: #{"clamp(1.5rem, 3vw, 3rem)"};
+  align-items: start;
+  margin-top: #{"clamp(2rem, 3.5vw, 3.5rem)"};
+}
+
+.hero-below .hero-summary {
+  max-width: #{"min(100%, 68ch)"};
+  margin: 0;
+}
+
+/* Every block in the meta column had margin: 0 from one layer or another, so
+   the summary ran straight into the affiliation line with no gap at all. */
+.hero-below-meta > * {
+  margin: 0;
+}
+
+.hero-below-meta > * + * {
+  margin-top: #{"clamp(0.75rem, 1.1vw, 1.25rem)"};
+}
+
+/* The shell is a feature, not decoration, so it gets a section and a height
+   that suits its content rather than a neighbouring column. */
+#explore .terminal {
+  height: #{"clamp(20rem, 46vh, 30rem)"};
+  min-height: 0;
+  max-width: #{"min(100%, 60rem)"};
+}

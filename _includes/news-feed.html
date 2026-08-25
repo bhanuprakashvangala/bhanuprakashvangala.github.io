@@ -1,0 +1,8 @@
+{%- comment -%}
+  News list. include.items is the list to render.
+{%- endcomment -%}
+<ol class="news-feed" id="news-feed">
+{%- for n in include.items %}
+<li class="news-item"><span class="news-date">{{ n.date }}</span><span class="news-body">{{ n.text | markdownify | remove: '<p>' | remove: '</p>' | strip }}</span></li>
+{%- endfor %}
+</ol>
