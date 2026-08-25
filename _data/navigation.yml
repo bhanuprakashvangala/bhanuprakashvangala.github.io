@@ -1,28 +1,20 @@
-# Main navigation. Anchor targets live on the homepage; /demos/ and /cv/ are
-# standalone pages. `spy: true` opts a link into scroll-spy highlighting.
+# Main navigation. Four items, deliberately: the previous nine competed with
+# each other and none of them read as the primary path.
 #
-# The order here has to match the order the sections appear on the homepage,
-# or the scroll-spy highlight jumps backwards as you scroll.
+# Anchor targets live on the homepage; /publications/ and /cv/ are standalone
+# pages. `spy: true` opts a link into scroll-spy highlighting, which only makes
+# sense for the two that point at homepage sections.
+#
+# /projects/, /news/ and /demos/ are reachable from their homepage sections and
+# from the hero links rather than from the nav.
 main:
   - title: "About"
     url: "/#about-me"
     spy: true
-  - title: "News"
-    url: "/#news"
-    spy: true
-  - title: "Experience"
-    url: "/#experience"
+  - title: "Research"
+    url: "/#research-threads"
     spy: true
   - title: "Publications"
-    url: "/#publications"
-    spy: true
-  - title: "Projects"
-    url: "/#projects"
-    spy: true
-  - title: "Awards"
-    url: "/#honors-and-awards"
-    spy: true
-  - title: "Demos"
-    url: "/demos/"
+    url: "/publications/"
   - title: "CV"
     url: "/cv/"

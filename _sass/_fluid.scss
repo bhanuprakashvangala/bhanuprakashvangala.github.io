@@ -208,6 +208,21 @@
 }
 
 
+/* The timeline is the exception in that list. It is prose, not a layout grid,
+   and opting it out of the measure let the Experience bullets run the full
+   1376px, roughly 180 characters a line. The list itself stays full width so
+   the rail and markers keep their alignment; the text inside it does not. */
+.timeline-bullets li,
+.timeline-body p,
+.timeline-item > p,
+.timeline-org,
+.cv-entry-bullets li,
+.hero-below .muted,
+.kv-val {
+  max-width: 74ch;
+}
+
+
 /* --------------------------------------------------------------------------
    4. Intrinsic grids. Column count follows the width available. A 1366 laptop
    gets two publication columns, a 1512 gets three, an ultrawide gets four,
@@ -226,11 +241,61 @@
   }
 }
 
+/* Publications were 36% of the page: 4972px of a 13883px document. Each card
+   ran 651px, and 281px of that was a decorative full-bleed banner holding an
+   image that was itself 427px tall and cropped to fit. Fourteen of those is
+   most of the scroll.
+//
+   The artwork stays, because a wall of grey text was the earlier complaint.
+   It becomes a thumbnail beside the title rather than a banner above it, which
+   takes the card to roughly 280px and the section to about a third of what it
+   was. Flex rather than grid so a publication with no image degrades to a
+   plain text card instead of leaving an empty column. */
 .pub-list .pub {
   display: flex;
-  flex-direction: column;
-  height: 100%;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: #{"clamp(0.85rem, 1.1vw, 1.15rem)"};
+  height: auto;
   margin: 0;
+  padding: #{"clamp(1rem, 1.2vw, 1.35rem)"};
+}
+
+/* The thumb is an old-style ratio box: its height comes from padding-top, not
+   from height, so setting height alone just added to it. Zero the padding and
+   give it real dimensions. */
+.pub-list .pub .pub-thumb {
+  flex: 0 0 #{"clamp(5rem, 6.5vw, 6.5rem)"};
+  width: #{"clamp(5rem, 6.5vw, 6.5rem)"};
+  max-width: none;
+  height: #{"clamp(5rem, 6.5vw, 6.5rem)"};
+  padding-top: 0;
+  margin: 0;
+  border-radius: var(--radius-md, 10px);
+  overflow: hidden;
+  background: var(--c-surface-2, #eef2f7);
+}
+
+/* The image is absolutely positioned inside that box and was set to
+   object-fit: contain with padding, which letterboxed a 427px-tall source into
+   a 66px strip. Cover fills the square instead. */
+.pub-list .pub .pub-thumb img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.pub-list .pub .pub-body {
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .thread-grid {
@@ -280,6 +345,39 @@
 
 
 /* --------------------------------------------------------------------------
+   4b. Vertical rhythm and stray images. The page ran 13,883px, over fifteen
+   screens. Three things were doing it, and none of them were content.
+   -------------------------------------------------------------------------- */
+
+/* Every section carried 73px of top padding plus 64px of bottom margin, so
+   137px sat between each pair. Across eleven sections that is 1,370px of the
+   scroll spent on nothing. */
+.page__content > .section {
+  padding-top: #{"clamp(2rem, 1.1rem + 2.1vw, 3.75rem)"};
+  margin-bottom: #{"clamp(0.75rem, 1.2vw, 1.75rem)"};
+}
+
+/* The 68px cap on award thumbnails is nested under `.award`, so the talks
+   photo, which sits in a bare `.award-images`, never received it and rendered
+   at its natural 600px. This reaches it while staying weak enough (0,1,1) for
+   the `.award .award-images img` rule (0,3,1) to keep awards at 68px. */
+.award-images img {
+  width: auto;
+  height: #{"clamp(7rem, 10vw, 10.5rem)"};
+  object-fit: cover;
+}
+
+/* Eleven awards stacked single-file is 1,240px. Two columns halves it and the
+   entries are short enough to read side by side. */
+.award-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(#{"min(100%, 24rem)"}, 1fr));
+  gap: #{"clamp(0.5rem, 1vw, 1.1rem)"};
+  -webkit-column-gap: #{"clamp(0.5rem, 1vw, 1.1rem)"};
+}
+
+
+/* --------------------------------------------------------------------------
    5. The terminal sizes to the window it is in, rather than stepping through
    460 / 380 / 320. vh keeps it proportional on a short laptop and a tall
    monitor alike; the rem bounds keep it usable at either extreme.
@@ -318,11 +416,16 @@
    sources and cost nothing to pin down.
    -------------------------------------------------------------------------- */
 
-#main img,
-#main svg,
-#main video,
-#main canvas,
-#main iframe {
+/* No ID here, deliberately. Written as `#main img` this reset carried
+   specificity (1,0,1) and beat every component rule that sets an image
+   height, including the publication thumbnails, whose images then computed to
+   0px tall. A base reset has to be weak enough for components to override, so
+   it stays at (0,0,1). */
+img,
+svg,
+video,
+canvas,
+iframe {
   max-width: 100%;
   height: auto;
 }
