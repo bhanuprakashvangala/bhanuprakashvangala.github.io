@@ -4,7 +4,7 @@
 <ul class="project-grid">
 {%- for pr in include.items %}
 <li class="project-card">
-<h3 class="project-title">{{ pr.title }}</h3>
+<h2 class="project-title">{{ pr.title }}</h2>
 <p class="project-meta">{% if pr.role %}<span class="badge is-accent">{{ pr.role }}</span>{% endif %}<span class="badge is-muted">{{ pr.status }}</span></p>
 <p class="project-desc">{{ pr.desc }}</p>
 {%- if pr.stack %}
