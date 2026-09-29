@@ -35,4 +35,3 @@ redirect_from:
 <section id="service" class="section" aria-labelledby="service-title"><div class="section-head"><h2 id="service-title">Teaching &amp; service</h2></div>
 <p>I’m a teaching assistant for <strong>Designing End-to-End ML Systems</strong> (Fall 2026), with labs on Chameleon Cloud. Previously, I mentored 115+ students in Web Development.</p>
 <p>I review for NeurIPS, CIKM, ACM CAIS, IEEE, and Elsevier journals, and contribute to artifact evaluation at NeurIPS, ACM CAIS, and ACM REP. I received an <strong>Outstanding Reviewer Award at NeurIPS 2025</strong>.</p></section>
-
