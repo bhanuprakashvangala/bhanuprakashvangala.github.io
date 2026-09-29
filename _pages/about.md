@@ -21,8 +21,26 @@ redirect_from:
 {% assign recent_news = cv.news | slice: 0, 4 %}{% include news-feed.html items=recent_news %}
 </section>
 <section id="publications" class="section" aria-labelledby="pubs-title">
-<div class="section-head"><h2 id="pubs-title">Selected publications</h2><a href="{{ '/publications/' | relative_url }}">All publications</a></div>
-{% assign selected = cv.publications | where: 'featured', true %}{% include pub-list.html items=selected %}
+<div class="section-head"><h2 id="pubs-title">Publications</h2><a href="{{ '/publications/' | relative_url }}">Full publication list</a></div>
+<p class="publication-note">{% assign accepted = cv.publications | where: 'status', 'accepted' %}Published &amp; accepted · {{ accepted.size }} papers</p>
+{% assign accepted = cv.publications | where: 'status', 'accepted' %}{% include pub-list.html items=accepted %}
+</section>
+<section id="submitted" class="section" aria-labelledby="submitted-title">
+<div class="section-head"><h2 id="submitted-title">Submitted &amp; under review</h2></div>
+<p class="publication-note">Manuscripts currently under review.</p>
+{% assign submitted = cv.publications | where: 'status', 'review' %}{% include pub-list.html items=submitted %}
+</section>
+<section id="in-preparation" class="section" aria-labelledby="preparation-title">
+<div class="section-head"><h2 id="preparation-title">In preparation</h2></div>
+{% assign preparation = cv.publications | where: 'status', 'preparation' %}{% include pub-list.html items=preparation %}
+</section>
+<section id="projects" class="section" aria-labelledby="projects-title">
+<div class="section-head"><h2 id="projects-title">Earlier publications &amp; projects</h2><a href="{{ '/projects/' | relative_url }}">All projects</a></div>
+{% assign home_projects = cv.projects | where: 'homepage', true %}{% include project-grid.html items=home_projects heading_level='h3' %}
+</section>
+<section id="presentations" class="section" aria-labelledby="presentations-title">
+<div class="section-head"><h2 id="presentations-title">Posters &amp; presentations</h2></div>
+{% assign posters = cv.publications | where: 'status', 'poster' %}{% include pub-list.html items=posters %}
 </section>
 <section id="experience" class="section" aria-labelledby="experience-title">
 <div class="section-head"><h2 id="experience-title">Experience &amp; education</h2><a href="{{ '/cv/' | relative_url }}">Full CV</a></div>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 430" role="img" aria-labelledby="title desc"><title id="title">Learning to build with LLMs</title><desc id="desc">A curriculum connects concepts, small implementations, and applications</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto-start-reverse"><path d="M0 0L8 4L0 8" fill="#2774a5"/></marker></defs>
+<rect x="1" y="1" width="718" height="428" rx="8" fill="#fff" stroke="#e0e6ea"/>
+<text x="32" y="41" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#73838e">LEARNING TO BUILD WITH LLMS</text>
+<rect x="54" y="95" width="185" height="112" rx="5" fill="#f4f8fa" stroke="#9aafbd" stroke-width="2"/>
+<circle cx="81" cy="123" r="17" fill="#e0edf6"/>
+<text x="81" y="129" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#2774a5">01</text>
+<text x="146" y="177" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="20" fill="#263b4a">Foundations</text>
+<rect x="267" y="185" width="185" height="112" rx="5" fill="#f4f8fa" stroke="#9aafbd" stroke-width="2"/>
+<circle cx="294" cy="213" r="17" fill="#e0edf6"/>
+<text x="294" y="219" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#2774a5">02</text>
+<text x="359" y="267" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="20" fill="#263b4a">Implementation</text>
+<rect x="478" y="95" width="185" height="112" rx="5" fill="#f4f8fa" stroke="#9aafbd" stroke-width="2"/>
+<circle cx="505" cy="123" r="17" fill="#e0edf6"/>
+<text x="505" y="129" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#2774a5">03</text>
+<text x="570" y="177" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="20" fill="#263b4a">Applications</text>
+<polyline points="147,208 147,241 260,241" fill="none" stroke="#2774a5" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<polyline points="453,241 570,241 570,216" fill="none" stroke="#2774a5" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="188" y="329" width="340" height="40" rx="5" fill="#fff" stroke="#9aafbd" stroke-width="2"/>
+<text x="358.0" y="356.0" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#263b4a">Read · implement · experiment</text>
+<text x="360" y="403" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#73838e">Concepts become working applications</text>
+</svg>

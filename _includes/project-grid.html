@@ -3,16 +3,18 @@
 {%- endcomment -%}
 <ul class="project-grid">
 {%- for pr in include.items %}
-<li class="project-card">
-<h2 class="project-title">{{ pr.title }}</h2>
+<li id="project-{{ pr.id }}" class="project-card{% if pr.image %} has-image{% endif %}{% if pr.image_position == 'right' %} image-right{% endif %}{% if pr.image_kind == 'photo' %} has-photo{% endif %}">
+{% if pr.image %}<a class="pub-image" href="{{ pr.image | prepend: '/' | relative_url | replace: ' ', '%20' }}" aria-label="View image for {{ pr.title | escape }}"><img src="{{ pr.image | prepend: '/' | relative_url | replace: ' ', '%20' }}" alt="{{ pr.image_alt | escape }}" width="600" height="420" loading="lazy" decoding="async"></a>{% endif %}
+<div class="project-body">
+{% assign heading = include.heading_level | default: 'h2' %}<{{ heading }} class="project-title">{{ pr.title }}</{{ heading }}>
+{% if pr.authors %}<p class="pub-authors">{{ pr.authors | join: ', ' }}</p>{% endif %}
 <p class="project-meta">{% if pr.role %}<span class="badge is-accent">{{ pr.role }}</span>{% endif %}<span class="badge is-muted">{{ pr.status }}</span></p>
 <p class="project-desc">{{ pr.desc }}</p>
 {%- if pr.stack %}
 <p class="project-tags">{% assign bits = pr.stack | split: "|" %}{% for b in bits %}<span class="tag">{{ b | strip }}</span>{% endfor %}</p>
 {%- endif %}
-{%- if pr.links %}
-<p class="project-links">{% for l in pr.links %}<a class="btn-link" href="{{ l.url }}">{{ l.label }}</a>{% endfor %}</p>
-{%- endif %}
+<p class="project-links">{% if pr.github %}<a class="github-link" href="{{ pr.github }}" aria-label="GitHub repository for {{ pr.title | escape }}" title="View on GitHub">{% include github-icon.html %}</a>{% endif %}{% for l in pr.links %}<a class="btn-link" href="{{ l.url }}">{{ l.label }}</a>{% endfor %}</p>
+</div>
 </li>
 {%- endfor %}
 </ul>

@@ -12,6 +12,10 @@ excerpt: Education, experience, publications, teaching, and service of Bhanu Pra
 {% for x in cv.experience %}<div class="cv-entry"><div class="cv-entry-head"><h3>{{ x.title }} · {{ x.org }}</h3><span class="cv-entry-date">{% if x.start != '' %}{{ x.start }} – {% endif %}{{ x.end }}</span></div><p class="muted">{{ x.location }}{% if x.collaborators %} · With {{ x.collaborators }}{% endif %}</p><ul>{% for b in x.bullets %}<li>{{ b }}</li>{% endfor %}</ul></div>{% endfor %}</section>
 <section class="cv-section"><h2>Published &amp; accepted</h2>{% assign accepted = cv.publications | where: 'status', 'accepted' %}{% include pub-list.html items=accepted %}</section>
 <section class="cv-section"><h2>Under review</h2>{% assign review = cv.publications | where: 'status', 'review' %}{% include pub-list.html items=review %}</section>
+<section id="in-preparation" class="section" aria-labelledby="preparation-title">
+<div class="section-head"><h2 id="preparation-title">In preparation</h2></div>
+{% assign preparation = cv.publications | where: 'status', 'preparation' %}{% include pub-list.html items=preparation %}
+</section>
 <section class="cv-section"><h2>Posters &amp; presentations</h2>{% assign posters = cv.publications | where: 'status', 'poster' %}{% include pub-list.html items=posters %}</section>
 <section class="cv-section"><h2>Awards &amp; honors</h2><dl class="kv-list">{% for a in cv.awards %}<dt>{{ a.year }}</dt><dd><strong>{{ a.title }}</strong> · {{ a.org }}</dd>{% endfor %}</dl></section>
 <section class="cv-section"><h2>Teaching</h2>{% for t in cv.teaching %}<div class="cv-entry"><div class="cv-entry-head"><h3>{{ t.course }}</h3><span class="cv-entry-date">{{ t.terms | join: ', ' }}</span></div><p>{{ t.role }} · {{ t.org }}. {{ t.note }}</p></div>{% endfor %}</section>
