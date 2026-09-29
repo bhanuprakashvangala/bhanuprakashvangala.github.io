@@ -4,7 +4,7 @@ title: Curriculum Vitae
 excerpt: Education, experience, publications, teaching, and service of Bhanu Prakash Vangala.
 ---
 {% assign cv = site.data.cv %}
-<header class="page-heading"><p class="eyebrow">Curriculum vitae</p><h1>{{ cv.profile.name }}</h1><p>{{ cv.profile.role }} · {{ cv.profile.affiliation }}</p><p><a href="mailto:{{ cv.profile.email }}">{{ cv.profile.email }}</a></p><a class="download-link" href="{{ cv.cv_pdf | relative_url }}" download>Download academic CV (PDF) ↓</a><p class="no-print document-date">PDF updated {{ cv.cv_date }}. Web publication metadata includes subsequent corrections.</p></header>
+<header class="page-heading"><h1>{{ cv.profile.name }}</h1><p>{{ cv.profile.role }} · {{ cv.profile.affiliation }}</p><p><a href="mailto:{{ cv.profile.email }}">{{ cv.profile.email }}</a></p><a class="download-link" href="{{ cv.cv_pdf | relative_url }}" download>Download academic CV (PDF)</a><p class="no-print document-date">PDF updated {{ cv.cv_date }}. Web publication metadata includes subsequent corrections.</p></header>
 <section class="cv-section"><h2>Research</h2><p>{{ cv.profile.summary }}</p><p><strong>Dissertation:</strong> {{ cv.profile.dissertation }}.</p></section>
 <section class="cv-section"><h2>Education</h2>
 {% for e in cv.education %}<div class="cv-entry"><div class="cv-entry-head"><h3>{{ e.degree }} · {{ e.org }}</h3><span class="cv-entry-date">{{ e.start }} – {{ e.end }}</span></div><ul>{% for d in e.details %}<li>{{ d }}</li>{% endfor %}</ul></div>{% endfor %}</section>
