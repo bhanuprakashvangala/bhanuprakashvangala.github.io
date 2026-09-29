@@ -1,88 +1,46 @@
-# bhanuprakashvangala.github.io
+# Bhanu Prakash Vangala — academic portfolio
 
-Personal academic site for **Bhanu Prakash Vangala**, doctoral researcher in
-agentic AI and LLM systems at the University of Missouri.
-Built with Jekyll, deployed by GitHub Pages.
+A simple, responsive Jekyll website hosted on GitHub Pages. The main pages use plain HTML and CSS: no JavaScript, web fonts, framework, or build-time Node dependencies are needed for the portfolio.
 
-## The one thing to know
+## Updating content
 
-**`_data/cv.yml` is the single source of truth.** The homepage, the CV page and
-the AI assistant's knowledge base are all generated from it. To update the site
-(a new paper, a new role, a new award), edit that file and push. Nothing else
-needs touching.
+- `_data/cv.yml`: profile, publications, experience, education, projects, news, teaching, and awards.
+- `_pages/about.md`: short introduction and homepage sections.
+- `files/Bhanu_Prakash_Academic_CV.pdf`: downloadable academic CV. Replace it when the PDF changes and update `cv_date` in the data file.
+- `assets/css/portfolio.css`: responsive styling and print layout.
+- `_layouts/default.html`: navigation, metadata, and footer.
 
-```
-_data/cv.yml
-   |
-   +-- _pages/about.md          homepage (hero, news, publications, research, ...)
-   +-- _pages/cv.md             /cv/  full CV, print-optimised
-   +-- assets/data/kb.json      knowledge base the assistant retrieves from
-```
+Publication `status` is `accepted`, `review`, or `poster`. The publications and web CV pages group these separately. Set `featured: true` for homepage selections. Add links only when there is a real public paper or an author-approved local PDF. `equal_contributors` lists the names that receive an asterisk and an equal-contribution note.
 
-## Layout
-
-| Path | Purpose |
-|---|---|
-| `_data/cv.yml` | All content: profile, education, experience, publications, research programs, projects, awards, service, teaching, talks, coursework, skills, news |
-| `_pages/about.md` | Homepage |
-| `_pages/cv.md` | `/cv/`, full CV; the print button yields a clean one-column PDF |
-| `_pages/demos.md` | `/demos/`, three runnable demonstrations of published work |
-| `assets/data/kb.json` | Generated at build time; never edit by hand |
-| `assets/js/site.js` | Theme toggle, scroll-spy, publication filter, news collapse, lightbox |
-| `assets/js/assistant.js` | The research assistant: BM25 retrieval, offline answers, optional live model |
-| `assets/js/demos.js` | Reproducibility checker, Pick-and-Spin router, agent loop |
-| `_sass/_tokens.scss` | Colour, type, space and motion tokens for light and dark |
-| `_sass/_theme.scss` | Base typography, page shell, masthead, sidebar, hero |
-| `_sass/_components.scss` | Publications, timeline, news, awards, projects, CV |
-| `_sass/_assistant.scss` | The assistant widget |
-| `_sass/_demos.scss` | The demos page |
-| `assistant-api/` | Serverless proxy holding the model API key. Deployed separately; excluded from the Jekyll build |
-
-## The assistant
-
-Visitors can ask questions about the research and get answers with citations
-back to the relevant page section.
-
-It runs in **offline mode by default**: it retrieves passages from
-`assets/data/kb.json` using BM25, extracts the sentences that match the
-question, and cites what it used. No backend, no API key, no cost, and it cannot
-invent a paper that is not in the CV.
-
-Setting `assistant.endpoint` in `_config.yml` upgrades it to **live mode**: the
-same retrieval runs, then the passages are sent as grounding context to a
-self-hosted model through a proxy. If that call fails for any reason, the
-offline answer is served instead, so the visitor never sees a dead end.
-
-> **The API key must never enter this repository.** GitHub Pages serves
-> everything publicly, so a key in the JavaScript or in `_config.yml` is a key
-> anyone can read and spend. It lives only as a server-side environment
-> variable on the proxy. See [`assistant-api/README.md`](assistant-api/README.md).
-
-## Live demos
-
-`/demos/` runs real implementations of the published methods, entirely in the
-browser:
-
-1. **Dependency & reproducibility checker**. Paste Python and an environment
-   file; it resolves imports to distributions and reports hidden, bloat,
-   unpinned and unverified dependencies. From *AI-Generated Code Is Not
-   Reproducible (Yet)* (AAAI 2026 RAI Workshop) and *Code That Works, Environments
-   That Don't*.
-2. **Pick-and-Spin router**. Thompson Sampling over a model pool with a
-   cold-start state machine governing GPU residency; utilisation and cold-start
-   rate update as you send requests. From *Efficient Multi-Model Orchestration*
-   (AAAI 2026 DAI Workshop) and *Pick-and-Spin* (IEEE CLOUD 2026).
-3. **Reproducibility agent**. A plan / tool-call / result / answer loop that uses
-   demo 1 as its tool. Needs a configured endpoint; says so plainly if there
-   isn't one.
+Content was reconciled against the September 25, 2026 academic CV. Published papers take precedence for their title and author order. CAMP's manuscript order and equal first authorship were confirmed by Bhanu. The original downloadable CV is preserved unchanged; the web CV includes these metadata corrections. Under-review manuscript PDFs are not bundled.
 
 ## Local development
 
-```bash
+For the pinned GitHub Pages dependencies, use Ruby 3.1:
+
+```sh
 bundle install
-bundle exec jekyll serve   # http://localhost:4000
+bundle exec jekyll serve
 ```
 
-Ruby 3.2+ removed `Object#tainted?`, which the pinned Liquid still calls. If a
-local build fails with `undefined method 'tainted?'`, use Ruby 3.1 or add a shim
-in a local-only script. GitHub Pages builds on a compatible stack.
+Open http://localhost:4000. To verify the generated pages:
+
+```sh
+bundle exec jekyll build
+python scripts/check_site.py
+```
+
+`scripts/check_site.py` checks local links, anchors, image descriptions, and page headings. A ready-to-use GitHub Pages CI workflow is included at `docs/check-site-workflow.yml`; move it to `.github/workflows/` using a GitHub login with workflow permission to enable automatic PR checks. Publishing still uses the repository's existing GitHub Pages deployment from `main`.
+
+## Routes
+
+| Route | Content |
+| --- | --- |
+| `/` | Introduction, updates, selected papers, experience, and teaching |
+| `/publications/` | Published/accepted work, under-review papers, and posters |
+| `/cv/` | Full web CV and original PDF download |
+| `/projects/` | Selected projects |
+| `/news/` | Updates archive |
+| `/demos/` | Existing research demonstrations, retained with the legacy layout |
+
+The former theme and demo implementation remain available under `_layouts/legacy.html`, `_sass/`, and the original JavaScript files. They are not loaded by the main portfolio. The assistant is disabled in `_config.yml`; the separately deployed `assistant-api/` backend is untouched.

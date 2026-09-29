@@ -1,837 +1,813 @@
-# =============================================================================
-#  SINGLE SOURCE OF TRUTH for the whole site.
-#
-#  The homepage (_pages/about.md), the CV page (_pages/cv.md) and the AI
-#  assistant's knowledge base (assets/data/kb.json) are ALL generated from this
-#  file. Edit here once and every surface updates on the next build.
-#
-#  Reconciled against Bhanu_Prakash_CV (last updated 24 August 2026).
-#
-#  Conventions
-#    - `id`     : stable slug, used for anchors and assistant citations
-#    - `tags`   : lowercase topic tags, drive the publication filter chips
-#    - `status` : accepted | review | thesis | project
-#    - `kb`     : extra prose fed ONLY to the assistant, never rendered
-# =============================================================================
-
+# Portfolio content, reconciled with the September 25, 2026 academic CV.
+# Published manuscripts take precedence for titles and author order.
+# CAMP equal first authorship confirmed by Bhanu on September 29, 2026.
 profile:
-  name: "Bhanu Prakash Vangala"
-  short_name: "Bhanu"
-  initials: "BV"
-  role: "Ph.D. Candidate, Executable Reliability for AI Systems"
-  affiliation: "University of Missouri"
-  department: "Electrical Engineering & Computer Science"
-  location: "Columbia, Missouri, USA"
-  advisor: "Dr. Tanu Malik"
-  advisor_url: "https://engineering.missouri.edu/faculty/tanu-malik/"
-  email: "bv3hz@umsystem.edu"
-  # Present on the PDF CV. Left off the public site by default. A phone number on
-  # a public page is a spam magnet. Flip to true if you want it rendered.
-  phone: "+1 (573) 639-3768"
+  name: Bhanu Prakash Vangala
+  short_name: Bhanu
+  initials: BV
+  role: Ph.D. Candidate in Computer Science
+  affiliation: University of Missouri
+  department: Electrical Engineering & Computer Science
+  location: Columbia, Missouri, USA
+  advisor: Dr. Tanu Malik
+  advisor_url: https://engineering.missouri.edu/faculty/tanu-malik/
+  email: bv3hz@umsystem.edu
   show_phone: false
-  avatar: "images/Bhanu1.jpg"
-  tagline: "Trust, reproducibility and efficiency turn out to be one problem."
-  summary: >-
-    I work where machine learning meets the messy reality of the systems that have
-    to run it. One question keeps pulling me back. When an AI pipeline hands you a
-    claim or an artifact, what does it take to actually trust it? Models today are
-    fluent and confident and often wrong, in ways that are genuinely hard to catch,
-    and the code they write tends to run on the machine that produced it and
-    nowhere else. My dissertation, executable reliability for AI systems, makes a
-    fairly plain argument: whatever a system says about itself, about its outputs,
-    its dependencies or its resource use, someone outside the team that built it
-    ought to be able to check.
-  dissertation: "Executable Reliability for AI Systems"
-  dissertation_sub: "Trust, reproducibility and efficiency turn out to be one problem"
-  area: "AI, Systems & Networking"
+  avatar: images/Bhanu1.jpg
+  tagline: Trust, reproducibility and efficiency turn out to be one problem.
+  summary: 'I study how to make AI systems reliable in practice: how to serve language models efficiently, reproduce
+    the software they generate, and evaluate when their outputs can be trusted.'
+  dissertation: 'Executable Reliability: Unifying Trust, Reproducibility, and Efficiency in LLM-Based Systems'
+  dissertation_sub: Trust, reproducibility and efficiency turn out to be one problem
+  area: AI, Systems & Networking
   interests:
-    - "Agentic AI systems"
-    - "Multi-model LLM orchestration"
-    - "Trustworthy & reproducible ML"
-    - "Distributed systems for inference"
-    - "Provenance"
-  # Credential badges rendered under the hero.
-  badges: ["NASA", "DoD", "NSF", "Google PhD Nominee '25", "Microsoft Research Intern '26", "AAAI '25, '26", "Outstanding MS Award '25"]
-
+  - LLM systems and serving
+  - Agentic AI
+  - Reproducibility and provenance
+  - Trustworthy AI
+  - ML evaluation
+  badges:
+  - NASA
+  - DoD
+  - NSF
+  - Google PhD Nominee '25
+  - Microsoft Research Intern '26
+  - AAAI '25, '26
+  - Outstanding MS Award '25
 links:
-  - { id: email,    label: "Email",          url: "mailto:bv3hz@umsystem.edu",                                    icon: "fas fa-envelope" }
-  - { id: scholar,  label: "Google Scholar", url: "https://scholar.google.com/citations?user=qHBOnpkAAAAJ&hl=en", icon: "fas fa-graduation-cap" }
-  - { id: dblp,     label: "DBLP",           url: "https://dblp.org/pid/75/6568-6.html",                          icon: "fas fa-database" }
-  - { id: github,   label: "GitHub",         url: "https://github.com/bhanuprakashvangala",                       icon: "fab fa-github" }
-  - { id: linkedin, label: "LinkedIn",       url: "https://www.linkedin.com/in/vangalabhanuprakash/",             icon: "fab fa-linkedin" }
-  - { id: cv,       label: "CV",             url: "/cv/",                                                         icon: "fas fa-file-alt" }
-
-# `count:` derives the figure from the publication list at build time, so it
-# cannot drift when a paper is added. `num:` is for figures with no source
-# elsewhere in this file.
+- id: email
+  label: Email
+  url: mailto:bv3hz@umsystem.edu
+  icon: fas fa-envelope
+- id: scholar
+  label: Google Scholar
+  url: https://scholar.google.com/citations?user=qHBOnpkAAAAJ&hl=en
+  icon: fas fa-graduation-cap
+- id: dblp
+  label: DBLP
+  url: https://dblp.org/pid/75/6568-6.html
+  icon: fas fa-database
+- id: github
+  label: GitHub
+  url: https://github.com/bhanuprakashvangala
+  icon: fab fa-github
+- id: linkedin
+  label: LinkedIn
+  url: https://www.linkedin.com/in/vangalabhanuprakash/
+  icon: fab fa-linkedin
+- id: cv
+  label: CV
+  url: /cv/
+  icon: fas fa-file-alt
 stats:
-  - { count: "publications", label: "Selected publications" }
-  - { count: "orals",        label: "Oral presentations" }
-  - { num: "3",     label: "Federal funders" }
-  - { num: "115+",  label: "Students taught" }
-
-# -----------------------------------------------------------------------------
-# THE THREE THREADS
-#   The spine of the dissertation. Rendered near the top of the homepage so a
-#   reader sees the argument before the list of papers.
-# -----------------------------------------------------------------------------
+- count: publications
+  label: Selected publications
+- count: orals
+  label: Oral presentations
+- num: '3'
+  label: Federal funders
+- num: 115+
+  label: Students taught
 threads:
-  - id: trustworthy
-    n: "01"
-    title: "Trustworthy outputs"
-    lead: "Knowing when a scientific answer is invented"
-    text: >-
-      A benchmark and a multi-stage detector for hallucination in materials-science
-      question answering, combining self-consistency checking, retrieval against
-      curated sources, and a knowledge graph that flags low-connectivity fact
-      fragments as likely fabrications. It cuts hallucination rates by about 30%
-      and reaches F1 0.95 on cross-domain inconsistency detection. The number is
-      the least interesting part. What I wanted was a pipeline you can interrogate.
-      Ask why a response got flagged and you get a reason back, not a score.
-    refs: ["hallumat", "halluformer"]
-    tag: hallucination
-
-  - id: reproducible
-    n: "02"
-    title: "Reproducible artifacts"
-    lead: "Can anyone else actually run it?"
-    text: >-
-      100 standardised prompts given to Claude, Codex and Gemini agents, and the
-      300 resulting projects executed in clean containers. Only 68.3% ran out of
-      the box: Python 89%, Java 44%. The agents declared about three dependencies
-      per project; the projects pulled in around 49 at runtime. That 13.5x gap
-      does not disappear. It lands on whoever picks the code up next. "It ran on my
-      machine" and "it is reproducible" are two different claims, and our
-      benchmarks have quietly been scoring the first one.
-    refs: ["not-reproducible", "env-gap", "beyond-functional-correctness"]
-    tag: reproducibility
-
-  - id: accountable
-    n: "03"
-    title: "Accountable systems at scale"
-    lead: "Nine models, a fixed number of GPUs"
-    text: >-
-      A Kubernetes-native multi-tenant serving framework that classifies queries by
-      complexity, routes them across nine models from 1B to 27B parameters using
-      Thompson Sampling, and manages warm pools through a custom cold-start state
-      machine. Across 310,190 inference requests on the NRP Nautilus cluster it
-      reached 61% GPU utilization against 31% for static deployment, cutting
-      GPU-hours by 46%. Most of that comes from one decision: stop holding nine
-      models resident when the traffic does not call for them.
-    refs: ["pick-and-spin", "multi-model-orchestration"]
-    tag: orchestration
-
-# -----------------------------------------------------------------------------
-# EDUCATION
-# -----------------------------------------------------------------------------
+- id: trustworthy
+  n: '01'
+  title: Trustworthy outputs
+  lead: Knowing when a scientific answer is invented
+  text: A benchmark and a multi-stage detector for hallucination in materials-science question answering, combining
+    self-consistency checking, retrieval against curated sources, and a knowledge graph that flags low-connectivity
+    fact fragments as likely fabrications. It cuts hallucination rates by about 30% and reaches F1 0.95 on cross-domain
+    inconsistency detection. The number is the least interesting part. What I wanted was a pipeline you can interrogate.
+    Ask why a response got flagged and you get a reason back, not a score.
+  refs:
+  - hallumat
+  - halluformer
+  tag: hallucination
+- id: reproducible
+  n: '02'
+  title: Reproducible artifacts
+  lead: Can anyone else actually run it?
+  text: '100 standardised prompts given to Claude, Codex and Gemini agents, and the 300 resulting projects executed
+    in clean containers. Only 68.3% ran out of the box: Python 89%, Java 44%. The agents declared about three dependencies
+    per project; the projects pulled in around 49 at runtime. That 13.5x gap does not disappear. It lands on whoever
+    picks the code up next. "It ran on my machine" and "it is reproducible" are two different claims, and our benchmarks
+    have quietly been scoring the first one.'
+  refs:
+  - not-reproducible
+  - env-gap
+  - beyond-functional-correctness
+  tag: reproducibility
+- id: accountable
+  n: '03'
+  title: Accountable systems at scale
+  lead: Nine models, a fixed number of GPUs
+  text: 'A Kubernetes-native multi-tenant serving framework that classifies queries by complexity, routes them across
+    nine models from 1B to 27B parameters using Thompson Sampling, and manages warm pools through a custom cold-start
+    state machine. Across 310,190 inference requests on the NRP Nautilus cluster it reached 61% GPU utilization
+    against 31% for static deployment, cutting GPU-hours by 46%. Most of that comes from one decision: stop holding
+    nine models resident when the traffic does not call for them.'
+  refs:
+  - pick-and-spin
+  - multi-model-orchestration
+  tag: orchestration
 education:
-  - id: phd
-    degree: "Ph.D., Computer Science"
-    org: "University of Missouri"
-    location: "Columbia, MO"
-    start: "Aug 2023"
-    end: "Jun 2027 (expected)"
-    current: true
-    gpa: "3.9 / 4.0"
-    details:
-      - "Thesis area: trustworthy and reproducible LLM-based agentic systems; multi-model orchestration; provenance tracing."
-      - "Advised by Dr. Tanu Malik (Radiant Lab)."
-      - "Google Ph.D. Fellowship Nominee (NLP track, 2025); EECS Travel Fellowship '26; Chameleon top-10 presentation '26."
-
-  - id: ms
-    degree: "M.S., Computer Science"
-    org: "University of Missouri"
-    location: "Columbia, MO"
-    start: "Aug 2023"
-    end: "May 2025"
-    gpa: "4.0 / 4.0"
-    details:
-      - "Thesis: Deploying LLMs as a Service in a Kubernetes HPC Cluster."
-      - "Advised by Dr. Grant J. Scott and Dr. Jianlin Cheng."
-      - "Outstanding Master's Student Award (2025); Runner-up, MUIDSI Hackathon (2025)."
-
-  - id: btech
-    degree: "B.Tech, CSE (Data Analytics)"
-    org: "Vellore Institute of Technology"
-    location: "Vellore, India"
-    start: "May 2019"
-    end: "Apr 2023"
-    gpa: "8.8 / 10"
-    details:
-      - "Thesis: Multilingual Sentiment Analysis on KOO User Posts."
-      - "Advisors: Dr. P. Kumaraguru (IIIT Hyderabad) and Dr. Soughbhagya."
-      - "Dean's Research Excellence Award (2023); Top-2 Academic Performer (2022); Merit Scholarship."
-
-# -----------------------------------------------------------------------------
-# EXPERIENCE
-# -----------------------------------------------------------------------------
+- id: phd
+  degree: Ph.D., Computer Science
+  org: University of Missouri
+  location: Columbia, MO
+  start: Aug 2023
+  end: May 2027 (expected)
+  current: true
+  details:
+  - 'Dissertation: Executable Reliability: Unifying Trust, Reproducibility, and Efficiency in LLM-Based Systems.'
+  - Advised by Dr. Tanu Malik (Radiant Lab).
+  - Google Ph.D. Fellowship Nominee (NLP track, 2025); EECS Travel Fellowship '26; Chameleon top-10 presentation
+    '26.
+- id: ms
+  degree: M.S., Computer Science
+  org: University of Missouri
+  location: Columbia, MO
+  start: Aug 2023
+  end: May 2025
+  details:
+  - 'Thesis: Deploying LLMs as a Service in a Kubernetes HPC Cluster.'
+  - Advised by Dr. Grant J. Scott and Dr. Jianlin Cheng.
+  - Outstanding Master's Student Award (2025); Runner-up, MUIDSI Hackathon (2025).
+- id: btech
+  degree: B.Tech, CSE (Data Analytics)
+  org: Vellore Institute of Technology
+  location: Vellore, India
+  start: May 2019
+  end: Apr 2023
+  details:
+  - 'Thesis: Multilingual Sentiment Analysis on KOO User Posts.'
+  - With Prof. Ponnurangam Kumaraguru and Dr. Soubhagya Barpanda.
+  - Dean's Research Excellence Award (2023); Top-2 Academic Performer (2022); Merit Scholarship.
 experience:
-  - id: microsoft
-    title: "Research Data Science Intern"
-    org: "Microsoft"
-    location: "Redmond, WA"
-    start: "May 2026"
-    end: "Aug 2026"
-    period: "Summer 2026"
-    collaborators: "Juan-Arturo Herrera, Anqi Cheng, Kyle Hatridge"
-    bullets:
-      - "Built a reusable temporal featurization framework (TFT / TCN) for predictive Windows retention across 1B+ users, 5,000+ features and 15+ years of Windows and Devices telemetry, a +45% PR-AUC lift over baseline, driven by lag-based trajectory signals with SHAP interpretability."
-      - "Built the Cosmos / SCOPE data layer over Azure streams and data lakes, and automated Copilot Studio feature-analysis workflows."
-    tags: ["TFT/TCN", "Azure", "Cosmos/SCOPE", "SHAP", "Copilot Studio"]
-
-  - id: mizzou
-    title: "Graduate Research & Teaching Assistant"
-    org: "Radiant Lab & Data Intensive Computing Lab, University of Missouri"
-    location: "Columbia, MO"
-    start: "Dec 2023"
-    end: "Present"
-    current: true
-    bullets:
-      - "**Radiant Lab (NASA / NSF).** Drove NASA-funded research on LLMs, coding-agent reproducibility and dependency resolution; designed the SciUnit ptrace audit harness; first-authored multiple peer-reviewed papers."
-      - "**Data Intensive Computing Lab (DoD / NSF).** Built hallucination-detection pipelines; delivered a 40% geospatial-accuracy lift on UAV workflows."
-      - "**Kubernetes / Helm on NRP Nautilus HPC.** GPU quota management and deployment automation for 9 self-hosted LLMs."
-      - "**TA, Web Development (MERN).** Mentored 115+ students; built CI/CD scaffolding and grading automation on GitLab."
-    tags: ["Kubernetes", "Helm", "vLLM", "SLURM", "ptrace"]
-
-  - id: adobe
-    title: "Volunteer Research Intern"
-    org: "Adobe Research"
-    location: "Remote"
-    start: "May 2022"
-    end: "Jan 2023"
-    bullets:
-      - "Built large-scale web scraping and information-extraction pipelines with automated quality control for ML workflows."
-
-# -----------------------------------------------------------------------------
-# PUBLICATIONS  (numbering follows the PDF CV)
-# -----------------------------------------------------------------------------
+- id: microsoft
+  title: Research Data Science Intern
+  org: Microsoft
+  location: Redmond, WA
+  start: May 2026
+  end: Aug 2026
+  collaborators: Anqi Cheng and Arturo Herrera
+  bullets:
+  - Built TempFE, a temporal feature framework for Windows retention telemetry; improved model PR-AUC by 30%.
+  - Designed a pre-registered six-arm benchmark in which the feature model outperformed TCN and TFT baselines.
+  featured: true
+  short_period: Summer 2026
+- id: mizzou
+  title: Graduate Research Assistant
+  org: University of Missouri
+  location: Columbia, MO
+  start: Dec 2023
+  end: Present
+  current: true
+  collaborators: Tanu Malik (Radiant Lab) and Jianlin Cheng
+  bullets:
+  - Research supported by NASA AIST, NSF, and DoD (ERDC).
+  - Built cold-start-aware LLM routing with Thompson Sampling; reduced GPU-hours by 46% over 310K+ inference runs.
+  - Built a three-layer dependency audit across 1,000 runs, three agents, and four languages.
+  featured: true
+  short_period: 2023–present
+- id: learnllm
+  title: Founder
+  org: LearnLLM.dev
+  location: Remote
+  start: ''
+  end: Present
+  current: true
+  bullets:
+  - Built and maintain an LLM education platform with an active user base using Next.js, TypeScript, and Supabase.
+- id: paal
+  title: Graduate Research Assistant
+  org: Precision and Automated Agriculture Lab, University of Missouri
+  location: Columbia, MO
+  start: Aug 2023
+  end: Dec 2023
+  bullets:
+  - Built AI pipelines for UAV remote-sensing imagery; improved geospatial accuracy by 40% in UAV workflows.
+- id: adobe
+  title: Volunteer Research Intern
+  org: Adobe Research
+  location: India
+  start: May 2022
+  end: Jan 2023
+  collaborators: Nandakishore Kambhatla
+  bullets:
+  - Delivered quality-controlled scraping pipelines for research datasets.
+  featured: true
+  short_period: 2022–2023
 publications:
-  - id: env-gap
-    ref: 1
-    year: 2026
-    title: "Code That Works, Environments That Don't: Measuring Environment Reproducibility in AI-Generated Software"
-    authors: ["Bhanu Prakash Vangala", "Tanu Malik"]
-    venue: "AI Magazine"
-    venue_full: "AI Magazine (AAAI)"
-    status: review
-    tags: [reproducibility, agents, evaluation]
-    image: "images/LLM-as-Service-portfolio-image.png"
-    links: []
-    highlights: "Three agents, four languages, fifty tasks. Dependency-set agreement falls as low as 7% on identical tasks, and newer agents show no improvement."
-    summary: >-
-      Functional correctness says nothing about whether the environment a coding
-      agent declares is the environment its code actually needs. A three-layer
-      framework separates declared, runtime-installed, and necessary-and-sufficient
-      dependencies, and shows the failure is systematic rather than incidental:
-      the widest divergence sits between what an agent declares and what the code
-      pulls in at runtime, which points at environment priors learned during
-      training as the cause.
-    kb: >-
-      Keywords: LLM coding agents, dependency specification, environment gap, code
-      generation, software supply chain. Establishes environment specification as a
-      distinct, measurable axis of code-generation quality that current benchmarks
-      do not capture. This paper underpins the Dependency and Reproducibility
-      Checker demo on this site.
-
-  - id: camp
-    ref: 2
-    year: 2026
-    title: "Consumption-Aware Memory Prediction for Scientific Workflows"
-    authors: ["Bhanu Prakash Vangala", "Nagarjuna K.", "Tanu Malik"]
-    venue: "IEEE Cluster 2026"
-    venue_full: "IEEE International Conference on Cluster Computing 2026"
-    status: review
-    tags: [systems, hpc, provenance]
-    image: "images/AdaptiveLLMaaS.png"
-    links: []
-    highlights: "CAMP: selective eBPF / strace auditing with NGBoost LogNormal predictors; median APE reduction across 35K+ Slurm tasks on AWS ParallelCluster."
-    summary: >-
-      Scientific jobs are routinely over-provisioned because nobody knows how much
-      memory they will actually need. CAMP audits real consumption cheaply and
-      predicts a distribution rather than a point estimate, so schedulers can
-      reason about risk instead of padding.
-
-  - id: beyond-functional-correctness
-    ref: 3
-    year: 2026
-    title: "Beyond Functional Correctness: Evaluating AI-Generated Software Services"
-    authors: ["Bhanu Prakash Vangala", "Ashish Gehani", "Tanu Malik"]
-    venue: "ACM REP 2026"
-    venue_full: "ACM Conference on Reproducibility and Replicability 2026"
-    status: accepted
-    kind: "Oral"
-    tags: [reproducibility, evaluation, agents]
-    image: "images/AdaptiveLLMaaS.png"
-    links: []
-    highlights: "A reproducibility-aware evaluation that scores environment specification, build reliability and runtime behaviour, not just whether the tests pass."
-    summary: >-
-      "The tests pass" is a weak acceptance criterion for a generated service.
-      This paper proposes what else has to hold before you can claim the artifact
-      works.
-
-  - id: pick-and-spin
-    featured: true
-    ref: 4
-    year: 2026
-    title: "Resource-Aware Multi-Model Serving for GPU Cloud Infrastructure (Pick-and-Spin)"
-    authors: ["Bhanu Prakash Vangala", "Tanu Malik"]
-    venue: "IEEE CLOUD 2026"
-    venue_full: "IEEE International Conference on Cloud Computing 2026"
-    status: accepted
-    kind: "Oral"
-    tags: [orchestration, systems, inference]
-    image: "images/AdaptiveLLMaaS.png"
-    links: []
-    highlights: "Nine models from 1B to 27B routed by Thompson Sampling with a cold-start state machine. 310,190 requests on NRP Nautilus: 61% GPU utilization against 31% for static deployment, cutting GPU-hours by 46%."
-    summary: >-
-      Serving many fine-tuned models on a fixed GPU pool forces a choice between
-      keeping everything warm (expensive) and cold-starting on demand (slow).
-      Pick-and-Spin treats routing as a bandit problem and makes residency an
-      explicit, learned decision rather than a static policy.
-    kb: >-
-      A Kubernetes-native multi-tenant serving framework. It classifies incoming
-      queries by complexity, routes them across nine models from 1B to 27B
-      parameters using Thompson Sampling, and manages warm pools on shared HPC
-      infrastructure through a custom cold-start state machine. Evaluated over
-      310,190 inference requests on the NRP Nautilus cluster. This is the system
-      behind the Model Router demo on this site.
-
-  - id: not-reproducible
-    featured: true
-    ref: 5
-    year: 2026
-    title: "AI-Generated Code Is Not Reproducible (Yet): Dependency Gaps in Coding Agents"
-    authors: ["Bhanu Prakash Vangala", "Ali Adibifar", "Tanu Malik", "Ashish Gehani"]
-    venue: "AAAI 2026 RAI Workshop"
-    venue_full: "AAAI 2026 Workshop on Reproducible AI"
-    status: accepted
-    kind: "Oral"
-    tags: [reproducibility, agents, evaluation]
-    image: "images/LLM-as-Service-portfolio-image.png"
-    links:
-      - { label: "Paper", url: "https://arxiv.org/abs/2512.22387" }
-    highlights: "100 prompts given to Claude, Codex and Gemini. Of the 300 resulting projects only 68.3% ran in a clean container: Python 89%, Java 44%. Agents declared about 3 dependencies per project; the projects pulled in around 49 at runtime, a 13.5x gap."
-    summary: >-
-      Code from coding agents runs where it was written and breaks everywhere else.
-      We audited 300 projects generated by Claude, Gemini and Codex and measured how
-      often the declared environment fails to match what the code actually needs.
-    kb: >-
-      Oral at the AAAI 2026 Workshop on Reproducible AI. arXiv:2512.22387. The gap
-      is silently absorbed by whoever debugs the code afterward, which is the point:
-      "it compiled on my machine" is not the same as "it is reproducible", and
-      current benchmarks measure the wrong thing.
-
-  - id: multi-model-orchestration
-    ref: 6
-    year: 2026
-    title: "Efficient Multi-Model Orchestration for Self-Hosted LLMs"
-    authors: ["Bhanu Prakash Vangala", "Tanu Malik", "Ashish Gehani"]
-    venue: "AAAI 2026 DAI Workshop"
-    venue_full: "AAAI 2026 Workshop on Deployable AI"
-    status: accepted
-    kind: "Oral"
-    tags: [orchestration, systems, inference, agents]
-    image: "images/AdaptiveLLMaaS.png"
-    links:
-      - { label: "Paper", url: "https://arxiv.org/abs/2512.22402" }
-    highlights: "Multi-agent routing plus GPU orchestration for cost-efficient self-hosted LLM pipelines."
-    summary: >-
-      How to run a pipeline of specialised models on your own hardware without
-      paying to keep all of them resident.
-    kb: >-
-      Presented at the AAAI 2026 Deployable AI workshop in Singapore on
-      27 January 2026, and earlier at Deployable AI (DAI 2025).
-
-  - id: adaptive-inference
-    ref: 7
-    year: 2025
-    title: "Adaptive Inference: Orchestrating Fine-Tuned LLMs with Serverless GPUs in HPC"
-    authors: ["Bhanu Prakash Vangala", "Tanu Malik"]
-    venue: "ACM SC 2025"
-    venue_full: "ACM/IEEE Supercomputing Conference 2025"
-    status: accepted
-    kind: "Poster"
-    tags: [orchestration, systems, hpc, inference]
-    image: "images/AdaptiveLLMaaS.png"
-    links: []
-    highlights: "Pick-and-Spin router with serverless GPUs on Kubernetes; balances latency against cost and scales to zero."
-    summary: >-
-      Treats GPU capacity as elastic, so fine-tuned models spin up per request
-      instead of holding hardware indefinitely.
-
-  - id: hallumat
-    featured: true
-    ref: 8
-    year: 2025
-    title: "HalluMat: Detecting Hallucinations in LLM-Generated Materials Science Content Through Multi-Stage Verification"
-    authors: ["Bhanu Prakash Vangala", "Syed Mahmud", "Prabhat Neupane", "Janani Selvaraj", "Jianlin Cheng"]
-    venue: "AAAI 2025 Spring Symposium"
-    venue_full: "AAAI 2025 Spring Symposium on AI for Scientific Discovery"
-    status: accepted
-    kind: "Oral"
-    tags: [hallucination, trustworthy-ai, benchmarks]
-    image: "images/HalluMat-Portfolio Image.png"
-    links:
-      - { label: "Paper", url: "https://drive.google.com/file/d/1oMbe8br7-wm7NLkrOFbFGtT2vUlxdCTn/view" }
-    highlights: "Self-consistency checking, retrieval against curated sources, and a knowledge graph that flags low-connectivity fact fragments. Cuts hallucination rates by about 30% and reaches F1 0.95 on cross-domain inconsistency detection."
-    summary: >-
-      A benchmark and detector for hallucination in materials-science LLMs,
-      combining retrieval augmentation (IR, NER and semantic similarity) with
-      intrinsic consistency checks. Introduces the Paraphrased Hallucination
-      Consistency Score, which asks whether a model contradicts itself when the
-      same question is worded differently.
-    kb: >-
-      Presented at the AAAI 2025 Spring Symposium track on AI for Scientific
-      Discovery. Part of the ERDC/DoD-funded materials design programme.
-
-  - id: halluformer
-    ref: 9
-    year: 2025
-    title: "HalluFormer: Detecting Hallucination in LLMs"
-    authors: ["Syed Mahmud", "Prabhat Neupane", "Janani Selvaraj", "Bhanu Prakash Vangala", "Jianlin Cheng"]
-    venue: "AAAI 2025 Spring Symposium"
-    venue_full: "AAAI 2025 Spring Symposium on AI for Scientific Discovery"
-    status: accepted
-    tags: [hallucination, trustworthy-ai]
-    image: "images/HalluFormer-Portfolio Image.png"
-    links:
-      - { label: "Paper", url: "https://drive.google.com/file/d/1o6tqCJdhiCTAR4AEM59fV4t2VSdvS4yt/view" }
-    highlights: "A BigBird span-level classifier: F1 0.947 on MultiNLI and 0.728 on ANAH."
-    summary: >-
-      Scores consistency across the question, the answer and the retrieved context,
-      rather than judging the answer in isolation.
-
-  # ---- Earlier work, shown under "Theses & earlier work" ----
-  - id: ms-thesis
-    year: 2025
-    title: "Deploying LLMs as a Service in a Kubernetes HPC Cluster"
-    authors: ["Bhanu Prakash Vangala", "Grant J. Scott", "Jianlin Cheng"]
-    venue: "M.S. Thesis"
-    venue_full: "M.S. Thesis, University of Missouri"
-    status: thesis
-    tags: [systems, inference, hpc]
-    image: "images/LLM-as-Service-portfolio-image.png"
-    links: []
-    summary: >-
-      A Helm-based, GPU-aware deployment path for multi-tenant LLM inference on a
-      research Kubernetes cluster, with autoscaling, resource throttling and
-      node-affinity scheduling.
-    kb: >-
-      Deployed on the NSF Nautilus cluster of the National Research Platform using
-      Helm and vLLM with KEDA autoscaling, and on AWS SageMaker and Lambda for
-      scale-to-zero serverless serving.
-
-  - id: koo
-    year: 2023
-    title: "Multilingual Sentiment Analysis on KOO User Posts"
-    authors: ["Bhanu Prakash Vangala"]
-    venue: "B.Tech Thesis"
-    venue_full: "B.Tech Thesis, VIT Vellore"
-    status: thesis
-    tags: [nlp, multilingual]
-    image: "images/KOO-Portfolio Image.png"
-    links:
-      - { label: "Thesis", url: "https://drive.google.com/file/d/1a2Xan4sDdC7ib7Hj5HODcjPyztmTee4k/view" }
-    summary: >-
-      A sentiment pipeline covering ten-plus Indian languages, built for streaming
-      content moderation. Advised by Dr. P. Kumaraguru (IIIT Hyderabad). Won the
-      Best Department Thesis award.
-
-  - id: colorization
-    year: 2023
-    title: "AI-Powered Image Colorization: From Grayscale to Photorealistic Colour"
-    authors: ["Bhanu Prakash Vangala"]
-    venue: "IJARESM 2023"
-    venue_full: "International Journal of All Research Education and Scientific Methods"
-    status: accepted
-    tags: [vision, generative]
-    image: "images/image colorization-portfolio image.jpg"
-    links:
-      - { label: "Paper", url: "https://drive.google.com/file/d/14GH6eNzC28uhcN1Y-E3iZJ9a5G8mdXLz/view" }
-    summary: >-
-      Convolutional autoencoder and GAN-based colorization with a combined
-      perceptual and adversarial objective, applied to photograph restoration.
-
-  - id: benchmarks-leak
-    ref: 10
-    year: 2026
-    title: "Scores That Hold, Benchmarks That Leak: Measuring Dataset Contamination in Public Brain-Tumor MRI Classification"
-    authors: ["Bhanu Prakash Vangala", "Sowmya Guda", "Latha Peddi", "Navya Vangala"]
-    venue: "IEEE JBHI"
-    venue_full: "IEEE Journal of Biomedical and Health Informatics"
-    status: review
-    tags: [evaluation, benchmarks, medical, vision]
-    image: "images/Brain Tumor-Portfolio Image.png"
-    links: []
-    highlights: "28.8% of the dominant corpus's official test split has a near-twin in its own training split; a second corpus leaks 22.3% byte-identically; 95.5% of traceable test images share a patient with training; file headers containing no anatomy separate tumour from no-tumour at 0.959 balanced accuracy."
-    summary: >-
-      Brain-tumour MRI classification routinely reports accuracies above 98% on a
-      handful of public corpora. A three-layer contamination framework covering
-      duplicate, patient and source-label leakage audits those corpora against a
-      chest-radiograph negative control, across nine architectures. The
-      uncomfortable finding is that removing every leaked test image leaves
-      balanced accuracy essentially unchanged: contamination this severe does not
-      show up as an inflated score, so deduplication repairs the number without
-      repairing the benchmark.
-    kb: >-
-      Releases the contaminated-file lists, recovered patient identifiers and
-      deduplicated splits. Argues dataset integrity is a distinct, measurable axis
-      of benchmark quality that a stable leaderboard cannot certify, and that
-      reported accuracy on these corpora is not yet evidence about tumour
-      recognition.
-
-  - id: evaluation-choices
-    ref: 11
-    year: 2026
-    title: "Evaluation Choices Shape Biomedical ML Claims: A Pediatric Pneumonia Benchmark Case Study"
-    authors: ["Bhanu Prakash Vangala"]
-    venue: "NeurIPS RMLR"
-    venue_full: "NeurIPS RMLR Workshop"
-    status: review
-    tags: [evaluation, benchmarks, medical, vision]
-    image: "images/Pneumonia-Portfolio Image.png"
-    links: []
-    highlights: "Eight pretrained backbones differ by only 0.026 AUROC, but freezing versus fine-tuning moves AUROC by 0.044 and changing the decision threshold moves balanced accuracy by 0.090. A file-properties-only classifier with no anatomy reaches 0.992 in the training pool and 0.496 on the official split."
-    summary: >-
-      A biomedical paper is often remembered by one number, and that number reads
-      as a property of the model when it is really a property of the evaluation.
-      On the Kermany pediatric chest radiograph benchmark, the choice of split,
-      training policy, threshold, metric and calibration moves the headline more
-      than the choice of architecture does. Ends with a seven-item reporting
-      recommendation, each item tied to an effect measured in the study.
-    kb: >-
-      A partition classifier distinguishes the official test split from the
-      training pool at AUC 0.697, rising to 0.898 for normal radiographs, so the
-      split is measurably different rather than exchangeable.
-
+- id: one-threshold
+  ref: 1
+  title: 'One Threshold Does Not Fit All Languages: Language-Conditional Deferral for Reliable and Efficient Low-Resource
+    Text Classification'
+  authors:
+  - Bhanu Prakash Vangala
+  - Navya Vangala
+  venue: Global South in AI Workshop at NeurIPS 2026
+  venue_full: Global South in AI Workshop at NeurIPS 2026
+  status: accepted
+  year: 2026
+  links:
+  - label: PDF
+    url: /files/papers/one-threshold.pdf
+  kind: Oral
+  featured: true
+- id: beyond-functional-correctness
+  ref: 2
+  title: 'AI-Generated Code Is Not Reproducible (Yet): An Empirical Study of Execution Reliability in LLM-Based
+    Coding Agents'
+  authors:
+  - Bhanu Prakash Vangala
+  - Ashish Gehani
+  - Tanu Malik
+  venue: ACM REP 2026
+  venue_full: ACM REP 2026
+  status: accepted
+  year: 2026
+  links:
+  - label: Paper
+    url: https://doi.org/10.1145/3820002.3828581
+  kind: Oral
+  featured: true
+- id: pick-and-spin
+  ref: 3
+  title: 'Pick and Spin: Cold-Start-Aware Routing for Self-Hosted LLM Serving'
+  authors:
+  - Bhanu Prakash Vangala
+  - Tanu Malik
+  venue: IEEE CLOUD 2026
+  venue_full: IEEE CLOUD 2026
+  status: accepted
+  year: 2026
+  links:
+  - label: PDF
+    url: /files/papers/pick-and-spin.pdf
+  kind: Oral
+  featured: true
+- id: camp
+  ref: 4
+  title: 'CAMP: Consumption-Aware Memory Prediction for Scientific Workflows'
+  authors:
+  - Nagarjuna Chowdary Kandimalla
+  - Bhanu Prakash Vangala
+  - Tanu Malik
+  venue: WORKS at SC 2026
+  venue_full: WORKS at SC 2026
+  status: accepted
+  year: 2026
+  links:
+  - label: PDF
+    url: /files/papers/camp.pdf
+  equal_contributors:
+  - Nagarjuna Chowdary Kandimalla
+  - Bhanu Prakash Vangala
+  featured: true
+- id: multi-model-orchestration
+  ref: 5
+  title: Efficient Multi-Model Orchestration for Self-Hosted Large Language Models
+  authors:
+  - Bhanu Prakash Vangala
+  - Tanu Malik
+  venue: DAI Workshop at AAAI 2026
+  venue_full: DAI Workshop at AAAI 2026
+  status: accepted
+  year: 2026
+  links:
+  - label: arXiv
+    url: https://arxiv.org/abs/2512.22402
+  kind: Oral
+- id: not-reproducible
+  ref: 17
+  title: 'AI-Generated Code Is Not Reproducible (Yet): An Empirical Study of Dependency Gaps in LLM-Based Coding
+    Agents'
+  authors:
+  - Bhanu Prakash Vangala
+  - Ali Adibifar
+  - Ashish Gehani
+  - Tanu Malik
+  venue: RAI Workshop at AAAI 2026
+  venue_full: RAI Workshop at AAAI 2026
+  status: accepted
+  year: 2026
+  links:
+  - label: arXiv
+    url: https://arxiv.org/abs/2512.22387
+- id: hallumat
+  ref: 6
+  title: 'HalluMat: Detecting Hallucinations in LLM-Generated Materials Science Content Through Multi-Stage Verification'
+  authors:
+  - Bhanu Prakash Vangala
+  - Sajid Mahmud
+  - Pawan Neupane
+  - Joel Selvaraj
+  - Jianlin Cheng
+  venue: AAAI Spring Symposium 2025
+  venue_full: AAAI Spring Symposium 2025
+  status: accepted
+  year: 2025
+  links:
+  - label: arXiv
+    url: https://arxiv.org/abs/2512.22396
+  kind: Oral
+  featured: true
+- id: halluformer
+  ref: 7
+  title: 'HalluFormer: A Transformer-Based Framework for Detecting Hallucination in Large Language Models'
+  authors:
+  - Sajid Mahmud
+  - Pawan Neupane
+  - Joel Selvaraj
+  - Bhanu Prakash Vangala
+  - Jianlin Cheng
+  venue: AAAI Spring Symposium 2025
+  venue_full: AAAI Spring Symposium 2025
+  status: accepted
+  year: 2025
+  links:
+  - label: PDF
+    url: /files/papers/halluformer.pdf
+  kind: Oral
+  equal_contributors:
+  - Sajid Mahmud
+  - Pawan Neupane
+  - Joel Selvaraj
+  - Bhanu Prakash Vangala
+- id: adaptflow
+  ref: 8
+  title: 'AdaptFlow: Efficient Adaptation of Accuracy-First AI Workflows under Data Drift'
+  authors:
+  - Bhanu Prakash Vangala
+  - Shankar Aditya
+  - Todd Neif
+  - Abhilash Jindal
+  - Tanu Malik
+  venue: MLSys 2027
+  venue_full: MLSys 2027
+  status: review
+  year: 2027
+  links: []
+- id: env-gap
+  ref: 9
+  title: 'Code That Works, Environments That Don’t: Measuring Environment Reproducibility in AI-Generated Software'
+  authors:
+  - Bhanu Prakash Vangala
+  - Tanu Malik
+  venue: AI Magazine — Special Issue on AI and Reproducibility
+  venue_full: AI Magazine — Special Issue on AI and Reproducibility
+  status: review
+  year: 2026
+  links: []
+- id: language-labels
+  ref: 10
+  title: How Many Labels Does a Language Need? Annotation Budgets and Cross-Lingual Pooling for African-Language
+    Text Classification
+  authors:
+  - Bhanu Prakash Vangala
+  - Sowmya Guda
+  - Navya Vangala
+  venue: Africa in AI Affinity Workshop at NeurIPS 2026
+  venue_full: Africa in AI Affinity Workshop at NeurIPS 2026
+  status: review
+  year: 2026
+  links: []
+- id: biomedical-evaluation
+  ref: 11
+  title: 'Evaluation Choices Shape Biomedical ML Claims: A Pediatric Pneumonia Benchmark Case Study'
+  authors:
+  - Bhanu Prakash Vangala
+  - Sowmya Guda
+  - Latha Peddi
+  - Navya Vangala
+  venue: RCMLR Workshop at NeurIPS 2026
+  venue_full: RCMLR Workshop at NeurIPS 2026
+  status: review
+  year: 2026
+  links: []
+- id: seed-xai
+  ref: 12
+  title: AI Sees, XAI Explains? Evaluating Explanation Reliability in Automated Seed Quality Inspection
+  authors:
+  - Bhanu Prakash Vangala
+  - Navya Vangala
+  venue: Computers and Electronics in Agriculture
+  venue_full: Computers and Electronics in Agriculture
+  status: review
+  year: 2026
+  links: []
+- id: synthetic-seeds
+  ref: 13
+  title: Visual Realism Does Not Predict Seed-Quality Utility in AI-Generated Synthetic Seeds
+  authors:
+  - Bhanu Prakash Vangala
+  - Navya Vangala
+  venue: Artificial Intelligence in Agriculture
+  venue_full: Artificial Intelligence in Agriculture
+  status: review
+  year: 2026
+  links: []
+- id: seed-quality
+  ref: 14
+  title: AI-Generated Seed Images Do Not Outperform Matched Reuse of Scarce Real Defect Images in Seed Quality Assessment
+  authors:
+  - Bhanu Prakash Vangala
+  - Navya Vangala
+  venue: Scientific Reports
+  venue_full: Scientific Reports
+  status: review
+  year: 2026
+  links: []
+- id: brain-tumor
+  ref: 15
+  title: 'Scores That Hold, Benchmarks That Leak: Measuring Dataset Contamination in Public Brain-Tumor MRI Classification'
+  authors:
+  - Bhanu Prakash Vangala
+  - Sowmya Guda
+  - Latha Peddi
+  - Navya Vangala
+  venue: IEEE Journal of Biomedical and Health Informatics
+  venue_full: IEEE Journal of Biomedical and Health Informatics
+  status: review
+  year: 2026
+  links: []
+- id: adaptive-inference
+  ref: 16
+  title: 'Adaptive Inference: Orchestrating Fine-Tuned LLMs with Serverless GPUs in HPC Environments'
+  authors:
+  - Bhanu Prakash Vangala
+  - Tanu Malik
+  venue: University of Missouri
+  venue_full: University of Missouri
+  status: poster
+  year: 2025
+  links: []
+  kind: Poster
 pub_filters:
-  - { id: all,             label: "All" }
-  - { id: orchestration,   label: "LLM orchestration" }
-  - { id: reproducibility, label: "Reproducibility" }
-  - { id: agents,          label: "Agents" }
-  - { id: hallucination,   label: "Trustworthy AI" }
-  - { id: systems,         label: "Systems & HPC" }
-  - { id: vision,          label: "Vision & medical" }
-  - { id: nlp,             label: "NLP" }
-
-# -----------------------------------------------------------------------------
-# FEATURED RESEARCH PROGRAMS & COLLABORATIONS
-# -----------------------------------------------------------------------------
+- id: all
+  label: All
+- id: orchestration
+  label: LLM orchestration
+- id: reproducibility
+  label: Reproducibility
+- id: agents
+  label: Agents
+- id: hallucination
+  label: Trustworthy AI
+- id: systems
+  label: Systems & HPC
+- id: vision
+  label: Vision & medical
+- id: nlp
+  label: NLP
 research:
-  - id: reproducible-containers
-    title: "Reproducible Containers for Collaborative Analytics"
-    stack: "LLMOps · Kubernetes · HPC"
-    funder: "NASA AIST"
-    collaborators:
-      - { name: "Dr. Tanu Malik", org: "University of Missouri" }
-      - { name: "Dr. Ashish Gehani", org: "SRI International" }
-      - { name: "Dr. Kwo-Sen Kuo", org: "NASA" }
-      - { name: "Dr. Abhilash Jindal", org: "IIT Delhi" }
-    threads:
-      - name: "FlexiFlow"
-        text: "Bandit-based model switching, FastAPI routing with GPU telemetry, Prometheus + Grafana observability. Demonstrated at SIGMOD."
-      - name: "Pick-and-Spin"
-        text: "Thompson Sampling with a Cold-Start State Machine: 9.2% cold-starts across 310K runs and 61% GPU utilization, against 31% for the static baseline."
-      - name: "Self-hosting LLMs"
-        text: "Helm + vLLM LLM-as-a-Service on NSF Nautilus with KEDA autoscaling; serverless on AWS SageMaker and Lambda with scale-to-zero."
-      - name: "Coding-agent reproducibility"
-        text: "300 repositories generated by Claude, Gemini and Codex, replayed via SLURM; the SciUnit ptrace harness extended to Java and JavaScript."
-
-  - id: trace
-    title: "TRACE: Autonomous Experimentation Lab using Agentic AI"
-    stack: "Agentic AI · MCP · gRPC"
-    funder: "NSF"
-    collaborators:
-      - { name: "Dr. Tanu Malik", org: "University of Missouri" }
-      - { name: "Dr. Matt Maschmann", org: "University of Missouri" }
-      - { name: "Dr. Derek T. Anderson", org: "University of Missouri" }
-    threads:
-      - name: "MCP & tooling"
-        text: "Authored custom MCP servers and agent skills wrapping Nanoscribe and SEM instrument APIs; ran 50+ automated experiment cycles with per-call provenance."
-      - name: "Multi-agent orchestration"
-        text: "Coordinated agents with Google ADK and Agent2Agent (A2A) over gRPC and Protocol Buffers, behind a FastAPI control plane with pytest and GitHub Actions CI for reproducible runs."
-
-  - id: materials-ai
-    title: "Accelerating Materials Design through AI and Machine Learning"
-    stack: "AI · ML · NLP"
-    funder: "ERDC, DoD"
-    collaborators:
-      - { name: "Dr. Jianlin Cheng", org: "University of Missouri" }
-      - { name: "Dr. Grant Scott", org: "University of Missouri" }
-      - { name: "Dr. Prasad Calyam", org: "University of Missouri" }
-      - { name: "Dr. Chitta Baral", org: "Arizona State University" }
-      - { name: "Dr. Lenore Dai", org: "Arizona State University" }
-    threads:
-      - name: "HalluFormer"
-        text: "A BigBird span-level hallucination classifier: F1 0.947 on MultiNLI and 0.728 on ANAH."
-      - name: "HalluMat"
-        text: "The HalluMatData benchmark with retrieval augmentation over IR, NER and semantic similarity: a 30% hallucination reduction."
-
-# -----------------------------------------------------------------------------
-# PROJECTS
-# -----------------------------------------------------------------------------
+- id: reproducible-containers
+  title: Reproducible Containers for Collaborative Analytics
+  stack: LLMOps · Kubernetes · HPC
+  funder: NASA AIST
+  collaborators:
+  - name: Dr. Tanu Malik
+    org: University of Missouri
+  - name: Dr. Ashish Gehani
+    org: SRI International
+  - name: Dr. Kwo-Sen Kuo
+    org: NASA
+  - name: Dr. Abhilash Jindal
+    org: IIT Delhi
+  threads:
+  - name: FlexiFlow
+    text: Bandit-based model switching, FastAPI routing with GPU telemetry, Prometheus + Grafana observability.
+      Demonstrated at SIGMOD.
+  - name: Pick-and-Spin
+    text: 'Thompson Sampling with a Cold-Start State Machine: 9.2% cold-starts across 310K runs and 61% GPU utilization,
+      against 31% for the static baseline.'
+  - name: Self-hosting LLMs
+    text: Helm + vLLM LLM-as-a-Service on NSF Nautilus with KEDA autoscaling; serverless on AWS SageMaker and Lambda
+      with scale-to-zero.
+  - name: Coding-agent reproducibility
+    text: 300 repositories generated by Claude, Gemini and Codex, replayed via SLURM; the SciUnit ptrace harness
+      extended to Java and JavaScript.
+- id: trace
+  title: 'TRACE: Autonomous Experimentation Lab using Agentic AI'
+  stack: Agentic AI · MCP · gRPC
+  funder: NSF
+  collaborators:
+  - name: Dr. Tanu Malik
+    org: University of Missouri
+  - name: Dr. Matt Maschmann
+    org: University of Missouri
+  - name: Dr. Derek T. Anderson
+    org: University of Missouri
+  threads:
+  - name: MCP & tooling
+    text: Authored custom MCP servers and agent skills wrapping Nanoscribe and SEM instrument APIs; ran 50+ automated
+      experiment cycles with per-call provenance.
+  - name: Multi-agent orchestration
+    text: Coordinated agents with Google ADK and Agent2Agent (A2A) over gRPC and Protocol Buffers, behind a FastAPI
+      control plane with pytest and GitHub Actions CI for reproducible runs.
+- id: materials-ai
+  title: Accelerating Materials Design through AI and Machine Learning
+  stack: AI · ML · NLP
+  funder: ERDC, DoD
+  collaborators:
+  - name: Dr. Jianlin Cheng
+    org: University of Missouri
+  - name: Dr. Grant Scott
+    org: University of Missouri
+  - name: Dr. Prasad Calyam
+    org: University of Missouri
+  - name: Dr. Chitta Baral
+    org: Arizona State University
+  - name: Dr. Lenore Dai
+    org: Arizona State University
+  threads:
+  - name: HalluFormer
+    text: 'A BigBird span-level hallucination classifier: F1 0.947 on MultiNLI and 0.728 on ANAH.'
+  - name: HalluMat
+    text: 'The HalluMatData benchmark with retrieval augmentation over IR, NER and semantic similarity: a 30% hallucination
+      reduction.'
 projects:
-  - id: learnllm
-    featured: true
-    title: "LearnLLM.dev"
-    role: "Founder"
-    status: "Live"
-    stack: "Next.js | TypeScript | Prisma | Supabase"
-    tags: [education, fullstack]
-    desc: >-
-      A GeeksforGeeks-style learning platform for building with large language
-      models, built full-stack from schema to deployment, with Vercel CI/CD.
-      1,000+ active users.
-    links:
-      - { label: "learnllm.dev", url: "https://learnllm.dev" }
-
-  - id: visionai
-    title: "VisionAI: AI assistance for visually impaired users"
-    status: "Runner-up, $1,000"
-    stack: "Multimodal AI | vLLM | Computer Vision"
-    tags: [vision, accessibility]
-    desc: >-
-      Fine-tuned multimodal LLMs for hazard detection and accessibility from a live
-      camera feed. Runner-up at the IBM / MUIDSI Generative AI for Social Good
-      Hackathon 2025.
-
-  - id: reflectmemory
-    featured: true
-    title: "ReflectMemory: persistent memory for long-context reasoning"
-    status: "Prototype"
-    tags: [agents, memory]
-    desc: >-
-      Stores and re-injects chain-of-thought embeddings so a long-running agent
-      keeps a stable line of reasoning across sessions instead of restarting it.
-
-  - id: indoor-nav
-    title: "Autonomous indoor navigation"
-    status: "Completed"
-    stack: "BLE | Raspberry Pi | Kotlin"
-    tags: [systems, mobile]
-    desc: >-
-      BLE beacons and a Raspberry Pi running A* and Dijkstra pathfinding, paired
-      with a Kotlin app giving turn-by-turn guidance indoors where GPS fails.
-
-  - id: chatmed
-    featured: true
-    title: "ChatMed: grounded medical question answering"
-    status: "Completed"
-    tags: [nlp, medical]
-    desc: "A symptom-guidance assistant built on BioGPT and grounded in PubMed articles."
-
-  - id: cropinsight
-    title: "CropInsight: crop health and yield forecasting"
-    status: "Completed"
-    tags: [vision, science]
-    desc: "Computer vision plus sequence models for crop health monitoring and yield forecasting from field imagery."
-
-  - id: socialsift
-    title: "SocialSift: crisis-aware multilingual sentiment analysis"
-    status: "Completed"
-    tags: [nlp, multilingual]
-    desc: "Transformer-based sentiment and intent analysis over multilingual social media during natural disasters."
-
-# -----------------------------------------------------------------------------
-# HONORS & AWARDS
-# -----------------------------------------------------------------------------
+- id: learnllm
+  featured: true
+  title: LearnLLM.dev
+  role: Founder
+  status: Live
+  stack: Next.js | TypeScript | Prisma | Supabase
+  tags:
+  - education
+  - fullstack
+  desc: An educational platform for learning to build with large language models, from core concepts to practical
+    applications. Built and maintained with Next.js, TypeScript, and Supabase.
+  links:
+  - label: learnllm.dev
+    url: https://learnllm.dev
+- id: visionai
+  title: 'VisionAI: AI assistance for visually impaired users'
+  status: Runner-up, $1,000
+  stack: Multimodal AI | vLLM | Computer Vision
+  tags:
+  - vision
+  - accessibility
+  desc: Fine-tuned multimodal LLMs for hazard detection and accessibility from a live camera feed. Runner-up at
+    the IBM / MUIDSI Generative AI for Social Good Hackathon 2025.
+- id: reflectmemory
+  featured: true
+  title: 'ReflectMemory: persistent memory for long-context reasoning'
+  status: Prototype
+  tags:
+  - agents
+  - memory
+  desc: Stores and re-injects chain-of-thought embeddings so a long-running agent keeps a stable line of reasoning
+    across sessions instead of restarting it.
+- id: indoor-nav
+  title: Autonomous indoor navigation
+  status: Completed
+  stack: BLE | Raspberry Pi | Kotlin
+  tags:
+  - systems
+  - mobile
+  desc: BLE beacons and a Raspberry Pi running A* and Dijkstra pathfinding, paired with a Kotlin app giving turn-by-turn
+    guidance indoors where GPS fails.
+- id: chatmed
+  featured: true
+  title: 'ChatMed: grounded medical question answering'
+  status: Completed
+  tags:
+  - nlp
+  - medical
+  desc: A symptom-guidance assistant built on BioGPT and grounded in PubMed articles.
+- id: cropinsight
+  title: 'CropInsight: crop health and yield forecasting'
+  status: Completed
+  tags:
+  - vision
+  - science
+  desc: Computer vision plus sequence models for crop health monitoring and yield forecasting from field imagery.
+- id: socialsift
+  title: 'SocialSift: crisis-aware multilingual sentiment analysis'
+  status: Completed
+  tags:
+  - nlp
+  - multilingual
+  desc: Transformer-based sentiment and intent analysis over multilingual social media during natural disasters.
 awards:
-  - id: google-phd
-    year: "2025"
-    title: "Google Ph.D. Fellowship Nominee (NLP track)"
-    org: "Top 3 of 6,000 participants"
-    featured: true
-  - id: eecs-travel
-    year: "2026"
-    title: "EECS Graduate Travel Fellowship"
-    org: "University of Missouri"
-  - id: chameleon
-    year: "2026"
-    title: "Chameleon Cloud Travel Award, top 10 proposals"
-    org: "NSF Chameleon Cloud Infrastructure"
-  - id: neurips-rev
-    year: "2025"
-    title: "Outstanding Reviewer Award"
-    org: "NeurIPS 2025, AI for Accelerated Materials Design (AI4MAT) track"
-    featured: true
-  - id: outstanding-ms
-    year: "2025"
-    title: "Outstanding Master's Student Award"
-    org: "University of Missouri"
-    featured: true
-    images: ["images/image with dean.jpg", "images/Outstanding Student.jpeg", "images/WhatsApp Image 2025-06-26 at 15.48.52_a9cd54ac.jpg"]
-  - id: muidsi
-    year: "2025"
-    title: "Runner-Up, AI for Social Good Hackathon"
-    org: "MUIDSI x IBM · VisionAI, $1,000"
-    images: ["images/Hackathon Winner.jpeg", "images/Hackathon Winner 2.jpg"]
-  - id: vit-honors
-    year: "2022-2023"
-    title: "Dean's Research Excellence Award, Best Thesis Award, Top-2 Academic Performer"
-    org: "Vellore Institute of Technology"
-
-# -----------------------------------------------------------------------------
-# SERVICE, TEACHING, TALKS, COURSEWORK
-# -----------------------------------------------------------------------------
+- id: acm-summit
+  year: '2026'
+  title: Top 100, ACM Doctoral Summit
+  org: Association for Computing Machinery
+- id: chameleon
+  year: '2026'
+  title: Chameleon Cloud Travel Award
+  org: Top 10 proposals, NSF Chameleon Cloud
+- id: eecs-travel
+  year: '2026'
+  title: EECS Graduate Travel Fellowship
+  org: University of Missouri
+- id: google-phd
+  year: '2025'
+  title: Google PhD Fellowship Nominee
+  org: NLP track, University of Missouri
+- id: neurips-rev
+  year: '2025'
+  title: Outstanding Reviewer Award
+  org: NeurIPS 2025
+- id: outstanding-ms
+  year: '2025'
+  title: Outstanding Master’s Student Award
+  org: University of Missouri
+- id: muidsi
+  year: '2025'
+  title: Runner-up, Generative AI for Social Good Hackathon
+  org: IBM / MUIDSI
+- id: vit-honors
+  year: '2023'
+  title: Dean’s Research Excellence Award
+  org: Vellore Institute of Technology
 service:
-  - group: "Reviewing"
-    items:
-      - "Outstanding Reviewer, NeurIPS 2025 (AI4MAT)"
-      - "ACM CAIS 2026 (Main + AEC)"
-      - "NeurIPS 2026 (Main + AEC)"
-      - "ICLR 2025"
-      - "CIKM 2025"
-      - "IEEE 2024"
-
+- group: Reviewing
+  items:
+  - NeurIPS 2025 and 2026
+  - CIKM 2025
+  - ACM CAIS 2026
+  - IEEE
+  - Elsevier journals
+- group: Artifact evaluation
+  items:
+  - NeurIPS 2026
+  - ACM CAIS 2026
+  - ACM REP
 teaching:
-  - id: webdev
-    course: "Web Development (MERN stack)"
-    org: "University of Missouri"
-    role: "Teaching Assistant"
-    terms: ["Fall 2025", "Fall 2024", "Spring 2024", "Fall 2023"]
-    note: "Mentored 115+ students; built CI/CD scaffolding and grading automation on GitLab."
-
+- id: ml-systems
+  course: Designing End-to-End ML Systems
+  role: Teaching Assistant
+  org: University of Missouri
+  terms:
+  - Fall 2026
+  note: Designed graded labs on Chameleon Cloud.
+- id: webdev
+  course: Web Development (MERN Stack)
+  role: Teaching Assistant
+  org: University of Missouri
+  terms:
+  - Fall 2023–Fall 2025
+  note: Mentored 115+ students.
 talks:
-  - id: chameleon26
-    date: "Apr 2026"
-    title: "Evaluating Dependency Gaps in LLM-Generated Code"
-    venue: "Sixth Chameleon User Meeting, NCAR Mesa Lab, Boulder, CO"
-  - id: aaai26a
-    date: "Jan 2026"
-    title: "AI-Generated Code Is Not Reproducible (Yet)"
-    venue: "AAAI 2026 RAI Workshop, Singapore"
-  - id: aaai26b
-    date: "Jan 2026"
-    title: "Efficient Multi-Model Orchestration for Self-Hosted LLMs"
-    venue: "AAAI 2026 DAI Workshop, Singapore"
-  - id: aaaiss25
-    date: "Apr 2025"
-    title: "Hallucination detection in scientific LLMs"
-    venue: "AAAI Spring Symposium 2025 · AI for Scientific Discovery"
-    image: "images/conference image.jpeg"
-
+- id: chameleon26
+  date: Apr 2026
+  title: Evaluating Dependency Gaps in LLM-Generated Code
+  venue: Sixth Chameleon User Meeting, NCAR Mesa Lab, Boulder, CO
+- id: aaai26a
+  date: Jan 2026
+  title: AI-Generated Code Is Not Reproducible (Yet)
+  venue: AAAI 2026 RAI Workshop, Singapore
+- id: aaai26b
+  date: Jan 2026
+  title: Efficient Multi-Model Orchestration for Self-Hosted LLMs
+  venue: AAAI 2026 DAI Workshop, Singapore
+- id: aaaiss25
+  date: Apr 2025
+  title: Hallucination detection in scientific LLMs
+  venue: AAAI Spring Symposium 2025 · AI for Scientific Discovery
+  image: images/conference image.jpeg
 coursework:
-  - group: "ML & deep learning"
-    items:
-      - "CmpSc 8001: Deep Learning for Advanced Computer Vision"
-      - "CmpSc 8735: Unsupervised Learning"
-      - "CSE 3008: Introduction to Machine Learning"
-      - "11-785 (CMU): Deep Learning"
-      - "CS229 (Stanford): Machine Learning"
-      - "MIT 18.065: Matrix Methods"
-  - group: "NLP & LLMs"
-    items:
-      - "CmpSc 7740: Interdisciplinary Introduction to NLP"
-      - "CSE 3015: Natural Language Processing"
-      - "CS224N (Stanford): NLP with Deep Learning"
-      - "Anthropic / Claude: tool use, Constitutional AI"
-  - group: "Systems, data & foundations"
-    items:
-      - "Data_Sci 8420: Cloud Computing for Data Analytics"
-      - "CSE 4029: Advanced Data Analytics"
-      - "CSE 3004: Design & Analysis of Algorithms"
-      - "CSE 2008: Operating Systems"
-
+- group: ML & deep learning
+  items:
+  - 'CmpSc 8001: Deep Learning for Advanced Computer Vision'
+  - 'CmpSc 8735: Unsupervised Learning'
+  - 'CSE 3008: Introduction to Machine Learning'
+  - '11-785 (CMU): Deep Learning'
+  - 'CS229 (Stanford): Machine Learning'
+  - 'MIT 18.065: Matrix Methods'
+- group: NLP & LLMs
+  items:
+  - 'CmpSc 7740: Interdisciplinary Introduction to NLP'
+  - 'CSE 3015: Natural Language Processing'
+  - 'CS224N (Stanford): NLP with Deep Learning'
+  - 'Anthropic / Claude: tool use, Constitutional AI'
+- group: Systems, data & foundations
+  items:
+  - 'Data_Sci 8420: Cloud Computing for Data Analytics'
+  - 'CSE 4029: Advanced Data Analytics'
+  - 'CSE 3004: Design & Analysis of Algorithms'
+  - 'CSE 2008: Operating Systems'
 skills:
-  - group: "Languages"
-    items: ["Python", "TypeScript / JavaScript", "Kotlin", "SQL", "Bash", "C++"]
-  - group: "ML & LLM"
-    items: ["PyTorch", "Hugging Face Transformers", "vLLM", "Fine-tuning & LoRA", "RAG", "NGBoost", "SHAP", "TFT / TCN", "Evaluation & benchmarking"]
-  - group: "Agentic systems"
-    items: ["MCP servers", "Google ADK", "Agent2Agent (A2A)", "gRPC / Protocol Buffers", "Thompson Sampling routing", "Tool-use design"]
-  - group: "Systems & infrastructure"
-    items: ["Kubernetes", "Helm", "KEDA", "Docker", "SLURM", "GPU quota & node affinity", "NRP Nautilus", "Chameleon Cloud", "AWS SageMaker / Lambda", "Azure Cosmos / SCOPE", "eBPF / strace / ptrace", "Prometheus + Grafana"]
-  - group: "Web & data"
-    items: ["Next.js", "React", "FastAPI", "Node.js", "Prisma", "Supabase", "MongoDB", "Pandas / NumPy", "GitHub Actions CI/CD"]
-
-# -----------------------------------------------------------------------------
-# NEWS  (newest first; `pin: true` keeps an item in the collapsed view)
-# -----------------------------------------------------------------------------
+- group: Languages
+  items:
+  - Python
+  - TypeScript / JavaScript
+  - Kotlin
+  - SQL
+  - Bash
+  - C++
+- group: ML & LLM
+  items:
+  - PyTorch
+  - Hugging Face Transformers
+  - vLLM
+  - Fine-tuning & LoRA
+  - RAG
+  - NGBoost
+  - SHAP
+  - TFT / TCN
+  - Evaluation & benchmarking
+- group: Agentic systems
+  items:
+  - MCP servers
+  - Google ADK
+  - Agent2Agent (A2A)
+  - gRPC / Protocol Buffers
+  - Thompson Sampling routing
+  - Tool-use design
+- group: Systems & infrastructure
+  items:
+  - Kubernetes
+  - Helm
+  - KEDA
+  - Docker
+  - SLURM
+  - GPU quota & node affinity
+  - NRP Nautilus
+  - Chameleon Cloud
+  - AWS SageMaker / Lambda
+  - Azure Cosmos / SCOPE
+  - eBPF / strace / ptrace
+  - Prometheus + Grafana
+- group: Web & data
+  items:
+  - Next.js
+  - React
+  - FastAPI
+  - Node.js
+  - Prisma
+  - Supabase
+  - MongoDB
+  - Pandas / NumPy
+  - GitHub Actions CI/CD
 news:
-  - { date: "2026.08", pin: true, text: "Completed my **Research Data Science internship at Microsoft** in Redmond, WA: temporal featurization for predictive Windows retention across 1B+ users." }
-  - { date: "2026.06", text: "**Pick-and-Spin: Cold-Start-Aware Routing for Self-Hosted LLM Serving** was accepted as an **oral at IEEE CLOUD 2026**." }
-  - { date: "2026.05", text: "**Beyond Functional Correctness** was accepted as an **oral at ACM REP 2026**." }
-  - { date: "2026.05", text: "Submitted **CAMP: Consumption-Aware Memory Prediction for Scientific Workflows** to **IEEE Cluster 2026**." }
-  - { date: "2026.04", pin: true, text: "Received the **EECS Graduate Travel Fellowship** from the University of Missouri College of Engineering." }
-  - { date: "2026.04", text: "Awarded a **Chameleon Cloud Travel Award** (top 10 proposals) for the Sixth Chameleon User Meeting." }
-  - { date: "2026.02", text: "My presentation on **Evaluating Dependency Gaps in LLM-Generated Code** was selected for the **Sixth Chameleon User Meeting** at NCAR's Mesa Lab in Boulder, Colorado." }
-  - { date: "2026.01", pin: true, text: "Presented **AI-Generated Code Is Not Reproducible (Yet)** (Jan 26) and **Efficient Multi-Model Orchestration for Self-Hosted LLMs** (Jan 27) as **orals at the AAAI 2026 RAI and DAI workshops** in Singapore." }
-  - { date: "2026.01", text: "Submitted **Code That Works, Environments That Don't** (an extended 1,000-instance study) to **AI Magazine**." }
-  - { date: "2025.12", text: "**AI-Generated Code Is Not Reproducible (Yet)** was accepted at the **RAI 2025** workshop." }
-  - { date: "2025.11", text: "**Efficient Multi-Model Orchestration for Self-Hosted LLMs** was accepted at the **Deployable AI (DAI 2025)** workshop." }
-  - { date: "2025.11", pin: true, text: "Received an offer from **Microsoft** for a Research Data Science Internship (Summer 2026)." }
-  - { date: "2025.09", text: "Named an **Outstanding Reviewer at NeurIPS 2025** (AI for Accelerated Materials Design track)." }
-  - { date: "2025.05", text: "Graduated with my **M.S. in Computer Science** and continued into the **Ph.D. program at Mizzou**." }
-  - { date: "2025.04", pin: true, text: "Selected as a **Google Ph.D. Fellowship Nominee (NLP)**, top 3 of 6,000 participants." }
-  - { date: "2025.04", text: "Presented our hallucination-detection work at the **AAAI Spring Symposium 2025** (AI for Scientific Discovery track)." }
-  - { date: "2025.03", pin: true, text: "Received the **Outstanding Master's Student Award** at the Mizzou Engineering Awards Banquet." }
-  - { date: "2025.03", text: "Runner-up at the **MUIDSI x IBM AI for Social Good Hackathon** with **VisionAI** ($1,000)." }
-  - { date: "2025.01", text: "Two papers accepted at the **AAAI 2025 Spring Symposium**: **HalluMat** and **HalluFormer**." }
-  - { date: "2024.09", text: "Began documenting scalable **LLM-as-a-Service** infrastructure using Helm charts and node-affinity scheduling on NRP Nautilus." }
-  - { date: "2023.12", text: "Joined the **Radiant Lab** and the **Data Intensive Computing Lab** as a graduate research assistant." }
-  - { date: "2023.08", text: "Began research on **faithfulness, interpretability and robustness** in large generative language models." }
-  - { date: "2023.06", text: "Admitted to the Ph.D. program in Computer Science at the University of Missouri." }
-  - { date: "2023.05", text: "Graduated with a B.Tech in CSE (Data Analytics) from VIT Vellore." }
-  - { date: "2023.04", text: "Honored with the **Dean's Research Excellence Award** at VIT for multilingual NLP and social media analytics." }
-  - { date: "2022.05", text: "Started as a volunteer research intern at **Adobe Research**." }
-
-# -----------------------------------------------------------------------------
-# AI ASSISTANT CONFIGURATION
-#   Consumed by assets/data/kb.json and assets/js/assistant.js.
-#   NOTE: no API key ever appears here. The key lives only as a server-side
-#   environment variable on the proxy. See assistant-api/README.md.
-# -----------------------------------------------------------------------------
+- date: Sep 2026
+  text: '**One Threshold Does Not Fit All Languages** accepted for an oral presentation at the **Global South in
+    AI Workshop at NeurIPS 2026**.'
+- date: Fall 2026
+  text: Teaching **Designing End-to-End ML Systems**, with hands-on labs on Chameleon Cloud.
+- date: Aug 2026
+  text: Completed my **Research Data Science internship at Microsoft**, working on temporal features for Windows
+    retention.
+- date: '2026'
+  text: '**CAMP**, joint first-authored with Nagarjuna Chowdary Kandimalla, accepted at **WORKS at SC 2026**.'
+- date: '2026'
+  text: Presented work on coding-agent execution reliability at **ACM REP** and cold-start-aware LLM serving at
+    **IEEE CLOUD**.
+- date: '2026'
+  text: Selected for the **ACM Doctoral Summit (Top 100)** and received **Chameleon Cloud** and **EECS Graduate
+    Travel** awards.
+- date: Jan 2026
+  text: Presented work on reproducibility and multi-model orchestration at the **RAI and DAI workshops at AAAI 2026**.
+- date: '2025'
+  text: Selected as a **Google PhD Fellowship Nominee (NLP)** at the University of Missouri; received the **Outstanding
+    Master’s Student Award** and a **NeurIPS Outstanding Reviewer Award**.
 assistant:
-  greeting: >-
-    Hi. I answer from Bhanu's CV, papers and projects, and from nothing else. Ask
-    about the research, where he has worked, or how to get hold of him. I will
-    point you at the section each answer came from so you can check it yourself.
+  greeting: Hi. I answer from Bhanu's CV, papers and projects, and from nothing else. Ask about the research, where
+    he has worked, or how to get hold of him. I will point you at the section each answer came from so you can check
+    it yourself.
   suggestions:
-    - "What is his research actually about?"
-    - "What did he build at Microsoft?"
-    - "What are the AAAI 2026 workshop papers?"
-    - "Explain Pick-and-Spin"
-    - "Is he open to collaborating?"
+  - What is his research actually about?
+  - What did he build at Microsoft?
+  - What are the AAAI 2026 workshop papers?
+  - Explain Pick-and-Spin
+  - Is he open to collaborating?
   facts:
-    - id: contact
-      title: "Contact & availability"
-      section: "#about-me"
-      text: >-
-        Bhanu is reachable at bv3hz@umsystem.edu. He is a Ph.D. candidate at the
-        University of Missouri expecting to graduate in June 2027, based in Columbia,
-        Missouri, and open to research collaborations, internships, and speaking
-        invitations. He completed a Research Data Science internship at Microsoft in
-        Redmond, Washington in summer 2026.
-    - id: research-statement
-      title: "Research statement"
-      section: "#about-me"
-      text: >-
-        His work sits at the intersection of three questions. Orchestration: when many
-        language models share limited GPU capacity, which model should answer a given
-        request, and what should stay resident? His Pick-and-Spin router treats this as
-        a bandit problem and reached 61% GPU utilization against a 31% static baseline.
-        Reproducibility: code generated by AI coding agents usually runs for its author
-        and fails for everyone else because the environment specification is incomplete.
-        He audited 300 agent-generated projects and found 68.3% reproduction success and
-        a 13.5x dependency gap between what agents declare and what the code needs. Trust: whether a model's output is faithful
-        to its sources, measured with benchmarks like HalluMatData and detectors like
-        HalluFormer rather than by impression.
-    - id: funding
-      title: "Funding and collaborators"
-      section: "#research"
-      text: >-
-        His research has been funded by NASA (AIST), the NSF, and the Department of
-        Defense through ERDC. Collaborators include Dr. Tanu Malik and Dr. Jianlin Cheng
-        at the University of Missouri, Dr. Ashish Gehani at SRI International,
-        Dr. Kwo-Sen Kuo at NASA, Dr. Abhilash Jindal at IIT Delhi, and Dr. Chitta Baral
-        and Dr. Lenore Dai at Arizona State University.
-    - id: infrastructure
-      title: "Infrastructure experience"
-      section: "#experience"
-      text: >-
-        He has deployed and operated LLM inference on the NSF Nautilus cluster of the
-        National Research Platform using Kubernetes, Helm, vLLM and KEDA autoscaling,
-        managing GPU quotas and deployment automation for nine self-hosted models. He has
-        also run serverless inference on AWS SageMaker and Lambda, replayed 300
-        reproducibility experiments through SLURM, and built the Cosmos/SCOPE data layer
-        over Azure streams during his Microsoft internship.
+  - id: contact
+    title: Contact & availability
+    section: '#about-me'
+    text: Bhanu is reachable at bv3hz@umsystem.edu. He is a Ph.D. candidate at the University of Missouri expecting
+      to graduate in May 2027, based in Columbia, Missouri, and open to research collaborations, internships, and
+      speaking invitations. He completed a Research Data Science internship at Microsoft in Redmond, Washington
+      in summer 2026.
+  - id: research-statement
+    title: Research statement
+    section: '#about-me'
+    text: 'His work sits at the intersection of three questions. Orchestration: when many language models share
+      limited GPU capacity, which model should answer a given request, and what should stay resident? His Pick-and-Spin
+      router treats this as a bandit problem and reached 61% GPU utilization against a 31% static baseline. Reproducibility:
+      code generated by AI coding agents usually runs for its author and fails for everyone else because the environment
+      specification is incomplete. He audited 300 agent-generated projects and found 68.3% reproduction success
+      and a 13.5x dependency gap between what agents declare and what the code needs. Trust: whether a model''s
+      output is faithful to its sources, measured with benchmarks like HalluMatData and detectors like HalluFormer
+      rather than by impression.'
+  - id: funding
+    title: Funding and collaborators
+    section: '#research'
+    text: His research has been funded by NASA (AIST), the NSF, and the Department of Defense through ERDC. Collaborators
+      include Dr. Tanu Malik and Dr. Jianlin Cheng at the University of Missouri, Dr. Ashish Gehani at SRI International,
+      Dr. Kwo-Sen Kuo at NASA, Dr. Abhilash Jindal at IIT Delhi, and Dr. Chitta Baral and Dr. Lenore Dai at Arizona
+      State University.
+  - id: infrastructure
+    title: Infrastructure experience
+    section: '#experience'
+    text: He has deployed and operated LLM inference on the NSF Nautilus cluster of the National Research Platform
+      using Kubernetes, Helm, vLLM and KEDA autoscaling, managing GPU quotas and deployment automation for nine
+      self-hosted models. He has also run serverless inference on AWS SageMaker and Lambda, replayed 300 reproducibility
+      experiments through SLURM, and built the Cosmos/SCOPE data layer over Azure streams during his Microsoft internship.
+updated: September 29, 2026
+cv_date: September 25, 2026
+cv_pdf: /files/Bhanu_Prakash_Academic_CV.pdf
