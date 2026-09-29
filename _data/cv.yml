@@ -15,8 +15,10 @@ profile:
   show_phone: false
   avatar: images/Bhanu1.jpg
   tagline: Trust, reproducibility and efficiency turn out to be one problem.
-  summary: 'I study how to make AI systems reliable in practice: how to serve language models efficiently, reproduce
-    the software they generate, and evaluate when their outputs can be trusted.'
+  summary: >-
+    My research focuses on LLM serving, agentic AI, and reproducibility.
+    I work on cold-start-aware model routing, dependency analysis for AI-generated
+    code, and evaluation of machine-learning systems.
   dissertation: 'Executable Reliability: Unifying Trust, Reproducibility, and Efficiency in LLM-Based Systems'
   dissertation_sub: Trust, reproducibility and efficiency turn out to be one problem
   area: AI, Systems & Networking
