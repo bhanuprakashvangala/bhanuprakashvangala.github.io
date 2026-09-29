@@ -27,7 +27,7 @@ author:
 #   Set `endpoint` to a deployed proxy (see assistant-api/README.md) for full
 #   generated answers. NEVER put an API key here -- this file is public.
 assistant:
-  enabled                : true
+  enabled                : false
   endpoint               : "https://bhanuprakashvangala-github-io.vercel.app/api/chat"
   model                  : "gpt-oss"
 
@@ -59,6 +59,8 @@ exclude:
   - node_modules
   - package.json
   - tmp
+  - scripts
+  - docs
   - vendor
   - google_scholar_crawler
   - assistant-api

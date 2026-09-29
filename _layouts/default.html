@@ -1,33 +1,31 @@
----
-layout: compress
----
-
 <!doctype html>
-<html lang="en" class="no-js">
-  <head>
-    {% include head.html %}
-    {% include head/custom.html %}
-  </head>
-
-  <body>
-
-    {% include browser-upgrade.html %}
-    {% include masthead.html %}
-
-    <div id="main" role="main">
-      {% include sidebar.html %}
-    
-      <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-        {% if page.title %}<meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
-        <div class="page__inner-wrap">
-          <section class="page__content" itemprop="text">
-            {{ content }}
-          </section>
-        </div>
-      </article>
-    </div>
-
-    {% include scripts.html %}
-
-  </body>
-</html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% if page.title and page.title != '' %}{{ page.title | escape }} · {% endif %}{{ site.title | escape }}</title>
+<meta name="description" content="{{ page.excerpt | default: site.description | strip_html | escape }}">
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+<meta property="og:title" content="{{ site.title | escape }}">
+<meta property="og:description" content="{{ site.description | escape }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<meta property="og:image" content="{{ '/images/portrait.webp' | absolute_url }}">
+<link rel="icon" href="{{ '/images/favicon.svg' | relative_url }}" type="image/svg+xml">
+<link rel="stylesheet" href="{{ '/assets/css/portfolio.css' | relative_url }}">
+<meta name="theme-color" content="#ffffff">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":{{ site.title | jsonify }},"url":{{ site.url | jsonify }},"jobTitle":{{ site.data.cv.profile.role | jsonify }},"affiliation":{"@type":"CollegeOrUniversity","name":"University of Missouri"}}</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header wrap">
+<a class="site-name" href="{{ '/' | relative_url }}">Bhanu Prakash Vangala<span class="name-dot">.</span></a>
+<nav aria-label="Main navigation">
+<a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>About</a>
+<a href="{{ '/publications/' | relative_url }}"{% if page.url == '/publications/' %} aria-current="page"{% endif %}>Publications</a>
+<a href="{{ '/projects/' | relative_url }}"{% if page.url == '/projects/' %} aria-current="page"{% endif %}>Projects</a>
+<a href="{{ '/cv/' | relative_url }}"{% if page.url == '/cv/' %} aria-current="page"{% endif %}>CV</a>
+</nav></header>
+<main id="main" class="wrap" tabindex="-1">{{ content }}</main>
+<footer class="site-footer wrap"><span>{{ site.title }} · Columbia, Missouri</span><span>Updated {{ site.data.cv.updated }}</span></footer>
+</body></html>

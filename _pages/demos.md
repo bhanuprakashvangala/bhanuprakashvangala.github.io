@@ -1,4 +1,5 @@
 ---
+layout: legacy
 permalink: /demos/
 title: "Live demos"
 excerpt: "Run small in-browser demonstrations of Bhanu Prakash Vangala's research on reproducibility and LLM orchestration."
