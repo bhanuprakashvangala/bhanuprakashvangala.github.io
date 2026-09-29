@@ -1,6 +1,4 @@
-# Portfolio content, reconciled with the September 25, 2026 academic CV.
-# Published manuscripts take precedence for titles and author order.
-# CAMP equal first authorship confirmed by Bhanu on September 29, 2026.
+# Publication titles follow the latest academic CV. CAMP authorship and AdaptFlow status follow author corrections.
 profile:
   name: Bhanu Prakash Vangala
   short_name: Bhanu
@@ -15,10 +13,8 @@ profile:
   show_phone: false
   avatar: images/Bhanu1.jpg
   tagline: Trust, reproducibility and efficiency turn out to be one problem.
-  summary: >-
-    My research focuses on LLM serving, agentic AI, and reproducibility.
-    I work on cold-start-aware model routing, dependency analysis for AI-generated
-    code, and evaluation of machine-learning systems.
+  summary: My research focuses on LLM serving, agentic AI, and reproducibility. I work on cold-start-aware model
+    routing, dependency analysis for AI-generated code, and evaluation of machine-learning systems.
   dissertation: 'Executable Reliability: Unifying Trust, Reproducibility, and Efficiency in LLM-Based Systems'
   dissertation_sub: Trust, reproducibility and efficiency turn out to be one problem
   area: AI, Systems & Networking
@@ -47,7 +43,7 @@ links:
   icon: fas fa-graduation-cap
 - id: dblp
   label: DBLP
-  url: https://dblp.org/pid/75/6568-6.html
+  url: https://dblp.org/pid/424/9932.html
   icon: fas fa-database
 - id: github
   label: GitHub
@@ -215,15 +211,16 @@ publications:
   - label: PDF
     url: /files/papers/one-threshold.pdf
   kind: Oral
-  featured: true
+  image: images/publications/one-threshold.png
+  image_alt: Per-language coverage and deferral rates for pooled and language-conditional thresholds
 - id: beyond-functional-correctness
   ref: 2
-  title: 'AI-Generated Code Is Not Reproducible (Yet): An Empirical Study of Execution Reliability in LLM-Based
-    Coding Agents'
+  title: 'AI-Generated Code Is Not Reproducible (Yet): An Empirical Study of Environment Executability'
   authors:
   - Bhanu Prakash Vangala
-  - Ashish Gehani
+  - Ali Adibifar
   - Tanu Malik
+  - Ashish Gehani
   venue: ACM REP 2026
   venue_full: ACM REP 2026
   status: accepted
@@ -232,10 +229,19 @@ publications:
   - label: Paper
     url: https://doi.org/10.1145/3820002.3828581
   kind: Oral
-  featured: true
+  related_work:
+    label: 'Earlier workshop version: RAI at AAAI 2026'
+    url: https://arxiv.org/abs/2512.22387
+    authors:
+    - Bhanu Prakash Vangala
+    - Ali Adibifar
+    - Ashish Gehani
+    - Tanu Malik
+  image: images/publications/execution-reliability.png
+  image_alt: Clean-environment execution evaluation for AI-generated code
 - id: pick-and-spin
   ref: 3
-  title: 'Pick and Spin: Cold-Start-Aware Routing for Self-Hosted LLM Serving'
+  title: 'Pick and Spin: Efficient Cold-Start-Aware Routing for Self-Hosted LLM Serving'
   authors:
   - Bhanu Prakash Vangala
   - Tanu Malik
@@ -247,7 +253,8 @@ publications:
   - label: PDF
     url: /files/papers/pick-and-spin.pdf
   kind: Oral
-  featured: true
+  image: images/AdaptiveLLMaaS.png
+  image_alt: Pick and Spin routing and model orchestration architecture
 - id: camp
   ref: 4
   title: 'CAMP: Consumption-Aware Memory Prediction for Scientific Workflows'
@@ -262,16 +269,20 @@ publications:
   links:
   - label: PDF
     url: /files/papers/camp.pdf
+  - label: Code
+    url: https://github.com/bhanuprakashvangala/CAMP
   equal_contributors:
   - Nagarjuna Chowdary Kandimalla
   - Bhanu Prakash Vangala
-  featured: true
+  image: images/publications/camp.png
+  image_alt: Measured eBPF explicit-read and memory-mapped consumption across scientific workflows
 - id: multi-model-orchestration
   ref: 5
   title: Efficient Multi-Model Orchestration for Self-Hosted Large Language Models
   authors:
   - Bhanu Prakash Vangala
   - Tanu Malik
+  - Ashish Gehani
   venue: DAI Workshop at AAAI 2026
   venue_full: DAI Workshop at AAAI 2026
   status: accepted
@@ -280,25 +291,11 @@ publications:
   - label: arXiv
     url: https://arxiv.org/abs/2512.22402
   kind: Oral
-- id: not-reproducible
-  ref: 17
-  title: 'AI-Generated Code Is Not Reproducible (Yet): An Empirical Study of Dependency Gaps in LLM-Based Coding
-    Agents'
-  authors:
-  - Bhanu Prakash Vangala
-  - Ali Adibifar
-  - Ashish Gehani
-  - Tanu Malik
-  venue: RAI Workshop at AAAI 2026
-  venue_full: RAI Workshop at AAAI 2026
-  status: accepted
-  year: 2026
-  links:
-  - label: arXiv
-    url: https://arxiv.org/abs/2512.22387
+  image: images/AdaptiveLLMaaS.png
+  image_alt: Multi-model serving and orchestration framework
 - id: hallumat
   ref: 6
-  title: 'HalluMat: Detecting Hallucinations in LLM-Generated Materials Science Content Through Multi-Stage Verification'
+  title: 'HalluMat: A Benchmark Dataset and Framework for Hallucination Detection in LLMs for Materials Science'
   authors:
   - Bhanu Prakash Vangala
   - Sajid Mahmud
@@ -313,7 +310,8 @@ publications:
   - label: arXiv
     url: https://arxiv.org/abs/2512.22396
   kind: Oral
-  featured: true
+  image: images/HalluMat-Portfolio Image.png
+  image_alt: HalluMat knowledge graph used for hallucination analysis
 - id: halluformer
   ref: 7
   title: 'HalluFormer: A Transformer-Based Framework for Detecting Hallucination in Large Language Models'
@@ -336,6 +334,8 @@ publications:
   - Pawan Neupane
   - Joel Selvaraj
   - Bhanu Prakash Vangala
+  image: images/HalluFormer-Portfolio Image.png
+  image_alt: HalluFormer transformer classification architecture
 - id: adaptflow
   ref: 8
   title: 'AdaptFlow: Efficient Adaptation of Accuracy-First AI Workflows under Data Drift'
@@ -347,9 +347,11 @@ publications:
   - Tanu Malik
   venue: MLSys 2027
   venue_full: MLSys 2027
-  status: review
+  status: preparation
   year: 2027
   links: []
+  image: images/publications/adaptflow.png
+  image_alt: AdaptFlow plan enumeration, online optimization, and query execution
 - id: env-gap
   ref: 9
   title: 'Code That Works, Environments That Don’t: Measuring Environment Reproducibility in AI-Generated Software'
@@ -361,6 +363,8 @@ publications:
   status: review
   year: 2026
   links: []
+  image: images/publications/env-gap.png
+  image_alt: Declared, installed, and traced software dependency sets
 - id: language-labels
   ref: 10
   title: How Many Labels Does a Language Need? Annotation Budgets and Cross-Lingual Pooling for African-Language
@@ -374,6 +378,8 @@ publications:
   status: review
   year: 2026
   links: []
+  image: images/publications/language-labels.png
+  image_alt: MasakhaNEWS learning curves across annotation budgets
 - id: biomedical-evaluation
   ref: 11
   title: 'Evaluation Choices Shape Biomedical ML Claims: A Pediatric Pneumonia Benchmark Case Study'
@@ -387,6 +393,8 @@ publications:
   status: review
   year: 2026
   links: []
+  image: images/Pneumonia-Portfolio Image.png
+  image_alt: Chest X-ray classification research
 - id: seed-xai
   ref: 12
   title: AI Sees, XAI Explains? Evaluating Explanation Reliability in Automated Seed Quality Inspection
@@ -397,7 +405,11 @@ publications:
   venue_full: Computers and Electronics in Agriculture
   status: review
   year: 2026
-  links: []
+  links:
+  - label: Code
+    url: https://github.com/bhanuprakashvangala/XAI
+  image: images/publications/seed-xai.png
+  image_alt: Attribution maps for held-out soybean images
 - id: synthetic-seeds
   ref: 13
   title: Visual Realism Does Not Predict Seed-Quality Utility in AI-Generated Synthetic Seeds
@@ -409,6 +421,8 @@ publications:
   status: review
   year: 2026
   links: []
+  image: images/publications/synthetic-seeds.png
+  image_alt: Real soybean seeds compared with generated samples
 - id: seed-quality
   ref: 14
   title: AI-Generated Seed Images Do Not Outperform Matched Reuse of Scarce Real Defect Images in Seed Quality Assessment
@@ -420,6 +434,8 @@ publications:
   status: review
   year: 2026
   links: []
+  image: images/publications/seed-quality.png
+  image_alt: Real and generated maize kernels used in the cross-species check
 - id: brain-tumor
   ref: 15
   title: 'Scores That Hold, Benchmarks That Leak: Measuring Dataset Contamination in Public Brain-Tumor MRI Classification'
@@ -433,6 +449,8 @@ publications:
   status: review
   year: 2026
   links: []
+  image: images/Brain Tumor-Portfolio Image.png
+  image_alt: Brain MRI classification research
 - id: adaptive-inference
   ref: 16
   title: 'Adaptive Inference: Orchestrating Fine-Tuned LLMs with Serverless GPUs in HPC Environments'
@@ -445,6 +463,8 @@ publications:
   year: 2025
   links: []
   kind: Poster
+  image: images/LLM-as-Service-portfolio-image.png
+  image_alt: Kubernetes LLM-as-a-Service deployment architecture
 pub_filters:
 - id: all
   label: All
@@ -529,6 +549,83 @@ research:
     text: 'The HalluMatData benchmark with retrieval augmentation over IR, NER and semantic similarity: a 30% hallucination
       reduction.'
 projects:
+- id: image-colorization
+  title: Image Colorization using AI
+  authors:
+  - Bhanu Prakash Vangala
+  - Abdul Mannan Khan
+  - Sagar Sujith Somepalli
+  - Rakesh Chigurupati
+  - Pratham Shah
+  - Shubham Nandlal Vishwakarma
+  status: IJARESM · 2022
+  homepage: true
+  image: images/image colorization-portfolio image.jpg
+  image_alt: A black-and-white portrait beside its colorized version
+  desc: Deep learning for adding color to grayscale photographs using convolutional autoencoders and generative
+    adversarial networks.
+  links:
+  - label: Paper / project
+    url: https://drive.google.com/file/d/14GH6eNzC28uhcN1Y-E3iZJ9a5G8mdXLz/view?usp=sharing
+  - label: Publication
+    url: https://www.researchgate.net/publication/376451637_Image_Colorization_using_AI
+  earlier_work: true
+  github: https://github.com/bhanuprakashvangala/portfolio-artifacts/tree/main/projects/image-colorization
+- id: koo
+  title: Multilingual Sentiment Analysis on KOO User Posts
+  status: B.Tech thesis · 2023
+  homepage: true
+  image: images/KOO-Portfolio Image.png
+  image_alt: Word cloud of Indian languages represented in the KOO sentiment-analysis project
+  desc: Sentiment analysis of multilingual social-media posts on KOO. B.Tech thesis with Prof. Ponnurangam Kumaraguru
+    and Dr. Soubhagya Barpanda.
+  links:
+  - label: Thesis
+    url: https://drive.google.com/file/d/1a2Xan4sDdC7ib7Hj5HODcjPyztmTee4k/view?usp=sharing
+  earlier_work: true
+  github: https://github.com/bhanuprakashvangala/portfolio-artifacts/tree/main/projects/koo
+- id: llm-service-thesis
+  title: Deploying LLMs as a Service in Kubernetes HPC Clusters
+  status: M.S. thesis · 2025
+  homepage: true
+  image: images/LLM-as-Service-portfolio-image.png
+  image_alt: Kubernetes services, model pods, persistent storage, and ingress architecture
+  desc: LLM inference infrastructure on a Kubernetes HPC cluster. M.S. thesis advised by Prof. Grant J. Scott and
+    Prof. Jianlin Cheng.
+  links:
+  - label: Thesis
+    url: https://drive.google.com/file/d/1XpQzEPGFAayWVz51zdXsPldg0CrV_DdQ/view?usp=sharing
+  earlier_work: true
+  github: https://github.com/bhanuprakashvangala/LLM-as-a-Service
+- id: brain-tumor-project
+  title: Brain Tumor Detection in MRI Images using Transfer Learning
+  status: Research report · 2024
+  image: images/Brain Tumor-Portfolio Image.png
+  image_alt: MRI images for brain tumor classification
+  desc: Deep-learning classification of brain tumors from MRI images.
+  links:
+  - label: Project report
+    url: https://www.researchgate.net/publication/380785737_Brain_Tumor_Detection_in_MRI_Images_using_Transfer_Learning
+  homepage: true
+  authors:
+  - Bhanu Prakash Vangala
+  earlier_work: true
+  github: https://github.com/bhanuprakashvangala/portfolio-artifacts/tree/main/projects/brain-tumor-project
+- id: pneumonia-project
+  title: Pneumonia Detection on X-ray Images Using Deep Learning
+  status: Preprint · 2025
+  image: images/Pneumonia-Portfolio Image.png
+  image_alt: Chest X-ray examples for pneumonia classification
+  desc: Deep-learning models for pneumonia classification from chest X-rays.
+  links:
+  - label: Preprint
+    url: https://www.researchgate.net/publication/387956500_Pneumonia_Detection_on_X-ray_Images_Using_Deep_Learning
+  homepage: true
+  authors:
+  - Bhanu Prakash Vangala
+  - Govardhan Khadakkar
+  earlier_work: true
+  github: https://github.com/bhanuprakashvangala/portfolio-artifacts/tree/main/projects/pneumonia-project
 - id: learnllm
   featured: true
   title: LearnLLM.dev
@@ -543,6 +640,11 @@ projects:
   links:
   - label: learnllm.dev
     url: https://learnllm.dev
+  github: https://github.com/bhanuprakashvangala/portfolio-artifacts/tree/main/projects/learnllm
+  image: images/projects/learnllm.jpg
+  image_alt: Illustrative photograph of a laptop used for programming
+  image_kind: photo
+  image_position: right
 - id: visionai
   title: 'VisionAI: AI assistance for visually impaired users'
   status: Runner-up, $1,000
@@ -552,6 +654,11 @@ projects:
   - accessibility
   desc: Fine-tuned multimodal LLMs for hazard detection and accessibility from a live camera feed. Runner-up at
     the IBM / MUIDSI Generative AI for Social Good Hackathon 2025.
+  github: https://github.com/bhanuprakashvangala/VisionAI
+  image: images/Hackathon Winner 2.jpg
+  image_alt: Bhanu Prakash Vangala with a teammate at the Generative AI for Social Good hackathon
+  image_kind: photo
+  image_position: right
 - id: reflectmemory
   featured: true
   title: 'ReflectMemory: persistent memory for long-context reasoning'
@@ -559,8 +666,12 @@ projects:
   tags:
   - agents
   - memory
-  desc: Stores and re-injects chain-of-thought embeddings so a long-running agent keeps a stable line of reasoning
-    across sessions instead of restarting it.
+  desc: A prototype for persisting and retrieving relevant context across long-running agent sessions.
+  github: https://github.com/bhanuprakashvangala/reflectmemory
+  image: images/projects/reflectmemory.jpg
+  image_alt: Illustrative photograph of servers used for persistent data storage
+  image_kind: photo
+  image_position: right
 - id: indoor-nav
   title: Autonomous indoor navigation
   status: Completed
@@ -570,6 +681,11 @@ projects:
   - mobile
   desc: BLE beacons and a Raspberry Pi running A* and Dijkstra pathfinding, paired with a Kotlin app giving turn-by-turn
     guidance indoors where GPS fails.
+  github: https://github.com/bhanuprakashvangala/indoor-navigation
+  image: images/projects/indoor-nav.jpg
+  image_alt: Illustrative photograph of a university corridor
+  image_kind: photo
+  image_position: right
 - id: chatmed
   featured: true
   title: 'ChatMed: grounded medical question answering'
@@ -578,6 +694,11 @@ projects:
   - nlp
   - medical
   desc: A symptom-guidance assistant built on BioGPT and grounded in PubMed articles.
+  github: https://github.com/bhanuprakashvangala/chatmed.github.io
+  image: images/projects/chatmed.jpg
+  image_alt: Illustrative photograph of a stethoscope beside medical study notes
+  image_kind: photo
+  image_position: right
 - id: cropinsight
   title: 'CropInsight: crop health and yield forecasting'
   status: Completed
@@ -585,6 +706,11 @@ projects:
   - vision
   - science
   desc: Computer vision plus sequence models for crop health monitoring and yield forecasting from field imagery.
+  github: https://github.com/bhanuprakashvangala/CropInsight
+  image: images/projects/cropinsight.jpg
+  image_alt: Illustrative photograph of a wheat field
+  image_kind: photo
+  image_position: right
 - id: socialsift
   title: 'SocialSift: crisis-aware multilingual sentiment analysis'
   status: Completed
@@ -592,6 +718,48 @@ projects:
   - nlp
   - multilingual
   desc: Transformer-based sentiment and intent analysis over multilingual social media during natural disasters.
+  github: https://github.com/bhanuprakashvangala/SocialSift
+  image: images/projects/socialsift.jpg
+  image_alt: Illustrative photograph of a social-media page on a smartphone
+  image_kind: photo
+  image_position: right
+- id: flexiflow
+  title: 'FlexiFlow: Bandit-based Model Switching in ML Workflows'
+  status: Research project
+  desc: Runtime model selection for multi-step machine-learning pipelines, using bandit strategies to balance quality
+    and execution cost.
+  github: https://github.com/bhanuprakashvangala/adaptive-routing-examples
+  image: images/projects/flexiflow-results.png
+  image_alt: Original FlexiFlow experiment plots comparing operator-level and job-level routing strategies
+  image_position: right
+- id: trace
+  title: 'TRACE: A Programmable Cloud Laboratory for Autonomous Experimentation'
+  status: Research project
+  desc: Closed-loop experimentation across scientific instruments, connecting experiment planning, execution, measurements,
+    and provenance.
+  github: https://github.com/bhanuprakashvangala/portfolio-artifacts/tree/main/projects/trace
+  image: images/projects/trace-assembly.png
+  image_alt: Top-view assembly output from the autonomous experimentation project
+  image_position: right
+- id: reproducible-containers
+  title: Reproducible Containers for Advancing Process-oriented Collaborative Analytics
+  status: Research project
+  desc: Capturing scientific applications with their dependencies and provenance so that computational analyses
+    can be replayed and inspected.
+  github: https://github.com/bhanuprakashvangala/portfolio-artifacts/tree/main/projects/reproducible-containers
+  image: images/publications/execution-reliability.png
+  image_alt: Research figure from the AI-generated code reproducibility study
+  image_position: right
+- id: book-recommendation
+  title: Book Recommendation System
+  status: Course project
+  desc: Nearest-neighbor book recommendations from a collected dataset of about 30,000 records, implemented in Python
+    and Google Colab.
+  github: https://github.com/bhanuprakashvangala/Book-Recommendation-System
+  image: images/projects/book-recommendation.jpg
+  image_alt: Illustrative photograph of books arranged on library shelves
+  image_kind: photo
+  image_position: right
 awards:
 - id: acm-summit
   year: '2026'
