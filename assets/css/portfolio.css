@@ -1158,3 +1158,9 @@ main {
     content: none;
   }
 }
+.news-body::before {
+  content: "\2714";
+  color: #2f9e5b;
+  font-size: 13px;
+  margin-right: 7px;
+}
