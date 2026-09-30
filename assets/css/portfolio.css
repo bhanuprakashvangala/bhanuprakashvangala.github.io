@@ -564,7 +564,8 @@ sup {
   height: 16px;
   vertical-align: -2px;
 }
-.github-link {
+.github-link,
+.resource-link {
   white-space: nowrap;
   display: inline-flex;
   align-items: center;
@@ -572,34 +573,17 @@ sup {
   min-width: 28px;
   min-height: 28px;
 }
-.project-card.image-right {
-  grid-template-columns: minmax(0, 1fr) 250px;
-  column-gap: 34px;
+.resource-icon {
+  width: 18px;
+  height: 18px;
 }
-.project-card.image-right .pub-image {
-  grid-column: 2;
-  grid-row: 1;
+.project-links,
+.pub-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
 }
-.project-card.image-right .project-body {
-  grid-column: 1;
-  grid-row: 1;
-}
-.project-card.image-right .pub-image img {
-  height: auto;
-}
-@media (max-width: 680px) {
-  .project-card.image-right {
-    grid-template-columns: minmax(0, 1fr) 170px;
-    column-gap: 20px;
-  }
-}
-@media (max-width: 480px) {
-  .project-card.image-right {
-    grid-template-columns: minmax(0, 1fr) 110px;
-    column-gap: 15px;
-  }
-}
-
 .project-card.has-photo .pub-image img {
   height: 158px;
   object-fit: cover;

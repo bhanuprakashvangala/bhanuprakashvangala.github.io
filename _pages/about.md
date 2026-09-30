@@ -12,6 +12,8 @@ redirect_from:
 <p>I am a Ph.D. candidate in Computer Science at the <a href="https://engineering.missouri.edu/departments/eecs/">University of Missouri</a>, advised by <a href="{{ p.advisor_url }}">Prof. Tanu Malik</a> in the <a href="https://radiant-systems-lab.github.io/">Radiant Lab</a>.</p>
 <p>{{ p.summary }}</p>
 <p>Previously, I was a Research Data Science Intern at <strong>Microsoft</strong>, working on temporal features for Windows retention. I also build <a href="https://learnllm.dev">LearnLLM.dev</a>, a platform for learning to build with large language models.</p>
+{% assign google_nomination = cv.awards | where: 'id', 'google-phd' | first %}
+<p>I was a <a href="{{ google_nomination.url }}" title="2025 Google PhD Fellowship application">Google PhD Fellowship nominee</a> (NLP, 2025) and received the <strong>Outstanding Master’s Student Award</strong> at the University of Missouri. I was also selected for the <strong>Top 100 at the ACM Doctoral Summit</strong> in 2026.</p>
 <p class="profile-links"><a href="mailto:{{ p.email }}">Email</a><a href="https://scholar.google.com/citations?user=qHBOnpkAAAAJ&amp;hl=en">Google Scholar</a><a href="https://github.com/bhanuprakashvangala">GitHub</a><a href="https://www.linkedin.com/in/vangalabhanuprakash/">LinkedIn</a><a href="{{ cv.cv_pdf | relative_url }}">CV (PDF)</a></p>
 </div>
 <figure class="portrait"><img src="{{ '/images/portrait.webp' | relative_url }}" width="440" height="540" alt="Bhanu Prakash Vangala" fetchpriority="high"></figure>
@@ -46,7 +48,7 @@ redirect_from:
 <div class="section-head"><h2 id="experience-title">Experience &amp; education</h2><a href="{{ '/cv/' | relative_url }}">Full CV</a></div>
 <div class="two-columns"><div><h3 class="small-heading">Experience</h3>
 {% assign featured_experience = cv.experience | where: 'featured', true %}
-{% for x in featured_experience %}<div class="compact-entry"><span class="date">{{ x.short_period }}</span><h4>{{ x.org }}</h4><p>{{ x.title }}</p></div>{% endfor %}
+{% for x in featured_experience %}<div class="compact-entry"><span class="date">{{ x.short_period }}</span><h4>{% if x.url %}<a href="{{ x.url }}">{{ x.org }}</a>{% else %}{{ x.org }}{% endif %}</h4><p>{{ x.title }}</p></div>{% endfor %}
 </div><div><h3 class="small-heading">Education</h3>
 {% for e in cv.education %}<div class="compact-entry"><span class="date">{{ e.end }}</span><h4>{{ e.degree }}</h4><p>{{ e.org }}</p></div>{% endfor %}
 </div></div></section>
