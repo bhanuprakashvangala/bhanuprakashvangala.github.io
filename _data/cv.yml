@@ -945,64 +945,72 @@ skills:
   - Pandas / NumPy
   - GitHub Actions CI/CD
 news:
-- date: Sep 2026
-  text: '📄 **One Threshold Does Not Fit All Languages** accepted for an oral presentation at the **Global South in AI Workshop at NeurIPS 2026**.'
-- date: Fall 2026
-  text: '🧑‍🏫 Teaching assistant for Designing End-to-End ML Systems, with hands-on labs on Chameleon Cloud and marimo notebooks.'
-- date: Aug 2026
-  text: '💼 Completed my **Research Data Science internship at Microsoft** in Redmond, WA: temporal featurization for predictive Windows retention across 1B+ users.'
+- date: 09/2026
+  new: true
+  text: '📄 Our paper [One Threshold Does Not Fit All Languages](/files/papers/one-threshold.pdf) with Navya Vangala was accepted as an **oral** at the [Global South in AI Workshop at NeurIPS 2026](https://sites.google.com/view/globalsouthai-neurips26/home)! We show that each low-resource language needs its own rule for when a model should answer and when to hand off to a human.'
+- date: 08/2026
+  new: true
+  text: '🧑‍🏫 This fall I am a teaching assistant for Designing End-to-End ML Systems at Mizzou, building hands-on labs on [Chameleon Cloud](https://www.chameleoncloud.org/) and [marimo](https://marimo.io/) notebooks.'
+- date: 08/2026
+  new: true
+  text: '💼 Wrapped up my summer as a Research Data Science Intern at [Microsoft](https://www.microsoft.com) in Redmond on the Windows Data team, working with [Anqi Cheng](https://www.linkedin.com/in/anqi-cheng-616a5559) and [Arturo Herrera](https://www.linkedin.com/in/juan-arturo-herrera-ph-d-41237191).'
 - date: '2026'
-  text: '📄 Our paper **CAMP: Consumption-Aware Memory Prediction for Scientific Workflows** got accepted at **WORKS at SC26**, the International Conference for High Performance Computing.'
+  new: true
+  text: '📄 Our paper **CAMP: Consumption-Aware Memory Prediction for Scientific Workflows** got accepted at [WORKS at SC26](https://works-workshop.org/), the International Conference for High Performance Computing. Check out the [paper](/files/papers/camp.pdf) and [code](https://github.com/bhanuprakashvangala/CAMP).'
+- date: 07/2026
+  text: '🎤 Presented [Pick and Spin](/files/papers/pick-and-spin.pdf) as an oral at [IEEE CLOUD 2026](https://services.conferences.computer.org/2026/cloud/) in Sydney, Australia.'
+- date: 07/2026
+  text: '🎤 Presented [AI-Generated Code Is Not Reproducible (Yet)](https://doi.org/10.1145/3820002.3828581) as an oral at [ACM REP 2026](https://www.tudelft.nl/en/events/2026/eemcs/2026-acm-conference-on-reproducibility-and-replicability) at TU Delft, Netherlands.'
 - date: '2026'
-  text: '🏆 Selected for the **ACM Doctoral Summit (Top 100)**.'
-- date: Jun 2026
-  text: '📄 **Pick and Spin: Efficient Cold-Start-Aware Routing for Self-Hosted LLM Serving** accepted as an **oral at IEEE CLOUD 2026**.'
-- date: May 2026
-  text: '📄 **AI-Generated Code Is Not Reproducible (Yet)** accepted as an **oral at ACM REP 2026**.'
-- date: Apr 2026
+  text: '🏆 Selected for the **Top 100** at the ACM Doctoral Summit.'
+- date: 06/2026
+  text: '📄 **Pick and Spin** was accepted as an **oral** at [IEEE CLOUD 2026](https://services.conferences.computer.org/2026/cloud/)! Cold-start-aware routing for self-hosted LLMs that cuts GPU-hours by 46%. Check out the [paper](/files/papers/pick-and-spin.pdf).'
+- date: 05/2026
+  text: '📄 **AI-Generated Code Is Not Reproducible (Yet)** was accepted as an **oral** at [ACM REP 2026](https://www.tudelft.nl/en/events/2026/eemcs/2026-acm-conference-on-reproducibility-and-replicability)! We ask whether code written by AI coding agents actually runs on someone else''s machine. Check out the [paper](https://doi.org/10.1145/3820002.3828581).'
+- date: 04/2026
   text: '✈️ Received the **EECS Graduate Travel Fellowship** from the University of Missouri College of Engineering.'
-- date: Apr 2026
-  text: '✈️ Awarded a **Chameleon Cloud Travel Award** (top 10 proposals) for the Sixth Chameleon User Meeting.'
-- date: Feb 2026
-  text: '🎤 My presentation on **Evaluating Dependency Gaps in LLM-Generated Code** was selected for the **Sixth Chameleon User Meeting** at NCAR''s Mesa Lab in Boulder, Colorado.'
-- date: Jan 2026
-  text: '🎤 Presented **AI-Generated Code Is Not Reproducible (Yet)** and **Efficient Multi-Model Orchestration for Self-Hosted LLMs** as **orals at the RAI and DAI workshops at AAAI 2026** in Singapore.'
-- date: Jan 2026
-  text: '📝 Submitted **Code That Works, Environments That Don''t** (an extended 1,000-instance study) to **AI Magazine**.'
-- date: Dec 2025
-  text: '📄 **AI-Generated Code Is Not Reproducible (Yet)** accepted at the **RAI Workshop at AAAI 2026**.'
-- date: Nov 2025
-  text: '📄 **Efficient Multi-Model Orchestration for Self-Hosted LLMs** accepted at the **DAI Workshop at AAAI 2026**.'
-- date: Nov 2025
-  text: '💼 Received an offer from **Microsoft** for a Research Data Science Internship (Summer 2026).'
-- date: Sep 2025
-  text: '🏆 Named an **Outstanding Reviewer** at the **AI4Mat Workshop, NeurIPS 2025** (AI for Accelerated Materials Design).'
-- date: May 2025
-  text: '🎓 Graduated with my **M.S. in Computer Science** and continued into the **Ph.D. program at Mizzou**.'
-- date: Apr 2025
-  text: '🏆 Selected as a **Google Ph.D. Fellowship Nominee (NLP)**, top 3 of 6,000 participants.'
-- date: Apr 2025
-  text: '🎤 Presented our hallucination-detection work at the **AAAI Spring Series 2025** (AI for Engineering and Scientific Discoveries).'
-- date: Mar 2025
-  text: '🏆 Received the **Outstanding Master''s Student Award** at the Mizzou Engineering Awards Banquet.'
-- date: Mar 2025
-  text: '🏆 Runner-up at the **MUIDSI x IBM AI for Social Good Hackathon** with **VisionAI** ($1,000).'
-- date: Jan 2025
-  text: '📄 Two papers accepted at the **AAAI Spring Series 2025**: **HalluMat** and **HalluFormer**.'
-- date: Sep 2024
-  text: '🔬 Began documenting scalable **LLM-as-a-Service** infrastructure using Helm charts and node-affinity scheduling on NRP Nautilus.'
-- date: Dec 2023
-  text: '🔬 Joined the **Radiant Lab** and the **Data Intensive Computing Lab** as a graduate research assistant.'
-- date: Aug 2023
-  text: '🔬 Began research on **faithfulness, interpretability and robustness** in large generative language models.'
-- date: Jun 2023
+- date: 04/2026
+  text: '✈️ Awarded a [Chameleon Cloud Travel Award](https://engineering.missouri.edu/2026/exploring-how-ai-can-strengthen-research-reproducibility/) (top 10 proposals) and presented **Evaluating Dependency Gaps in LLM-Generated Code** at the Sixth Chameleon User Meeting, NCAR Mesa Lab, Boulder, Colorado.'
+- date: 03/2026
+  text: '🎤 Gave an invited talk at the MINDFUL Seminar at the University of Missouri.'
+- date: 01/2026
+  text: '🎤 Presented two orals at AAAI 2026 in Singapore: [AI-Generated Code Is Not Reproducible (Yet)](https://arxiv.org/abs/2512.22387) at the [RAI Workshop](https://reproducibleai.github.io/) and [Efficient Multi-Model Orchestration for Self-Hosted LLMs](https://arxiv.org/abs/2512.22402) at the [DAI Workshop](https://dai-workshop.github.io/).'
+- date: 01/2026
+  text: '📝 Submitted **Code That Works, Environments That Don''t**, an extended 1,000-run study, to [AI Magazine](https://onlinelibrary.wiley.com/journal/23719621). The next version is becoming a [public benchmark](https://d3npiokq0n7c4l.cloudfront.net/benchmark.html).'
+- date: 12/2025
+  text: '📄 **AI-Generated Code Is Not Reproducible (Yet)** was accepted at the [RAI Workshop at AAAI 2026](https://reproducibleai.github.io/). Check out the [paper](https://arxiv.org/abs/2512.22387).'
+- date: 11/2025
+  text: '📄 **Efficient Multi-Model Orchestration for Self-Hosted LLMs** was accepted at the [DAI Workshop at AAAI 2026](https://dai-workshop.github.io/). Check out the [paper](https://arxiv.org/abs/2512.22402).'
+- date: 11/2025
+  text: '💼 Accepted an offer from [Microsoft](https://www.microsoft.com) for a Research Data Science Internship in summer 2026.'
+- date: 09/2025
+  text: '🏆 Named an [Outstanding Reviewer](https://drive.google.com/file/d/1sL7rlTMeUXxY5cAWvJpCsUYocj7J_Vft/view?usp=sharing) at the [AI4Mat Workshop, NeurIPS 2025](https://sites.google.com/view/ai4mat/ai4mat-neurips-2025).'
+- date: 05/2025
+  text: '🎓 Graduated with my **M.S. in Computer Science** from Mizzou and continued into the Ph.D. program in the [Radiant Lab](https://radiant-systems-lab.github.io/).'
+- date: 04/2025
+  text: '🏆 Selected as one of three University of Missouri nominees for the [Google PhD Fellowship](https://drive.google.com/file/d/1XpQzEPGFAayWVz51zdXsPldg0CrV_DdQ/view?usp=sharing) in NLP.'
+- date: 04/2025
+  text: '🎤 Presented our hallucination-detection work at the [AAAI Spring Series 2025](https://sites.google.com/view/aaai-ss25-ai4science/home) (AI for Engineering and Scientific Discoveries).'
+- date: 03/2025
+  text: '🏆 Received the [Outstanding Master''s Student Award](/images/Outstanding%20Student.jpeg) at the Mizzou Engineering Awards Banquet.'
+- date: 03/2025
+  text: '🏆 Our team won **runner-up** ($1,000) at the [MUIDSI x IBM Generative AI for Social Good Hackathon](https://muidsi.missouri.edu/muidsi-gso-hosts-2025-generative-ai-for-social-good-hackathon/) with [VisionAI](https://github.com/bhanuprakashvangala/VisionAI), an assistant for visually impaired users.'
+- date: 01/2025
+  text: '📄 Two papers accepted at the [AAAI Spring Series 2025](https://sites.google.com/view/aaai-ss25-ai4science/home): [HalluMat](https://arxiv.org/abs/2512.22396) and [HalluFormer](/files/papers/halluformer.pdf), on detecting hallucinations in LLMs.'
+- date: 09/2024
+  text: '🔬 Started building scalable **LLM-as-a-Service** infrastructure on the NSF Nautilus cluster with Kubernetes, Helm and vLLM. Check out the [code](https://github.com/bhanuprakashvangala/LLM-as-a-Service).'
+- date: 12/2023
+  text: '🔬 Joined the [Radiant Lab](https://radiant-systems-lab.github.io/) as a graduate research assistant with [Prof. Tanu Malik](https://engineering.missouri.edu/faculty/tanu-malik/).'
+- date: 08/2023
+  text: '🔬 Began research on **faithfulness, interpretability and robustness** in large language models.'
+- date: 06/2023
   text: '🎓 Admitted to the Ph.D. program in Computer Science at the University of Missouri.'
-- date: May 2023
-  text: '🎓 Graduated with a B.Tech in CSE (Data Analytics) from Vellore Institute of Technology.'
-- date: Apr 2023
-  text: '🏆 Honored with the **Dean''s Research Excellence Award** at VIT for multilingual NLP and social media analytics.'
-- date: May 2022
-  text: '🔬 Started as a volunteer research intern at **Adobe Research**.'
+- date: 05/2023
+  text: '🎓 Graduated with a B.Tech in Computer Science and Engineering (Data Analytics) from Vellore Institute of Technology.'
+- date: 04/2023
+  text: '🏆 Received the **Dean''s Research Excellence Award** at VIT for work on multilingual NLP and social media analytics.'
+- date: 05/2022
+  text: '🔬 Started as a volunteer research intern at [Adobe Research](https://research.adobe.com/).'
 assistant:
   greeting: Hi. I answer from Bhanu's CV, papers and projects, and from nothing else. Ask about his research, publications,
     where he has worked, or how to reach him. Each answer points to the section it came from so you can check it.

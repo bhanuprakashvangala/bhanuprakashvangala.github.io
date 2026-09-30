@@ -21,7 +21,7 @@ redirect_from:
 </section>
 <section id="news" class="section" aria-labelledby="news-title">
 <div class="section-head"><h2 id="news-title">News</h2><a href="{{ '/news/' | relative_url }}">All updates</a></div>
-{% assign recent_news = cv.news | slice: 0, 4 %}{% include news-feed.html items=recent_news %}
+{% assign recent_news = cv.news | slice: 0, 8 %}{% include news-feed.html items=recent_news %}
 </section>
 <section id="experience" class="section" aria-labelledby="experience-title">
 <div class="section-head"><h2 id="experience-title">Experience</h2><a href="{{ '/cv/' | relative_url }}">Full CV</a></div>
