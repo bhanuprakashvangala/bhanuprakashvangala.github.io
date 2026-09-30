@@ -613,6 +613,12 @@ sup {
 .resource-link {
   color: #2774a5;
 }
+.pub-meta a {
+  color: inherit;
+}
+.publisher-label {
+  font-style: normal;
+}
 .project-links,
 .pub-actions {
   display: flex;

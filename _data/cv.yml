@@ -368,6 +368,8 @@ publications:
   links: []
   image: images/publications/env-gap.png
   image_alt: Declared, installed, and traced software dependency sets
+  publisher_label: AAAI · Wiley
+  venue_url: https://onlinelibrary.wiley.com/journal/23719621
 - id: language-labels
   ref: 10
   title: How Many Labels Does a Language Need? Annotation Budgets and Cross-Lingual Pooling for African-Language
@@ -413,6 +415,8 @@ publications:
     url: https://github.com/bhanuprakashvangala/XAI
   image: images/publications/seed-xai.png
   image_alt: Attribution maps for held-out soybean images
+  publisher_label: Elsevier · ScienceDirect
+  venue_url: https://www.sciencedirect.com/journal/computers-and-electronics-in-agriculture
 - id: synthetic-seeds
   ref: 13
   title: Visual Realism Does Not Predict Seed-Quality Utility in AI-Generated Synthetic Seeds
@@ -426,6 +430,8 @@ publications:
   links: []
   image: images/publications/synthetic-seeds.png
   image_alt: Real soybean seeds compared with generated samples
+  publisher_label: KeAi / Elsevier · ScienceDirect
+  venue_url: https://www.keaipublishing.com/en/journals/artificial-intelligence-in-agriculture/
 - id: seed-quality
   ref: 14
   title: AI-Generated Seed Images Do Not Outperform Matched Reuse of Scarce Real Defect Images in Seed Quality Assessment
@@ -439,6 +445,8 @@ publications:
   links: []
   image: images/publications/seed-quality.png
   image_alt: Real and generated maize kernels used in the cross-species check
+  publisher_label: Nature Portfolio · Springer Nature
+  venue_url: https://www.nature.com/srep/
 - id: brain-tumor
   ref: 15
   title: 'Scores That Hold, Benchmarks That Leak: Measuring Dataset Contamination in Public Brain-Tumor MRI Classification'
@@ -454,6 +462,8 @@ publications:
   links: []
   image: images/Brain Tumor-Portfolio Image.png
   image_alt: Brain MRI classification research
+  publisher_label: IEEE · IEEE Xplore
+  venue_url: https://www.embs.org/jbhi/
 - id: adaptive-inference
   ref: 16
   title: 'Adaptive Inference: Orchestrating Fine-Tuned LLMs with Serverless GPUs in HPC Environments'
