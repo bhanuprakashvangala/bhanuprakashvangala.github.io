@@ -235,6 +235,7 @@ publications:
 - id: beyond-functional-correctness
   ref: 2
   title: 'AI-Generated Code Is Not Reproducible (Yet): An Empirical Study of Environment Executability'
+  scholar_title: 'AI-Generated Code Is Not Reproducible (Yet): An Empirical Study of Execution Reliability in LLM-Based Coding Agents'
   authors:
   - Bhanu Prakash Vangala
   - Ali Adibifar
@@ -254,6 +255,7 @@ publications:
 - id: pick-and-spin
   ref: 3
   title: 'Pick and Spin: Efficient Cold-Start-Aware Routing for Self-Hosted LLM Serving'
+  scholar_title: 'Pick and Spin: Cold-Start-Aware Routing for Self-Hosted LLM Serving'
   authors:
   - Bhanu Prakash Vangala
   - Tanu Malik

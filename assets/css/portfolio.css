@@ -1101,3 +1101,20 @@ main {
     animation: none;
   }
 }
+.cited-by {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 0 7px;
+  border-radius: 4px;
+  background: #eef4fc;
+  border: 1px solid #c9dcf3;
+  color: #1a5fa8;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.6;
+}
+.cited-by:hover {
+  background: #deebfa;
+  text-decoration: none;
+}
