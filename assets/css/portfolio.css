@@ -1124,3 +1124,37 @@ main {
 .news-body a {
   font-weight: 500;
 }
+
+/* Print: keep links visible and spell out where they go. */
+@media print {
+  main a {
+    color: #1a4f8b !important;
+    text-decoration: underline;
+  }
+  main a[href^="http"]::after,
+  main a[href^="mailto:"]::after {
+    content: " (" attr(href) ")";
+    font-size: 80%;
+    color: #555;
+    text-decoration: none;
+    word-break: break-all;
+  }
+  main a[href^="/"]::after {
+    content: " (https://bhanuprakashvangala.github.io" attr(href) ")";
+    font-size: 80%;
+    color: #555;
+    text-decoration: none;
+    word-break: break-all;
+  }
+  /* Icon-only links, images and in-page jumps stay as they are. */
+  main a.resource-link::after,
+  main a.github-link::after,
+  main a.profile-icon::after,
+  main a.pub-image::after,
+  main a.availability::after,
+  main a[href^="#"]::after,
+  main .section-head a::after,
+  main a:has(> img:only-child)::after {
+    content: none;
+  }
+}
