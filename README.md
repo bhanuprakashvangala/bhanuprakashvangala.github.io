@@ -14,11 +14,11 @@ Publication `status` is `accepted`, `review`, `preparation`, or `poster`. The pu
 
 Content was reconciled against the September 25, 2026 academic CV. Publication titles and author lists follow the latest academic CV. CAMP's manuscript order and equal first authorship were confirmed by Bhanu. The original downloadable CV is preserved unchanged; the web CV includes the confirmed CAMP co-first-author attribution. Under-review manuscript PDFs are not bundled; their figures are used as publication thumbnails.
 
-Earlier publications and theses were recovered from the previous site and checked against author-uploaded reports. AdaptFlow is in preparation for MLSys 2027, as corrected by Bhanu. The seven recent accepted papers remain separate from earlier publications, seven submitted manuscripts, and the poster.
+Earlier publications and theses were recovered from the previous site and checked against author-uploaded reports. AdaptFlow is in preparation for MLSys 2027, as corrected by Bhanu. The published/accepted section includes seven recent papers plus the 2022 IJARESM colorization paper. Seven submitted manuscripts, AdaptFlow in preparation, the poster, and earlier theses/reports have separate sections.
 
 Every project has an image and an accessible GitHub icon. `github` points to an existing public repository, a new companion example, or its documented page in [portfolio-artifacts](https://github.com/bhanuprakashvangala/portfolio-artifacts). Original public code is reused when available. The example repositories clearly distinguish new reference implementations from historical research code. Keep repository links public and project-specific.
 
-Publication figures remain on the left; project photographs and original research outputs appear on the right. Topic photographs are identified in their alt text and on `/image-credits/`. Click any thumbnail to see the full-size image. GitHub links display only the symbol and have project-specific accessibility labels. Editable SVG diagrams remain available for repository documentation and can be regenerated with `python scripts/draw_project_figures.py`; they are not used as the website's project thumbnails.
+All publication figures and project images appear consistently on the left. Topic photographs are identified in their alt text and on `/image-credits/`. Click any thumbnail to see the full-size image. GitHub links display only the symbol and have project-specific accessibility labels. Editable SVG diagrams remain available for repository documentation and can be regenerated with `python scripts/draw_project_figures.py`; they are not used as the website's project thumbnails.
 
 ## Local development
 
@@ -42,7 +42,7 @@ python scripts/check_site.py
 
 | Route | Content |
 | --- | --- |
-| `/` | Introduction, updates, all seven accepted papers, submissions, illustrated earlier work, experience, and teaching |
+| `/` | Introduction, updates, all eight published/accepted papers, submissions, illustrated earlier work, experience, and teaching |
 | `/publications/` | Published/accepted work, under-review papers, and posters |
 | `/cv/` | Full web CV and original PDF download |
 | `/projects/` | Selected projects |

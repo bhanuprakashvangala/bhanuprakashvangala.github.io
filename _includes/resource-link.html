@@ -1,0 +1,4 @@
+{% assign label_lower = include.link.label | downcase %}
+{% assign kind = 'document' %}
+{% if label_lower == 'pdf' %}{% assign kind = 'pdf' %}{% elsif label_lower == 'publication' %}{% assign kind = 'publication' %}{% elsif label_lower contains '.dev' or label_lower contains 'website' or label_lower == 'demo' %}{% assign kind = 'website' %}{% endif %}
+<a class="resource-link" href="{{ include.link.url | relative_url }}" title="{{ include.link.label | escape }}" aria-label="{{ include.link.label | escape }} for {{ include.context | escape }}">{% include resource-icon.html kind=kind %}</a>

@@ -1,4 +1,4 @@
-# Publication titles follow the latest academic CV. CAMP authorship and AdaptFlow status follow author corrections.
+# Publication titles follow the latest academic CV; the earlier IJARESM paper follows the published report. CAMP authorship and AdaptFlow status follow author corrections.
 profile:
   name: Bhanu Prakash Vangala
   short_name: Bhanu
@@ -176,6 +176,9 @@ experience:
   current: true
   bullets:
   - Built and maintain an LLM education platform with an active user base using Next.js, TypeScript, and Supabase.
+  featured: true
+  short_period: Present
+  url: https://learnllm.dev
 - id: paal
   title: Graduate Research Assistant
   org: Precision and Automated Agriculture Lab, University of Missouri
@@ -465,6 +468,26 @@ publications:
   kind: Poster
   image: images/LLM-as-Service-portfolio-image.png
   image_alt: Kubernetes LLM-as-a-Service deployment architecture
+- id: image-colorization
+  title: Image Colorization using AI
+  authors:
+  - Bhanu Prakash Vangala
+  - Abdul Mannan Khan
+  - Sagar Sujith Somepalli
+  - Rakesh Chigurupati
+  - Pratham Shah
+  - Shubham Nandlal Vishwakarma
+  venue: IJARESM 2022
+  venue_full: International Journal of All Research Education and Scientific Methods, Volume 10, Issue 10
+  status: accepted
+  year: 2022
+  image: images/image colorization-portfolio image.jpg
+  image_alt: A black-and-white portrait beside its colorized version
+  links:
+  - label: Publication
+    url: https://www.researchgate.net/publication/376451637_Image_Colorization_using_AI
+  - label: Project materials
+    url: https://github.com/bhanuprakashvangala/portfolio-artifacts/tree/main/projects/image-colorization
 pub_filters:
 - id: all
   label: All
@@ -549,28 +572,6 @@ research:
     text: 'The HalluMatData benchmark with retrieval augmentation over IR, NER and semantic similarity: a 30% hallucination
       reduction.'
 projects:
-- id: image-colorization
-  title: Image Colorization using AI
-  authors:
-  - Bhanu Prakash Vangala
-  - Abdul Mannan Khan
-  - Sagar Sujith Somepalli
-  - Rakesh Chigurupati
-  - Pratham Shah
-  - Shubham Nandlal Vishwakarma
-  status: IJARESM · 2022
-  homepage: true
-  image: images/image colorization-portfolio image.jpg
-  image_alt: A black-and-white portrait beside its colorized version
-  desc: Deep learning for adding color to grayscale photographs using convolutional autoencoders and generative
-    adversarial networks.
-  links:
-  - label: Paper / project
-    url: https://drive.google.com/file/d/14GH6eNzC28uhcN1Y-E3iZJ9a5G8mdXLz/view?usp=sharing
-  - label: Publication
-    url: https://www.researchgate.net/publication/376451637_Image_Colorization_using_AI
-  earlier_work: true
-  github: https://github.com/bhanuprakashvangala/portfolio-artifacts/tree/main/projects/image-colorization
 - id: koo
   title: Multilingual Sentiment Analysis on KOO User Posts
   status: B.Tech thesis · 2023
@@ -585,17 +586,14 @@ projects:
   earlier_work: true
   github: https://github.com/bhanuprakashvangala/portfolio-artifacts/tree/main/projects/koo
 - id: llm-service-thesis
-  title: Deploying LLMs as a Service in Kubernetes HPC Clusters
-  status: M.S. thesis · 2025
-  homepage: true
+  title: LLM-as-a-Service
+  status: Research project
+  homepage: false
   image: images/LLM-as-Service-portfolio-image.png
   image_alt: Kubernetes services, model pods, persistent storage, and ingress architecture
-  desc: LLM inference infrastructure on a Kubernetes HPC cluster. M.S. thesis advised by Prof. Grant J. Scott and
-    Prof. Jianlin Cheng.
-  links:
-  - label: Thesis
-    url: https://drive.google.com/file/d/1XpQzEPGFAayWVz51zdXsPldg0CrV_DdQ/view?usp=sharing
-  earlier_work: true
+  desc: LLM inference infrastructure and deployment tooling for Kubernetes HPC clusters.
+  links: []
+  earlier_work: false
   github: https://github.com/bhanuprakashvangala/LLM-as-a-Service
 - id: brain-tumor-project
   title: Brain Tumor Detection in MRI Images using Transfer Learning
@@ -626,25 +624,6 @@ projects:
   - Govardhan Khadakkar
   earlier_work: true
   github: https://github.com/bhanuprakashvangala/portfolio-artifacts/tree/main/projects/pneumonia-project
-- id: learnllm
-  featured: true
-  title: LearnLLM.dev
-  role: Founder
-  status: Live
-  stack: Next.js | TypeScript | Prisma | Supabase
-  tags:
-  - education
-  - fullstack
-  desc: An educational platform for learning to build with large language models, from core concepts to practical
-    applications. Built and maintained with Next.js, TypeScript, and Supabase.
-  links:
-  - label: learnllm.dev
-    url: https://learnllm.dev
-  github: https://github.com/bhanuprakashvangala/portfolio-artifacts/tree/main/projects/learnllm
-  image: images/projects/learnllm.jpg
-  image_alt: Illustrative photograph of a laptop used for programming
-  image_kind: photo
-  image_position: right
 - id: visionai
   title: 'VisionAI: AI assistance for visually impaired users'
   status: Runner-up, $1,000
@@ -658,7 +637,6 @@ projects:
   image: images/Hackathon Winner 2.jpg
   image_alt: Bhanu Prakash Vangala with a teammate at the Generative AI for Social Good hackathon
   image_kind: photo
-  image_position: right
 - id: reflectmemory
   featured: true
   title: 'ReflectMemory: persistent memory for long-context reasoning'
@@ -671,7 +649,6 @@ projects:
   image: images/projects/reflectmemory.jpg
   image_alt: Illustrative photograph of servers used for persistent data storage
   image_kind: photo
-  image_position: right
 - id: indoor-nav
   title: Autonomous indoor navigation
   status: Completed
@@ -685,7 +662,6 @@ projects:
   image: images/projects/indoor-nav.jpg
   image_alt: Illustrative photograph of a university corridor
   image_kind: photo
-  image_position: right
 - id: chatmed
   featured: true
   title: 'ChatMed: grounded medical question answering'
@@ -698,7 +674,6 @@ projects:
   image: images/projects/chatmed.jpg
   image_alt: Illustrative photograph of a stethoscope beside medical study notes
   image_kind: photo
-  image_position: right
 - id: cropinsight
   title: 'CropInsight: crop health and yield forecasting'
   status: Completed
@@ -710,7 +685,6 @@ projects:
   image: images/projects/cropinsight.jpg
   image_alt: Illustrative photograph of a wheat field
   image_kind: photo
-  image_position: right
 - id: socialsift
   title: 'SocialSift: crisis-aware multilingual sentiment analysis'
   status: Completed
@@ -722,34 +696,6 @@ projects:
   image: images/projects/socialsift.jpg
   image_alt: Illustrative photograph of a social-media page on a smartphone
   image_kind: photo
-  image_position: right
-- id: flexiflow
-  title: 'FlexiFlow: Bandit-based Model Switching in ML Workflows'
-  status: Research project
-  desc: Runtime model selection for multi-step machine-learning pipelines, using bandit strategies to balance quality
-    and execution cost.
-  github: https://github.com/bhanuprakashvangala/adaptive-routing-examples
-  image: images/projects/flexiflow-results.png
-  image_alt: Original FlexiFlow experiment plots comparing operator-level and job-level routing strategies
-  image_position: right
-- id: trace
-  title: 'TRACE: A Programmable Cloud Laboratory for Autonomous Experimentation'
-  status: Research project
-  desc: Closed-loop experimentation across scientific instruments, connecting experiment planning, execution, measurements,
-    and provenance.
-  github: https://github.com/bhanuprakashvangala/portfolio-artifacts/tree/main/projects/trace
-  image: images/projects/trace-assembly.png
-  image_alt: Top-view assembly output from the autonomous experimentation project
-  image_position: right
-- id: reproducible-containers
-  title: Reproducible Containers for Advancing Process-oriented Collaborative Analytics
-  status: Research project
-  desc: Capturing scientific applications with their dependencies and provenance so that computational analyses
-    can be replayed and inspected.
-  github: https://github.com/bhanuprakashvangala/portfolio-artifacts/tree/main/projects/reproducible-containers
-  image: images/publications/execution-reliability.png
-  image_alt: Research figure from the AI-generated code reproducibility study
-  image_position: right
 - id: book-recommendation
   title: Book Recommendation System
   status: Course project
@@ -759,7 +705,6 @@ projects:
   image: images/projects/book-recommendation.jpg
   image_alt: Illustrative photograph of books arranged on library shelves
   image_kind: photo
-  image_position: right
 awards:
 - id: acm-summit
   year: '2026'
@@ -777,6 +722,8 @@ awards:
   year: '2025'
   title: Google PhD Fellowship Nominee
   org: NLP track, University of Missouri
+  url: https://drive.google.com/file/d/1XpQzEPGFAayWVz51zdXsPldg0CrV_DdQ/view?usp=sharing
+  link_label: Google PhD Fellowship application (2025)
 - id: neurips-rev
   year: '2025'
   title: Outstanding Reviewer Award
