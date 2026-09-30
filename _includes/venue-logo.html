@@ -1,0 +1,3 @@
+{%- assign vl = nil -%}
+{%- for v in site.data.venue_logos -%}{%- if vl == nil and include.venue contains v.match -%}{%- assign vl = v -%}{%- endif -%}{%- endfor -%}
+{%- if vl -%}<img class="venue-logo{% if include.class %} {{ include.class }}{% endif %}" src="{{ vl.logo | prepend: '/' | relative_url }}" alt="{{ vl.name }}" title="{{ vl.name }}" loading="lazy">{%- endif -%}

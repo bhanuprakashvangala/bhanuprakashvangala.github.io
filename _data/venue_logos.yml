@@ -1,0 +1,18 @@
+# First entry whose `match` appears in a venue name wins. Order matters.
+- { match: "ICLR", logo: images/logos/iclr-mark.svg, name: ICLR }
+- { match: "BMVC", logo: images/logos/bmvc.png, name: BMVC }
+- { match: "NeurIPS", logo: images/logos/neurips.png, name: NeurIPS }
+- { match: "AI Magazine", logo: images/logos/aaai-mark.svg, name: AAAI }
+- { match: "AAAI", logo: images/logos/aaai-mark.svg, name: AAAI }
+- { match: "MLSys", logo: images/logos/mlsys.svg, name: MLSys }
+- { match: "WORKS at SC", logo: images/logos/ieee-mark.svg, name: IEEE }
+- { match: "IEEE", logo: images/logos/ieee-mark.svg, name: IEEE }
+- { match: "PACT", logo: images/logos/acm.svg, name: ACM }
+- { match: "CIKM", logo: images/logos/acm.svg, name: ACM }
+- { match: "ACM", logo: images/logos/acm.svg, name: ACM }
+- { match: "Computers and Electronics in Agriculture", logo: images/logos/elsevier.svg, name: Elsevier }
+- { match: "Artificial Intelligence in Agriculture", logo: images/logos/elsevier.svg, name: Elsevier }
+- { match: "Elsevier", logo: images/logos/elsevier.svg, name: Elsevier }
+- { match: "Scientific Reports", logo: images/logos/springernature.svg, name: Springer Nature }
+- { match: "University of Missouri", logo: images/logos/mizzou.svg, name: University of Missouri }
+- { match: "IJARESM", logo: images/logos/ijaresm.png, name: IJARESM }

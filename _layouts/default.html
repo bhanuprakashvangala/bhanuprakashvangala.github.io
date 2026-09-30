@@ -21,9 +21,14 @@
 <header class="site-header wrap">
 {% if page.url == '/' %}<h1 class="site-name" id="profile-name">Bhanu Prakash Vangala</h1>{% else %}<a class="site-name" href="{{ '/' | relative_url }}">Bhanu Prakash Vangala</a>{% endif %}
 <nav aria-label="Main navigation">
-<a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>About</a>
+<a href="{{ '/' | relative_url }}#experience">Experience</a>
+<a href="{{ '/' | relative_url }}#education">Education</a>
 <a href="{{ '/publications/' | relative_url }}"{% if page.url == '/publications/' %} aria-current="page"{% endif %}>Publications</a>
 <a href="{{ '/projects/' | relative_url }}"{% if page.url == '/projects/' %} aria-current="page"{% endif %}>Projects</a>
+<a href="{{ '/' | relative_url }}#awards">Awards</a>
+<a href="{{ '/' | relative_url }}#talks">Talks</a>
+<a href="{{ '/' | relative_url }}#teaching">Teaching</a>
+<a href="{{ '/' | relative_url }}#service">Service</a>
 <a href="{{ '/cv/' | relative_url }}"{% if page.url == '/cv/' %} aria-current="page"{% endif %}>CV</a>
 </nav></header>
 <main id="main" class="wrap" tabindex="-1">{{ content }}</main>
