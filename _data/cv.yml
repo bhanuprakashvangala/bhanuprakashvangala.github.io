@@ -949,13 +949,10 @@ news:
   new: true
   text: '📄 Our paper [One Threshold Does Not Fit All Languages](/files/papers/one-threshold.pdf) with Navya Vangala was accepted as an **oral** at the [Global South in AI Workshop at NeurIPS 2026](https://sites.google.com/view/globalsouthai-neurips26/home)! We show that each low-resource language needs its own rule for when a model should answer and when to hand off to a human.'
 - date: 08/2026
-  new: true
   text: '🧑‍🏫 This fall I am a teaching assistant for Designing End-to-End ML Systems at Mizzou, building hands-on labs on [Chameleon Cloud](https://www.chameleoncloud.org/) and [marimo](https://marimo.io/) notebooks.'
 - date: 08/2026
-  new: true
   text: '💼 Wrapped up my summer as a Research Data Science Intern at [Microsoft](https://www.microsoft.com) in Redmond on the Windows Data team, working with [Anqi Cheng](https://www.linkedin.com/in/anqi-cheng-616a5559) and [Arturo Herrera](https://www.linkedin.com/in/juan-arturo-herrera-ph-d-41237191).'
 - date: '2026'
-  new: true
   text: '📄 Our paper **CAMP: Consumption-Aware Memory Prediction for Scientific Workflows** got accepted at [WORKS at SC26](https://works-workshop.org/), the International Conference for High Performance Computing. Check out the [paper](/files/papers/camp.pdf) and [code](https://github.com/bhanuprakashvangala/CAMP).'
 - date: 07/2026
   text: '🎤 Presented [Pick and Spin](/files/papers/pick-and-spin.pdf) as an oral at [IEEE CLOUD 2026](https://services.conferences.computer.org/2026/cloud/) in Sydney, Australia.'
