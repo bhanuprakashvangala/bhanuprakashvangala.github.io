@@ -575,15 +575,6 @@ sup {
     font-size: 12px;
   }
 }
-@media print {
-  .pub-image {
-    display: none;
-  }
-  .pub,
-  .project-card.has-image {
-    display: block;
-  }
-}
 .github-icon {
   width: 16px;
   height: 16px;
@@ -642,5 +633,30 @@ sup {
 @media (max-width: 480px) {
   .project-card.has-photo .pub-image img {
     height: 90px;
+  }
+}
+/* Keep each printed citation together with its figure. */
+@media print {
+  .pub,
+  .project-card.has-image {
+    display: grid;
+    grid-template-columns: 38mm minmax(0, 1fr);
+    column-gap: 5mm;
+    margin-bottom: 6mm;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .pub-image {
+    display: flex;
+    align-self: center;
+    margin-top: 0;
+  }
+  .pub-image img,
+  .project-card.has-photo .pub-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 32mm;
+    object-fit: contain;
   }
 }

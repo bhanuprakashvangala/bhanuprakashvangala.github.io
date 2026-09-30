@@ -1,7 +1,7 @@
 <ol class="pub-list">
 {% for pub in include.items %}
 <li class="pub" id="pub-{{ pub.id }}">
-{% if pub.image %}<a class="pub-image" href="{{ pub.image | prepend: '/' | relative_url | replace: ' ', '%20' }}" aria-label="View figure for {{ pub.title | escape }}"><img src="{{ pub.image | prepend: '/' | relative_url | replace: ' ', '%20' }}" alt="{{ pub.image_alt | escape }}" width="600" height="420" loading="lazy" decoding="async"></a>{% endif %}
+{% if pub.image %}<a class="pub-image" href="{{ pub.image | prepend: '/' | relative_url | replace: ' ', '%20' }}" aria-label="View figure for {{ pub.title | escape }}"><img src="{{ pub.image | prepend: '/' | relative_url | replace: ' ', '%20' }}" alt="{{ pub.image_alt | escape }}" width="600" height="420" loading="{% if page.url == '/cv/' %}eager{% else %}lazy{% endif %}" decoding="async"></a>{% endif %}
 <div class="pub-body">
 <h3 class="pub-title">{% if pub.links.size > 0 %}<a href="{{ pub.links.first.url | relative_url }}">{{ pub.title }}</a>{% else %}{{ pub.title }}{% endif %}</h3>
 <p class="pub-authors">{% for author in pub.authors %}{% if author == site.data.cv.profile.name %}<strong>{{ author }}</strong>{% else %}{{ author }}{% endif %}{% if pub.equal_contributors contains author %}<sup>*</sup>{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}</p>
