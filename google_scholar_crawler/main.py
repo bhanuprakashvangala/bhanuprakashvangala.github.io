@@ -26,7 +26,11 @@ def slugify(title):
 
 def main():
     req = urllib.request.Request(URL, headers={"User-Agent": UA, "Accept-Language": "en-US,en;q=0.9"})
-    page = urllib.request.urlopen(req, timeout=30).read().decode("utf-8", "replace")
+    try:
+        page = urllib.request.urlopen(req, timeout=30).read().decode("utf-8", "replace")
+    except OSError as err:  # includes HTTPError; Scholar often blocks cloud IPs
+        print(f"Could not reach Google Scholar ({err}); keeping existing data.")
+        return 0
     if "gsc_a_tr" not in page:
         print("Scholar did not return the profile (probably rate limited); keeping existing data.")
         return 0
