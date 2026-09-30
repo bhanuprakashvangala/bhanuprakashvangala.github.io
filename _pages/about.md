@@ -45,7 +45,7 @@ redirect_from:
 </section>
 <section id="publications" class="section" aria-labelledby="pubs-title">
 <div class="section-head"><h2 id="pubs-title">Publications</h2><a href="{{ '/publications/' | relative_url }}">Full publication list</a></div>
-<p class="publication-note">{% assign accepted = cv.publications | where: 'status', 'accepted' %}Published &amp; accepted · {{ accepted.size }} papers{% if site.data.scholar %} · <a href="{{ site.data.scholar.url }}">Google Scholar</a>: {{ site.data.scholar.citations }} citations, h-index {{ site.data.scholar.h_index }}{% endif %}</p>
+<p class="publication-note">{% assign accepted = cv.publications | where: 'status', 'accepted' %}Published &amp; accepted · {{ accepted.size }} papers</p>
 {% assign accepted = cv.publications | where: 'status', 'accepted' %}{% include pub-list.html items=accepted %}
 </section>
 <section id="submitted" class="section" aria-labelledby="submitted-title">

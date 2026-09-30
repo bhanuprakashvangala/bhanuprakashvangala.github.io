@@ -64,7 +64,6 @@ exclude:
   - scripts
   - docs
   - vendor
-  - google_scholar_crawler
   - assistant-api
   - github_myprofile_updater
 keep_files:
