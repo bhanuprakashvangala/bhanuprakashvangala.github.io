@@ -656,12 +656,9 @@ projects:
   - memory
   desc: A prototype for persisting and retrieving relevant context across long-running agent sessions.
   github: https://github.com/bhanuprakashvangala/reflectmemory
-  image: images/projects/reflectmemory.jpg
-  image_alt: Illustrative photograph of servers used for persistent data storage
-  image_kind: photo
 - id: indoor-nav
   title: Autonomous indoor navigation
-  status: Completed
+  status: Coursework project · Completed
   stack: BLE | Raspberry Pi | Kotlin
   tags:
   - systems
@@ -669,52 +666,37 @@ projects:
   desc: BLE beacons and a Raspberry Pi running A* and Dijkstra pathfinding, paired with a Kotlin app giving turn-by-turn
     guidance indoors where GPS fails.
   github: https://github.com/bhanuprakashvangala/indoor-navigation
-  image: images/projects/indoor-nav.jpg
-  image_alt: Illustrative photograph of a university corridor
-  image_kind: photo
 - id: chatmed
   featured: true
   title: 'ChatMed: grounded medical question answering'
-  status: Completed
+  status: Coursework project · Completed
   tags:
   - nlp
   - medical
   desc: A symptom-guidance assistant built on BioGPT and grounded in PubMed articles.
   github: https://github.com/bhanuprakashvangala/chatmed.github.io
-  image: images/projects/chatmed.jpg
-  image_alt: Illustrative photograph of a stethoscope beside medical study notes
-  image_kind: photo
 - id: cropinsight
   title: 'CropInsight: crop health and yield forecasting'
-  status: Completed
+  status: Coursework project · Completed
   tags:
   - vision
   - science
   desc: Computer vision plus sequence models for crop health monitoring and yield forecasting from field imagery.
   github: https://github.com/bhanuprakashvangala/CropInsight
-  image: images/projects/cropinsight.jpg
-  image_alt: Illustrative photograph of a wheat field
-  image_kind: photo
 - id: socialsift
   title: 'SocialSift: crisis-aware multilingual sentiment analysis'
-  status: Completed
+  status: Coursework project · Completed
   tags:
   - nlp
   - multilingual
   desc: Transformer-based sentiment and intent analysis over multilingual social media during natural disasters.
   github: https://github.com/bhanuprakashvangala/SocialSift
-  image: images/projects/socialsift.jpg
-  image_alt: Illustrative photograph of a social-media page on a smartphone
-  image_kind: photo
 - id: book-recommendation
   title: Book Recommendation System
-  status: Course project
+  status: Coursework project · Completed
   desc: Nearest-neighbor book recommendations from a collected dataset of about 30,000 records, implemented in Python
     and Google Colab.
   github: https://github.com/bhanuprakashvangala/Book-Recommendation-System
-  image: images/projects/book-recommendation.jpg
-  image_alt: Illustrative photograph of books arranged on library shelves
-  image_kind: photo
 awards:
 - id: acm-summit
   year: '2026'
