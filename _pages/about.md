@@ -14,7 +14,7 @@ redirect_from:
 <p>Previously, I was a Research Data Science Intern at <strong>Microsoft</strong>, working on temporal features for Windows retention. I also build <a href="https://learnllm.dev">LearnLLM.dev</a>, a platform for learning to build with large language models.</p>
 {% assign google_nomination = cv.awards | where: 'id', 'google-phd' | first %}
 <p>I was a <a href="{{ google_nomination.url }}" title="2025 Google PhD Fellowship application">Google PhD Fellowship nominee</a> (NLP, 2025) and received the <strong>Outstanding Master’s Student Award</strong> at the University of Missouri. I was also selected for the <strong>Top 100 at the ACM Doctoral Summit</strong> in 2026.</p>
-<p class="profile-links"><a href="mailto:{{ p.email }}">Email</a><a href="https://scholar.google.com/citations?user=qHBOnpkAAAAJ&amp;hl=en">Google Scholar</a><a href="https://github.com/bhanuprakashvangala">GitHub</a><a href="https://www.linkedin.com/in/vangalabhanuprakash/">LinkedIn</a><a href="{{ cv.cv_pdf | relative_url }}">CV (PDF)</a></p>
+{% include profile-icons.html %}
 </div>
 <figure class="portrait"><img src="{{ '/images/portrait.webp' | relative_url }}" width="440" height="540" alt="Bhanu Prakash Vangala" fetchpriority="high"></figure>
 </section>
