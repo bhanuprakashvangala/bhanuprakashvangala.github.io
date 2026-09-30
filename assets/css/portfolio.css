@@ -1101,3 +1101,11 @@ main {
     animation: none;
   }
 }
+.pub-note {
+  font-size: 13.5px;
+  color: #3d5a3d;
+  background: #f1f8f3;
+  border-left: 3px solid #2f9e5b;
+  padding: 4px 10px;
+  margin: 6px 0 4px;
+}

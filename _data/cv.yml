@@ -330,6 +330,7 @@ publications:
 - id: hallumat
   ref: 6
   title: 'HalluMat: Detecting Hallucinations in LLM-Generated Materials Science Content Through Multi-Stage Verification'
+  note: 'Includes a benchmark dataset for evaluating hallucination detection in materials science.'
   authors:
   - Bhanu Prakash Vangala
   - Sajid Mahmud
@@ -391,6 +392,7 @@ publications:
 - id: env-gap
   ref: 9
   title: 'Code That Works, Environments That Don’t: Measuring Environment Reproducibility in AI-Generated Software'
+  note: 'Next version in progress: a public benchmark that tests whether AI coding agents can get real software running on a clean machine. [View the benchmark](https://d3npiokq0n7c4l.cloudfront.net/benchmark.html)'
   authors:
   - Bhanu Prakash Vangala
   - Tanu Malik
