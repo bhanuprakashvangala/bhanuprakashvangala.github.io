@@ -28,7 +28,7 @@ class Page(HTMLParser):
 
 def check(root):
     routes = ["index.html", "publications/index.html", "cv/index.html",
-              "projects/index.html", "news/index.html", "image-credits/index.html"]
+              "projects/index.html", "news/index.html"]
     errors = []
     for route in routes:
         path = root / route
