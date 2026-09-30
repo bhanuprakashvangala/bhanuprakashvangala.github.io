@@ -234,12 +234,11 @@ publications:
   image_alt: Per-language coverage and deferral rates for pooled and language-conditional thresholds
 - id: beyond-functional-correctness
   ref: 2
-  title: 'AI-Generated Code Is Not Reproducible (Yet): An Empirical Study of Environment Executability'
+  title: 'AI-Generated Code Is Not Reproducible (Yet): An Empirical Study of Execution Reliability in LLM-Based Coding Agents'
   authors:
   - Bhanu Prakash Vangala
-  - Ali Adibifar
-  - Tanu Malik
   - Ashish Gehani
+  - Tanu Malik
   venue: ACM REP 2026
   venue_url: https://www.tudelft.nl/en/events/2026/eemcs/2026-acm-conference-on-reproducibility-and-replicability
   venue_full: ACM REP 2026
@@ -253,7 +252,7 @@ publications:
   image_alt: Clean-environment execution evaluation for AI-generated code
 - id: pick-and-spin
   ref: 3
-  title: 'Pick and Spin: Efficient Cold-Start-Aware Routing for Self-Hosted LLM Serving'
+  title: 'Pick and Spin: Cold-Start-Aware Routing for Self-Hosted LLM Serving'
   authors:
   - Bhanu Prakash Vangala
   - Tanu Malik
@@ -315,7 +314,6 @@ publications:
   authors:
   - Bhanu Prakash Vangala
   - Tanu Malik
-  - Ashish Gehani
   venue: DAI Workshop at AAAI 2026
   venue_url: https://dai-workshop.github.io/
   venue_full: DAI Workshop at AAAI 2026
@@ -840,13 +838,13 @@ teaching:
 talks:
 - id: cloud26
   date: Jul 2026
-  title: 'Pick and Spin: Efficient Cold-Start-Aware Routing for Self-Hosted LLM Serving'
+  title: 'Pick and Spin: Cold-Start-Aware Routing for Self-Hosted LLM Serving'
   venue: IEEE CLOUD 2026, Sydney, Australia
   url: https://services.conferences.computer.org/2026/cloud/
   kind: Oral
 - id: rep26
   date: Jul 2026
-  title: 'AI-Generated Code Is Not Reproducible (Yet): An Empirical Study of Environment Executability'
+  title: 'AI-Generated Code Is Not Reproducible (Yet): An Empirical Study of Execution Reliability in LLM-Based Coding Agents'
   venue: ACM REP 2026, Delft, Netherlands
   url: https://www.tudelft.nl/en/events/2026/eemcs/2026-acm-conference-on-reproducibility-and-replicability
   kind: Oral
