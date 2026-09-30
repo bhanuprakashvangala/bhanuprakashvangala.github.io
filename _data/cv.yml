@@ -330,7 +330,7 @@ publications:
 - id: hallumat
   ref: 6
   title: 'HalluMat: Detecting Hallucinations in LLM-Generated Materials Science Content Through Multi-Stage Verification'
-  note: 'Includes a benchmark dataset for evaluating hallucination detection in materials science.'
+  benchmark: true
   authors:
   - Bhanu Prakash Vangala
   - Sajid Mahmud
@@ -392,7 +392,7 @@ publications:
 - id: env-gap
   ref: 9
   title: 'Code That Works, Environments That Don’t: Measuring Environment Reproducibility in AI-Generated Software'
-  note: 'Next version in progress: a public benchmark that tests whether AI coding agents can get real software running on a clean machine. [View the benchmark](https://d3npiokq0n7c4l.cloudfront.net/benchmark.html)'
+  note: 'Next version in progress: a public benchmark that tests how reliable code from AI coding agents really is, covering reproducibility, environment instability and dependency security. <span class="benchmark-pill">View the benchmark</span>'
   authors:
   - Bhanu Prakash Vangala
   - Tanu Malik
@@ -973,7 +973,7 @@ news:
 - date: 01/2026
   text: '🎤 Presented two orals at AAAI 2026 in Singapore: [AI-Generated Code Is Not Reproducible (Yet)](https://arxiv.org/abs/2512.22387) at the [RAI Workshop](https://reproducibleai.github.io/) and [Efficient Multi-Model Orchestration for Self-Hosted LLMs](https://arxiv.org/abs/2512.22402) at the [DAI Workshop](https://dai-workshop.github.io/).'
 - date: 01/2026
-  text: '📝 Submitted **Code That Works, Environments That Don''t**, an extended 1,000-run study, to [AI Magazine](https://onlinelibrary.wiley.com/journal/23719621). The next version is becoming a [public benchmark](https://d3npiokq0n7c4l.cloudfront.net/benchmark.html).'
+  text: '📝 Submitted **Code That Works, Environments That Don''t**, an extended 1,000-run study, to [AI Magazine](https://onlinelibrary.wiley.com/journal/23719621). The next version is becoming a public benchmark.'
 - date: 12/2025
   text: '📄 **AI-Generated Code Is Not Reproducible (Yet)** was accepted at the [RAI Workshop at AAAI 2026](https://reproducibleai.github.io/). Check out the [paper](https://arxiv.org/abs/2512.22387).'
 - date: 11/2025
