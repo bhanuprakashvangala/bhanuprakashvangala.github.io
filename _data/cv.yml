@@ -229,6 +229,8 @@ publications:
   links:
   - label: PDF
     url: /files/papers/one-threshold.pdf
+  - label: Code
+    url: https://github.com/bhanuprakashvangala/LanguageConditionalDeferral
   kind: Oral
   image: images/publications/one-threshold.png
   image_alt: Per-language coverage and deferral rates for pooled and language-conditional thresholds
@@ -247,6 +249,8 @@ publications:
   links:
   - label: Paper
     url: https://doi.org/10.1145/3820002.3828581
+  - label: Code
+    url: https://github.com/bhanuprakashvangala/AgentRepro
   kind: Oral
   image: images/publications/execution-reliability.png
   image_alt: Clean-environment execution evaluation for AI-generated code
@@ -264,6 +268,8 @@ publications:
   links:
   - label: PDF
     url: /files/papers/pick-and-spin.pdf
+  - label: Code
+    url: https://github.com/bhanuprakashvangala/PickAndSpin
   kind: Oral
   image: images/AdaptiveLLMaaS.png
   image_alt: Pick and Spin routing and model orchestration architecture
@@ -305,6 +311,8 @@ publications:
   links:
   - label: arXiv
     url: https://arxiv.org/abs/2512.22387
+  - label: Code
+    url: https://github.com/bhanuprakashvangala/AgentRepro
   kind: Oral
   image: images/publications/execution-reliability.png
   image_alt: Clean-environment execution evaluation for AI-generated code
@@ -322,6 +330,8 @@ publications:
   links:
   - label: arXiv
     url: https://arxiv.org/abs/2512.22402
+  - label: Code
+    url: https://github.com/bhanuprakashvangala/MultiModelOrchestration
   kind: Oral
   image: images/AdaptiveLLMaaS.png
   image_alt: Multi-model serving and orchestration framework
@@ -436,7 +446,9 @@ publications:
   venue_full: RCMLR Workshop at NeurIPS 2026
   status: review
   year: 2026
-  links: []
+  links:
+  - label: Code
+    url: https://github.com/bhanuprakashvangala/PediatricCXR-EvaluationChoices
   image: images/Pneumonia-Portfolio Image.png
   image_alt: Chest X-ray classification research
 - id: seed-xai
@@ -502,7 +514,9 @@ publications:
   venue_full: IEEE Journal of Biomedical and Health Informatics
   status: review
   year: 2026
-  links: []
+  links:
+  - label: Code
+    url: https://github.com/bhanuprakashvangala/BrainMRI-ContaminationAudit
   image: images/Brain Tumor-Portfolio Image.png
   image_alt: Brain MRI classification research
   publisher_label: IEEE · IEEE Xplore
