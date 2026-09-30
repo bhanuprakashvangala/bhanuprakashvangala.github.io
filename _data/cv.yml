@@ -13,8 +13,9 @@ profile:
   show_phone: false
   avatar: images/Bhanu1.jpg
   tagline: Trust, reproducibility and efficiency turn out to be one problem.
-  summary: My research focuses on LLM serving, agentic AI, and reproducibility. I work on cold-start-aware model
-    routing, dependency analysis for AI-generated code, and evaluation of machine-learning systems.
+  summary: I study whether we can trust what AI systems produce, from hallucinations in language models to the reproducibility
+    of code written by AI agents, and I build benchmarks and systems to measure it and make LLM-based systems reliable
+    and efficient.
   dissertation: 'Executable Reliability: Unifying Trust, Reproducibility, and Efficiency in LLM-Based Systems'
   dissertation_sub: Trust, reproducibility and efficiency turn out to be one problem
   area: AI, Systems & Networking
@@ -117,9 +118,9 @@ education:
   current: true
   details:
   - 'Dissertation: Executable Reliability: Unifying Trust, Reproducibility, and Efficiency in LLM-Based Systems.'
-  - Advised by Dr. Tanu Malik (Radiant Lab).
-  - Google Ph.D. Fellowship Nominee (NLP track, 2025); EECS Travel Fellowship '26; Chameleon top-10 presentation
-    '26.
+  - Advised by [Prof. Tanu Malik](https://engineering.missouri.edu/faculty/tanu-malik/) ([Radiant Lab](https://radiant-systems-lab.github.io/)).
+  - Google PhD Fellowship Nominee (NLP track, 2025); EECS Graduate Travel Fellow (2026).
+  logo: images/logos/mizzou.svg
 - id: ms
   degree: M.S., Computer Science
   org: University of Missouri
@@ -127,9 +128,10 @@ education:
   start: Aug 2023
   end: May 2025
   details:
-  - 'Thesis: Deploying LLMs as a Service in a Kubernetes HPC Cluster.'
-  - Advised by Dr. Grant J. Scott and Dr. Jianlin Cheng.
+  - 'Thesis: Deploying LLMs as a Service in Kubernetes HPC Clusters.'
+  - Advised by [Prof. Grant J. Scott](https://scottgs.mufaculty.umsystem.edu/) and [Prof. Jianlin Cheng](https://calla.rnet.missouri.edu/cheng/).
   - Outstanding Master's Student Award (2025); Runner-up, MUIDSI Hackathon (2025).
+  logo: images/logos/mizzou.svg
 - id: btech
   degree: B.Tech, CSE (Data Analytics)
   org: Vellore Institute of Technology
@@ -138,8 +140,9 @@ education:
   end: Apr 2023
   details:
   - 'Thesis: Multilingual Sentiment Analysis on KOO User Posts.'
-  - With Prof. Ponnurangam Kumaraguru and Dr. Soubhagya Barpanda.
+  - Advised by [Dr. Soubhagya Barpanda](https://scholar.google.com/citations?user=1kMdpZIAAAAJ&hl=en); KOO datasets and API access supported by [Prof. Ponnurangam Kumaraguru](https://precog.iiit.ac.in/bio/).
   - Dean's Research Excellence Award (2023); Top-2 Academic Performer (2022); Merit Scholarship.
+  logo: images/logos/vit.svg
 experience:
 - id: microsoft
   title: Research Data Science Intern
@@ -147,12 +150,15 @@ experience:
   location: Redmond, WA
   start: May 2026
   end: Aug 2026
-  collaborators: Anqi Cheng and Arturo Herrera
+  collaborators: Anqi Cheng
+  manager: Arturo Herrera
   bullets:
   - Built TempFE, a temporal feature framework for Windows retention telemetry; improved model PR-AUC by 30%.
   - Designed a pre-registered six-arm benchmark in which the feature model outperformed TCN and TFT baselines.
   featured: true
   short_period: Summer 2026
+  url: https://www.microsoft.com
+  logo: images/logos/microsoft.svg
 - id: mizzou
   title: Graduate Research Assistant
   org: University of Missouri
@@ -163,10 +169,12 @@ experience:
   collaborators: Tanu Malik (Radiant Lab) and Jianlin Cheng
   bullets:
   - Research supported by NASA AIST, NSF, and DoD (ERDC).
-  - Built cold-start-aware LLM routing with Thompson Sampling; reduced GPU-hours by 46% over 310K+ inference runs.
+  - Built cold-start-aware LLM routing and orchestration; reduced GPU-hours by 46% over 310K+ inference runs.
   - Built a three-layer dependency audit across 1,000 runs, three agents, and four languages.
   featured: true
   short_period: 2023–present
+  url: https://engineering.missouri.edu/departments/eecs/
+  logo: images/logos/mizzou.svg
 - id: learnllm
   title: Founder
   org: LearnLLM.dev
@@ -179,6 +187,7 @@ experience:
   featured: true
   short_period: Present
   url: https://learnllm.dev
+  logo: images/logos/learnllm.png
 - id: paal
   title: Graduate Research Assistant
   org: Precision and Automated Agriculture Lab, University of Missouri
@@ -187,17 +196,20 @@ experience:
   end: Dec 2023
   bullets:
   - Built AI pipelines for UAV remote-sensing imagery; improved geospatial accuracy by 40% in UAV workflows.
+  url: https://cafnrfaculty.missouri.edu/mupaa
+  logo: images/logos/mizzou.svg
 - id: adobe
   title: Volunteer Research Intern
   org: Adobe Research
   location: India
   start: May 2022
   end: Jan 2023
-  collaborators: Nandakishore Kambhatla
   bullets:
   - Delivered quality-controlled scraping pipelines for research datasets.
   featured: true
   short_period: 2022–2023
+  url: https://research.adobe.com/
+  logo: images/logos/adobe.svg
 publications:
 - id: one-threshold
   ref: 1
@@ -207,6 +219,7 @@ publications:
   - Bhanu Prakash Vangala
   - Navya Vangala
   venue: Global South in AI Workshop at NeurIPS 2026
+  venue_url: https://sites.google.com/view/globalsouthai-neurips26/home
   venue_full: Global South in AI Workshop at NeurIPS 2026
   status: accepted
   year: 2026
@@ -225,6 +238,7 @@ publications:
   - Tanu Malik
   - Ashish Gehani
   venue: ACM REP 2026
+  venue_url: https://www.tudelft.nl/en/events/2026/eemcs/2026-acm-conference-on-reproducibility-and-replicability
   venue_full: ACM REP 2026
   status: accepted
   year: 2026
@@ -232,14 +246,6 @@ publications:
   - label: Paper
     url: https://doi.org/10.1145/3820002.3828581
   kind: Oral
-  related_work:
-    label: 'Earlier workshop version: RAI at AAAI 2026'
-    url: https://arxiv.org/abs/2512.22387
-    authors:
-    - Bhanu Prakash Vangala
-    - Ali Adibifar
-    - Ashish Gehani
-    - Tanu Malik
   image: images/publications/execution-reliability.png
   image_alt: Clean-environment execution evaluation for AI-generated code
 - id: pick-and-spin
@@ -249,6 +255,7 @@ publications:
   - Bhanu Prakash Vangala
   - Tanu Malik
   venue: IEEE CLOUD 2026
+  venue_url: https://services.conferences.computer.org/2026/cloud/
   venue_full: IEEE CLOUD 2026
   status: accepted
   year: 2026
@@ -265,8 +272,9 @@ publications:
   - Nagarjuna Chowdary Kandimalla
   - Bhanu Prakash Vangala
   - Tanu Malik
-  venue: WORKS at SC 2026
-  venue_full: WORKS at SC 2026
+  venue: WORKS at SC26, the International Conference for High Performance Computing
+  venue_url: https://works-workshop.org/
+  venue_full: WORKS at SC26, the International Conference for High Performance Computing
   status: accepted
   year: 2026
   links:
@@ -279,6 +287,25 @@ publications:
   - Bhanu Prakash Vangala
   image: images/publications/camp.png
   image_alt: Measured eBPF explicit-read and memory-mapped consumption across scientific workflows
+- id: rai-workshop-dependency-gaps
+  ref: 5
+  title: 'AI-Generated Code Is Not Reproducible (Yet): An Empirical Study of Dependency Gaps in LLM-Based Coding Agents'
+  authors:
+  - Bhanu Prakash Vangala
+  - Ali Adibifar
+  - Ashish Gehani
+  - Tanu Malik
+  venue: RAI Workshop at AAAI 2026
+  venue_url: https://reproducibleai.github.io/
+  venue_full: Workshop on Reproducible AI (RAI) at AAAI 2026
+  status: accepted
+  year: 2026
+  links:
+  - label: arXiv
+    url: https://arxiv.org/abs/2512.22387
+  kind: Oral
+  image: images/publications/execution-reliability.png
+  image_alt: Clean-environment execution evaluation for AI-generated code
 - id: multi-model-orchestration
   ref: 5
   title: Efficient Multi-Model Orchestration for Self-Hosted Large Language Models
@@ -287,6 +314,7 @@ publications:
   - Tanu Malik
   - Ashish Gehani
   venue: DAI Workshop at AAAI 2026
+  venue_url: https://dai-workshop.github.io/
   venue_full: DAI Workshop at AAAI 2026
   status: accepted
   year: 2026
@@ -298,15 +326,16 @@ publications:
   image_alt: Multi-model serving and orchestration framework
 - id: hallumat
   ref: 6
-  title: 'HalluMat: A Benchmark Dataset and Framework for Hallucination Detection in LLMs for Materials Science'
+  title: 'HalluMat: Detecting Hallucinations in LLM-Generated Materials Science Content Through Multi-Stage Verification'
   authors:
   - Bhanu Prakash Vangala
   - Sajid Mahmud
   - Pawan Neupane
   - Joel Selvaraj
   - Jianlin Cheng
-  venue: AAAI Spring Symposium 2025
-  venue_full: AAAI Spring Symposium 2025
+  venue: AAAI Spring Series 2025, AI for Engineering and Scientific Discoveries
+  venue_url: https://sites.google.com/view/aaai-ss25-ai4science/home
+  venue_full: AAAI Spring Series 2025, AI for Engineering and Scientific Discoveries
   status: accepted
   year: 2025
   links:
@@ -324,8 +353,9 @@ publications:
   - Joel Selvaraj
   - Bhanu Prakash Vangala
   - Jianlin Cheng
-  venue: AAAI Spring Symposium 2025
-  venue_full: AAAI Spring Symposium 2025
+  venue: AAAI Spring Series 2025, AI for Engineering and Scientific Discoveries
+  venue_url: https://sites.google.com/view/aaai-ss25-ai4science/home
+  venue_full: AAAI Spring Series 2025, AI for Engineering and Scientific Discoveries
   status: accepted
   year: 2025
   links:
@@ -379,6 +409,7 @@ publications:
   - Sowmya Guda
   - Navya Vangala
   venue: Africa in AI Affinity Workshop at NeurIPS 2026
+  venue_url: https://africainai.mailab.io/
   venue_full: Africa in AI Affinity Workshop at NeurIPS 2026
   status: review
   year: 2026
@@ -394,6 +425,7 @@ publications:
   - Latha Peddi
   - Navya Vangala
   venue: RCMLR Workshop at NeurIPS 2026
+  venue_url: https://translatingmlresearch.github.io/RCMLR/
   venue_full: RCMLR Workshop at NeurIPS 2026
   status: review
   year: 2026
@@ -474,7 +506,9 @@ publications:
   venue_full: University of Missouri
   status: poster
   year: 2025
-  links: []
+  links:
+  - label: Poster
+    url: /files/papers/adaptive-inference-poster.pdf
   kind: Poster
   image: images/LLM-as-Service-portfolio-image.png
   image_alt: Kubernetes LLM-as-a-Service deployment architecture
@@ -488,6 +522,7 @@ publications:
   - Pratham Shah
   - Shubham Nandlal Vishwakarma
   venue: IJARESM 2022
+  venue_url: https://www.ijaresm.com/
   venue_full: International Journal of All Research Education and Scientific Methods, Volume 10, Issue 10
   status: accepted
   year: 2022
@@ -588,8 +623,8 @@ projects:
   homepage: true
   image: images/KOO-Portfolio Image.png
   image_alt: Word cloud of Indian languages represented in the KOO sentiment-analysis project
-  desc: Sentiment analysis of multilingual social-media posts on KOO. B.Tech thesis with Prof. Ponnurangam Kumaraguru
-    and Dr. Soubhagya Barpanda.
+  desc: Sentiment analysis of multilingual social-media posts on KOO. B.Tech thesis advised by Dr. Soubhagya Barpanda;
+    Prof. Ponnurangam Kumaraguru provided access to the KOO datasets and API.
   links:
   - label: Thesis
     url: https://drive.google.com/file/d/1a2Xan4sDdC7ib7Hj5HODcjPyztmTee4k/view?usp=sharing
@@ -607,7 +642,8 @@ projects:
   github: https://github.com/bhanuprakashvangala/LLM-as-a-Service
 - id: brain-tumor-project
   title: Brain Tumor Detection in MRI Images using Transfer Learning
-  status: Research report · 2024
+  status: Coursework project · Report · 2024
+  coursework: true
   image: images/Brain Tumor-Portfolio Image.png
   image_alt: MRI images for brain tumor classification
   desc: Deep-learning classification of brain tumors from MRI images.
@@ -621,7 +657,8 @@ projects:
   github: https://github.com/bhanuprakashvangala/portfolio-artifacts/tree/main/projects/brain-tumor-project
 - id: pneumonia-project
   title: Pneumonia Detection on X-ray Images Using Deep Learning
-  status: Preprint · 2025
+  status: Coursework project · Preprint · 2025
+  coursework: true
   image: images/Pneumonia-Portfolio Image.png
   image_alt: Chest X-ray examples for pneumonia classification
   desc: Deep-learning models for pneumonia classification from chest X-rays.
@@ -659,6 +696,7 @@ projects:
 - id: indoor-nav
   title: Autonomous indoor navigation
   status: Coursework project · Completed
+  coursework: true
   stack: BLE | Raspberry Pi | Kotlin
   tags:
   - systems
@@ -666,37 +704,51 @@ projects:
   desc: BLE beacons and a Raspberry Pi running A* and Dijkstra pathfinding, paired with a Kotlin app giving turn-by-turn
     guidance indoors where GPS fails.
   github: https://github.com/bhanuprakashvangala/indoor-navigation
+  image: images/projects/indoor-nav.svg
+  image_alt: BLE beacon positioning and on-device pathfinding pipeline for indoor navigation
 - id: chatmed
   featured: true
   title: 'ChatMed: grounded medical question answering'
   status: Coursework project · Completed
+  coursework: true
   tags:
   - nlp
   - medical
   desc: A symptom-guidance assistant built on BioGPT and grounded in PubMed articles.
   github: https://github.com/bhanuprakashvangala/chatmed.github.io
+  image: images/projects/chatmed.svg
+  image_alt: ChatMed pipeline grounding BioGPT answers in retrieved PubMed articles
 - id: cropinsight
   title: 'CropInsight: crop health and yield forecasting'
   status: Coursework project · Completed
+  coursework: true
   tags:
   - vision
   - science
   desc: Computer vision plus sequence models for crop health monitoring and yield forecasting from field imagery.
   github: https://github.com/bhanuprakashvangala/CropInsight
+  image: images/projects/cropinsight.svg
+  image_alt: CropInsight pipeline from field imagery to crop health and yield forecasts
 - id: socialsift
   title: 'SocialSift: crisis-aware multilingual sentiment analysis'
   status: Coursework project · Completed
+  coursework: true
   tags:
   - nlp
   - multilingual
   desc: Transformer-based sentiment and intent analysis over multilingual social media during natural disasters.
   github: https://github.com/bhanuprakashvangala/SocialSift
+  image: images/projects/socialsift.svg
+  image_alt: SocialSift pipeline for multilingual crisis sentiment and intent analysis
 - id: book-recommendation
   title: Book Recommendation System
   status: Coursework project · Completed
+  coursework: true
   desc: Nearest-neighbor book recommendations from a collected dataset of about 30,000 records, implemented in Python
     and Google Colab.
   github: https://github.com/bhanuprakashvangala/Book-Recommendation-System
+  image: images/projects/book-recommendation.svg
+  image_alt: Nearest-neighbor book recommendation pipeline
 awards:
 - id: acm-summit
   year: '2026'
@@ -706,45 +758,62 @@ awards:
   year: '2026'
   title: Chameleon Cloud Travel Award
   org: Top 10 proposals, NSF Chameleon Cloud
+  url: https://engineering.missouri.edu/2026/exploring-how-ai-can-strengthen-research-reproducibility/
+  link_label: Mizzou Engineering story
 - id: eecs-travel
   year: '2026'
   title: EECS Graduate Travel Fellowship
   org: University of Missouri
+- id: neurips-rev
+  year: '2025'
+  title: Outstanding Reviewer Award
+  org: AI4Mat Workshop, NeurIPS 2025
+  url: https://drive.google.com/file/d/1sL7rlTMeUXxY5cAWvJpCsUYocj7J_Vft/view?usp=sharing
+  link_label: Outstanding Reviewer certificate
 - id: google-phd
   year: '2025'
   title: Google PhD Fellowship Nominee
   org: NLP track, University of Missouri
   url: https://drive.google.com/file/d/1XpQzEPGFAayWVz51zdXsPldg0CrV_DdQ/view?usp=sharing
   link_label: Google PhD Fellowship application (2025)
-- id: neurips-rev
-  year: '2025'
-  title: Outstanding Reviewer Award
-  org: NeurIPS 2025
 - id: outstanding-ms
   year: '2025'
   title: Outstanding Master’s Student Award
   org: University of Missouri
+  url: /images/Outstanding Student.jpeg
+  link_label: Award photo
 - id: muidsi
   year: '2025'
   title: Runner-up, Generative AI for Social Good Hackathon
   org: IBM / MUIDSI
+  url: https://muidsi.missouri.edu/muidsi-gso-hosts-2025-generative-ai-for-social-good-hackathon/
+  link_label: MUIDSI story
 - id: vit-honors
   year: '2023'
   title: Dean’s Research Excellence Award
   org: Vellore Institute of Technology
 service:
-- group: Reviewing
+- group: Conference reviewing
   items:
-  - NeurIPS 2025 and 2026
-  - CIKM 2025
-  - ACM CAIS 2026
-  - IEEE
-  - Elsevier journals
-- group: Artifact evaluation
+  - '[Conference on Neural Information Processing Systems (NeurIPS)](https://neurips.cc/) 2026'
+  - '[International Conference on Parallel Architectures and Compilation Techniques (PACT)](https://pact2026.github.io/) 2026'
+  - '[ACM Conference on AI and Agentic Systems (CAIS)](https://www.caisconf.org/) 2026'
+  - '[IEEE International Conference on Big Data (IEEE Big Data)](https://bigdataieee.org/BigData2025/) 2025'
+  - '[ACM International Conference on Information and Knowledge Management (CIKM)](https://cikm2025.org/) 2025'
+- group: Workshop reviewing
   items:
-  - NeurIPS 2026
-  - ACM CAIS 2026
-  - ACM REP
+  - '[Responsible Communication of ML Research in Biomedicine (RCMLR) Workshop](https://translatingmlresearch.github.io/RCMLR/) at NeurIPS 2026'
+  - '[GlobalSouthCV Workshop](https://bmvc2026.bmva.org/programme/workshops/) at BMVC 2026'
+  - '[AI for Accelerated Materials Design (AI4Mat) Workshop](https://sites.google.com/view/ai4mat/ai4mat-neurips-2025) at NeurIPS 2025 [🏆 Outstanding Reviewer Award](https://drive.google.com/file/d/1sL7rlTMeUXxY5cAWvJpCsUYocj7J_Vft/view?usp=sharing){: .award-badge}'
+  - '[AI for Accelerated Materials Design (AI4Mat) Workshop](https://sites.google.com/view/ai4mat/ai4mat-iclr-2025) at ICLR 2025'
+- group: Journal reviewing
+  items:
+  - '[Journal of Computer Languages](https://www.sciencedirect.com/journal/journal-of-computer-languages) (Elsevier)'
+- group: Artifact evaluation committees
+  items:
+  - '[Conference on Neural Information Processing Systems (NeurIPS)](https://neurips.cc/) 2026'
+  - '[International Conference on Parallel Architectures and Compilation Techniques (PACT)](https://pact2026.github.io/) 2026'
+  - '[ACM Conference on AI and Agentic Systems (CAIS)](https://www.caisconf.org/) 2026'
 teaching:
 - id: ml-systems
   course: Designing End-to-End ML Systems
@@ -752,7 +821,7 @@ teaching:
   org: University of Missouri
   terms:
   - Fall 2026
-  note: Designed graded labs on Chameleon Cloud.
+  note: Designing hands-on labs on Chameleon Cloud and marimo notebooks.
 - id: webdev
   course: Web Development (MERN Stack)
   role: Teaching Assistant
@@ -761,23 +830,46 @@ teaching:
   - Fall 2023–Fall 2025
   note: Mentored 115+ students.
 talks:
+- id: cloud26
+  date: Jul 2026
+  title: 'Pick and Spin: Efficient Cold-Start-Aware Routing for Self-Hosted LLM Serving'
+  venue: IEEE CLOUD 2026, Sydney, Australia
+  url: https://services.conferences.computer.org/2026/cloud/
+  kind: Oral
+- id: rep26
+  date: Jul 2026
+  title: 'AI-Generated Code Is Not Reproducible (Yet): An Empirical Study of Environment Executability'
+  venue: ACM REP 2026, Delft, Netherlands
+  url: https://www.tudelft.nl/en/events/2026/eemcs/2026-acm-conference-on-reproducibility-and-replicability
+  kind: Oral
 - id: chameleon26
   date: Apr 2026
   title: Evaluating Dependency Gaps in LLM-Generated Code
   venue: Sixth Chameleon User Meeting, NCAR Mesa Lab, Boulder, CO
+  kind: Selected talk
+- id: mindful26
+  date: Mar 2026
+  title: MINDFUL Seminar
+  venue: Invited seminar talk at University of Missouri
+  kind: Seminar
 - id: aaai26a
   date: Jan 2026
   title: AI-Generated Code Is Not Reproducible (Yet)
-  venue: AAAI 2026 RAI Workshop, Singapore
+  venue: RAI Workshop at AAAI 2026, Singapore
+  url: https://reproducibleai.github.io/
+  kind: Oral
 - id: aaai26b
   date: Jan 2026
   title: Efficient Multi-Model Orchestration for Self-Hosted LLMs
-  venue: AAAI 2026 DAI Workshop, Singapore
+  venue: DAI Workshop at AAAI 2026, Singapore
+  url: https://dai-workshop.github.io/
+  kind: Oral
 - id: aaaiss25
   date: Apr 2025
-  title: Hallucination detection in scientific LLMs
-  venue: AAAI Spring Symposium 2025 · AI for Scientific Discovery
-  image: images/conference image.jpeg
+  title: Hallucination Detection in Scientific LLMs (HalluMat and HalluFormer)
+  venue: AAAI Spring Series 2025, AI for Engineering and Scientific Discoveries
+  url: https://sites.google.com/view/aaai-ss25-ai4science/home
+  kind: Talk
 coursework:
 - group: ML & deep learning
   items:
@@ -854,26 +946,63 @@ skills:
   - GitHub Actions CI/CD
 news:
 - date: Sep 2026
-  text: '**One Threshold Does Not Fit All Languages** accepted for an oral presentation at the **Global South in
-    AI Workshop at NeurIPS 2026**.'
+  text: '📄 **One Threshold Does Not Fit All Languages** accepted for an oral presentation at the **Global South in AI Workshop at NeurIPS 2026**.'
 - date: Fall 2026
-  text: Teaching **Designing End-to-End ML Systems**, with hands-on labs on Chameleon Cloud.
+  text: '🧑‍🏫 Teaching assistant for **Designing End-to-End ML Systems**, with hands-on labs on Chameleon Cloud and marimo notebooks.'
 - date: Aug 2026
-  text: Completed my **Research Data Science internship at Microsoft**, working on temporal features for Windows
-    retention.
+  text: '💼 Completed my **Research Data Science internship at Microsoft** in Redmond, WA: temporal featurization for predictive Windows retention across 1B+ users.'
 - date: '2026'
-  text: '**CAMP**, joint first-authored with Nagarjuna Chowdary Kandimalla, accepted at **WORKS at SC 2026**.'
+  text: '📄 Our paper **CAMP: Consumption-Aware Memory Prediction for Scientific Workflows** got accepted at **WORKS at SC26**, the International Conference for High Performance Computing.'
 - date: '2026'
-  text: Presented work on coding-agent execution reliability at **ACM REP** and cold-start-aware LLM serving at
-    **IEEE CLOUD**.
-- date: '2026'
-  text: Selected for the **ACM Doctoral Summit (Top 100)** and received **Chameleon Cloud** and **EECS Graduate
-    Travel** awards.
+  text: '🏆 Selected for the **ACM Doctoral Summit (Top 100)**.'
+- date: Jun 2026
+  text: '📄 **Pick and Spin: Efficient Cold-Start-Aware Routing for Self-Hosted LLM Serving** accepted as an **oral at IEEE CLOUD 2026**.'
+- date: May 2026
+  text: '📄 **AI-Generated Code Is Not Reproducible (Yet)** accepted as an **oral at ACM REP 2026**.'
+- date: Apr 2026
+  text: '✈️ Received the **EECS Graduate Travel Fellowship** from the University of Missouri College of Engineering.'
+- date: Apr 2026
+  text: '✈️ Awarded a **Chameleon Cloud Travel Award** (top 10 proposals) for the Sixth Chameleon User Meeting.'
+- date: Feb 2026
+  text: '🎤 My presentation on **Evaluating Dependency Gaps in LLM-Generated Code** was selected for the **Sixth Chameleon User Meeting** at NCAR''s Mesa Lab in Boulder, Colorado.'
 - date: Jan 2026
-  text: Presented work on reproducibility and multi-model orchestration at the **RAI and DAI workshops at AAAI 2026**.
-- date: '2025'
-  text: Selected as a **Google PhD Fellowship Nominee (NLP)** at the University of Missouri; received the **Outstanding
-    Master’s Student Award** and a **NeurIPS Outstanding Reviewer Award**.
+  text: '🎤 Presented **AI-Generated Code Is Not Reproducible (Yet)** and **Efficient Multi-Model Orchestration for Self-Hosted LLMs** as **orals at the RAI and DAI workshops at AAAI 2026** in Singapore.'
+- date: Jan 2026
+  text: '📝 Submitted **Code That Works, Environments That Don''t** (an extended 1,000-instance study) to **AI Magazine**.'
+- date: Dec 2025
+  text: '📄 **AI-Generated Code Is Not Reproducible (Yet)** accepted at the **RAI Workshop at AAAI 2026**.'
+- date: Nov 2025
+  text: '📄 **Efficient Multi-Model Orchestration for Self-Hosted LLMs** accepted at the **DAI Workshop at AAAI 2026**.'
+- date: Nov 2025
+  text: '💼 Received an offer from **Microsoft** for a Research Data Science Internship (Summer 2026).'
+- date: Sep 2025
+  text: '🏆 Named an **Outstanding Reviewer** at the **AI4Mat Workshop, NeurIPS 2025** (AI for Accelerated Materials Design).'
+- date: May 2025
+  text: '🎓 Graduated with my **M.S. in Computer Science** and continued into the **Ph.D. program at Mizzou**.'
+- date: Apr 2025
+  text: '🏆 Selected as a **Google Ph.D. Fellowship Nominee (NLP)**, top 3 of 6,000 participants.'
+- date: Apr 2025
+  text: '🎤 Presented our hallucination-detection work at the **AAAI Spring Series 2025** (AI for Engineering and Scientific Discoveries).'
+- date: Mar 2025
+  text: '🏆 Received the **Outstanding Master''s Student Award** at the Mizzou Engineering Awards Banquet.'
+- date: Mar 2025
+  text: '🏆 Runner-up at the **MUIDSI x IBM AI for Social Good Hackathon** with **VisionAI** ($1,000).'
+- date: Jan 2025
+  text: '📄 Two papers accepted at the **AAAI Spring Series 2025**: **HalluMat** and **HalluFormer**.'
+- date: Sep 2024
+  text: '🔬 Began documenting scalable **LLM-as-a-Service** infrastructure using Helm charts and node-affinity scheduling on NRP Nautilus.'
+- date: Dec 2023
+  text: '🔬 Joined the **Radiant Lab** and the **Data Intensive Computing Lab** as a graduate research assistant.'
+- date: Aug 2023
+  text: '🔬 Began research on **faithfulness, interpretability and robustness** in large generative language models.'
+- date: Jun 2023
+  text: '🎓 Admitted to the Ph.D. program in Computer Science at the University of Missouri.'
+- date: May 2023
+  text: '🎓 Graduated with a B.Tech in CSE (Data Analytics) from VIT Vellore.'
+- date: Apr 2023
+  text: '🏆 Honored with the **Dean''s Research Excellence Award** at VIT for multilingual NLP and social media analytics.'
+- date: May 2022
+  text: '🔬 Started as a volunteer research intern at **Adobe Research**.'
 assistant:
   greeting: Hi. I answer from Bhanu's CV, papers and projects, and from nothing else. Ask about the research, where
     he has worked, or how to get hold of him. I will point you at the section each answer came from so you can check

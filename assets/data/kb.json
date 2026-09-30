@@ -61,7 +61,7 @@ Workstreams: {% for th in r.threads %}{{ th.name }}: {{ th.text }} {% endfor %}
 {%- for x in cv.experience -%}
 {%- capture t -%}
 Role: {{ x.title }} at {{ x.org }}, {{ x.location }}, from {{ x.start }} to {{ x.end }}.
-{% if x.collaborators %}Worked with {{ x.collaborators }}.{% endif %}
+{% if x.collaborators %}Worked with {{ x.collaborators }}.{% endif %}{% if x.manager %} Manager: {{ x.manager }}.{% endif %}
 {% for b in x.bullets %}{{ b | strip_html }} {% endfor %}
 {% if x.tags %}Technologies: {{ x.tags | join: ", " }}.{% endif %}
 {%- endcapture -%}
@@ -72,7 +72,7 @@ Role: {{ x.title }} at {{ x.org }}, {{ x.location }}, from {{ x.start }} to {{ x
 {%- for e in cv.education -%}
 {%- capture t -%}
 {{ e.degree }} at {{ e.org }}, {{ e.location }}, {{ e.start }} to {{ e.end }}. GPA {{ e.gpa }}.
-{% for d in e.details %}{{ d | strip_html }} {% endfor %}
+{% for d in e.details %}{{ d | markdownify | strip_html | strip }} {% endfor %}
 {%- endcapture -%}
 {{ sep }}{"id":{{ e.id | prepend: "edu-" | jsonify }},"type":"education",{% if e.current %}"current":true,{% endif %}"title":{{ e.degree | append: ", " | append: e.org | jsonify }},"section":"#educations","text":{{ t | normalize_whitespace | strip | jsonify }}}
 {%- endfor -%}
@@ -96,7 +96,7 @@ Honors and awards received by {{ p.name }}:
 
 {%- comment %} ---- Service, teaching, talks ---- {% endcomment -%}
 {%- capture t -%}
-Academic service and reviewing: {% for s in cv.service %}{{ s.items | join: ", " }}{% endfor %}.
+Academic service and reviewing: {% for s in cv.service %}{{ s.group }}: {{ s.items | join: ", " | markdownify | strip_html | strip }}. {% endfor %}.
 Teaching: {% for te in cv.teaching %}{{ te.role }} for {{ te.course }} at {{ te.org }} across {{ te.terms | join: ", " }}. {{ te.note }}{% endfor %}
 Invited talks and presentations: {% for tk in cv.talks %}{{ tk.date }}: "{{ tk.title }}" at {{ tk.venue }}. {% endfor %}
 {%- endcapture -%}
