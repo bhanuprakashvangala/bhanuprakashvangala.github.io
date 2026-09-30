@@ -468,7 +468,9 @@ publications:
   venue_full: Artificial Intelligence in Agriculture
   status: review
   year: 2026
-  links: []
+  links:
+  - label: Code
+    url: https://github.com/bhanuprakashvangala/DiffSeed-Realism
   image: images/publications/synthetic-seeds.png
   image_alt: Real soybean seeds compared with generated samples
   publisher_label: KeAi / Elsevier · ScienceDirect
@@ -483,7 +485,9 @@ publications:
   venue_full: Scientific Reports
   status: review
   year: 2026
-  links: []
+  links:
+  - label: Code
+    url: https://github.com/bhanuprakashvangala/DiffSeed-Controls
   image: images/publications/seed-quality.png
   image_alt: Real and generated maize kernels used in the cross-species check
   publisher_label: Nature Portfolio · Springer Nature
