@@ -8,8 +8,8 @@
 <div class="project-body">
 {% assign heading = include.heading_level | default: 'h2' %}<{{ heading }} class="project-title">{{ pr.title }}</{{ heading }}>
 {% if pr.authors %}<p class="pub-authors">{{ pr.authors | join: ', ' }}</p>{% endif %}
-<p class="project-meta">{% if pr.role %}<span class="badge is-accent">{{ pr.role }}</span>{% endif %}<span class="badge is-muted">{{ pr.status }}</span></p>
-<p class="project-desc">{{ pr.desc }}</p>
+<p class="project-meta">{% if pr.role %}<span class="badge is-accent">{{ pr.role }}</span>{% endif %}{% if pr.award %}<span class="award-badge project-award">🏆 {{ pr.status }}</span>{% else %}<span class="badge is-muted">{{ pr.status }}</span>{% endif %}</p>
+<p class="project-desc">{{ pr.desc | markdownify | remove: '<p>' | remove: '</p>' | strip }}</p>
 {%- if pr.stack %}
 <p class="project-tags">{% assign bits = pr.stack | split: "|" %}{% for b in bits %}<span class="tag">{{ b | strip }}</span>{% endfor %}</p>
 {%- endif %}

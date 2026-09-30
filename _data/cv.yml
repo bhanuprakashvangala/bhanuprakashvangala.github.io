@@ -110,9 +110,9 @@ threads:
   tag: orchestration
 education:
 - id: phd
-  degree: Ph.D., Computer Science
+  degree: Doctor of Philosophy (Ph.D.) in Computer Science
   org: University of Missouri
-  location: Columbia, MO
+  location: Columbia, MO, USA
   start: Aug 2023
   end: May 2027 (expected)
   current: true
@@ -122,9 +122,9 @@ education:
   - Google PhD Fellowship Nominee (NLP track, 2025); EECS Graduate Travel Fellow (2026).
   logo: images/logos/mizzou.svg
 - id: ms
-  degree: M.S., Computer Science
+  degree: Master of Science (M.S.) in Computer Science
   org: University of Missouri
-  location: Columbia, MO
+  location: Columbia, MO, USA
   start: Aug 2023
   end: May 2025
   details:
@@ -133,9 +133,9 @@ education:
   - Outstanding Master's Student Award (2025); Runner-up, MUIDSI Hackathon (2025).
   logo: images/logos/mizzou.svg
 - id: btech
-  degree: B.Tech, CSE (Data Analytics)
+  degree: Bachelor of Technology (B.Tech.) in Computer Science and Engineering with Specialization in Data Analytics
   org: Vellore Institute of Technology
-  location: Vellore, India
+  location: India
   start: May 2019
   end: Apr 2023
   details:
@@ -147,11 +147,11 @@ experience:
 - id: microsoft
   title: Research Data Science Intern
   org: Microsoft
-  location: Redmond, WA
+  location: Redmond, WA, USA
   start: May 2026
   end: Aug 2026
-  collaborators: Anqi Cheng
-  manager: Arturo Herrera
+  collaborators: '[Anqi Cheng](https://www.linkedin.com/in/anqi-cheng-616a5559)'
+  manager: '[Arturo Herrera](https://www.linkedin.com/in/juan-arturo-herrera-ph-d-41237191)'
   bullets:
   - Built TempFE, a temporal feature framework for Windows retention telemetry; improved model PR-AUC by 30%.
   - Designed a pre-registered six-arm benchmark in which the feature model outperformed TCN and TFT baselines.
@@ -162,13 +162,16 @@ experience:
 - id: mizzou
   title: Graduate Research Assistant
   org: University of Missouri
-  location: Columbia, MO
+  location: Columbia, MO, USA
   start: Dec 2023
   end: Present
   current: true
-  collaborators: Tanu Malik (Radiant Lab) and Jianlin Cheng
+  collaborators: '[Tanu Malik](https://engineering.missouri.edu/faculty/tanu-malik/) ([Radiant Lab](https://radiant-systems-lab.github.io/)) and [Jianlin Cheng](https://calla.rnet.missouri.edu/cheng/)'
+  funders:
+  - { name: NASA AIST, logo: images/logos/nasa.svg, url: 'https://esto.nasa.gov/project-selections-for-aist-21/#Malik' }
+  - { name: NSF, logo: images/logos/nsf.png, url: 'https://sites.google.com/umsystem.edu/gp-engine/home' }
+  - { name: DoD ERDC, logo: images/logos/dod.png, url: 'https://engineering.missouri.edu/2024/accelerating-materials-discovery/' }
   bullets:
-  - Research supported by NASA AIST, NSF, and DoD (ERDC).
   - Built cold-start-aware LLM routing and orchestration; reduced GPU-hours by 46% over 310K+ inference runs.
   - Built a three-layer dependency audit across 1,000 runs, three agents, and four languages.
   featured: true
@@ -191,7 +194,7 @@ experience:
 - id: paal
   title: Graduate Research Assistant
   org: Precision and Automated Agriculture Lab, University of Missouri
-  location: Columbia, MO
+  location: Columbia, MO, USA
   start: Aug 2023
   end: Dec 2023
   bullets:
@@ -674,25 +677,20 @@ projects:
 - id: visionai
   title: 'VisionAI: AI assistance for visually impaired users'
   status: Runner-up, $1,000
+  award: true
   stack: Multimodal AI | vLLM | Computer Vision
   tags:
   - vision
   - accessibility
   desc: Fine-tuned multimodal LLMs for hazard detection and accessibility from a live camera feed. Runner-up at
-    the IBM / MUIDSI Generative AI for Social Good Hackathon 2025.
+    the [IBM / MUIDSI Generative AI for Social Good Hackathon 2025](https://muidsi.missouri.edu/muidsi-gso-hosts-2025-generative-ai-for-social-good-hackathon/).
   github: https://github.com/bhanuprakashvangala/VisionAI
+  links:
+  - label: Hackathon website
+    url: https://muidsi.missouri.edu/muidsi-gso-hosts-2025-generative-ai-for-social-good-hackathon/
   image: images/Hackathon Winner 2.jpg
   image_alt: Bhanu Prakash Vangala with a teammate at the Generative AI for Social Good hackathon
   image_kind: photo
-- id: reflectmemory
-  featured: true
-  title: 'ReflectMemory: persistent memory for long-context reasoning'
-  status: Prototype
-  tags:
-  - agents
-  - memory
-  desc: A prototype for persisting and retrieving relevant context across long-running agent sessions.
-  github: https://github.com/bhanuprakashvangala/reflectmemory
 - id: indoor-nav
   title: Autonomous indoor navigation
   status: Coursework project · Completed
@@ -998,54 +996,57 @@ news:
 - date: Jun 2023
   text: '🎓 Admitted to the Ph.D. program in Computer Science at the University of Missouri.'
 - date: May 2023
-  text: '🎓 Graduated with a B.Tech in CSE (Data Analytics) from VIT Vellore.'
+  text: '🎓 Graduated with a B.Tech in CSE (Data Analytics) from Vellore Institute of Technology.'
 - date: Apr 2023
   text: '🏆 Honored with the **Dean''s Research Excellence Award** at VIT for multilingual NLP and social media analytics.'
 - date: May 2022
   text: '🔬 Started as a volunteer research intern at **Adobe Research**.'
 assistant:
-  greeting: Hi. I answer from Bhanu's CV, papers and projects, and from nothing else. Ask about the research, where
-    he has worked, or how to get hold of him. I will point you at the section each answer came from so you can check
-    it yourself.
+  greeting: Hi. I answer from Bhanu's CV, papers and projects, and from nothing else. Ask about his research, publications,
+    where he has worked, or how to reach him. Each answer points to the section it came from so you can check it.
   suggestions:
-  - What is his research actually about?
-  - What did he build at Microsoft?
-  - What are the AAAI 2026 workshop papers?
-  - Explain Pick-and-Spin
-  - Is he open to collaborating?
+  - What is his research about?
+  - What did he do at Microsoft?
+  - Which papers were accepted in 2026?
+  - Explain Pick and Spin
+  - Is he available for full-time roles?
   facts:
   - id: contact
     title: Contact & availability
     section: '#about-me'
-    text: Bhanu is reachable at bv3hz@umsystem.edu. He is a Ph.D. candidate at the University of Missouri expecting
-      to graduate in May 2027, based in Columbia, Missouri, and open to research collaborations, internships, and
-      speaking invitations. He completed a Research Data Science internship at Microsoft in Redmond, Washington
-      in summer 2026.
+    text: Bhanu is reachable at bv3hz@umsystem.edu. He is a Ph.D. candidate in Computer Science at the University of
+      Missouri in Columbia, Missouri, advised by Prof. Tanu Malik in the Radiant Lab, and expects to graduate in May
+      2027. He is available for full-time roles from mid-2027 and is open to research collaborations and speaking invitations.
+  - id: microsoft
+    title: Microsoft internship
+    section: '#experience'
+    text: In summer 2026 (May to August) Bhanu was a Research Data Science Intern at Microsoft in Redmond, Washington,
+      on the Windows Data team, working with Anqi Cheng under manager Arturo Herrera. He built TempFE, a temporal
+      feature framework for Windows retention telemetry that improved model PR-AUC by 30%, and designed a pre-registered
+      six-arm benchmark in which the feature model outperformed TCN and TFT baselines.
   - id: research-statement
     title: Research statement
     section: '#about-me'
-    text: 'His work sits at the intersection of three questions. Orchestration: when many language models share
-      limited GPU capacity, which model should answer a given request, and what should stay resident? His Pick-and-Spin
-      router treats this as a bandit problem and reached 61% GPU utilization against a 31% static baseline. Reproducibility:
-      code generated by AI coding agents usually runs for its author and fails for everyone else because the environment
-      specification is incomplete. He audited 300 agent-generated projects and found 68.3% reproduction success
-      and a 13.5x dependency gap between what agents declare and what the code needs. Trust: whether a model''s
-      output is faithful to its sources, measured with benchmarks like HalluMatData and detectors like HalluFormer
-      rather than by impression.'
+    text: 'Bhanu studies whether we can trust what AI systems produce, from hallucinations in language models to the
+      reproducibility of code written by AI agents, and he builds benchmarks and systems to measure it and to make
+      LLM-based systems reliable and efficient. His dissertation is titled Executable Reliability: Unifying Trust,
+      Reproducibility, and Efficiency in LLM-Based Systems. On reproducibility, he built a three-layer dependency audit
+      across 1,000 runs, three coding agents and four languages, published at ACM REP 2026 and the RAI Workshop at AAAI
+      2026. On efficiency, his Pick and Spin router (IEEE CLOUD 2026) does cold-start-aware routing and orchestration
+      across self-hosted LLMs and cut GPU-hours by 46% over 310K+ inference runs. On trust, HalluMat and HalluFormer
+      detect hallucinations in LLM output.'
   - id: funding
     title: Funding and collaborators
-    section: '#research'
-    text: His research has been funded by NASA (AIST), the NSF, and the Department of Defense through ERDC. Collaborators
-      include Dr. Tanu Malik and Dr. Jianlin Cheng at the University of Missouri, Dr. Ashish Gehani at SRI International,
-      Dr. Kwo-Sen Kuo at NASA, Dr. Abhilash Jindal at IIT Delhi, and Dr. Chitta Baral and Dr. Lenore Dai at Arizona
-      State University.
+    section: '#experience'
+    text: His research has been supported by NASA AIST, NSF (through the GP-ENGINE project) and DoD ERDC. Collaborators
+      include Prof. Tanu Malik and Prof. Jianlin Cheng at the University of Missouri, Dr. Ashish Gehani at SRI International,
+      and Dr. Abhilash Jindal at IIT Delhi.
   - id: infrastructure
     title: Infrastructure experience
     section: '#experience'
-    text: He has deployed and operated LLM inference on the NSF Nautilus cluster of the National Research Platform
-      using Kubernetes, Helm, vLLM and KEDA autoscaling, managing GPU quotas and deployment automation for nine
-      self-hosted models. He has also run serverless inference on AWS SageMaker and Lambda, replayed 300 reproducibility
-      experiments through SLURM, and built the Cosmos/SCOPE data layer over Azure streams during his Microsoft internship.
+    text: He has deployed and operated self-hosted LLM inference on the NSF Nautilus cluster of the National Research
+      Platform using Kubernetes, Helm, vLLM and KEDA autoscaling, and has run serverless inference on AWS SageMaker and
+      Lambda.
 updated: September 29, 2026
 cv_date: September 25, 2026
 cv_pdf: /files/Bhanu_Prakash_Academic_CV.pdf

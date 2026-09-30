@@ -28,7 +28,9 @@ author:
 #   generated answers. NEVER put an API key here -- this file is public.
 assistant:
   enabled                : false
-  endpoint               : "https://bhanuprakashvangala-github-io.vercel.app/api/chat"
+  # The Vercel proxy below currently returns 403, so the widget runs offline.
+  # Put a working proxy URL back here to switch on generated answers.
+  endpoint               : ""
   model                  : "gpt-oss"
 
 # Reading Files

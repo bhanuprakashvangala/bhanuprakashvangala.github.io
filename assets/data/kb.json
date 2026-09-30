@@ -60,9 +60,9 @@ Workstreams: {% for th in r.threads %}{{ th.name }}: {{ th.text }} {% endfor %}
 {%- comment %} ---- Experience ---- {% endcomment -%}
 {%- for x in cv.experience -%}
 {%- capture t -%}
-Role: {{ x.title }} at {{ x.org }}, {{ x.location }}, from {{ x.start }} to {{ x.end }}.
-{% if x.collaborators %}Worked with {{ x.collaborators }}.{% endif %}{% if x.manager %} Manager: {{ x.manager }}.{% endif %}
-{% for b in x.bullets %}{{ b | strip_html }} {% endfor %}
+Role: {{ x.title }} at {{ x.org }}, {{ x.location }}{% if x.start != "" and x.start %}, from {{ x.start }} to {{ x.end }}{% else %}, {{ x.end | downcase }}{% endif %}.
+{% if x.collaborators %}Worked with {{ x.collaborators | markdownify | strip_html | strip }}.{% endif %}{% if x.manager %} Manager: {{ x.manager | markdownify | strip_html | strip }}.{% endif %}
+{% for b in x.bullets %}{{ b | strip_html }} {% endfor %}{% if x.funders %}Research supported by {{ x.funders | map: 'name' | join: ', ' }}. {% endif %}
 {% if x.tags %}Technologies: {{ x.tags | join: ", " }}.{% endif %}
 {%- endcapture -%}
 {{ sep }}{"id":{{ x.id | prepend: "exp-" | jsonify }},"type":"experience","title":{{ x.title | append: ", " | append: x.org | jsonify }},"section":"#experience","text":{{ t | normalize_whitespace | strip | jsonify }}}
