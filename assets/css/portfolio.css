@@ -1153,3 +1153,12 @@ main {
 .pub-benchmark .benchmark-pill {
   margin-left: 0;
 }
+
+a.benchmark-pill,
+a.benchmark-pill:hover {
+  color: #fff;
+  text-decoration: none;
+}
+a.benchmark-pill:hover {
+  background: #25804a;
+}

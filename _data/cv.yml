@@ -330,7 +330,7 @@ publications:
 - id: hallumat
   ref: 6
   title: 'HalluMat: Detecting Hallucinations in LLM-Generated Materials Science Content Through Multi-Stage Verification'
-  benchmark: true
+  benchmark_url: https://huggingface.co/datasets/bhanuprakashvangala/HalluMat
   authors:
   - Bhanu Prakash Vangala
   - Sajid Mahmud
@@ -345,6 +345,8 @@ publications:
   links:
   - label: arXiv
     url: https://arxiv.org/abs/2512.22396
+  - label: Code
+    url: https://github.com/bhanuprakashvangala/HalluMat
   kind: Oral
   image: images/HalluMat-Portfolio Image.png
   image_alt: HalluMat knowledge graph used for hallucination analysis
@@ -365,6 +367,8 @@ publications:
   links:
   - label: PDF
     url: /files/papers/halluformer.pdf
+  - label: Code
+    url: https://github.com/bhanuprakashvangala/HalluFormer
   kind: Oral
   equal_contributors:
   - Sajid Mahmud
