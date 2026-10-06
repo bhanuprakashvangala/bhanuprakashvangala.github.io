@@ -72,7 +72,7 @@ redirect_from:
 <section id="awards" class="section" aria-labelledby="awards-title">
 <div class="section-head"><h2 id="awards-title">Honors &amp; awards</h2></div>
 <ul class="line-list">{% for aw in cv.awards %}
-<li><span class="line-main"><strong>{% if aw.url %}<a href="{% if aw.url contains '://' %}{{ aw.url }}{% else %}{{ aw.url | relative_url }}{% endif %}" title="{{ aw.link_label }}">{{ aw.title }}</a>{% else %}{{ aw.title }}{% endif %}</strong><span class="muted"> · {{ aw.org }}</span></span><span class="cv-row-date">{{ aw.year }}</span></li>{% endfor %}
+<li><span class="line-main"><strong>{% if aw.url %}<a href="{% if aw.url contains '://' %}{{ aw.url }}{% else %}{{ aw.url | relative_url }}{% endif %}" title="{{ aw.link_label }}">{{ aw.title }}</a>{% else %}{{ aw.title }}{% endif %}</strong><span class="muted"> · {{ aw.org }}</span>{% if aw.post %}<span class="muted"> · <a href="{{ aw.post }}">Photos &amp; post</a></span>{% endif %}</span><span class="cv-row-date">{{ aw.year }}</span></li>{% endfor %}
 </ul>
 </section>
 <section id="talks" class="section" aria-labelledby="talks-title">

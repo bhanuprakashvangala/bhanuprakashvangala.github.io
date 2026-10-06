@@ -934,12 +934,14 @@ awards:
   org: University of Missouri
   url: https://engineering.missouri.edu/2025/mizzou-engineering-honors-outstanding-faculty-staff-students-and-alumni/
   link_label: Mizzou Engineering honors, 2025
+  post: https://www.linkedin.com/feed/update/urn:li:activity:7306535644267167744/
 - id: muidsi
   year: '2025'
   title: Runner-up, Generative AI for Social Good Hackathon
   org: IBM / MUIDSI
   url: https://muidsi.missouri.edu/muidsi-gso-hosts-2025-generative-ai-for-social-good-hackathon/
   link_label: MUIDSI story
+  post: https://www.linkedin.com/feed/update/urn:li:activity:7303249831047700480/
 - id: vit-honors
   year: '2023'
   title: Dean’s Research Excellence Award
