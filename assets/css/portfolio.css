@@ -1222,3 +1222,146 @@ a.benchmark-pill:hover {
     gap: 6px;
   }
 }
+
+/* Phone design (up to 600px wide). Desktop and laptop layouts above are unchanged. */
+@media (max-width: 600px) {
+  .wrap {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  /* Header: name centred over a row of pill links. */
+  .site-header {
+    align-items: center;
+    text-align: center;
+    padding: 22px 0 14px;
+    gap: 14px;
+  }
+  .site-name {
+    font-size: 27px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .site-header nav {
+    justify-content: center;
+    gap: 8px;
+    font-size: 13.5px;
+  }
+  .site-header nav a {
+    padding: 5px 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: #fafafa;
+    text-decoration: none;
+  }
+  .site-header nav a[aria-current] {
+    border-color: var(--link);
+    background: #eef4fc;
+  }
+  /* Intro: the portrait, profile icons and availability centred above the text. */
+  .intro {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    margin-top: 22px;
+  }
+  .portrait {
+    order: -1;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    float: none;
+    margin: 0 0 22px;
+  }
+  .portrait img {
+    width: 156px;
+    height: 156px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: 50% 22%;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.14);
+  }
+  .portrait .profile-links {
+    width: auto;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .availability,
+  .location {
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+  .intro-copy p {
+    text-align: left;
+    font-size: 15.5px;
+    line-height: 1.6;
+  }
+  /* Sections: clear headings with breathing room. */
+  .section {
+    margin-top: 34px;
+  }
+  .section-head {
+    align-items: baseline;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 6px;
+    margin-bottom: 14px;
+  }
+  .section-head h2 {
+    font-size: 21px;
+  }
+  /* Papers and projects: one card each, the figure centred on top. */
+  .pub,
+  .project-card.has-image {
+    display: block;
+    padding: 14px;
+    margin: 0 0 16px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  }
+  .pub-image {
+    justify-content: center;
+    margin: 0 0 12px;
+    padding: 8px;
+    background: #fafafa;
+    border-radius: 8px;
+  }
+  .pub-image img,
+  .project-card.has-photo .pub-image img {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: contain;
+    object-position: center;
+  }
+  .pub-title {
+    font-size: 15.5px;
+  }
+  .pub-actions {
+    margin-top: 8px;
+  }
+  /* News: the date sits above each item instead of in a narrow column. */
+  .news-item {
+    display: block;
+    padding: 10px 0;
+    margin: 0;
+    border-bottom: 1px solid #f2f2f2;
+  }
+  .news-date {
+    display: block;
+    font-size: 12.5px;
+    margin-bottom: 2px;
+  }
+  /* Experience and education rows: keep the logo small beside the text. */
+  .cv-row.has-logo .org-logo {
+    width: 32px;
+    height: 32px;
+  }
+}
