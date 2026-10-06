@@ -230,6 +230,8 @@ publications:
   links:
   - label: PDF
     url: /files/papers/one-threshold.pdf
+  - label: arXiv
+    url: https://arxiv.org/abs/2609.37861
   - label: Code
     url: https://github.com/bhanuprakashvangala/LanguageConditionalDeferral
   kind: Oral
@@ -413,7 +415,11 @@ publications:
   venue_full: AI Magazine — Special Issue on AI and Reproducibility
   status: review
   year: 2026
-  links: []
+  links:
+  - label: arXiv
+    url: https://arxiv.org/abs/2610.00425
+  - label: Code
+    url: https://github.com/bhanuprakashvangala/EnvGap
   image: images/publications/env-gap.png
   image_alt: Declared, installed, and traced software dependency sets
   publisher_label: AAAI · Wiley
@@ -431,7 +437,9 @@ publications:
   venue_full: Africa in AI Affinity Workshop at NeurIPS 2026
   status: review
   year: 2026
-  links: []
+  links:
+  - label: arXiv
+    url: https://arxiv.org/abs/2609.37882
   image: images/publications/language-labels.png
   image_alt: MasakhaNEWS learning curves across annotation budgets
 - id: biomedical-evaluation
@@ -448,6 +456,8 @@ publications:
   status: review
   year: 2026
   links:
+  - label: arXiv
+    url: https://arxiv.org/abs/2609.37848
   - label: Code
     url: https://github.com/bhanuprakashvangala/PediatricCXR-EvaluationChoices
   image: images/Pneumonia-Portfolio Image.png
@@ -516,6 +526,8 @@ publications:
   status: review
   year: 2026
   links:
+  - label: arXiv
+    url: https://arxiv.org/abs/2610.00421
   - label: Code
     url: https://github.com/bhanuprakashvangala/BrainMRI-ContaminationAudit
   image: images/Brain Tumor-Portfolio Image.png
@@ -789,8 +801,8 @@ awards:
   year: '2025'
   title: Outstanding Reviewer Award
   org: AI4Mat Workshop, NeurIPS 2025
-  url: https://drive.google.com/file/d/1sL7rlTMeUXxY5cAWvJpCsUYocj7J_Vft/view?usp=sharing
-  link_label: Outstanding Reviewer certificate
+  url: https://sites.google.com/view/ai4mat/ai4mat-neurips-2025
+  link_label: AI4Mat-NeurIPS-2025 Outstanding Reviewers
 - id: google-phd
   year: '2025'
   title: Google PhD Fellowship Nominee
@@ -801,8 +813,8 @@ awards:
   year: '2025'
   title: Outstanding Master’s Student Award
   org: University of Missouri
-  url: /images/Outstanding Student.jpeg
-  link_label: Award photo
+  url: https://engineering.missouri.edu/2025/mizzou-engineering-honors-outstanding-faculty-staff-students-and-alumni/
+  link_label: Mizzou Engineering honors, 2025
 - id: muidsi
   year: '2025'
   title: Runner-up, Generative AI for Social Good Hackathon
@@ -814,18 +826,20 @@ awards:
   title: Dean’s Research Excellence Award
   org: Vellore Institute of Technology
 service:
+- group: Program committees
+  items:
+  - '[ACM Conference on AI and Agentic Systems (CAIS)](https://www.caisconf.org/) 2026 ([committee](https://www.caisconf.org/program/2026/committee/))'
 - group: Conference reviewing
   items:
   - '[Conference on Neural Information Processing Systems (NeurIPS)](https://neurips.cc/) 2026'
   - '[International Conference on Parallel Architectures and Compilation Techniques (PACT)](https://pact2026.github.io/) 2026'
-  - '[ACM Conference on AI and Agentic Systems (CAIS)](https://www.caisconf.org/) 2026'
   - '[IEEE International Conference on Big Data (IEEE Big Data)](https://bigdataieee.org/BigData2025/) 2025'
   - '[ACM International Conference on Information and Knowledge Management (CIKM)](https://cikm2025.org/) 2025'
 - group: Workshop reviewing
   items:
   - '[Responsible Communication of ML Research in Biomedicine (RCMLR) Workshop](https://translatingmlresearch.github.io/RCMLR/) at NeurIPS 2026'
   - '[GlobalSouthCV Workshop](https://bmvc2026.bmva.org/programme/workshops/) at BMVC 2026'
-  - '[AI for Accelerated Materials Design (AI4Mat) Workshop](https://sites.google.com/view/ai4mat/ai4mat-neurips-2025) at NeurIPS 2025 [🏆 Outstanding Reviewer Award](https://drive.google.com/file/d/1sL7rlTMeUXxY5cAWvJpCsUYocj7J_Vft/view?usp=sharing){: .award-badge}'
+  - '[AI for Accelerated Materials Design (AI4Mat) Workshop](https://sites.google.com/view/ai4mat/ai4mat-neurips-2025) at NeurIPS 2025 [🏆 Outstanding Reviewer Award](https://sites.google.com/view/ai4mat/ai4mat-neurips-2025){: .award-badge}'
   - '[AI for Accelerated Materials Design (AI4Mat) Workshop](https://sites.google.com/view/ai4mat/ai4mat-iclr-2025) at ICLR 2025'
 - group: Journal reviewing
   items:
@@ -834,7 +848,7 @@ service:
   items:
   - '[Conference on Neural Information Processing Systems (NeurIPS)](https://neurips.cc/) 2026'
   - '[International Conference on Parallel Architectures and Compilation Techniques (PACT)](https://pact2026.github.io/) 2026'
-  - '[ACM Conference on AI and Agentic Systems (CAIS)](https://www.caisconf.org/) 2026'
+  - '[ACM Conference on AI and Agentic Systems (CAIS)](https://www.caisconf.org/) 2026 ([committee](https://www.caisconf.org/program/2026/committee/))'
 teaching:
 - id: ml-systems
   course: Designing End-to-End ML Systems
@@ -867,6 +881,8 @@ talks:
   date: Apr 2026
   title: Evaluating Dependency Gaps in LLM-Generated Code
   venue: Sixth Chameleon User Meeting, NCAR Mesa Lab, Boulder, CO
+  url: https://chameleoncloud.org/chameleon-cloud-users-meeting/sixth-chameleon-user-meeting/
+  slides: https://docs.google.com/presentation/d/1Qyux3dzfbgC3HUtWHahP_K5pmQwHb78T/edit
   kind: Selected talk
 - id: mindful26
   date: Mar 2026
