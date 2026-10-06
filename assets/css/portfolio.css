@@ -1184,3 +1184,41 @@ a.benchmark-pill:hover {
 a.benchmark-pill:hover {
   background: #25804a;
 }
+
+/* Phones: the figure of a paper or project sits above its text at full width, so neither is squeezed
+   into a narrow column; the navigation wraps from the left; the profile icons stay on one row. */
+@media (max-width: 600px) {
+  .site-header nav {
+    justify-content: flex-start;
+    gap: 6px 18px;
+  }
+  .pub,
+  .project-card.has-image {
+    display: block;
+  }
+  .pub-image {
+    justify-content: flex-start;
+    margin: 0 0 10px;
+  }
+  .pub-image img,
+  .project-card.has-photo .pub-image img {
+    width: 100%;
+    height: auto;
+    max-height: 190px;
+    object-fit: contain;
+    object-position: left center;
+  }
+  .news-item {
+    grid-template-columns: 58px minmax(0, 1fr);
+    gap: 8px;
+  }
+  .news-date {
+    font-size: 12.5px;
+  }
+  .portrait .profile-links {
+    width: auto;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 6px;
+  }
+}
