@@ -78,7 +78,7 @@ redirect_from:
 <section id="talks" class="section" aria-labelledby="talks-title">
 <div class="section-head"><h2 id="talks-title">Talks &amp; presentations</h2></div>
 <ul class="line-list">{% for tk in cv.talks %}
-<li><span class="line-main">{% if tk.kind %}<span class="talk-kind">{{ tk.kind }}</span>{% endif %}<strong>{{ tk.title }}</strong><br><span class="muted">{% if tk.url %}<a href="{{ tk.url }}">{{ tk.venue }}</a>{% else %}{{ tk.venue }}{% endif %}{% if tk.slides %} · <a href="{{ tk.slides }}">Slides</a>{% endif %}</span></span><span class="cv-row-date">{{ tk.date }}</span></li>{% endfor %}
+<li><span class="line-main">{% if tk.kind %}<span class="talk-kind">{{ tk.kind }}</span>{% endif %}<strong>{{ tk.title }}</strong><br><span class="muted">{% if tk.url %}<a href="{{ tk.url }}">{{ tk.venue }}</a>{% else %}{{ tk.venue }}{% endif %}{% if tk.slides %} · <a href="{{ tk.slides }}">Slides</a>{% endif %}{% if tk.post %} · <a href="{{ tk.post }}">Photos &amp; post</a>{% endif %}</span></span><span class="cv-row-date">{{ tk.date }}</span></li>{% endfor %}
 </ul>
 </section>
 <section id="teaching" class="section" aria-labelledby="teaching-title">

@@ -990,12 +990,14 @@ talks:
   venue: IEEE CLOUD 2026, Sydney, Australia
   url: https://services.conferences.computer.org/2026/cloud/
   kind: Oral
+  post: https://www.linkedin.com/feed/update/urn:li:activity:7485230191624003584/
 - id: rep26
   date: Jul 2026
   title: 'AI-Generated Code Is Not Reproducible (Yet): An Empirical Study of Execution Reliability in LLM-Based Coding Agents'
   venue: ACM REP 2026, Delft, Netherlands
   url: https://www.tudelft.nl/en/events/2026/eemcs/2026-acm-conference-on-reproducibility-and-replicability
   kind: Oral
+  post: https://www.linkedin.com/feed/update/urn:li:activity:7505753899480399873/
 - id: chameleon26
   date: Apr 2026
   title: Evaluating Dependency Gaps in LLM-Generated Code
@@ -1003,6 +1005,7 @@ talks:
   url: https://chameleoncloud.org/chameleon-cloud-users-meeting/sixth-chameleon-user-meeting/
   slides: https://docs.google.com/presentation/d/1Qyux3dzfbgC3HUtWHahP_K5pmQwHb78T/edit
   kind: Selected talk
+  post: https://www.linkedin.com/feed/update/urn:li:activity:7453523045870374912/
 - id: mindful26
   date: Mar 2026
   title: MINDFUL Seminar
@@ -1014,18 +1017,21 @@ talks:
   venue: RAI Workshop at AAAI 2026, Singapore
   url: https://reproducibleai.github.io/
   kind: Oral
+  post: https://www.linkedin.com/feed/update/urn:li:activity:7423633550337564672/
 - id: aaai26b
   date: Jan 2026
   title: Efficient Multi-Model Orchestration for Self-Hosted LLMs
   venue: DAI Workshop at AAAI 2026, Singapore
   url: https://dai-workshop.github.io/
   kind: Oral
+  post: https://www.linkedin.com/feed/update/urn:li:activity:7423633550337564672/
 - id: aaaiss25
   date: Apr 2025
   title: Hallucination Detection in Scientific LLMs (HalluMat and HalluFormer)
   venue: AAAI Spring Series 2025, AI for Engineering and Scientific Discoveries
   url: https://sites.google.com/view/aaai-ss25-ai4science/home
   kind: Talk
+  post: https://www.linkedin.com/feed/update/urn:li:activity:7314103408410468352/
 coursework:
 - group: ML & deep learning
   items:
