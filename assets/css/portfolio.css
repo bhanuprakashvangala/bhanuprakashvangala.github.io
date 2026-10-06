@@ -646,6 +646,28 @@ section[id], #about-me {
 .resource-link {
   color: #2774a5;
 }
+/* Citation: the quote symbol opens the paper's BibTeX below the links. */
+.pub-cite > summary {
+  list-style: none;
+  cursor: pointer;
+}
+.pub-cite > summary::-webkit-details-marker {
+  display: none;
+}
+.pub-cite[open] {
+  flex-basis: 100%;
+}
+.pub-cite .bibtex {
+  margin: 6px 0 0;
+  padding: 10px 12px;
+  overflow-x: auto;
+  font: 12px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  white-space: pre;
+  color: var(--ink);
+  background: #f6f8fa;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
 .pub-meta a {
   color: inherit;
 }

@@ -237,6 +237,16 @@ publications:
   kind: Oral
   image: images/publications/one-threshold.png
   image_alt: Per-language coverage and deferral rates for pooled and language-conditional thresholds
+  bibtex: |-
+    @misc{vangala2026thresholddoesfitlanguages,
+          title={One Threshold Does Not Fit All Languages: Language-Conditional Deferral for Reliable and Efficient Low-Resource Text Classification},
+          author={Bhanu Prakash Vangala and Vangala Navya},
+          year={2026},
+          eprint={2609.37861},
+          archivePrefix={arXiv},
+          primaryClass={cs.CL},
+          url={https://arxiv.org/abs/2609.37861},
+    }
 - id: beyond-functional-correctness
   ref: 2
   title: 'AI-Generated Code Is Not Reproducible (Yet): An Empirical Study of Execution Reliability in LLM-Based Coding Agents'
@@ -257,6 +267,19 @@ publications:
   kind: Oral
   image: images/publications/execution-reliability.png
   image_alt: Clean-environment execution evaluation for AI-generated code
+  bibtex: |-
+    @inproceedings{vangala2026aigeneratedcodeexecution,
+      author    = {Vangala, Bhanu Prakash and Gehani, Ashish and Malik, Tanu},
+      title     = {AI-Generated Code Is Not Reproducible (Yet): An Empirical Study of Execution Reliability in LLM-Based Coding Agents},
+      booktitle = {Proceedings of the 4th ACM Conference on Reproducibility and Replicability},
+      series    = {ACM REP '26},
+      publisher = {ACM},
+      year      = {2026},
+      month     = jul,
+      pages     = {33--46},
+      doi       = {10.1145/3820002.3828581},
+      url       = {https://doi.org/10.1145/3820002.3828581}
+    }
 - id: pick-and-spin
   ref: 3
   title: 'Pick and Spin: Cold-Start-Aware Routing for Self-Hosted LLM Serving'
@@ -271,11 +294,25 @@ publications:
   links:
   - label: PDF
     url: /files/papers/pick-and-spin.pdf
+  - label: Paper
+    url: https://doi.org/10.1109/cloud72782.2026.00050
   - label: Code
     url: https://github.com/bhanuprakashvangala/PickAndSpin
   kind: Oral
   image: images/AdaptiveLLMaaS.png
   image_alt: Pick and Spin routing and model orchestration architecture
+  bibtex: |-
+    @inproceedings{vangala2026pickspin,
+      author    = {Vangala, Bhanu Prakash and Malik, Tanu},
+      title     = {Pick and Spin: Cold-Start-Aware Routing for Self-Hosted LLM Serving},
+      booktitle = {2026 IEEE 19th International Conference on Cloud Computing (CLOUD)},
+      publisher = {IEEE},
+      year      = {2026},
+      month     = jul,
+      pages     = {388--394},
+      doi       = {10.1109/cloud72782.2026.00050},
+      url       = {https://doi.org/10.1109/cloud72782.2026.00050}
+    }
 - id: camp
   ref: 4
   title: 'CAMP: Consumption-Aware Memory Prediction for Scientific Workflows'
@@ -319,6 +356,16 @@ publications:
   kind: Oral
   image: images/publications/execution-reliability.png
   image_alt: Clean-environment execution evaluation for AI-generated code
+  bibtex: |-
+    @misc{vangala2026aigeneratedcodereproducibleyet,
+          title={AI-Generated Code Is Not Reproducible (Yet): An Empirical Study of Dependency Gaps in LLM-Based Coding Agents},
+          author={Bhanu Prakash Vangala and Ali Adibifar and Ashish Gehani and Tanu Malik},
+          year={2026},
+          eprint={2512.22387},
+          archivePrefix={arXiv},
+          primaryClass={cs.SE},
+          url={https://arxiv.org/abs/2512.22387},
+    }
 - id: multi-model-orchestration
   ref: 5
   title: Efficient Multi-Model Orchestration for Self-Hosted Large Language Models
@@ -338,6 +385,16 @@ publications:
   kind: Oral
   image: images/AdaptiveLLMaaS.png
   image_alt: Multi-model serving and orchestration framework
+  bibtex: |-
+    @misc{vangala2025efficientmultimodelorchestrationselfhosted,
+          title={Efficient Multi-Model Orchestration for Self-Hosted Large Language Models},
+          author={Bhanu Prakash Vangala and Tanu Malik},
+          year={2025},
+          eprint={2512.22402},
+          archivePrefix={arXiv},
+          primaryClass={cs.DC},
+          url={https://arxiv.org/abs/2512.22402},
+    }
 - id: hallumat
   ref: 6
   title: 'HalluMat: Detecting Hallucinations in LLM-Generated Materials Science Content Through Multi-Stage Verification'
@@ -361,6 +418,16 @@ publications:
   kind: Oral
   image: images/HalluMat-Portfolio Image.png
   image_alt: HalluMat knowledge graph used for hallucination analysis
+  bibtex: |-
+    @misc{vangala2025hallumatdetectinghallucinationsllmgenerated,
+          title={HalluMat: Detecting Hallucinations in LLM-Generated Materials Science Content Through Multi-Stage Verification},
+          author={Bhanu Prakash Vangala and Sajid Mahmud and Pawan Neupane and Joel Selvaraj and Jianlin Cheng},
+          year={2025},
+          eprint={2512.22396},
+          archivePrefix={arXiv},
+          primaryClass={cs.AI},
+          url={https://arxiv.org/abs/2512.22396},
+    }
 - id: halluformer
   ref: 7
   title: 'HalluFormer: A Transformer-Based Framework for Detecting Hallucination in Large Language Models'
@@ -424,6 +491,16 @@ publications:
   image_alt: Declared, installed, and traced software dependency sets
   publisher_label: AAAI · Wiley
   venue_url: https://onlinelibrary.wiley.com/journal/23719621
+  bibtex: |-
+    @misc{vangala2026codeworksenvironmentsdont,
+          title={Code That Works, Environments That Don't: Measuring Environment Reproducibility in AI-Generated Software},
+          author={Bhanu Prakash Vangala and Tanu Malik},
+          year={2026},
+          eprint={2610.00425},
+          archivePrefix={arXiv},
+          primaryClass={cs.SE},
+          url={https://arxiv.org/abs/2610.00425},
+    }
 - id: language-labels
   ref: 10
   title: How Many Labels Does a Language Need? Annotation Budgets and Cross-Lingual Pooling for African-Language
@@ -442,6 +519,16 @@ publications:
     url: https://arxiv.org/abs/2609.37882
   image: images/publications/language-labels.png
   image_alt: MasakhaNEWS learning curves across annotation budgets
+  bibtex: |-
+    @misc{vangala2026labelsdoeslanguageneed,
+          title={How Many Labels Does a Language Need? Annotation Budgets and Cross-Lingual Pooling for African-Language Text Classification},
+          author={Bhanu Prakash Vangala and Sowmya Guda and Navya Vangala},
+          year={2026},
+          eprint={2609.37882},
+          archivePrefix={arXiv},
+          primaryClass={cs.CL},
+          url={https://arxiv.org/abs/2609.37882},
+    }
 - id: biomedical-evaluation
   ref: 11
   title: 'Evaluation Choices Shape Biomedical ML Claims: A Pediatric Pneumonia Benchmark Case Study'
@@ -462,6 +549,16 @@ publications:
     url: https://github.com/bhanuprakashvangala/PediatricCXR-EvaluationChoices
   image: images/Pneumonia-Portfolio Image.png
   image_alt: Chest X-ray classification research
+  bibtex: |-
+    @misc{vangala2026evaluationchoicesshapebiomedical,
+          title={Evaluation Choices Shape Biomedical ML Claims: A Pediatric Pneumonia Benchmark Case Study},
+          author={Bhanu Prakash Vangala and Sowmya Guda and Latha Peddi and Navya Vangala},
+          year={2026},
+          eprint={2609.37848},
+          archivePrefix={arXiv},
+          primaryClass={cs.CV},
+          url={https://arxiv.org/abs/2609.37848},
+    }
 - id: seed-xai
   ref: 12
   title: AI Sees, XAI Explains? Evaluating Explanation Reliability in Automated Seed Quality Inspection
@@ -473,12 +570,24 @@ publications:
   status: review
   year: 2026
   links:
+  - label: SSRN
+    url: https://ssrn.com/abstract=7544801
   - label: Code
     url: https://github.com/bhanuprakashvangala/XAI
   image: images/publications/seed-xai.png
   image_alt: Attribution maps for held-out soybean images
   publisher_label: Elsevier · ScienceDirect
   venue_url: https://www.sciencedirect.com/journal/computers-and-electronics-in-agriculture
+  bibtex: |-
+    @misc{vangala2026aiseesxaiexplains,
+      author       = {Vangala, Bhanu Prakash and Vangala, Navya},
+      title        = {AI Sees, XAI Explains? Evaluating Explanation Reliability in Automated Seed Quality Inspection},
+      year         = {2026},
+      howpublished = {SSRN},
+      note         = {Available at SSRN: https://ssrn.com/abstract=7544801},
+      doi          = {10.2139/ssrn.7544801},
+      url          = {https://doi.org/10.2139/ssrn.7544801}
+    }
 - id: synthetic-seeds
   ref: 13
   title: Visual Realism Does Not Predict Seed-Quality Utility in AI-Generated Synthetic Seeds
@@ -534,6 +643,16 @@ publications:
   image_alt: Brain MRI classification research
   publisher_label: IEEE · IEEE Xplore
   venue_url: https://www.embs.org/jbhi/
+  bibtex: |-
+    @misc{vangala2026scoresholdbenchmarksleak,
+          title={Scores That Hold, Benchmarks That Leak: Measuring Dataset Contamination in Public Brain-Tumor MRI Classification},
+          author={Bhanu Prakash Vangala and Sowmya Guda and Latha Peddi and Navya Vangala},
+          year={2026},
+          eprint={2610.00421},
+          archivePrefix={arXiv},
+          primaryClass={cs.CV},
+          url={https://arxiv.org/abs/2610.00421},
+    }
 - id: adaptive-inference
   ref: 16
   title: 'Adaptive Inference: Orchestrating Fine-Tuned LLMs with Serverless GPUs in HPC Environments'
