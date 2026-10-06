@@ -98,12 +98,13 @@ threads:
 - id: accountable
   n: '03'
   title: Accountable systems at scale
-  lead: Nine models, a fixed number of GPUs
+  lead: Many models, a fixed number of GPUs
   text: 'A Kubernetes-native multi-tenant serving framework that classifies queries by complexity, routes them across
-    nine models from 1B to 27B parameters using Thompson Sampling, and manages warm pools through a custom cold-start
-    state machine. Across 310,190 inference requests on the NRP Nautilus cluster it reached 61% GPU utilization
-    against 31% for static deployment, cutting GPU-hours by 46%. Most of that comes from one decision: stop holding
-    nine models resident when the traffic does not call for them.'
+    a configurable set of self-hosted models using Thompson Sampling, and manages warm pools through a custom cold-start
+    state machine. The model set lives in a configuration file, so models can be added or swapped without changing the
+    code; the paper evaluates nine, from 1B to 27B parameters. Across 310,190 inference requests on the NRP Nautilus
+    cluster it reached 61% GPU utilization against 31% for static deployment, cutting GPU-hours by 46%. Most of that
+    comes from one decision: stop holding every model resident when the traffic does not call for it.'
   refs:
   - pick-and-spin
   - multi-model-orchestration
