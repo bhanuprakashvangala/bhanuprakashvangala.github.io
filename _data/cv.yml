@@ -970,6 +970,10 @@ service:
   - '[Conference on Neural Information Processing Systems (NeurIPS)](https://neurips.cc/) 2026'
   - '[International Conference on Parallel Architectures and Compilation Techniques (PACT)](https://pact2026.github.io/) 2026'
   - '[ACM Conference on AI and Agentic Systems (CAIS)](https://www.caisconf.org/) 2026 ([committee](https://www.caisconf.org/program/2026/committee/))'
+- group: University organizations
+  items:
+  - '[College of Engineering Graduate Student Association (CEGSA)](https://engage.missouri.edu/cegsa/leadership-team/), University of Missouri: EECS Department Representative, Leadership Team'
+  - '[Cultural Association of India (CAI)](https://caimizzou.weebly.com/), University of Missouri: Active member'
 teaching:
 - id: ml-systems
   course: Designing End-to-End ML Systems
