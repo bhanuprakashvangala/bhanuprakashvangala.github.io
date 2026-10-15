@@ -247,6 +247,34 @@ publications:
           primaryClass={cs.CL},
           url={https://arxiv.org/abs/2609.37861},
     }
+- id: language-labels
+  ref: 10
+  title: How Many Labels Does a Language Need? Annotation Budgets and Cross-Lingual Pooling for African-Language
+    Text Classification
+  authors:
+  - Bhanu Prakash Vangala
+  - Sowmya Guda
+  - Navya Vangala
+  venue: Africa in AI Affinity Workshop at NeurIPS 2026
+  venue_url: https://africainai.mailab.io/
+  venue_full: Africa in AI Affinity Workshop at NeurIPS 2026
+  status: accepted
+  year: 2026
+  links:
+  - label: arXiv
+    url: https://arxiv.org/abs/2609.37882
+  image: images/publications/language-labels.png
+  image_alt: MasakhaNEWS learning curves across annotation budgets
+  bibtex: |-
+    @misc{vangala2026labelsdoeslanguageneed,
+          title={How Many Labels Does a Language Need? Annotation Budgets and Cross-Lingual Pooling for African-Language Text Classification},
+          author={Bhanu Prakash Vangala and Sowmya Guda and Navya Vangala},
+          year={2026},
+          eprint={2609.37882},
+          archivePrefix={arXiv},
+          primaryClass={cs.CL},
+          url={https://arxiv.org/abs/2609.37882},
+    }
 - id: beyond-functional-correctness
   ref: 2
   title: 'AI-Generated Code Is Not Reproducible (Yet): An Empirical Study of Execution Reliability in LLM-Based Coding Agents'
@@ -500,34 +528,6 @@ publications:
           archivePrefix={arXiv},
           primaryClass={cs.SE},
           url={https://arxiv.org/abs/2610.00425},
-    }
-- id: language-labels
-  ref: 10
-  title: How Many Labels Does a Language Need? Annotation Budgets and Cross-Lingual Pooling for African-Language
-    Text Classification
-  authors:
-  - Bhanu Prakash Vangala
-  - Sowmya Guda
-  - Navya Vangala
-  venue: Africa in AI Affinity Workshop at NeurIPS 2026
-  venue_url: https://africainai.mailab.io/
-  venue_full: Africa in AI Affinity Workshop at NeurIPS 2026
-  status: review
-  year: 2026
-  links:
-  - label: arXiv
-    url: https://arxiv.org/abs/2609.37882
-  image: images/publications/language-labels.png
-  image_alt: MasakhaNEWS learning curves across annotation budgets
-  bibtex: |-
-    @misc{vangala2026labelsdoeslanguageneed,
-          title={How Many Labels Does a Language Need? Annotation Budgets and Cross-Lingual Pooling for African-Language Text Classification},
-          author={Bhanu Prakash Vangala and Sowmya Guda and Navya Vangala},
-          year={2026},
-          eprint={2609.37882},
-          archivePrefix={arXiv},
-          primaryClass={cs.CL},
-          url={https://arxiv.org/abs/2609.37882},
     }
 - id: biomedical-evaluation
   ref: 11
@@ -1113,6 +1113,9 @@ skills:
   - Pandas / NumPy
   - GitHub Actions CI/CD
 news:
+- date: 10/2026
+  new: true
+  text: '📄 Our paper [How Many Labels Does a Language Need?](https://arxiv.org/abs/2609.37882) with Sowmya Guda and Navya Vangala was accepted at the [Africa in AI Affinity Workshop at NeurIPS 2026](https://africainai.mailab.io/)! We study annotation budgets and cross-lingual pooling for African-language text classification.'
 - date: 09/2026
   new: true
   text: '📄 Our paper [One Threshold Does Not Fit All Languages](/files/papers/one-threshold.pdf) with Navya Vangala was accepted as an **oral** at the [Global South in AI Workshop at NeurIPS 2026](https://sites.google.com/view/globalsouthai-neurips26/home)! We show that each low-resource language needs its own rule for when a model should answer and when to hand off to a human.'
